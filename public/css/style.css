@@ -27,7 +27,7 @@
     20 - Components - Feature
     21 - Components - Product
     22 - Components - Banner
-    23 - Components - Newsletter 
+    23 - Components - Newsletter
     24 - Components - Support
     25 - Components - Action-plan
     26 - Components - Brand-logo
@@ -450,7 +450,7 @@ mark {
   letter-spacing: 3px;
   margin: 0 0 15px 0;
   position: relative;
-  font-family: "Great Vibes", cursive;
+  font-family: 'Lobster', cursive;;
 }
 
 @media (max-width: 479px) {
@@ -2395,7 +2395,7 @@ mark {
   padding-bottom: 8px;
   color: #000000;
   line-height: 25px;
-  font-family: "Great Vibes", cursive;
+  font-family: 'Lobster', cursive;;
 }
 
 .offcanvas-widget-area .menu-top-menu > li > a:hover {
@@ -5788,7 +5788,7 @@ mark {
 
 .intro11-slider .intro11-content-2 .different-title {
   font-size: 190px;
-  font-family: "Great Vibes", cursive;
+  font-family: 'Lobster', cursive;;
   line-height: 150px;
   color: #E72463;
   margin-bottom: 20px;
@@ -7209,7 +7209,7 @@ mark {
 }
 
 .breadcrumbs-area .breadcrumb-content .title-3 {
-  font-family: "Great Vibes", cursive;
+  font-family: 'Lobster', cursive;;
   font-size: 30px;
   font-weight: 700;
 }

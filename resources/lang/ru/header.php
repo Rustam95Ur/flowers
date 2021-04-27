@@ -9,4 +9,11 @@ return [
     'calculator' => 'Калькулятор',
     'contact' => 'Контакты',
     'gallery' => 'Галерия',
+    'language'  => 'Язык',
+    'about_us' => 'О нас',
+    'languages' => [
+        'ru' => 'Русский',
+        'en' => 'Английский'
+    ],
+
 ];
