@@ -24,7 +24,7 @@
         left: 0;
         position: fixed;
         background-color: $white-color;
-        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
         right: 0;
         top: 0;
         transition: .3s;
@@ -53,10 +53,10 @@
             > a{
                 display: block;
                 padding: 8px 16px;
-                font-size: 15px;
+                font-size: 17px;
                 text-transform: capitalize;
                 font-family: $body-font-family-name;
-                font-weight: 600;
+                font-weight: 300;
                 line-height: 18px;
                 color: $black-color;
                 &.active{
@@ -66,7 +66,7 @@
                     color: $primary-color;
                 }
                 i{
-                    margin-left: 0px;
+                    margin-left: 0;
                     font-size: 15px;
                     vertical-align: middle;
                 }
@@ -82,7 +82,7 @@
     background: $white-color;
     padding: 20px 0 24px;
     width: 230px;
-    box-shadow: 0 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     border-bottom: 3px solid $primary-color;
     > li {
         > a {
@@ -137,7 +137,7 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 20px 0;
-    box-shadow: 0 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     border-bottom: 3px solid $primary-color;
     @include breakpoint(max-lg_device){
         left: 100%;
@@ -153,13 +153,13 @@
                     font-size: 18px;
                     font-family: $body-font-family-name;
                     display: table-caption;
-                    padding: 0px 20px 0px 0px;
-                    margin: 0px 0px 10px 20px;
+                    padding: 0 20px 0 0;
+                    margin: 0 0 10px 20px;
                     &:after{
                         position: absolute;
                         left: 0;
                         bottom: 0;
-                        margin: auto; 
+                        margin: auto;
                         width: 100%;
                         border-bottom: 2px solid $primary-color;
                         content: "";
@@ -188,7 +188,7 @@
 /*--- Header Right Area ---*/
 .dropdown-search{
     width: 340px;
-    box-shadow: 0 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
     background-color: $white-color;
     @include breakpoint(max-xxs_device){
         width: 280px;
@@ -198,7 +198,7 @@
             width: 100%;
             display: block;
             padding: 10px 30px 10px 10px;
-            border: 0px;
+            border: 0;
         }
         button{
             position: absolute;
@@ -240,15 +240,15 @@
                         transform: translateY(-50%);
                     }
                     &:first-child{
-                        padding: 0px;
-                        margin: 0px;
+                        padding: 0;
+                        margin: 0;
                         &:before{
                             display: none;
                         }
                     }
                 }
                 > a{
-                    padding: 8px 0px 7px;
+                    padding: 8px 0 7px;
                     > i{
                         font-size: 18px;
                         line-height: 1;
@@ -309,7 +309,7 @@
     .cart-item-wrapper{
         padding: 25px 20px;
         width: 350px;
-        box-shadow: 0 0px 3px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
         background-color: $white-color;
         @include breakpoint(max-xxs_device){
             width: 280px;
@@ -509,10 +509,10 @@
         i {
             transform: rotate(-90deg);
         }
-    } 
+    }
 }
 .top-info-wrap{
-    bottom: 0px;
+    bottom: 0;
     margin-top: auto;
     padding-bottom: 40px;
     .address-info{
@@ -527,7 +527,7 @@
     }
 }
 .offcanvas-widget-area{
-    padding: 0px 40px 20px;
+    padding: 0 40px 20px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -551,7 +551,7 @@
     }
     .switcher {
         border-top: 1px solid $border-color-2;
-        margin-top: 0px;
+        margin-top: 0;
         padding-top: 30px;
         margin-bottom: 40px;
     }
@@ -612,7 +612,7 @@
     .switcher-dropdown > li {
         list-style: none;
         display: block;
-        border-bottom: 0 10px;
+        border-bottom: 10px;
         text-align: center;
         border-bottom: 1px solid $border-color-2;
         &:last-child {
@@ -635,7 +635,7 @@
 -----------------------------*/
 .search-box-offcanvas {
     margin-bottom: 10px;
-    padding: 20px 40px 0px 40px;
+    padding: 20px 40px 0 40px;
     @include breakpoint(max-xxs_device){
         padding: 30px 30px 0 30px;
     }
@@ -673,17 +673,17 @@
 .mobile-header .category-toggle {
     padding: 8px 15px;
   }
-  
+
 .mobile-menu-btn .off-canvas-btn {
     font-size: 22px;
     cursor: pointer;
-    padding: 0px 12px;
+    padding: 0 12px;
     line-height: 1;
     padding-right: 0;
     transition: 0.4s;
     margin-top: -3px;
 }
-  
+
 .mobile-menu {
     height: 100%;
     padding-right: 30px;
@@ -700,7 +700,7 @@
         font-weight: 600;
             &:hover {
                 color: #000;
-            }   
+            }
         }
       ul li {
         border: none;
@@ -712,11 +712,11 @@
             }
         }
     }
-  
+
     .has-children, .menu-item-has-children {
         position: relative;
     }
-  
+
     .has-children .menu-expand, .menu-item-has-children .menu-expand {
         line-height: 50;
         top: -7px;
@@ -730,7 +730,7 @@
             left: 90%;
         }
     }
-  
+
     .has-children .menu-expand i, .menu-item-has-children .menu-expand i {
         display: block;
         position: relative;
@@ -739,7 +739,7 @@
         border-bottom: 1px solid #252525;
         transition: all 250ms ease-out;
     }
-  
+
     .has-children .menu-expand i:before, .menu-item-has-children .menu-expand i:before {
         top: 0;
         width: 100%;
@@ -750,7 +750,7 @@
         border-bottom: 1px solid #252525;
         transition: 0.4s;
     }
-  
+
     .has-children.active > .menu-expand i:before, .menu-item-has-children.active > .menu-expand i:before {
         transform: rotate(0);
     }

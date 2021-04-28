@@ -6,7 +6,7 @@
                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                     <div class="header-logo d-flex align-items-center">
                         <a href="{{route('home')}}">
-                            <img class="img-full" src="{{asset('images/logo/logo.png')}}" alt="logo">
+                            <img class="img-full" src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">
                         </a>
                     </div>
                 </div>

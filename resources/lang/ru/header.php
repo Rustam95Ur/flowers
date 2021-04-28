@@ -9,8 +9,10 @@ return [
     'calculator' => 'Калькулятор',
     'contact' => 'Контакты',
     'gallery' => 'Галерия',
+    'phone' => 'Номер телефона',
     'language'  => 'Язык',
     'about_us' => 'О нас',
+    'support' => 'Помощь',
     'languages' => [
         'ru' => 'Русский',
         'en' => 'Английский'

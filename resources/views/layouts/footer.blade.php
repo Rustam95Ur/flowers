@@ -5,11 +5,11 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
                     <div class="single-footer-widget m-0">
                         <div class="footer-logo">
-                            <a href="index.html">
-                                <img src="images/logo/logo-footer.png" alt="Logo Image">
+                            <a href="{{route('home')}}">
+                                <img src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">
                             </a>
                         </div>
-                        <p class="desc-content">Lorem Khaled Ipsum is a major key to success. To be successful you’ve got to work hard you’ve got to make it.</p>
+                        <p class="desc-content">{{ Voyager::setting('site.description')}}</p>
                         <div class="social-links">
                             <ul class="d-flex">
                                 <li>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
                     <div class="single-footer-widget">
-                        <h2 class="widget-title">Information</h2>
+                        <h2 class="widget-title">{{trans('header.information')}}</h2>
                         <ul class="widget-list">
                             <li><a href="about-us.html">Our Company</a></li>
                             <li><a href="contact-us.html">Contact Us</a></li>
@@ -55,7 +55,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
                     <div class="single-footer-widget">
-                        <h2 class="widget-title">Quicklink</h2>
+                        <h2 class="widget-title">{{trans('header.flowers')}}</h2>
                         <ul class="widget-list">
                             <li><a href="about-us.html">About</a></li>
                             <li><a href="blog.html">Blog</a></li>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
                     <div class="single-footer-widget">
-                        <h2 class="widget-title">Support</h2>
+                        <h2 class="widget-title">{{trans('header.support')}}</h2>
                         <ul class="widget-list">
                             <li><a href="contact-us.html">Online Support</a></li>
                             <li><a href="contact-us.html">Shipping Policy</a></li>
@@ -79,9 +79,15 @@
                 </div>
                 <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-custom">
                     <div class="single-footer-widget">
-                        <h2 class="widget-title">See Information</h2>
+                        <h2 class="widget-title">{{trans('header.contact')}}</h2>
                         <div class="widget-body">
-                            <address>123, ABC, Road ##, Main City, Your address goes here.<br>Phone: 01234 567 890<br>Email: https://example.com</address>
+                            <address>
+                                {{ Voyager::setting('site.address')}}
+                                <br>
+                                {{trans('header.phone')}}: {{ Voyager::setting('site.phone')}}
+                                <br>
+                                Email: {{ Voyager::setting('site.email')}}
+                            </address>
                         </div>
                     </div>
                 </div>

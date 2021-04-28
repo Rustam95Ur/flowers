@@ -28,10 +28,6 @@
     <link rel="stylesheet" href="{{asset('css/plugins/nice-select.min.css')}}">
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="{{asset('css/plugins/magnific-popup.css')}}">
-    <!-- Font Google -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
