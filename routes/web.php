@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 
 use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\Page\BaseController;
+use App\Http\Controllers\Page\ProductController;
 
 
 Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(function () {
     Route::get('/', [BaseController::class, 'home'])->name('home');
+    Route::get('/product/{slug}', [ProductController::class, 'show'])->name('flowers_show');
     Route::get('/contact', [BaseController::class, 'contact'])->name('contact');
 });
 
