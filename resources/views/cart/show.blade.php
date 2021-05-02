@@ -10,95 +10,61 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th class="pro-thumbnail">Image</th>
-                                <th class="pro-title">Product</th>
-                                <th class="pro-price">Price</th>
-                                <th class="pro-quantity">Quantity</th>
-                                <th class="pro-subtotal">Total</th>
-                                <th class="pro-remove">Remove</th>
+                                <th class="pro-thumbnail">{{trans('page.cart.image')}}</th>
+                                <th class="pro-title">{{trans('page.cart.product')}}</th>
+                                <th class="pro-price">{{trans('page.cart.price')}}</th>
+                                <th class="pro-quantity">{{trans('page.cart.quantity')}}</th>
+                                <th class="pro-subtotal">{{trans('page.cart.total')}}</th>
+                                <th class="pro-remove">{{trans('page.cart.remove')}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/1.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Pearly Everlasting <br> s / green</a></td>
-                                <td class="pro-price"><span>$295.00</span></td>
-                                <td class="pro-quantity">
-                                    <div class="quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="0" type="text">
-                                            <div class="dec qtybutton">-</div>
-                                            <div class="inc qtybutton">+</div>
-                                            <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                            <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
+                            @foreach($products as $product)
+                                <tr id="cart-product-{{$product['id']}}">
+                                    <td class="pro-thumbnail">
+                                        <a href="{{route('product_show', $product['id'])}}">
+                                            @foreach(json_decode($product['images']) as $image)
+                                                <img alt="{{$product['title']}}" src="{{ Voyager::image($image) }}"
+                                                     class="img-fluid"/>
+                                                @break
+                                            @endforeach
+
+                                        </a>
+                                    </td>
+                                    <td class="pro-title">
+                                        <a href="{{route('product_show', $product['id'])}}">
+                                            {{$product['title']}}
+                                        </a>
+                                    </td>
+                                    <td class="pro-price"><span id="price-{{$product['id']}}">{{$product['price']}} ₸</span></td>
+                                    <td class="pro-quantity">
+                                        <div class="quantity">
+
+                                            <div class="cart-plus-minus">
+                                                <input class="cart-plus-minus-box" id="product-{{$product['id']}}"
+                                                       value="{{$product['qty']}}"
+                                                       type="text">
+                                                <div class="dec qtybutton">-</div>
+                                                <div class="inc qtybutton">+</div>
+                                                <div class="dec qtybutton"
+                                                     onclick="update_cart('{{$product['id']}}', 1, 'remove')">
+                                                    <i class="fa fa-minus"></i>
+                                                </div>
+                                                <div class="inc qtybutton"
+                                                     onclick="update_cart('{{$product['id']}}', 1)">
+                                                    <i class="fa fa-plus"></i>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="pro-subtotal"><span>$295.00</span></td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/2.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Jack in the Pulpit <br> red</a></td>
-                                <td class="pro-price"><span>$275.00</span></td>
-                                <td class="pro-quantity">
-                                    <div class="quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="0" type="text">
-                                            <div class="dec qtybutton">-</div>
-                                            <div class="inc qtybutton">+</div>
-                                            <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                            <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="pro-subtotal"><span>$550.00</span></td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/3.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Glory of the Snow <br> s</a></td>
-                                <td class="pro-price"><span>$295.00</span></td>
-                                <td class="pro-quantity">
-                                    <div class="quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="0" type="text">
-                                            <div class="dec qtybutton">-</div>
-                                            <div class="inc qtybutton">+</div>
-                                            <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                            <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="pro-subtotal"><span>$295.00</span></td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/4.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Rose bouquet white</a></td>
-                                <td class="pro-price"><span>$110.00</span></td>
-                                <td class="pro-quantity">
-                                    <div class="quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" value="2" type="text">
-                                            <div class="dec qtybutton">-</div>
-                                            <div class="inc qtybutton">+</div>
-                                            <div class="dec qtybutton"><i class="fa fa-minus"></i></div>
-                                            <div class="inc qtybutton"><i class="fa fa-plus"></i></div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="pro-subtotal"><span>$110.00</span></td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
+                                    </td>
+                                    <td class="pro-subtotal"><span class="subtotal" id="subtotal-{{$product['id']}}">{{$product['price'] * $product['qty']}} ₸</span></td>
+                                    <td class="pro-remove">
+                                        <a onclick="update_cart('{{$product['id']}}', 0, 'remove'); $('#cart-product-{{$product['id']}}').remove(); updated_after_delete()">
+                                            <i class="lnr lnr-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -110,26 +76,27 @@
                     <!-- Cart Calculation Area -->
                     <div class="cart-calculator-wrapper">
                         <div class="cart-calculate-items">
-                            <h3>Cart Totals</h3>
+                            <h3>{{trans('page.cart.cart_total')}}</h3>
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
-                                        <td>Sub Total</td>
-                                        <td>$230</td>
+                                        <td>{{trans('page.cart.sub_total')}}</td>
+                                        <td class="sub-total">{{$total_price}} ₸</td>
                                     </tr>
                                     <tr>
-                                        <td>Shipping</td>
-                                        <td>$70</td>
+                                        <td>{{trans('page.cart.shipping')}}</td>
+                                        <td class="shipping-price">{{$shipping_price}} ₸</td>
                                     </tr>
                                     <tr class="total">
-                                        <td>Total</td>
-                                        <td class="total-amount">$300</td>
+                                        <td>{{trans('page.cart.total_price')}}</td>
+                                        <td class="total-amount">{{$total_price + $shipping_price}} ₸</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
-                        <a href="{{route('checkout')}}" class="btn flosun-button primary-btn rounded-0 black-btn w-100">Proceed
-                            To Checkout</a>
+                        <a href="{{route('checkout')}}" class="btn flosun-button primary-btn rounded-0 black-btn w-100">
+                            {{trans('page.cart.payment')}}
+                        </a>
                     </div>
                 </div>
             </div>

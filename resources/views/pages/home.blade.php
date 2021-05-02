@@ -101,9 +101,8 @@
                                         <!--Single Product Start-->
                                         <div class="single-product position-relative mb-30">
                                             <div class="product-image">
-                                                <a class="d-block" href="{{route('flowers_show', $flower['slug'])}}">
-                                                    @php $images = json_decode($flower['images']); @endphp
-                                                    @foreach($images as $image)
+                                                <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
+                                                    @foreach(json_decode($flower['images']) as $image)
                                                         @if($loop->index < 2)
                                                         <img alt="{{$flower['title']}}" src="{{ Voyager::image($image) }}"
                                                              class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"  />
@@ -130,20 +129,13 @@
                                             <div class="product-content">
                                                 <div class="product-title">
                                                     <h4 class="title-2">
-                                                        <a href="{{route('flowers_show', $flower['slug'])}}">{{$flower['title']}}</a>
+                                                        <a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
                                                     </h4>
-                                                </div>
-                                                <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
                                                 </div>
                                                 <div class="price-box">
                                                     <span class="regular-price ">{{$flower['price']}} ₸</span>
                                                 </div>
-                                                <a href="cart.html" class="btn product-cart">{{trans('button.add_to_cart')}}</a>
+                                                <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')" class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                             </div>
                                         </div>
                                         <!--Single Product End-->

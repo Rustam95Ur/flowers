@@ -1,7 +1,7 @@
 <li class="minicart-wrap">
-    <a href="{{route('cart')}}" class="minicart-btn toolbar-btn">
+    <a class="minicart-btn toolbar-btn">
         <i class="fa fa-shopping-cart"></i>
-        <span class="cart-item_count">{{ $product_cart }}</span>
+        <span class="cart-item_count" id="cart_count">{{ $product_cart }}</span>
     </a>
     <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
         <div class="single-cart-item">

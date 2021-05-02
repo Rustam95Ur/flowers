@@ -97,6 +97,9 @@
 
 <!-- Main JS -->
 <script src="{{asset('js/main.js')}}"></script>
+<!-- Cart JS -->
+<script src="{{asset('js/cart.js')}}"></script>
+
 
 
 </body>
