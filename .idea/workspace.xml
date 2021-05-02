@@ -4,11 +4,9 @@
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ru/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/button.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -195,7 +193,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1619452928273</updated>
-      <workItem from="1619452929973" duration="44606000" />
+      <workItem from="1619452929973" duration="48189000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -211,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619627923788</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added product show page">
+      <created>1619727739647</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619727739647</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +226,7 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="added locale and updated header" />
     <MESSAGE value="updated header and footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated header and footer" />
+    <MESSAGE value="added product show page" />
+    <option name="LAST_COMMIT_MESSAGE" value="added product show page" />
   </component>
 </project>

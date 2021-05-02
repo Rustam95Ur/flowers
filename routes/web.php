@@ -22,6 +22,9 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/', [BaseController::class, 'home'])->name('home');
     Route::get('/product/{slug}', [ProductController::class, 'show'])->name('flowers_show');
     Route::get('/contact', [BaseController::class, 'contact'])->name('contact');
+    Route::get('/wishlist', [BaseController::class, 'wishlist'])->name('wishlist');
+    Route::get('/cart', [BaseController::class, 'cart'])->name('cart');
+    Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');
 });
 
 Route::group(['prefix' => 'admin'], function () {

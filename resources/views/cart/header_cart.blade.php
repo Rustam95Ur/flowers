@@ -1,5 +1,5 @@
 <li class="minicart-wrap">
-    <a href="#" class="minicart-btn toolbar-btn">
+    <a href="{{route('cart')}}" class="minicart-btn toolbar-btn">
         <i class="fa fa-shopping-cart"></i>
         <span class="cart-item_count">{{ $product_cart }}</span>
     </a>
@@ -54,8 +54,8 @@
             <h5>$166.00</h5>
         </div>
         <div class="cart-links d-flex justify-content-between">
-            <a class="btn product-cart button-icon flosun-button dark-btn" href="cart.html">View cart</a>
-            <a class="btn flosun-button secondary-btn rounded-0" href="checkout.html">Checkout</a>
+            <a class="btn product-cart button-icon flosun-button dark-btn" href="{{route('cart')}}">{{trans('button.view_cart')}}</a>
+            <a class="btn flosun-button secondary-btn rounded-0" href="{{route('checkout')}}">{{trans('button.checkout')}}</a>
         </div>
     </div>
 </li>

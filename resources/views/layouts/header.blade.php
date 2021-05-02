@@ -115,6 +115,12 @@
                 <div class="col-lg-2 col-md-6 col-6 col-custom">
                     <div class="header-right-area main-nav">
                         <ul class="nav">
+                            <li class="minicart-wrap">
+                                <a href="{{route('wishlist')}}" class="minicart-btn toolbar-btn">
+                                    <i class="fa fa-heart"></i>
+                                    <span class="cart-item_count">{{ $product_cart }}</span>
+                                </a>
+                            </li>
                             @include('cart.header_cart')
                             <li class="sidemenu-wrap">
                                 <a href="#"><i class="fa fa-search"></i> </a>
