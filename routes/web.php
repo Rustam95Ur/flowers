@@ -23,9 +23,11 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/', [BaseController::class, 'home'])->name('home');
     Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product_show');
     Route::get('/contact', [BaseController::class, 'contact'])->name('contact');
-    Route::get('/wishlist', [BaseController::class, 'wishlist'])->name('wishlist');
-    Route::get('/cart/update/{product_id}/{qty}/{type}', [CartController::class, 'update_to_cart'])->name('add_to_cart');
-    Route::get('/cart/count', [CartController::class, 'count_cart'])->name('cart');
+    Route::get('/wishlists', [CartController::class, 'wishlists'])->name('wishlists');
+    Route::get('/wishlist/{product_id}/{type}', [CartController::class, 'update_wishlist'])->name('update_wishlist');
+    Route::get('/wishlists/count', [CartController::class, 'count_wish'])->name('count_wish');
+    Route::get('/cart/update/{product_id}/{qty}/{type}', [CartController::class, 'update_to_cart'])->name('update_to_cart');
+    Route::get('/cart/count', [CartController::class, 'count_cart'])->name('count_cart');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');
 });

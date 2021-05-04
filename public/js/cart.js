@@ -30,3 +30,26 @@ function updated_mini_cart() {
         }
     });
 }
+
+function update_wish_list(product_id, type = 'add') {
+    var ajax_url = '/wishlist/' + product_id + '/' + type;
+    $.ajax({
+        type: "GET",
+        url: ajax_url,
+        complete: function () {
+            count_wish()
+        }
+    });
+}
+
+
+function count_wish() {
+    $.ajax({
+        type: "GET",
+        url: '/wishlists/count',
+        success: function (data) {
+            console.log(data.count)
+            $('#wish_count').html(data.count);
+        }
+    });
+}

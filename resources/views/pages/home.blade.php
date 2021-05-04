@@ -111,11 +111,7 @@
                                                 </a>
                                                 <span class="onsale">Sale!</span>
                                                 <div class="add-action d-flex flex-column position-absolute">
-                                                    <a href="compare.html" title="Compare">
-                                                        <i class="lnr lnr-sync" data-toggle="tooltip"
-                                                           data-placement="left" title="{{trans('button.compare')}}"></i>
-                                                    </a>
-                                                    <a href="wishlist.html" title="Add To Wishlist">
+                                                    <a onclick="update_wish_list({{$flower['id']}}, 'add');" title="{{trans('page.home.add_to_wish')}}">
                                                         <i class="lnr lnr-heart" data-toggle="tooltip"
                                                            data-placement="left" title="{{trans('button.wishlist')}}"></i>
                                                     </a>

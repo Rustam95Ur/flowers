@@ -116,9 +116,9 @@
                     <div class="header-right-area main-nav">
                         <ul class="nav">
                             <li class="minicart-wrap">
-                                <a href="{{route('wishlist')}}" class="minicart-btn toolbar-btn">
+                                <a href="{{route('wishlists')}}" class="minicart-btn toolbar-btn">
                                     <i class="fa fa-heart"></i>
-                                    <span class="cart-item_count">{{ $qty_cart }}</span>
+                                    <span class="cart-item_count" id="wish_count">{{ $wish_count }}</span>
                                 </a>
                             </li>
                             <li class="minicart-wrap" id="mini_cart">

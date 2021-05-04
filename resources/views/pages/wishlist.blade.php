@@ -10,71 +10,44 @@
                         <table class="table table-bordered">
                             <thead>
                             <tr>
-                                <th class="pro-thumbnail">Image</th>
-                                <th class="pro-title">Product</th>
-                                <th class="pro-price">Price</th>
-                                <th class="pro-stock">Stock Status</th>
+                                <th class="pro-thumbnail">{{trans('page.cart.image')}}</th>
+                                <th class="pro-title">{{trans('page.cart.product')}}</th>
+                                <th class="pro-price">{{trans('page.cart.price')}}</th>
                                 <th class="pro-cart"> {{trans('button.add_to_cart')}}</th>
-                                <th class="pro-remove">Remove</th>
+                                <th class="pro-remove">{{trans('page.cart.remove')}}</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/1.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Product dummy title <br> s / green</a></td>
-                                <td class="pro-price"><span>$295.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart">
-                                    <a href="cart.html" class="btn product-cart button-icon flosun-button dark-btn">
-                                        {{trans('button.add_to_cart')}}
-                                    </a>
-                                </td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/2.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Product title here <br> red</a></td>
-                                <td class="pro-price"><span>$275.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart">
-                                    <a href="cart.html" class="btn product-cart button-icon flosun-button dark-btn">
-                                        {{trans('button.add_to_cart')}}
-                                    </a>
-                                </td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/3.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Product dummy title <br> s</a></td>
-                                <td class="pro-price"><span>$295.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart">
-                                    <a href="cart.html" class="btn product-cart button-icon flosun-button dark-btn">
-                                        {{trans('button.add_to_cart')}}
-                                    </a>
-                                </td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="pro-thumbnail"><a href="#"><img class="img-fluid"
-                                                                           src="/images/product/small-size/4.jpg"
-                                                                           alt="Product"/></a></td>
-                                <td class="pro-title"><a href="#">Dummy Title</a></td>
-                                <td class="pro-price"><span>$110.00</span></td>
-                                <td class="pro-stock"><span><strong>In Stock</strong></span></td>
-                                <td class="pro-cart">
-                                    <a href="cart.html" class="btn product-cart button-icon flosun-button dark-btn">
-                                        {{trans('button.add_to_cart')}}
-                                    </a>
-                                </td>
-                                <td class="pro-remove"><a href="#"><i class="lnr lnr-trash"></i></a></td>
-                            </tr>
+                            @foreach($wish_products as $product)
+                                <tr id="wish-product-{{$product['id']}}">
+                                    <td class="pro-thumbnail">
+                                        <a href="{{route('product_show', $product['id'])}}">
+                                            @foreach(json_decode($product['images']) as $image)
+                                                <img alt="{{$product['title']}}" src="{{ Voyager::image($image) }}"
+                                                     class="img-fluid"/>
+                                                @break
+                                            @endforeach
+                                        </a>
+                                    </td>
+                                    <td class="pro-title">
+                                        <a href="{{route('product_show', $product['id'])}}">
+                                            {{$product['title']}}
+                                        </a>
+                                    </td>
+                                    <td class="pro-price"><span>{{$product['price']}} ₸</span></td>
+                                    <td class="pro-cart">
+                                        <a onclick="update_cart({{$product['id']}}, 1, 'add'); $(this).addClass('bg-success')"
+                                           class="btn product-cart button-icon flosun-button dark-btn ">
+                                            {{trans('button.add_to_cart')}}
+                                        </a>
+                                    </td>
+                                    <td class="pro-remove">
+                                        <a onclick="update_wish_list({{$product['id']}}, 'remove'); count_wish(); $('#wish-product-{{$product['id']}}').remove()">
+                                            <i class="lnr lnr-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

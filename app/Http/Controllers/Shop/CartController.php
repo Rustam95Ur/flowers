@@ -15,13 +15,13 @@ class CartController extends Controller
      */
     public function index()
     {
-        $count_cart_items = session()->get('cart');
+        $cart_items = session()->get('cart');
         $products = [];
         $total_price = 0;
 
         $shipping_price = Voyager::setting('site.shipping_price') ? (int)Voyager::setting('site.shipping_price') : 0;
-        if ($count_cart_items) {
-            foreach ($count_cart_items as $item) {
+        if ($cart_items) {
+            foreach ($cart_items as $item) {
                 $product = Product::where('id', $item['product_id'])->first()->toarray();
                 $product['qty'] = $item['qty'];
                 array_push($products, $product);
@@ -49,7 +49,7 @@ class CartController extends Controller
     {
         $count = 0;
         $count_cart_items = session()->get('cart');
-        if ($count_cart_items != false) {
+        if ($count_cart_items) {
             foreach ($count_cart_items as $item) {
                 $count += $item['qty'];
             }
@@ -103,9 +103,62 @@ class CartController extends Controller
     }
 
 
-    public function cart_products(): array
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function wishlists()
     {
+        $wish_products = [];
+        $wish_items = session()->get('wish');
+        if ($wish_items) {
+            foreach ($wish_items as $item) {
+                $product = Product::where('id', $item)->first()->toarray();
+                array_push($wish_products, $product);
+            }
+        }
+        return view('pages.wishlist', [
+            'wish_products' => $wish_products
+        ]);
+    }
 
+    /**
+     * @param int $product_id
+     * @param string $type
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update_wishlist(int $product_id, $type = 'add'): \Illuminate\Http\JsonResponse
+    {
+        $message = trans('cart.success.add-wish');
+        $wish_lists = session()->get('wish');
+        if ($wish_lists) {
+            if ($type == 'add' and !in_array($product_id, $wish_lists)) {
+                session()->push('wish', $product_id);
+            } elseif ($type == 'remove') {
+                if (($key = array_search($product_id, $wish_lists)) !== false) {
+                    $message = trans('cart.success.remove-wish');
+                    unset($wish_lists[$key]);
+                    session()->put('wish', $wish_lists);
+                }
+            }
+        } elseif ($type == 'add') {
+
+            session()->push('wish', $product_id);
+        }
+        return response()->json(['success' => $message], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function count_wish(): \Illuminate\Http\JsonResponse
+    {
+        $wish_count = 0;
+        $count_wish_items = session()->get('wish');
+        if ($count_wish_items) {
+
+            $wish_count = count($count_wish_items);
+        }
+        return response()->json(['count' => $wish_count], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
 }

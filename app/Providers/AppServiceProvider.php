@@ -28,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             $product_qty = 0;
+            $wish_count = 0;
             $total_price = 0;
             $products = [];
             $count_cart_items = session()->get('cart');
@@ -41,8 +42,17 @@ class AppServiceProvider extends ServiceProvider
 
                 }
             }
+            $count_wish_items = session()->get('wish');
+            if ($count_wish_items) {
+
+                $wish_count = count($count_wish_items);
+            }
             $locale = Locale::lang();
-            $view->with('locale', $locale)->with('qty_cart', $product_qty)->with('mini_cart_products', $products,)->with('mini_cart_total_price', $total_price);
+            $view->with('locale', $locale)
+                ->with('qty_cart', $product_qty)
+                ->with('mini_cart_products', $products,)
+                ->with('mini_cart_total_price', $total_price)
+            ->with('wish_count', $wish_count);
         });
 
     }

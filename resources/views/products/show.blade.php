@@ -137,17 +137,18 @@
                         <div class="quantity-with_btn mb-5">
                             <div class="quantity">
                                 <div class="cart-plus-minus">
-                                    <input class="cart-plus-minus-box" value="0" type="text">
+                                    <input class="cart-plus-minus-box" value="1" type="text" id="product-{{$flower->id}}">
                                     <div class="dec qtybutton">-</div>
                                     <div class="inc qtybutton">+</div>
                                 </div>
                             </div>
                             <div class="add-to_cart">
-                                <a class="btn product-cart button-icon flosun-button dark-btn" href="#">
+                                <a class="btn product-cart button-icon flosun-button dark-btn"
+                                   onclick="$(this).addClass('bg-success'); update_cart({{$flower->id}}, $('.cart-plus-minus-box').val());">
                                     {{trans('button.add_to_cart')}}
                                 </a>
-                                <a class="btn flosun-button secondary-btn secondary-border rounded-0"
-                                   href="#">{{trans('button.wishlist')}}</a>
+                                <a class="btn flosun-button secondary-btn  secondary-border rounded-0"
+                                   onclick="update_wish_list({{$flower['id']}}, 'add'); $(this).addClass('active-btn')">{{trans('button.wishlist')}}</a>
                             </div>
                         </div>
                     </div>

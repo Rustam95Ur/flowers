@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+
 //use App\Models\Comment;
 //use App\Models\Gallery;
 
@@ -32,7 +33,7 @@ class BaseController extends Controller
 //        $galleries = Gallery::limit(10)->orderBy('created_at', 'DESC')->get();
 //        $comments = Comment::all();
         return view('pages.home', [
-            'featured_flowers'  => $featured_flowers,
+            'featured_flowers' => $featured_flowers,
 //            'clients'  => $clients,
 //            'galleries'  => $galleries
         ]);
@@ -45,15 +46,6 @@ class BaseController extends Controller
     {
         return view('pages.contact');
     }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function wishlist()
-    {
-        return view('pages.wishlist');
-    }
-
 
 
     /**
