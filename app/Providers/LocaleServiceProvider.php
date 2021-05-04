@@ -26,7 +26,6 @@ class LocaleServiceProvider extends ServiceProvider
             throw new Exception("You must specify locales array in project_root/config/app.php as shown: 'locales' => [
               'ru' => ['title' => 'ru', 'prefix'=>'ru', 'db_prefix' => 'ru_', 'locale' => 'ru_RU.utf8', 'icon' => '/img/locals/ru.png'],
               'en' => ['title' => 'en', 'prefix'=>'en', 'db_prefix' => 'en_', 'locale' => 'en_EN.utf8', 'icon' => '/img/locals/en.png'],
-              'kg' => ['title' => 'kg', 'prefix'=>'kg', 'db_prefix' => 'kg_', 'locale' => 'ky_KG.utf8', 'icon' => '/img/locals/kg.png'],
             ]");
         }
         if (!isset($locales_config[$locale_default])):

@@ -316,9 +316,21 @@
                                         <a href="#">{{trans('header.languages.'.$locale)}}</a>
                                         <ul class="switcher-dropdown">
                                             @foreach(trans('header.languages') as $key => $language)
-                                                <li>
-                                                    <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
-                                                </li>
+                                                @if (config()->get('route_prefix'))
+                                                    <li>
+                                                        <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
+                                                    </li>
+                                                @else
+                                                    @if(request()->route()->getName() == 'home'))
+                                                    <li>
+                                                        <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
+                                                    </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ url($key.'/'.request()->route()->getName()) }}">{{$language}}</a>
+                                                        </li>
+                                                    @endif
+                                                @endif
                                             @endforeach
                                         </ul>
                                     </li>

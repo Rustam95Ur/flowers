@@ -26,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         view()->composer('*', function ($view) {
             $product_qty = 0;
             $wish_count = 0;
