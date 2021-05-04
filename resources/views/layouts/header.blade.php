@@ -118,10 +118,12 @@
                             <li class="minicart-wrap">
                                 <a href="{{route('wishlist')}}" class="minicart-btn toolbar-btn">
                                     <i class="fa fa-heart"></i>
-                                    <span class="cart-item_count">{{ $product_cart }}</span>
+                                    <span class="cart-item_count">{{ $qty_cart }}</span>
                                 </a>
                             </li>
-                            @include('cart.header_cart')
+                            <li class="minicart-wrap" id="mini_cart">
+                                @include('cart.header_cart')
+                            </li>
                             <li class="sidemenu-wrap">
                                 <a href="#"><i class="fa fa-search"></i> </a>
                                 <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-search">
@@ -314,27 +316,27 @@
                                         <a href="#">{{trans('header.languages.'.$locale)}}</a>
                                         <ul class="switcher-dropdown">
                                             @foreach(trans('header.languages') as $key => $language)
-                                            <li>
-                                                <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
-                                            </li>
+                                                <li>
+                                                    <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-{{--                        <div class="currency">--}}
-{{--                            <span class="switcher-title">Currency: </span>--}}
-{{--                            <div class="switcher-menu">--}}
-{{--                                <ul>--}}
-{{--                                    <li><a href="#">$ USD</a>--}}
-{{--                                        <ul class="switcher-dropdown">--}}
-{{--                                            <li><a href="#">€ EUR</a></li>--}}
-{{--                                        </ul>--}}
-{{--                                    </li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        {{--                        <div class="currency">--}}
+                        {{--                            <span class="switcher-title">Currency: </span>--}}
+                        {{--                            <div class="switcher-menu">--}}
+                        {{--                                <ul>--}}
+                        {{--                                    <li><a href="#">$ USD</a>--}}
+                        {{--                                        <ul class="switcher-dropdown">--}}
+                        {{--                                            <li><a href="#">€ EUR</a></li>--}}
+                        {{--                                        </ul>--}}
+                        {{--                                    </li>--}}
+                        {{--                                </ul>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                     </div>
                     <div class="top-info-wrap text-left text-black">
                         <ul class="address-info">

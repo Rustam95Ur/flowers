@@ -1,62 +1,43 @@
-<li class="minicart-wrap">
     <a class="minicart-btn toolbar-btn">
         <i class="fa fa-shopping-cart"></i>
-        <span class="cart-item_count" id="cart_count">{{ $product_cart }}</span>
+        <span class="cart-item_count" id="cart_count">{{ $qty_cart }}</span>
     </a>
     <div class="cart-item-wrapper dropdown-sidemenu dropdown-hover-2">
-        <div class="single-cart-item">
-            <div class="cart-img">
-                <a href="cart.html"><img src="images/cart/1.jpg" alt=""></a>
-            </div>
-            <div class="cart-text">
-                <h5 class="title"><a href="cart.html">Odio tortor consequat</a></h5>
-                <div class="cart-text-btn">
-                    <div class="cart-qty">
-                        <span>1×</span>
-                        <span class="cart-price">$98.00</span>
+        <div class="cart-items">
+            @foreach($mini_cart_products as $product)
+                <div class="single-cart-item">
+                    <div class="cart-img">
+                        <a href="{{route('product_show', $product['id'])}}">
+                            @foreach(json_decode($product['images']) as $image)
+                                <img alt="{{$product['title']}}" src="{{ Voyager::image($image) }}"/>
+                                @break
+                            @endforeach
+                        </a>
                     </div>
-                    <button type="button"><i class="ion-trash-b"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="single-cart-item">
-            <div class="cart-img">
-                <a href="cart.html"><img src="images/cart/2.jpg" alt=""></a>
-            </div>
-            <div class="cart-text">
-                <h5 class="title"><a href="cart.html">Integer eget augue</a></h5>
-                <div class="cart-text-btn">
-                    <div class="cart-qty">
-                        <span>1×</span>
-                        <span class="cart-price">$98.00</span>
+                    <div class="cart-text">
+                        <h5 class="title"><a href="{{route('product_show', $product['id'])}}">{{ $product['title']}}</a></h5>
+                        <div class="cart-text-btn">
+                            <div class="cart-qty">
+                                <span>{{ $product['qty']}}×</span>
+                                <span class="cart-price">{{ $product['price']}}</span>
+                            </div>
+                            <button type="button"><i class="ion-trash-b"></i></button>
+                        </div>
                     </div>
-                    <button type="button"><i class="ion-trash-b"></i></button>
                 </div>
-            </div>
+            @endforeach
         </div>
-        <div class="single-cart-item">
-            <div class="cart-img">
-                <a href="cart.html"><img src="images/cart/3.jpg" alt=""></a>
-            </div>
-            <div class="cart-text">
-                <h5 class="title"><a href="cart.html">Eleifend quam</a></h5>
-                <div class="cart-text-btn">
-                    <div class="cart-qty">
-                        <span>1×</span>
-                        <span class="cart-price">$98.00</span>
-                    </div>
-                    <button type="button"><i class="ion-trash-b"></i></button>
-                </div>
-            </div>
-        </div>
+
         <div class="cart-price-total d-flex justify-content-between">
-            <h5>Total :</h5>
-            <h5>$166.00</h5>
+            <h5>{{trans('page.cart.total')}} :</h5>
+            <h5>{{$mini_cart_total_price}} ₸</h5>
         </div>
         <div class="cart-links d-flex justify-content-between">
-            <a class="btn product-cart button-icon flosun-button dark-btn" href="{{route('cart')}}">{{trans('button.view_cart')}}</a>
-            <a class="btn flosun-button secondary-btn rounded-0" href="{{route('checkout')}}">{{trans('button.checkout')}}</a>
+            <a class="btn product-cart button-icon flosun-button dark-btn"
+               href="{{route('cart')}}">{{trans('button.view_cart')}}</a>
+            <a class="btn flosun-button secondary-btn rounded-0"
+               href="{{route('checkout')}}">{{trans('button.checkout')}}</a>
         </div>
     </div>
-</li>
+
 

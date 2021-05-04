@@ -7443,3 +7443,7 @@ mark {
 .custom-checkbox-image .sidebar-product {
     padding-right: 1rem;
 }
+.cart-items {
+    max-height: 400px;
+    overflow-y: scroll;
+}

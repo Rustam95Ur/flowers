@@ -20,11 +20,19 @@ class CartController extends Controller
         $total_price = 0;
 
         $shipping_price = Voyager::setting('site.shipping_price') ? (int)Voyager::setting('site.shipping_price') : 0;
-        foreach ($count_cart_items as $item) {
-            $product = Product::where('id', $item['product_id'])->first()->toarray();
-            $product['qty'] = $item['qty'];
-            array_push($products, $product);
-            $total_price += $product['price'] * $item['qty'];
+        if ($count_cart_items) {
+            foreach ($count_cart_items as $item) {
+                $product = Product::where('id', $item['product_id'])->first()->toarray();
+                $product['qty'] = $item['qty'];
+                array_push($products, $product);
+                $total_price += $product['price'] * $item['qty'];
+            }
+        }
+        if (request()->ajax()) {
+            return view('cart.header_cart', [
+                'mini_cart_products' => $products,
+                'total_price' => $total_price,
+            ]);
         }
         return view('cart.show', [
             'products' => $products,
@@ -93,4 +101,11 @@ class CartController extends Controller
         }
         return response()->json(['success' => $message], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
+
+
+    public function cart_products(): array
+    {
+
+    }
+
 }
