@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', $flower->title)
+@section('description', $flower->meta_description)
+@section('keywords', $flower->meta_keywords)
 @section('content')
     <!-- Single Product Main Area Start -->
     <div class="single-product-main-area">

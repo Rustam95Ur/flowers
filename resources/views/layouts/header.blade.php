@@ -14,7 +14,7 @@
                     <nav class="main-nav mr-5 d-none d-lg-flex">
                         <ul class="nav">
                             <li>
-                                <a href="{{route('home')}}">
+                                <a>
                                     <span class="menu-text">{{trans('header.flowers')}}</span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>

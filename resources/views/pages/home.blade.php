@@ -7,10 +7,11 @@
                 <div class="intro11-section swiper-slide slide-4 slide-bg-2 bg-position">
                     <!-- Intro Content Start -->
                     <div class="intro11-content-2 text-center">
-                        <h1 class="different-title">Welcome</h1>
-                        <h2 class="title">2020 Flower Trend</h2>
-                        <a href="product-details.html" class="btn flosun-button secondary-btn theme-color rounded-0">Shop
-                            Now</a>
+                        <h1 class="different-title">{{trans('page.home.welcome')}}</h1>
+                        <h2 class="title text-uppercase">{{Voyager::setting('site.title')}}</h2>
+                        <a href="{{route('shop')}}" class="btn flosun-button secondary-btn theme-color rounded-0">
+                            {{trans('page.home.shops')}}
+                        </a>
                     </div>
                     <!-- Intro Content End -->
                 </div>
@@ -128,6 +129,13 @@
                                                         <a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
                                                     </h4>
                                                 </div>
+                                                <div class="product-rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
                                                 <div class="price-box">
                                                     <span class="regular-price ">{{$flower['price']}} ₸</span>
                                                 </div>
@@ -154,7 +162,7 @@
                 <!--Section Title Start-->
                 <div class="col-12 col-custom">
                     <div class="section-title text-center">
-                        <h3 class="section-title-3">Deal of The Day</h3>
+                        <h3 class="section-title-3">{{ trans('page.home.sale') }}</h3>
                     </div>
                 </div>
                 <!--Section Title End-->
@@ -163,7 +171,7 @@
                 <!--Countdown Start-->
                 <div class="col-12 col-custom">
                     <div class="countdown-area">
-                        <div class="countdown-wrapper d-flex justify-content-center" data-countdown="2022/12/24"></div>
+                        <div class="countdown-wrapper d-flex justify-content-center" data-countdown="2021/05/24"></div>
                     </div>
                 </div>
                 <!--Countdown End-->
@@ -172,35 +180,34 @@
                 <div class="col-12 col-custom">
                     <div class="item-carousel-2 swiper-container anime-element-multi product-area">
                         <div class="swiper-wrapper">
+                            @foreach($sale_flowers as $flower)
                             <div class="single-item swiper-slide">
                                 <!--Single Product Start-->
                                 <div class="single-product position-relative mb-30">
                                     <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="images/product/1.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="images/product/2.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
+                                        <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
+                                            @foreach(json_decode($flower['images']) as $image)
+                                                @if($loop->index < 2)
+                                                    <img alt="{{$flower['title']}}" src="{{ Voyager::image($image) }}"
+                                                         class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"  />
+                                                @endif
+                                            @endforeach
                                         </a>
-                                        <span class="onsale">Sale!</span>
                                         <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
+                                            <a onclick="update_wish_list({{$flower['id']}}, 'add');" title="{{trans('page.home.add_to_wish')}}">
+                                                <i class="lnr lnr-heart" data-toggle="tooltip"
+                                                   data-placement="left" title="{{trans('button.wishlist')}}"></i>
                                             </a>
                                             <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
                                                data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
+                                                <i class="lnr lnr-eye" data-toggle="tooltip"
+                                                   data-placement="left" title="{{trans('button.quick_view')}}"></i>
                                             </a>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Hyacinth white stick</a>
+                                            <h4 class="title-2"><a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
                                             </h4>
                                         </div>
                                         <div class="product-rating">
@@ -211,198 +218,14 @@
                                             <i class="fa fa-star-o"></i>
                                         </div>
                                         <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
+                                            <span class="regular-price ">{{$flower['price']}} ₸</span>
                                         </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
+                                        <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')" class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                     </div>
                                 </div>
                                 <!--Single Product End-->
                             </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="images/product/5.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="images/product/6.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Glory of the Snow</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="images/product/7.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="images/product/8.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Jack in the Pulpit</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="images/product/3.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="images/product/4.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Pearly Everlasting</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="images/product/8.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="images/product/7.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Product dummy name</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
+                            @endforeach
                         </div>
                         <!-- Slider pagination -->
                         <div class="swiper-pagination default-pagination"></div>
@@ -488,9 +311,6 @@
                         <div class="single-item swiper-slide">
                             <!--Single Testimonial Start-->
                             <div class="single-testimonial text-center">
-                                <div class="testimonial-img">
-                                    <img src="images/testimonial/testimonial1.jpg" alt="">
-                                </div>
                                 <div class="testimonial-content">
                                     <p>These guys have been absolutely outstanding. Perfect Themes and the best of all
                                         that you have many options to choose! Best Support team ever! Very fast
@@ -506,9 +326,6 @@
                         <div class="single-item swiper-slide">
                             <!--Single Testimonial Start-->
                             <div class="single-testimonial text-center">
-                                <div class="testimonial-img">
-                                    <img src="images/testimonial/testimonial2.jpg" alt="">
-                                </div>
                                 <div class="testimonial-content">
                                     <p>These guys have been absolutely outstanding. Perfect Themes and the best of all
                                         that you have many options to choose! Best Support team ever! Very fast
@@ -534,131 +351,6 @@
         </div>
     </div>
     <!-- Testimonial Area End Here -->
-    <!-- Newsletter Area Start Here -->
-    <div class="news-letter-area gray-bg pt-no-text pb-no-text mt-text-3">
-        <div class="container custom-area">
-            <div class="row align-items-center">
-                <!--Section Title Start-->
-                <div class="col-md-6 col-custom">
-                    <div class="section-title text-left mb-35">
-                        <h3 class="section-title-3">Send Newsletter</h3>
-                        <p class="desc-content mb-0">Enter Your Email Address For Our Mailing List To Keep Your Self
-                            Update</p>
-                    </div>
-                </div>
-                <!--Section Title End-->
-                <div class="col-md-6 col-custom">
-                    <div class="news-latter-box">
-                        <div class="newsletter-form-wrap text-center">
-                            <form id="mc-form" class="mc-form">
-                                <input type="email" id="mc-email" class="form-control email-box"
-                                       placeholder="email@example.com" name="EMAIL">
-                                <button id="mc-submit" class="btn rounded-0" type="submit">Subscribe</button>
-                            </form>
-                            <!-- mailchimp-alerts Start -->
-                            <div class="mailchimp-alerts text-centre">
-                                <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
-                                <div class="mailchimp-success text-success"></div><!-- mailchimp-success end -->
-                                <div class="mailchimp-error text-danger"></div><!-- mailchimp-error end -->
-                            </div>
-                            <!-- mailchimp-alerts end -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Newsletter Area End Here -->
-    <!-- Blog Area Start Here -->
-    <div class="blog-post-area mt-text-3">
-        <div class="container custom-area">
-            <div class="row">
-                <!--Section Title Start-->
-                <div class="col-12">
-                    <div class="section-title text-center mb-30">
-                        <span class="section-title-1">From The Blogs</span>
-                        <h3 class="section-title-3">Our Latest Posts</h3>
-                    </div>
-                </div>
-                <!--Section Title End-->
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-4 col-lg-4 col-custom mb-30">
-                    <div class="blog-lst">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="d-block" href="blog-details-fullwidth.html">
-                                    <img src="images/blog/blog1.jpg" alt="Blog Image" class="w-100">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-text">
-                                    <h4><a href="blog-details-fullwidth.html">Standard blog post one</a></h4>
-                                    <div class="blog-post-info">
-                                        <span><a href="#">By admin</a></span>
-                                        <span>December 18, 2020</span>
-                                    </div>
-                                    <p>Lorem ipsu dolor sit amet cons elits cumque adipisicing, sed do incid eiusmod
-                                        tempor ut labore et dolore eveniet .</p>
-                                    <a href="blog-details-fullwidth.html" class="readmore">Read More <i
-                                            class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-4 col-custom mb-30">
-                    <div class="blog-lst">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="d-block" href="blog-details-fullwidth.html">
-                                    <img src="images/blog/blog3.jpg" alt="Blog Image" class="w-100">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-text">
-                                    <h4><a href="blog-details-fullwidth.html">Standard blog post two</a></h4>
-                                    <div class="blog-post-info">
-                                        <span><a href="#">By admin</a></span>
-                                        <span>December 18, 2020</span>
-                                    </div>
-                                    <p>Lorem ipsu dolor sit amet cons elits cumque adipisicing, sed do incid eiusmod
-                                        tempor ut labore et dolore eveniet .</p>
-                                    <a href="blog-details-fullwidth.html" class="readmore">Read More <i
-                                            class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 col-lg-4 col-custom mb-30">
-                    <div class="blog-lst">
-                        <div class="single-blog">
-                            <div class="blog-image">
-                                <a class="d-block" href="blog-details-fullwidth.html">
-                                    <img src="images/blog/blog2.jpg" alt="Blog Image" class="w-100">
-                                </a>
-                            </div>
-                            <div class="blog-content">
-                                <div class="blog-text">
-                                    <h4><a href="blog-details-fullwidth.html">Standard blog post three</a></h4>
-                                    <div class="blog-post-info">
-                                        <span><a href="#">By admin</a></span>
-                                        <span>December 18, 2020</span>
-                                    </div>
-                                    <p>Lorem ipsu dolor sit amet cons elits cumque adipisicing, sed do incid eiusmod
-                                        tempor ut labore et dolore eveniet .</p>
-                                    <a href="blog-details-fullwidth.html" class="readmore">Read More <i
-                                            class="fa fa-long-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Blog Area End Here -->
     <!-- Brand Logo Area Start Here -->
     <div class="brand-logo-area gray-bg pt-no-text pb-no-text mt-text-5">
         <div class="container custom-area">

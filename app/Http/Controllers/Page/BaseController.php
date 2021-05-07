@@ -34,7 +34,7 @@ class BaseController extends Controller
 //        $comments = Comment::all();
         return view('pages.home', [
             'featured_flowers' => $featured_flowers,
-//            'clients'  => $clients,
+            'sale_flowers'  => $flowers,
 //            'galleries'  => $galleries
         ]);
     }

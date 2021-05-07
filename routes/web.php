@@ -30,6 +30,7 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/cart/count', [CartController::class, 'count_cart'])->name('count_cart');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');
+    Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
 });
 
 Route::group(['prefix' => 'admin'], function () {
