@@ -3,27 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filters/ProductFilter.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filters/ProductFilter.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/banner/1-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner/1-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/banner/1-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner/1-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/banner/1-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/banner/1-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/bg/1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/bg/1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/category/home1-category-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/category/home1-category-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/category/home1-category-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/category/home1-category-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/category/home1-category-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/category/home1-category-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/category/home1-category-4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/category/home1-category-4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/category/home1-category-5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/category/home1-category-5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/slider/2-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/slider/2-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/slider/2-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/slider/2-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2016_02_15_204651_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2016_02_15_204651_create_categories_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/shop.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/shop.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +173,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/products" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -192,13 +182,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\flowers\app\Models" />
       <recent name="C:\OSPanel\domains\flowers\resources\views\products" />
       <recent name="C:\OSPanel\domains\flowers\app\Http\Controllers\Page" />
-      <recent name="C:\OSPanel\domains\flowers\app\Models" />
       <recent name="C:\OSPanel\domains\flowers\app\Providers" />
       <recent name="C:\OSPanel\domains\flowers\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\flowers\database\migrations" />
+      <recent name="C:\OSPanel\domains\flowers\database" />
       <recent name="C:\OSPanel\domains\flowers\resources\views\pages" />
     </key>
   </component>
@@ -217,7 +209,7 @@
       <option name="presentableId" value="Default" />
       <updated>1619452928273</updated>
       <workItem from="1619452929973" duration="48189000" />
-      <workItem from="1619944355754" duration="39485000" />
+      <workItem from="1619944355754" duration="50182000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -275,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620156920262</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added shop page">
+      <created>1620379361542</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1620379361542</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +290,7 @@
     <MESSAGE value="Updated mini cart" />
     <MESSAGE value="Updated product show page" />
     <MESSAGE value="Fixed header locale" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed header locale" />
+    <MESSAGE value="Added shop page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added shop page" />
   </component>
 </project>

@@ -95,15 +95,7 @@
 <div class="row">
     <div class="col-sm-12 col-custom">
         <div class="toolbar-bottom">
-            <div class="pagination">
-                <ul>
-                    <li class="current">1</li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li class="next"><a href="#">next</a></li>
-                    <li><a href="#">&gt;&gt;</a></li>
-                </ul>
-            </div>
+            {{$products->appends(request()->input())->links('vendor.pagination.custom')}}
         </div>
     </div>
 </div>

@@ -49,115 +49,67 @@
                                 </div>
                             </div>
                             <div class="widget-list widget-mb-1">
-                                <h3 class="widget-title">Menu Categories</h3>
-                                <!-- Widget Menu Start -->
-                                <nav>
-                                    <ul class="mobile-menu p-0 m-0">
-                                        <li class="menu-item-has-children"><a href="#">Birthday Boqutets</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Aster</a></li>
-                                                <li><a href="#">Aubrieta</a></li>
-                                                <li><a href="#">Basket of Gold</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#">Funeral Flowers</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Cleome</a></li>
-                                                <li><a href="#">Columbine</a></li>
-                                                <li><a href="#">Coneflower</a></li>
-                                                <li><a href="#">Corepsis</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#">Interior Decor</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Calendula</a></li>
-                                                <li><a href="#">Castor Bean</a></li>
-                                                <li><a href="#">Catmint</a></li>
-                                                <li><a href="#">Chives</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children"><a href="#">Custom Orders</a>
-                                            <ul class="dropdown">
-                                                <li><a href="#">Lily</a></li>
-                                                <li><a href="#">Rose</a></li>
-                                                <li><a href="#">Sunflower</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                <!-- Widget Menu End -->
-                            </div>
-                            <div class="widget-list widget-mb-1">
-                                <h3 class="widget-title">Price Filter</h3>
+                                <h3 class="widget-title">{{trans('shop.filter.price')}}</h3>
                                 <!-- Widget Menu Start -->
                                 <form action="#">
                                     <div id="slider-range"></div>
-                                    <button type="submit">Filter</button>
-                                    <input type="text" name="text" id="amount"/>
+                                    <input type="text" class="text-center w-100" name="text" id="amount"/>
                                 </form>
                                 <!-- Widget Menu End -->
                             </div>
-                            <div class="widget-list widget-mb-1">
-                                <h3 class="widget-title">Categories</h3>
+                            <div class="widget-list widget-mb-2">
+                                <h3 class="widget-title">{{trans('shop.filter.color')}}</h3>
                                 <div class="sidebar-body">
-                                    <ul class="sidebar-list">
-                                        <li><a href="#">All Product</a></li>
-                                        <li><a href="#">Best Seller (5)</a></li>
-                                        <li><a href="#">Featured (4)</a></li>
-                                        <li><a href="#">New Products (6)</a></li>
+                                    <ul class="checkbox-container colors-list">
+                                        @foreach($colors as $color)
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" value="{{$color->id}}"
+                                                           class="custom-control-input"
+                                                           id="color_checkbox_{{$color->id}}">
+                                                    <label class="custom-control-label"
+                                                           for="color_checkbox_{{$color->id}}">{{$color->title}}</label>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
+
                                 </div>
                             </div>
                             <div class="widget-list widget-mb-2">
-                                <h3 class="widget-title">Color</h3>
+                                <h3 class="widget-title">{{trans('shop.filter.size')}}</h3>
                                 <div class="sidebar-body">
-                                    <ul class="checkbox-container categories-list">
-                                        <li>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck12">
-                                                <label class="custom-control-label" for="customCheck12">black
-                                                    (20)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck13">
-                                                <label class="custom-control-label" for="customCheck13">red (6)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck14">
-                                                <label class="custom-control-label" for="customCheck14">blue (8)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck11">
-                                                <label class="custom-control-label" for="customCheck11">green
-                                                    (5)</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck15">
-                                                <label class="custom-control-label" for="customCheck15">pink (4)</label>
-                                            </div>
-                                        </li>
+                                    <ul class="checkbox-container colors-list">
+                                        @foreach($sizes as $size)
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" value="{{$size->id}}"
+                                                           class="custom-control-input"
+                                                           id="size_checkbox_{{$size->id}}">
+                                                    <label class="custom-control-label"
+                                                           for="size_checkbox_{{$size->id}}">{{$size->title}}</label>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
+
                                 </div>
                             </div>
-                            <div class="widget-list widget-mb-3">
-                                <h3 class="widget-title">Tags</h3>
+                            <div class="widget-list widget-mb-2">
+                                <h3 class="widget-title">{{trans('shop.filter.categories')}}</h3>
                                 <div class="sidebar-body">
-                                    <ul class="tags">
-                                        <li><a href="#">Rose</a></li>
-                                        <li><a href="#">Sunflower</a></li>
-                                        <li><a href="#">Tulip</a></li>
-                                        <li><a href="#">Lily</a></li>
-                                        <li><a href="#">Smart</a></li>
-                                        <li><a href="#">Modern</a></li>
-                                        <li><a href="#">Gift</a></li>
+                                    <ul class="checkbox-container categories-list">
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" value="{{$category->id}}"
+                                                       class="custom-control-input"
+                                                       id="category_checkbox_{{$category->id}}">
+                                                <label class="custom-control-label"
+                                                       for="category_checkbox_{{$category->id}}">{{$category->name}}</label>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                     </ul>
                                 </div>
                             </div>

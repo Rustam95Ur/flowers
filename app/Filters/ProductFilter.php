@@ -12,84 +12,39 @@ class ProductFilter extends QueryFilter
     {
         if ($keyword) {
             return $this->builder->where(function ($query) use ($keyword) {
-                $query->where('title', 'like', '%' . $keyword . '%')
-                    ->orWhereHas('winery', function($q) use ($keyword) {
-                        $q->where('title', 'like', '%' . $keyword . '%');
-                    })
-                    ->orWhereHas('wine_class', function($q) use ($keyword) {
-                        $q->where('title', 'like', '%' . $keyword . '%');
-                    })
-                    ->orWhereHas('sort', function($q) use ($keyword) {
-                        $q->where('title', 'like', '%' . $keyword . '%');
-                    })
-                    ->orWhereHas('color', function($q) use ($keyword) {
-                        $q->where('title', 'like', '%' . $keyword . '%');
-                    })
-                    ->orWhereHas('sugar', function($q) use ($keyword) {
-                        $q->where('title', 'like', '%' . $keyword . '%');
-                    })
-                    ->orWhereHas('region', function($q) use ($keyword) {
-                        $q->where('title', 'like', '%' . $keyword . '%');
-                    })
-                ;
+                $query->where('title', 'like', '%' . $keyword . '%');
             });
         }
     }
 
     /**
-     * @param $id
+     * @param $value
      * @return mixed
      */
-    public function wine_class($id)
+    public function color_id($value)
     {
-        return $this->builder->whereIn('class_id', $id);
+        return $this->builder->where(function ($query) use ($value) {
+            $query->whereHas('colors', function($q) use ($value) {
+                $q->whereIn('color_id', $value);
+            })
+            ;
+        });
     }
 
     /**
-     * @param $id
+     * @param $value
      * @return mixed
      */
-    public function color($id)
+    public function size_id($value)
     {
-        return $this->builder->whereIn('color_id', $id);
+        return $this->builder->where(function ($query) use ($value) {
+            $query->whereHas('sizes', function($q) use ($value) {
+                $q->whereIn('size_id', $value);
+            })
+            ;
+        });
     }
 
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function sugar($id)
-    {
-        return $this->builder->whereIn('sugar_id', $id);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function region($id)
-    {
-        return $this->builder->whereIn('region_id', $id);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function winery($id)
-    {
-        return $this->builder->whereIn('winery_id', $id);
-    }
-
-    /**
-     * @param $id
-     * @return mixed
-     */
-    public function sort($id)
-    {
-        return $this->builder->whereIn('grape_sort_id', $id);
-
-    }
 
     /**
      * @param $prices
@@ -113,22 +68,19 @@ class ProductFilter extends QueryFilter
 
     }
 
-    /**
-     * @param $value
-     * @return mixed
-     */
-    public function year($value)
-    {
-        return $this->builder->whereIn('year', $value);
-    }
 
     /**
      * @param $value
      * @return mixed
      */
-    public function fortress($value)
+    public function category_id($value)
     {
-        return $this->builder->whereIn('fortress', $value);
+        return $this->builder->where(function ($query) use ($value) {
+            $query->whereHas('categories', function($q) use ($value) {
+                    $q->whereIn('category_id', $value);
+                })
+            ;
+        });
     }
 
     /**

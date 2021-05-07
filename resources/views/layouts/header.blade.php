@@ -15,41 +15,15 @@
                         <ul class="nav">
                             <li>
                                 <a>
-                                    <span class="menu-text">{{trans('header.flowers')}}</span>
+                                    <span class="menu-text"> {{trans('header.flowers')}}</span>
                                     <i class="fa fa-angle-down"></i>
                                 </a>
-                                <div class="mega-menu dropdown-hover">
-                                    <div class="menu-colum">
-                                        <ul>
-                                            <li><span class="mega-menu-text">Shop</span></li>
-                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="menu-colum">
-                                        <ul>
-                                            <li><span class="mega-menu-text">Product</span></li>
-                                            <li><a href="product-details.html">Single Product</a></li>
-                                            <li><a href="variable-product-details.html">Variable Product</a></li>
-                                            <li><a href="external-product-details.html">External Product</a></li>
-                                            <li><a href="gallery-product-details.html">Gallery Product</a></li>
-                                            <li><a href="countdown-product-details.html">Countdown Product</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="menu-colum">
-                                        <ul>
-                                            <li><span class="mega-menu-text">Others</span></li>
-                                            <li><a href="error-404.html">Error 404</a></li>
-                                            <li><a href="compare.html">Compare Page</a></li>
-                                            <li><a href="cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                            <li><a href="wishlist.html">Wishlist Page</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                <ul class="dropdown-submenu dropdown-hover">
+                                    <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
+                                    @foreach($categories as $category)
+                                        <li><a href="{{route('shop')}}?category_id={{$category->id}}">{{$category->name}}</a></li>
+                                    @endforeach
+                                </ul>
                             </li>
                             <li>
                                 <a href="{{route('home')}}">

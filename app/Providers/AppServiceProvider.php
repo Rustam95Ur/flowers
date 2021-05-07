@@ -6,6 +6,7 @@ use App\Http\Controllers\Shop\CartController;
 use App\Locale;
 use App\Models\Product;
 use Illuminate\Support\ServiceProvider;
+use TCG\Voyager\Models\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -48,11 +49,14 @@ class AppServiceProvider extends ServiceProvider
 
                 $wish_count = count($count_wish_items);
             }
+            $categories  = Category::all();
+
             $locale = Locale::lang();
             $view->with('locale', $locale)
                 ->with('qty_cart', $product_qty)
                 ->with('mini_cart_products', $products,)
                 ->with('mini_cart_total_price', $total_price)
+                ->with('categories', $categories)
             ->with('wish_count', $wish_count);
         });
 
