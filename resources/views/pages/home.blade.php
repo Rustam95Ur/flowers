@@ -98,28 +98,32 @@
                         <div class="swiper-wrapper">
                             @foreach($featured_flowers as $flowers)
                                 <div class="single-item swiper-slide">
-                                    @foreach($flowers as $flower)
-                                        <!--Single Product Start-->
+                                @foreach($flowers as $flower)
+                                    <!--Single Product Start-->
                                         <div class="single-product position-relative mb-30">
                                             <div class="product-image">
                                                 <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
                                                     @foreach(json_decode($flower['images']) as $image)
                                                         @if($loop->index < 2)
-                                                        <img alt="{{$flower['title']}}" src="{{ Voyager::image($image) }}"
-                                                             class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"  />
+                                                            <img alt="{{$flower['title']}}"
+                                                                 src="{{ Voyager::image($image) }}"
+                                                                 class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
                                                         @endif
                                                     @endforeach
                                                 </a>
                                                 <span class="onsale">Sale!</span>
                                                 <div class="add-action d-flex flex-column position-absolute">
-                                                    <a onclick="update_wish_list({{$flower['id']}}, 'add');" title="{{trans('page.home.add_to_wish')}}">
+                                                    <a onclick="update_wish_list({{$flower['id']}}, 'add');"
+                                                       title="{{trans('page.home.add_to_wish')}}">
                                                         <i class="lnr lnr-heart" data-toggle="tooltip"
-                                                           data-placement="left" title="{{trans('button.wishlist')}}"></i>
+                                                           data-placement="left"
+                                                           title="{{trans('button.wishlist')}}"></i>
                                                     </a>
                                                     <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
                                                        data-target="#exampleModalCenter">
                                                         <i class="lnr lnr-eye" data-toggle="tooltip"
-                                                           data-placement="left" title="{{trans('button.quick_view')}}"></i>
+                                                           data-placement="left"
+                                                           title="{{trans('button.quick_view')}}"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -139,7 +143,8 @@
                                                 <div class="price-box">
                                                     <span class="regular-price ">{{$flower['price']}} ₸</span>
                                                 </div>
-                                                <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')" class="btn product-cart">{{trans('button.add_to_cart')}}</a>
+                                                <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
+                                                   class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                             </div>
                                         </div>
                                         <!--Single Product End-->
@@ -181,50 +186,54 @@
                     <div class="item-carousel-2 swiper-container anime-element-multi product-area">
                         <div class="swiper-wrapper">
                             @foreach($sale_flowers as $flower)
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
-                                            @foreach(json_decode($flower['images']) as $image)
-                                                @if($loop->index < 2)
-                                                    <img alt="{{$flower['title']}}" src="{{ Voyager::image($image) }}"
-                                                         class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"  />
-                                                @endif
-                                            @endforeach
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a onclick="update_wish_list({{$flower['id']}}, 'add');" title="{{trans('page.home.add_to_wish')}}">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip"
-                                                   data-placement="left" title="{{trans('button.wishlist')}}"></i>
+                                <div class="single-item swiper-slide">
+                                    <!--Single Product Start-->
+                                    <div class="single-product position-relative mb-30">
+                                        <div class="product-image">
+                                            <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
+                                                @foreach(json_decode($flower['images']) as $image)
+                                                    @if($loop->index < 2)
+                                                        <img alt="{{$flower['title']}}"
+                                                             src="{{ Voyager::image($image) }}"
+                                                             class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
+                                                    @endif
+                                                @endforeach
                                             </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip"
-                                                   data-placement="left" title="{{trans('button.quick_view')}}"></i>
-                                            </a>
+                                            <div class="add-action d-flex flex-column position-absolute">
+                                                <a onclick="update_wish_list({{$flower['id']}}, 'add');"
+                                                   title="{{trans('page.home.add_to_wish')}}">
+                                                    <i class="lnr lnr-heart" data-toggle="tooltip"
+                                                       data-placement="left" title="{{trans('button.wishlist')}}"></i>
+                                                </a>
+                                                <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
+                                                   data-target="#exampleModalCenter">
+                                                    <i class="lnr lnr-eye" data-toggle="tooltip"
+                                                       data-placement="left" title="{{trans('button.quick_view')}}"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-title">
+                                                <h4 class="title-2"><a
+                                                        href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="regular-price ">{{$flower['price']}} ₸</span>
+                                            </div>
+                                            <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
+                                               class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                         </div>
                                     </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">{{$flower['price']}} ₸</span>
-                                        </div>
-                                        <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')" class="btn product-cart">{{trans('button.add_to_cart')}}</a>
-                                    </div>
+                                    <!--Single Product End-->
                                 </div>
-                                <!--Single Product End-->
-                            </div>
                             @endforeach
                         </div>
                         <!-- Slider pagination -->
@@ -241,51 +250,56 @@
             <div class="row">
                 <div class="cat-1 col-md-4 col-sm-12 col-custom">
                     <div class="categories-img mb-30">
-                        <a href="#"><img src="images/category/home1-category-1.jpg" alt=""></a>
+                        <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
                         <div class="categories-content">
-                            <h3>Potted Plant</h3>
-                            <h4>18 items</h4>
+                            <h3>{{trans('header.category.all')}}</h3>
+                            <h4>{{trans('page.home.category_item_count', ['count'=> 12])}}</h4>
                         </div>
                     </div>
                 </div>
                 <div class="cat-2 col-md-8 col-sm-12 col-custom">
                     <div class="row">
-                        <div class="cat-3 col-md-7 col-custom">
-                            <div class="categories-img mb-30">
-                                <a href="#"><img src="images/category/home1-category-2.jpg" alt=""></a>
-                                <div class="categories-content">
-                                    <h3>Potted Plant</h3>
-                                    <h4>18 items</h4>
+                        @foreach($categories as $category)
+                            <div class="cat-{{3 + $loop->iteration}} col-md-{{random_int(4, 10)}} col-custom">
+                                <div class="categories-img mb-30">
+                                    <a href="{{route('shop')}}?categories[]={{$category->id}}">
+                                        <img src="{{ str_ireplace('%image_num%',random_int(2, 5), asset('images/category/home1-category-%image_num%.jpg'))}}"
+                                            alt="{{$category->title}}"></a>
+                                    <div class="categories-content">
+                                        <h3>{{$category->name}}</h3>
+                                        <h4>{{trans('page.home.category_item_count', ['count'=> ($category->total_products)])}}</h4>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="cat-4 col-md-5 col-custom">
-                            <div class="categories-img mb-30">
-                                <a href="#"><img src="images/category/home1-category-3.jpg" alt=""></a>
-                                <div class="categories-content">
-                                    <h3>Potted Plant</h3>
-                                    <h4>18 items</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cat-5 col-md-4 col-custom">
-                            <div class="categories-img mb-30">
-                                <a href="#"><img src="images/category/home1-category-4.jpg" alt=""></a>
-                                <div class="categories-content">
-                                    <h3>Potted Plant</h3>
-                                    <h4>18 items</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cat-6 col-md-8 col-custom">
-                            <div class="categories-img mb-30">
-                                <a href="#"><img src="images/category/home1-category-5.jpg" alt=""></a>
-                                <div class="categories-content">
-                                    <h3>Potted Plant</h3>
-                                    <h4>18 items</h4>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
+
+                        {{--                        <div class="cat-4 col-md-5 col-custom">--}}
+                        {{--                            <div class="categories-img mb-30">--}}
+                        {{--                                <a href="#"><img src="images/category/home1-category-3.jpg" alt=""></a>--}}
+                        {{--                                <div class="categories-content">--}}
+                        {{--                                    <h3>Potted Plant</h3>--}}
+                        {{--                                    <h4>18 items</h4>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="cat-5 col-md-4 col-custom">--}}
+                        {{--                            <div class="categories-img mb-30">--}}
+                        {{--                                <a href="#"><img src="images/category/home1-category-4.jpg" alt=""></a>--}}
+                        {{--                                <div class="categories-content">--}}
+                        {{--                                    <h3>Potted Plant</h3>--}}
+                        {{--                                    <h4>18 items</h4>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="cat-6 col-md-8 col-custom">--}}
+                        {{--                            <div class="categories-img mb-30">--}}
+                        {{--                                <a href="#"><img src="images/category/home1-category-5.jpg" alt=""></a>--}}
+                        {{--                                <div class="categories-content">--}}
+                        {{--                                    <h3>Potted Plant</h3>--}}
+                        {{--                                    <h4>18 items</h4>--}}
+                        {{--                                </div>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
                     </div>
                 </div>
             </div>
@@ -299,8 +313,8 @@
                 <!--Section Title Start-->
                 <div class="col-12 col-custom">
                     <div class="section-title text-center">
-                        <span class="section-title-1">We love our clients</span>
-                        <h3 class="section-title-3">What They’re Saying</h3>
+                        <span class="section-title-1">{{trans('page.home.love_client')}}</span>
+                        <h3 class="section-title-3">{{trans('page.home.reviews')}}</h3>
                     </div>
                 </div>
                 <!--Section Title End-->

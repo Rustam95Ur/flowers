@@ -1,8 +1,8 @@
 <footer class="footer-area mt-text-3">
     <div class="footer-widget-area">
         <div class="container container-default custom-area">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-custom">
+            <div class="row text-center">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-2 col-custom">
                     <div class="single-footer-widget m-0">
                         <div class="footer-logo">
                             <a href="{{route('home')}}">
@@ -41,19 +41,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-custom">
                     <div class="single-footer-widget">
                         <h2 class="widget-title">{{trans('header.information')}}</h2>
                         <ul class="widget-list">
-                            <li><a href="about-us.html">Our Company</a></li>
-                            <li><a href="contact-us.html">Contact Us</a></li>
-                            <li><a href="about-us.html">Our Services</a></li>
-                            <li><a href="about-us.html">Why We?</a></li>
-                            <li><a href="about-us.html">Careers</a></li>
+                            @foreach($pages as $page )
+                                <li><a href="{{route('information_page', $page->slug)}}">{{$page->title}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-custom">
                     <div class="single-footer-widget">
                         <h2 class="widget-title">{{trans('header.flowers')}}</h2>
                         <ul class="widget-list">
@@ -66,19 +64,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-2 col-custom">
-                    <div class="single-footer-widget">
-                        <h2 class="widget-title">{{trans('header.support')}}</h2>
-                        <ul class="widget-list">
-                            <li><a href="contact-us.html">Online Support</a></li>
-                            <li><a href="contact-us.html">Shipping Policy</a></li>
-                            <li><a href="contact-us.html">Return Policy</a></li>
-                            <li><a href="contact-us.html">Privacy Policy</a></li>
-                            <li><a href="contact-us.html">Terms of Service</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-6 col-md-6 col-lg-3 col-custom">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-custom">
                     <div class="single-footer-widget">
                         <h2 class="widget-title">{{trans('header.contact')}}</h2>
                         <div class="widget-body">

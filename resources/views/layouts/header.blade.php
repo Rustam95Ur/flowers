@@ -1,5 +1,43 @@
 <header class="main-header-area">
     <!-- Main Header Area Start -->
+    <div class="d-none d-lg-flex">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4  mt-3 col-xs-12">
+                    <nav class="main-nav d-lg-flex">
+                        <ul class="nav">
+                            <li class="p-0">
+                                <h4 class="text-pink mb-0">
+                                    <a href="#">
+                                        @if ($selected_city)
+                                            <span class="menu-text"><i class="lnr lnr-map-marker"></i>Алматы</span>
+
+                                        @else
+                                            <span class="menu-text"><i class="lnr lnr-map-marker"></i>Ваш город</span>
+                                        @endif
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
+                                </h4>
+                                <ul class="dropdown-submenu dropdown-hover">
+                                    <li><a href="{{route('select_city', 1)}}">Алматы</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-4 mt-3 col-xs-12">
+                    <h4 class="text-pink mb-0"><i class="lnr lnr-smartphone"></i>
+                        <a href="tel:{{Voyager::setting('site.phone')}}">{{Voyager::setting('site.phone')}}</a>
+                    </h4>
+                </div>
+                <div class="col-md-4 mt-3 col-xs-12">
+                    <h4 class="text-pink mb-0"><i class="lnr lnr-envelope"></i>
+                        <a href="mailto:{{Voyager::setting('site.email')}}">{{Voyager::setting('site.email')}}</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="main-header header-sticky">
         <div class="container-fluid">
             <div class="row align-items-center">
@@ -70,11 +108,10 @@
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
-                                    <li><a href="contact-us.html">Contact</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="frequently-questions.html">FAQ</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    @foreach($pages as $page )
+                                        <li><a href="{{route('information_page', $page->slug)}}">{{$page->title}}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
 
@@ -172,9 +209,10 @@
                             </li>
                             <li class="menu-item-has-children "><a href="#"> {{trans('header.information')}}</a>
                                 <ul class="dropdown">
-                                    <li><a href="frequently-questions.html">FAQ</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="login-register.html">login &amp; register</a></li>
+                                    @foreach($pages as $page )
+                                        <li><a href="{{route('information_page', $page->slug)}}">{{$page->title}}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li><a href="#">{{trans('header.calculator')}}</a></li>
@@ -200,7 +238,7 @@
                                                         <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
                                                     </li>
                                                 @else
-                                                    @if(request()->route()->getName() == 'home'))
+                                                    @if(request()->route()->getName() == 'home')
                                                     <li>
                                                         <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
                                                     </li>
@@ -262,7 +300,6 @@
                             <div class="switcher-menu">
                                 <ul>
                                     <li>
-
                                         <a href="#">{{trans('header.languages.'.$locale)}}</a>
                                         <ul class="switcher-dropdown">
                                             @foreach(trans('header.languages') as $key => $language)
@@ -271,7 +308,7 @@
                                                         <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
                                                     </li>
                                                 @else
-                                                    @if(request()->route()->getName() == 'home'))
+                                                    @if(request()->route()->getName() == 'home')
                                                     <li>
                                                         <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
                                                     </li>

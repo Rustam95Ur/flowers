@@ -8,6 +8,9 @@ return [
         'sale' => 'Скиднки дня',
         'welcome' => 'Добро пожаловать',
         'shops' => 'К покупкам',
+        'love_client' => 'Мы любим наших клиентов',
+        'reviews' => 'Отзывы',
+        'category_item_count' => ':count штук'
     ],
     'product' => [
         'description' => 'Описание',

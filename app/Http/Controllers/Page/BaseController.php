@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
+use TCG\Voyager\Models\Page;
 
 //use App\Models\Comment;
 //use App\Models\Gallery;
@@ -15,6 +17,7 @@ class BaseController extends Controller
 
     public function home()
     {
+
         $flowers = Product::all()->toarray();
         $temp_featured_flowers = $flowers;
         $temp_array = [];
@@ -30,6 +33,7 @@ class BaseController extends Controller
                 break;
             }
         }
+
 //        $galleries = Gallery::limit(10)->orderBy('created_at', 'DESC')->get();
 //        $comments = Comment::all();
         return view('pages.home', [
@@ -55,5 +59,27 @@ class BaseController extends Controller
     {
         return view('cart.checkout');
     }
+
+
+    /**
+     * @param $slug
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function information_page($slug)
+    {
+        $page = Page::where('slug', $slug)->where('status', 'ACTIVE')->firstOrFail();
+
+        return view('pages.information', [
+            'page' => $page
+        ]);
+    }
+
+
+    public function select_city($city_id): \Illuminate\Http\RedirectResponse
+    {
+        session()->put('city', $city_id);
+        return redirect()->back();
+    }
+
 
 }

@@ -31,6 +31,9 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');
     Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
+    Route::get('/information/{slug}', [BaseController::class, 'information_page'])->name('information_page');
+    Route::get('/select-city/{city_id}', [BaseController::class, 'select_city'])->name('select_city');
+
 });
 
 Route::group(['prefix' => 'admin'], function () {

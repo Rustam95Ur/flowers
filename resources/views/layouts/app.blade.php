@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>@yield('title', Voyager::setting('site.title'))</title>
+    <title>{{Voyager::setting('site.title')}} - @yield('title')</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="@yield('description', Voyager::setting('site.description'))">
     <meta name="keywords" content="@yield('keywords', Voyager::setting('site.keywords'))"/>

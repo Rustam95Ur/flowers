@@ -9,7 +9,7 @@ use App\Models\Color;
 use App\Models\Product;
 use App\Filters\ProductFilter;
 use App\Models\Size;
-use TCG\Voyager\Models\Category;
+use App\Models\Category;
 
 //use App\Models\Comment;
 //use App\Models\Gallery;
@@ -19,9 +19,11 @@ class ProductController extends Controller
 
     public function show($slug)
     {
+        $featured_flowers = Product::limit(10)->get();
         $flower = Product::where('slug', $slug)->firstOrFail();
         return view('products.show', [
             'flower' => $flower,
+            'featured_flowers' => $featured_flowers,
         ]);
     }
 

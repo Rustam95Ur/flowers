@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filters\QueryFilter;
-use TCG\Voyager\Models\Category;
+use App\Models\Category;
 
 class Product extends Model
 {

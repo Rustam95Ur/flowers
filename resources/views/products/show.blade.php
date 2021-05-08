@@ -76,63 +76,63 @@
                                                 </div>
                                             </label>
                                         </div>
-{{--                                        <div class="col-sm-6 col-12 custom-checkbox-image">--}}
-{{--                                            <input type="checkbox" name="dop" value="1217" id="test">--}}
-{{--                                            <label class="checkbox-div pay-checkbox" for="test">--}}
-{{--                                                <img alt="" src="https://cvetyastana.kz//upload/iblock/b6c/33.jpg">--}}
-{{--                                                <br>--}}
-{{--                                                <span> Шоколад ручной работы</span>--}}
-{{--                                                <br>--}}
-{{--                                                <span class="font-weight-bold"> 2500 ₸</span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-sm-6 col-12">--}}
-{{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-{{--                                                    src="https://cvetyastana.kz//upload/iblock/388/vaza-dlya-cvetov-ikea-vasen-vysota-20sm-d-14-sm-50371734.jpg">--}}
-{{--                                                4&nbsp;000 ₸<br>Ваза из стекла "Рона" <input type="checkbox" name="dop"--}}
-{{--                                                                                             value="1218"--}}
-{{--                                                                                             data-price="4000"--}}
-{{--                                                                                             data-price2="4,000.00">--}}
-{{--                                                <span class="checkmark"></span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-sm-6 col-12">--}}
-{{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-{{--                                                    src="https://cvetyastana.kz//upload/iblock/9a7/2860d709.jpg"> 12&nbsp;000--}}
-{{--                                                ₸<br>Мишка 80см <input type="checkbox" name="dop" value="1512"--}}
-{{--                                                                       data-price="12000" data-price2="12,000.00">--}}
-{{--                                                <span class="checkmark"></span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-sm-6 col-12">--}}
-{{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-{{--                                                    src="https://cvetyastana.kz//upload/iblock/ec7/9800012701_1_default_default.jpg">--}}
-{{--                                                3&nbsp;500 ₸<br>Ferrero Rocher <input type="checkbox" name="dop"--}}
-{{--                                                                                      value="1520" data-price="3500"--}}
-{{--                                                                                      data-price2="3,500.00">--}}
-{{--                                                <span class="checkmark"></span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-sm-6 col-12">--}}
-{{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-{{--                                                    src="https://cvetyastana.kz//upload/iblock/10a/31_03_2018_15_40_54_8430mQO1.jpg">--}}
-{{--                                                5&nbsp;500 ₸<br>Фонтан из шаров "Розовое золото" <input type="checkbox"--}}
-{{--                                                                                                        name="dop"--}}
-{{--                                                                                                        value="1522"--}}
-{{--                                                                                                        data-price="5500"--}}
-{{--                                                                                                        data-price2="5,500.00">--}}
-{{--                                                <span class="checkmark"></span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-sm-6 col-12">--}}
-{{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-{{--                                                    src="https://cvetyastana.kz//upload/iblock/e51/1181.970.jpg"> 1&nbsp;000--}}
-{{--                                                ₸<br>Шар "Сердце", 1 шт. <input type="checkbox" name="dop" value="1527"--}}
-{{--                                                                                data-price="1000"--}}
-{{--                                                                                data-price2="1,000.00">--}}
-{{--                                                <span class="checkmark"></span>--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
+                                        {{--                                        <div class="col-sm-6 col-12 custom-checkbox-image">--}}
+                                        {{--                                            <input type="checkbox" name="dop" value="1217" id="test">--}}
+                                        {{--                                            <label class="checkbox-div pay-checkbox" for="test">--}}
+                                        {{--                                                <img alt="" src="https://cvetyastana.kz//upload/iblock/b6c/33.jpg">--}}
+                                        {{--                                                <br>--}}
+                                        {{--                                                <span> Шоколад ручной работы</span>--}}
+                                        {{--                                                <br>--}}
+                                        {{--                                                <span class="font-weight-bold"> 2500 ₸</span>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-sm-6 col-12">--}}
+                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
+                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/388/vaza-dlya-cvetov-ikea-vasen-vysota-20sm-d-14-sm-50371734.jpg">--}}
+                                        {{--                                                4&nbsp;000 ₸<br>Ваза из стекла "Рона" <input type="checkbox" name="dop"--}}
+                                        {{--                                                                                             value="1218"--}}
+                                        {{--                                                                                             data-price="4000"--}}
+                                        {{--                                                                                             data-price2="4,000.00">--}}
+                                        {{--                                                <span class="checkmark"></span>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-sm-6 col-12">--}}
+                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
+                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/9a7/2860d709.jpg"> 12&nbsp;000--}}
+                                        {{--                                                ₸<br>Мишка 80см <input type="checkbox" name="dop" value="1512"--}}
+                                        {{--                                                                       data-price="12000" data-price2="12,000.00">--}}
+                                        {{--                                                <span class="checkmark"></span>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-sm-6 col-12">--}}
+                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
+                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/ec7/9800012701_1_default_default.jpg">--}}
+                                        {{--                                                3&nbsp;500 ₸<br>Ferrero Rocher <input type="checkbox" name="dop"--}}
+                                        {{--                                                                                      value="1520" data-price="3500"--}}
+                                        {{--                                                                                      data-price2="3,500.00">--}}
+                                        {{--                                                <span class="checkmark"></span>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-sm-6 col-12">--}}
+                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
+                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/10a/31_03_2018_15_40_54_8430mQO1.jpg">--}}
+                                        {{--                                                5&nbsp;500 ₸<br>Фонтан из шаров "Розовое золото" <input type="checkbox"--}}
+                                        {{--                                                                                                        name="dop"--}}
+                                        {{--                                                                                                        value="1522"--}}
+                                        {{--                                                                                                        data-price="5500"--}}
+                                        {{--                                                                                                        data-price2="5,500.00">--}}
+                                        {{--                                                <span class="checkmark"></span>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </div>--}}
+                                        {{--                                        <div class="col-sm-6 col-12">--}}
+                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
+                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/e51/1181.970.jpg"> 1&nbsp;000--}}
+                                        {{--                                                ₸<br>Шар "Сердце", 1 шт. <input type="checkbox" name="dop" value="1527"--}}
+                                        {{--                                                                                data-price="1000"--}}
+                                        {{--                                                                                data-price2="1,000.00">--}}
+                                        {{--                                                <span class="checkmark"></span>--}}
+                                        {{--                                            </label>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -140,7 +140,8 @@
                         <div class="quantity-with_btn mb-5">
                             <div class="quantity">
                                 <div class="cart-plus-minus">
-                                    <input class="cart-plus-minus-box" value="1" type="text" id="product-{{$flower->id}}">
+                                    <input class="cart-plus-minus-box" value="1" type="text"
+                                           id="product-{{$flower->id}}">
                                     <div class="dec qtybutton">-</div>
                                     <div class="inc qtybutton">+</div>
                                 </div>
@@ -286,8 +287,8 @@
                 <!--Section Title Start-->
                 <div class="col-12 col-custom">
                     <div class="section-title text-center mb-30">
-                        <span class="section-title-1">The Most Trendy</span>
-                        <h3 class="section-title-3">Featured Products</h3>
+                        <span class="section-title-1">{{trans('page.home.gift')}}</span>
+                        <h3 class="section-title-3">{{trans('page.home.featured')}}</h3>
                     </div>
                 </div>
                 <!--Section Title End-->
@@ -296,283 +297,58 @@
                 <div class="col-12 col-custom">
                     <div class="product-slider swiper-container anime-element-multi">
                         <div class="swiper-wrapper">
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="/images/product/1.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="/images/product/2.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <span class="onsale">Sale!</span>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
+                            @foreach($featured_flowers as $flower)
+                                <div class="single-item swiper-slide">
+                                    <!--Single Product Start-->
+                                    <div class="single-product position-relative mb-30">
+                                        <div class="product-image">
+                                            <a class="d-block" href="{{route('product_show', $flower->slug)}}">
+                                                @foreach(json_decode($flower->images) as $image)
+                                                    @if($loop->index < 2)
+                                                        <img alt="{{$flower->title}}" src="{{ Voyager::image($image) }}"
+                                                             class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
+                                                    @endif
+                                                @endforeach
                                             </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
+                                            <span class="onsale">Sale!</span>
+                                            <div class="add-action d-flex flex-column position-absolute">
+                                                <a onclick="update_wish_list({{$flower->id}}, 'add');"
+                                                   title="{{trans('page.home.add_to_wish')}}">
+                                                    <i class="lnr lnr-heart" data-toggle="tooltip"
+                                                       data-placement="left" title="{{trans('button.wishlist')}}"></i>
+                                                </a>
+                                                <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
+                                                   data-target="#exampleModalCenter">
+                                                    <i class="lnr lnr-eye" data-toggle="tooltip"
+                                                       data-placement="left" title="{{trans('button.quick_view')}}"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-content">
+                                            <div class="product-title">
+                                                <h4 class="title-2">
+                                                    <a href="{{route('product_show', $flower->slug)}}">
+                                                        {{$flower->title}}
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                            </div>
+                                            <div class="price-box">
+                                                <span class="regular-price ">{{$flower['price']}} ₸</span>
+                                            </div>
+                                            <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
+                                               class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                         </div>
                                     </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Hyacinth white stick</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
+                                    <!--Single Product End-->
                                 </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="/images/product/5.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="/images/product/6.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Rose bouquet white</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="/images/product/7.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="/images/product/8.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Orchid flower red
-                                                    stick</a></h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="/images/product/3.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="/images/product/4.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Blossom bouquet
-                                                    flower</a></h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="/images/product/8.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="/images/product/7.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Jasmine flowers white</a>
-                                            </h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
-                            <div class="single-item swiper-slide">
-                                <!--Single Product Start-->
-                                <div class="single-product position-relative mb-30">
-                                    <div class="product-image">
-                                        <a class="d-block" href="product-details.html">
-                                            <img src="/images/product/2.jpg" alt="" class="product-image-1 w-100">
-                                            <img src="/images/product/1.jpg" alt=""
-                                                 class="product-image-2 position-absolute w-100">
-                                        </a>
-                                        <div class="add-action d-flex flex-column position-absolute">
-                                            <a href="compare.html" title="Compare">
-                                                <i class="lnr lnr-sync" data-toggle="tooltip" data-placement="left"
-                                                   title="Compare"></i>
-                                            </a>
-                                            <a href="wishlist.html" title="Add To Wishlist">
-                                                <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="left"
-                                                   title="Wishlist"></i>
-                                            </a>
-                                            <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                               data-target="#exampleModalCenter">
-                                                <i class="lnr lnr-eye" data-toggle="tooltip" data-placement="left"
-                                                   title="Quick View"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-content">
-                                        <div class="product-title">
-                                            <h4 class="title-2"><a href="product-details.html">Flowers daisy pink
-                                                    stick</a></h4>
-                                        </div>
-                                        <div class="product-rating">
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star"></i>
-                                            <i class="fa fa-star-o"></i>
-                                            <i class="fa fa-star-o"></i>
-                                        </div>
-                                        <div class="price-box">
-                                            <span class="regular-price ">$80.00</span>
-                                            <span class="old-price"><del>$90.00</del></span>
-                                        </div>
-                                        <a href="cart.html" class="btn product-cart">Add to Cart</a>
-                                    </div>
-                                </div>
-                                <!--Single Product End-->
-                            </div>
+                            @endforeach
                         </div>
                         <!-- Slider pagination -->
                         <div class="swiper-pagination default-pagination"></div>

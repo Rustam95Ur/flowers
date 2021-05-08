@@ -6,7 +6,8 @@ use App\Http\Controllers\Shop\CartController;
 use App\Locale;
 use App\Models\Product;
 use Illuminate\Support\ServiceProvider;
-use TCG\Voyager\Models\Category;
+use App\Models\Category;
+use TCG\Voyager\Models\Page;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
             $wish_count = 0;
             $total_price = 0;
             $products = [];
+            $selected_city = session()->get('city', null);
+            $pages = Page::where('status', 'ACTIVE')->get();
             $count_cart_items = session()->get('cart');
             if ($count_cart_items) {
                 foreach ($count_cart_items as $item) {
@@ -57,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
                 ->with('mini_cart_products', $products,)
                 ->with('mini_cart_total_price', $total_price)
                 ->with('categories', $categories)
+                ->with('selected_city', $selected_city)
+                ->with('pages', $pages)
             ->with('wish_count', $wish_count);
         });
 
