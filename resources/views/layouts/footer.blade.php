@@ -57,11 +57,12 @@
                     <div class="single-footer-widget">
                         <h2 class="widget-title">{{trans('header.flowers')}}</h2>
                         <ul class="widget-list">
-                            <li><a href="about-us.html">About</a></li>
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="cart.html">Cart</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
+                            @foreach($categories as $category)
+                                <li>
+                                    <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}</a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -99,7 +100,6 @@
             <div class="row">
                 <div class="col-12 text-center col-custom">
                     <div class="copyright-content">
-                        <p>Copyright © 2020 <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a> | Built with&nbsp;<strong>FloSun</strong>&nbsp;by <a href="https://hasthemes.com/" title="https://hasthemes.com/">HasThemes</a>.</p>
                     </div>
                 </div>
             </div>

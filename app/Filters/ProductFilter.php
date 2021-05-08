@@ -21,13 +21,12 @@ class ProductFilter extends QueryFilter
      * @param $value
      * @return mixed
      */
-    public function color_id($value)
+    public function colors($value)
     {
         return $this->builder->where(function ($query) use ($value) {
-            $query->whereHas('colors', function($q) use ($value) {
+            $query->whereHas('colors', function ($q) use ($value) {
                 $q->whereIn('color_id', $value);
-            })
-            ;
+            });
         });
     }
 
@@ -35,13 +34,12 @@ class ProductFilter extends QueryFilter
      * @param $value
      * @return mixed
      */
-    public function size_id($value)
+    public function sizes($value)
     {
         return $this->builder->where(function ($query) use ($value) {
-            $query->whereHas('sizes', function($q) use ($value) {
+            $query->whereHas('sizes', function ($q) use ($value) {
                 $q->whereIn('size_id', $value);
-            })
-            ;
+            });
         });
     }
 
@@ -73,28 +71,32 @@ class ProductFilter extends QueryFilter
      * @param $value
      * @return mixed
      */
-    public function category_id($value)
+    public function categories($value)
     {
         return $this->builder->where(function ($query) use ($value) {
-            $query->whereHas('categories', function($q) use ($value) {
-                    $q->whereIn('category_id', $value);
-                })
-            ;
+            $query->whereHas('categories', function ($q) use ($value) {
+                $q->whereIn('category_id', $value);
+            });
         });
     }
 
     /**
-     * @param $order
+     * @param $value
      * @return mixed
      */
-    public function price_sort($order)
+    public function sort($value)
     {
-        if ($order) {
-            return $this->builder->orderBy('price', $order);
+        switch ($value) {
+            case 1:
+                return $this->builder->orderBy('title', 'ASC');
+            case 2:
+                return $this->builder->orderBy('id', 'DESC');
+            case 3:
+                return $this->builder->orderBy('price', 'ASC');
+            case 4:
+                return $this->builder->orderBy('price', 'DESC');
         }
-        else {
-            return $this->builder->orderByRaw('-sort_id DESC');
-        }
+
     }
 
 }

@@ -16,11 +16,12 @@
                         <div class="shop-select">
                             <form class="d-flex flex-column w-100" action="#">
                                 <div class="form-group">
-                                    <select class="form-control nice-select w-100">
-                                        <option selected value="1">{{trans('shop.sort.alphabetically')}}</option>
-                                        <option value="2">{{trans('shop.sort.newness')}}</option>
-                                        <option value="3">{{trans('shop.sort.price.low')}}</option>
-                                        <option value="4">{{trans('shop.sort.price.high')}}</option>
+                                    <select name="sort" form="filter_form" class="form-control nice-select w-100">
+                                        <option value="3" {{(array_key_exists('sort', $filters) and $filters['sort'] == 3) ? 'selected'  : ''}}>{{trans('shop.sort.price.low')}}</option>
+                                        <option value="4" {{(array_key_exists('sort', $filters) and $filters['sort'] == 4) ? 'selected'  : ''}}>{{trans('shop.sort.price.high')}}</option>
+                                        <option value="1" {{(array_key_exists('sort', $filters) and $filters['sort'] == 1) ? 'selected'  : ''}}>
+                                            {{trans('shop.sort.alphabetically')}}</option>
+                                        <option value="2" {{(array_key_exists('sort', $filters) and $filters['sort'] == 2) ? 'selected'  : ''}}>{{trans('shop.sort.newness')}}</option>
                                     </select>
                                 </div>
                             </form>
@@ -34,12 +35,13 @@
                     <!-- Sidebar Widget Start -->
                     <aside class="sidebar_widget widget-mt">
                         <div class="widget_inner">
-                            <div class="widget-list widget-mb-1">
+                            <div class="widget-list">
                                 <h3 class="widget-title">{{trans('shop.search')}}</h3>
                                 <div class="search-box">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="{{trans('shop.search')}}"
-                                               aria-label="Search Our Store">
+                                        <input form="filter_form" value="{{array_key_exists('title', $filters) ? $filters['title'] : ''}}" name="title" id="search-main" type="text"
+                                               class="form-control" placeholder="{{trans('shop.search')}}"
+                                               aria-label="{{trans('shop.search')}}">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary" type="button">
                                                 <i class="fa fa-search"></i>
@@ -48,25 +50,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-list widget-mb-1">
+                            <div class="widget-list">
                                 <h3 class="widget-title">{{trans('shop.filter.price')}}</h3>
                                 <!-- Widget Menu Start -->
-                                <form action="#">
+                                <form action="#" name="filter_form" id="filter_form">
                                     <div id="slider-range"></div>
-                                    <input type="text" class="text-center w-100" name="text" id="amount"/>
+                                    <label for="amount"></label>
+                                    <input type="text" class="text-center w-100"
+                                           name="price[]" value="{{array_key_exists('price', $filters) ? $filters['price'][0] : ''}}" id="amount"/>
                                 </form>
                                 <!-- Widget Menu End -->
                             </div>
-                            <div class="widget-list widget-mb-2">
+                            <div class="widget-list">
                                 <h3 class="widget-title">{{trans('shop.filter.color')}}</h3>
                                 <div class="sidebar-body">
                                     <ul class="checkbox-container colors-list">
                                         @foreach($colors as $color)
                                             <li>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" value="{{$color->id}}"
-                                                           class="custom-control-input"
-                                                           id="color_checkbox_{{$color->id}}">
+                                                    <input form="filter_form" name="colors[]" type="checkbox"
+                                                           value="{{$color->id}}"
+                                                           class="custom-control-input form-check-input"
+                                                           id="color_checkbox_{{$color->id}}"
+                                                    @if(array_key_exists('colors', $filters) and in_array($color->id, $filters['colors']))
+                                                        checked
+                                                        @endif
+                                                    >
                                                     <label class="custom-control-label"
                                                            for="color_checkbox_{{$color->id}}">{{$color->title}}</label>
                                                 </div>
@@ -76,16 +85,21 @@
 
                                 </div>
                             </div>
-                            <div class="widget-list widget-mb-2">
+                            <div class="widget-list">
                                 <h3 class="widget-title">{{trans('shop.filter.size')}}</h3>
                                 <div class="sidebar-body">
                                     <ul class="checkbox-container colors-list">
                                         @foreach($sizes as $size)
                                             <li>
                                                 <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" value="{{$size->id}}"
-                                                           class="custom-control-input"
-                                                           id="size_checkbox_{{$size->id}}">
+                                                    <input form="filter_form" name="sizes[]" type="checkbox"
+                                                           value="{{$size->id}}"
+                                                           class="custom-control-input form-check-input"
+                                                           id="size_checkbox_{{$size->id}}"
+                                                           @if(array_key_exists('sizes', $filters) and in_array($size->id, $filters['sizes']))
+                                                           checked
+                                                        @endif
+                                                    >
                                                     <label class="custom-control-label"
                                                            for="size_checkbox_{{$size->id}}">{{$size->title}}</label>
                                                 </div>
@@ -95,93 +109,27 @@
 
                                 </div>
                             </div>
-                            <div class="widget-list widget-mb-2">
+                            <div class="widget-list">
                                 <h3 class="widget-title">{{trans('shop.filter.categories')}}</h3>
                                 <div class="sidebar-body">
                                     <ul class="checkbox-container categories-list">
-                                    @foreach($categories as $category)
-                                        <li>
-                                            <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" value="{{$category->id}}"
-                                                       class="custom-control-input"
-                                                       id="category_checkbox_{{$category->id}}">
-                                                <label class="custom-control-label"
-                                                       for="category_checkbox_{{$category->id}}">{{$category->name}}</label>
-                                            </div>
-                                        </li>
-                                    @endforeach
+                                        @foreach($categories as $category)
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input form="filter_form" name="categories[]" type="checkbox"
+                                                           value="{{$category->id}}"
+                                                           class="custom-control-input form-check-input"
+                                                           id="category_checkbox_{{$category->id}}"
+                                                           @if(array_key_exists('categories', $filters) and in_array($category->id, $filters['categories']))
+                                                           checked
+                                                        @endif
+                                                    >
+                                                    <label class="custom-control-label"
+                                                           for="category_checkbox_{{$category->id}}">{{$category->name}}</label>
+                                                </div>
+                                            </li>
+                                        @endforeach
                                     </ul>
-                                </div>
-                            </div>
-                            <div class="widget-list mb-0">
-                                <h3 class="widget-title">Recent Products</h3>
-                                <div class="sidebar-body">
-                                    <div class="sidebar-product align-items-center">
-                                        <a href="product-details.html" class="image">
-                                            <img src="/images/cart/1.jpg" alt="product">
-                                        </a>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h4 class="title-2"><a href="product-details.html">Glory of the Snow</a>
-                                                </h4>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="regular-price ">$80.00</span>
-                                                <span class="old-price"><del>$90.00</del></span>
-                                            </div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-product align-items-center">
-                                        <a href="product-details.html" class="image">
-                                            <img src="/images/cart/2.jpg" alt="product">
-                                        </a>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h4 class="title-2"><a href="product-details.html">Pearly
-                                                        Everlasting</a></h4>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="regular-price ">$50.00</span>
-                                                <span class="old-price"><del>$60.00</del></span>
-                                            </div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="sidebar-product align-items-center">
-                                        <a href="product-details.html" class="image">
-                                            <img src="/images/cart/3.jpg" alt="product">
-                                        </a>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h4 class="title-2"><a href="product-details.html">Jack in the
-                                                        Pulpit</a></h4>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="regular-price ">$40.00</span>
-                                                <span class="old-price"><del>$50.00</del></span>
-                                            </div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                                <i class="fa fa-star-half-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -191,5 +139,9 @@
             </div>
         </div>
     </div>
+
     <!-- Shop Main Area End Here -->
+    @push('scripts')
+        <script src="{{asset('js/filter.js')}}"></script>
+    @endpush
 @endsection

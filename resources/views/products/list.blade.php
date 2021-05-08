@@ -78,7 +78,8 @@
                                     {{trans('button.add_to_cart')}}
                                 </span>
                             </a>
-                            <a class="list-icon" onclick="update_wish_list({{$product->id}}, 'add'); $(this).addClass('text-pink')"
+                            <a class="list-icon"
+                               onclick="update_wish_list({{$product->id}}, 'add'); $(this).addClass('text-pink')"
                                title="{{trans('button.wishlist')}}">
                                 <i class="lnr lnr-heart" data-toggle="tooltip" data-placement="top"
                                    title="{{trans('button.wishlist')}}"></i>
@@ -89,9 +90,13 @@
             </div>
         </div>
     @endforeach
+    @if(count($products) == 0)
+            <h3 class="section-title-3 font-weight-bold mt-4 text-center">{{trans('shop.filter.no_result')}}</h3>
+    @endif
 </div>
 <!-- Shop Wrapper End -->
 <!-- Bottom Toolbar Start -->
+@if(count($products) > 0 and $products->hasPages())
 <div class="row">
     <div class="col-sm-12 col-custom">
         <div class="toolbar-bottom">
@@ -99,4 +104,6 @@
         </div>
     </div>
 </div>
+@endif
+
 <!-- Bottom Toolbar End -->

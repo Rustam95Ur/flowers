@@ -21,7 +21,9 @@
                                 <ul class="dropdown-submenu dropdown-hover">
                                     <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
                                     @foreach($categories as $category)
-                                        <li><a href="{{route('shop')}}?category_id={{$category->id}}">{{$category->name}}</a></li>
+                                        <li>
+                                            <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
@@ -31,14 +33,7 @@
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
-                                    <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                    <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                    <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                    <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                    <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                    <li><a href="blog-details-sidebar.html">Blog Details Sidebar</a></li>
-                                    <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth</a></li>
+
                                 </ul>
                             </li>
                             <li>
@@ -47,11 +42,26 @@
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
-                                    <li><a href="contact-us.html">Contact</a></li>
-                                    <li><a href="my-account.html">My Account</a></li>
-                                    <li><a href="frequently-questions.html">FAQ</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="register.html">Register</a></li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=0-10000">
+                                            {{trans('header.price_to', ['price'=>10000])}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=10000-25000">
+                                            {{trans('header.price_from_to', ['from_price'=>10000, 'to_price' => 25000])}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=25000-50000">
+                                            {{trans('header.price_from_to', ['from_price'=>25000, 'to_price' => 50000])}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=50000-200000">
+                                            {{trans('header.price_from', ['price' => 50000])}}
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>
@@ -102,8 +112,8 @@
                                 <a href="#"><i class="fa fa-search"></i> </a>
                                 <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-search">
                                     <li>
-                                        <form action="#">
-                                            <input name="search" id="search" placeholder="Поиск" type="text">
+                                        <form action="{{route('shop')}}">
+                                            <input name="title" id="search" placeholder="Поиск" type="text">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </li>
@@ -135,8 +145,8 @@
             </div>
             <div class="off-canvas-inner">
                 <div class="search-box-offcanvas">
-                    <form>
-                        <input type="text" placeholder="Search product...">
+                    <form action="{{route('shop')}}">
+                        <input type="text" name="title" placeholder="Поиск...">
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
@@ -145,69 +155,32 @@
                     <!-- mobile menu navigation start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li class="menu-item-has-children"><a href="#">Home</a>
+                            <li class="menu-item-has-children"><a href="#">{{trans('header.flowers')}}</a>
                                 <ul class="dropdown">
-                                    <li><a href="index.html">Home Page 1</a></li>
-                                    <li><a href="index-2.html">Home Page 2</a></li>
-                                    <li><a href="index-3.html">Home Page 3</a></li>
-                                    <li><a href="index-4.html">Home Page 4</a></li>
+                                    <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
+                                    @foreach($categories as $category)
+                                        <li>
+                                            <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children"><a href="#">Shop</a>
-                                <ul class="megamenu dropdown">
-                                    <li class="mega-title has-children"><a href="#">Shop Layouts</a>
-                                        <ul class="dropdown">
-                                            <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                            <li><a href="shop-list-left.html">Shop List Left Sidebar</a></li>
-                                            <li><a href="shop-list-right.html">Shop List Right Sidebar</a></li>
-                                            <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="mega-title has-children"><a href="#">Product Details</a>
-                                        <ul class="dropdown">
-                                            <li><a href="product-details.html">Single Product Details</a></li>
-                                            <li><a href="variable-product-details.html">Variable Product Details</a>
-                                            </li>
-                                            <li><a href="external-product-details.html">External Product Details</a>
-                                            </li>
-                                            <li><a href="gallery-product-details.html">Gallery Product Details</a></li>
-                                            <li><a href="countdown-product-details.html">Countdown Product Details</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="mega-title has-children"><a href="#">Others</a>
-                                        <ul class="dropdown">
-                                            <li><a href="error404.html">Error 404</a></li>
-                                            <li><a href="compare.html">Compare Page</a></li>
-                                            <li><a href="cart.html">Cart Page</a></li>
-                                            <li><a href="checkout.html">Checkout Page</a></li>
-                                            <li><a href="wishlist.html">Wish List Page</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children "><a href="#">Blog</a>
+                            <li class="menu-item-has-children "><a href="#">{{trans('header.type_bouquet')}}</a>
                                 <ul class="dropdown">
-                                    <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                    <li><a href="blog-list-right-sidebar.html">Blog List Right Sidebar</a></li>
-                                    <li><a href="blog-list-fullwidth.html">Blog List Fullwidth</a></li>
-                                    <li><a href="blog-grid.html">Blog Grid Page</a></li>
-                                    <li><a href="blog-grid-right-sidebar.html">Blog Grid Right Sidebar</a></li>
-                                    <li><a href="blog-grid-fullwidth.html">Blog Grid Fullwidth</a></li>
-                                    <li><a href="blog-details-sidebar.html">Blog Details Sidebar Page</a></li>
-                                    <li><a href="blog-details-fullwidth.html">Blog Details Fullwidth Page</a></li>
+
                                 </ul>
                             </li>
-                            <li class="menu-item-has-children "><a href="#">Pages</a>
+                            <li class="menu-item-has-children "><a href="#"> {{trans('header.information')}}</a>
                                 <ul class="dropdown">
                                     <li><a href="frequently-questions.html">FAQ</a></li>
                                     <li><a href="my-account.html">My Account</a></li>
                                     <li><a href="login-register.html">login &amp; register</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about-us.html">About Us</a></li>
-                            <li><a href="contact-us.html">Contact</a></li>
+                            <li><a href="#">{{trans('header.calculator')}}</a></li>
+                            <li><a href="{{route('contact')}}">{{trans('header.contact')}}</a></li>
+                            <li><a href="#">{{trans('header.gallery')}}</a></li>
+
                         </ul>
                     </nav>
                     <!-- mobile menu navigation end -->
@@ -216,25 +189,28 @@
                 <div class="offcanvas-widget-area">
                     <div class="switcher">
                         <div class="language">
-                            <span class="switcher-title">Language: </span>
+                            <span class="switcher-title">{{trans('header.language')}}: </span>
                             <div class="switcher-menu">
                                 <ul>
-                                    <li><a href="#">English</a>
+                                    <li><a href="#">{{trans('header.languages.'.$locale)}}</a>
                                         <ul class="switcher-dropdown">
-                                            <li><a href="#">German</a></li>
-                                            <li><a href="#">French</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="currency">
-                            <span class="switcher-title">Currency: </span>
-                            <div class="switcher-menu">
-                                <ul>
-                                    <li><a href="#">$ USD</a>
-                                        <ul class="switcher-dropdown">
-                                            <li><a href="#">€ EUR</a></li>
+                                            @foreach(trans('header.languages') as $key => $language)
+                                                @if (config()->get('route_prefix'))
+                                                    <li>
+                                                        <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
+                                                    </li>
+                                                @else
+                                                    @if(request()->route()->getName() == 'home'))
+                                                    <li>
+                                                        <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
+                                                    </li>
+                                                    @else
+                                                        <li>
+                                                            <a href="{{ url($key.'/'.request()->route()->getName()) }}">{{$language}}</a>
+                                                        </li>
+                                                    @endif
+                                                @endif
+                                            @endforeach
                                         </ul>
                                     </li>
                                 </ul>
@@ -245,11 +221,11 @@
                         <ul class="address-info">
                             <li>
                                 <i class="fa fa-phone"></i>
-                                <a href="info@yourdomain.com">(1245) 2456 012</a>
+                                <a href="tel:{{Voyager::setting('site.phone')}}">{{Voyager::setting('site.phone')}}</a>
                             </li>
                             <li>
                                 <i class="fa fa-envelope"></i>
-                                <a href="info@yourdomain.com">info@yourdomain.com</a>
+                                <a href="mailto:{{Voyager::setting('site.email')}}">{{Voyager::setting('site.email')}}</a>
                             </li>
                         </ul>
                         <div class="widget-social">

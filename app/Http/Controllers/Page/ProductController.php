@@ -28,13 +28,20 @@ class ProductController extends Controller
     public function shop(ProductFilter $filters)
     {
         $products = Product::where('price', '>', 0)->filter($filters)
-            ->orderByRaw('-id DESC')->paginate(20);
+            ->orderBy('title', 'ASC')->paginate(20);
         $colors = Color::all();
         $sizes = Size::all();
+        if (request()->ajax()) {
+            return view('products.list', [
+                'products' => $products,
+            ]);
+        }
+        $request_filter = request()->input();
         return view('products.shop', [
             'products' => $products,
             'colors' => $colors,
             'sizes' => $sizes,
+            'filters' => $request_filter,
         ]);
     }
 
