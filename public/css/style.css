@@ -45,7 +45,7 @@
 /*    01 - Global - Default
 /*----------------------------------------*/
 /*-- Google Font --*/
-@import url("https://fonts.googleapis.com/css2?family=Spectral+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Infant&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap");
 
 body {
@@ -449,7 +449,7 @@ mark {
     letter-spacing: 3px;
     margin: 0 0 15px 0;
     position: relative;
-    font-family: 'Spectral SC', serif;
+    font-family: 'Cormorant Infant', serif;
 }
 
 @media (max-width: 479px) {
@@ -619,7 +619,6 @@ mark {
     border: none;
     width: 92%;
     margin: 0 auto;
-    margin-bottom: 22px;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
@@ -2390,7 +2389,7 @@ mark {
     padding-bottom: 8px;
     color: #000000;
     line-height: 25px;
-    font-family: 'Spectral SC', serif;
+    font-family: 'Cormorant Infant', serif;
 }
 
 .offcanvas-widget-area .menu-top-menu > li > a:hover {
@@ -2782,7 +2781,7 @@ mark {
     line-height: 1;
     position: relative;
     padding-bottom: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     font-family: "Josefin Slab", serif;
 }
 
@@ -2853,7 +2852,7 @@ mark {
 }
 
 .shop-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container li, .blog-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container li {
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .shop-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container .custom-control-input, .blog-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container .custom-control-input {
@@ -5779,7 +5778,7 @@ mark {
 
 .intro11-slider .intro11-content-2 .different-title {
     font-size: 190px;
-    font-family: 'Spectral SC', serif;
+    font-family: 'Cormorant Infant', serif;
     line-height: 150px;
     color: #4e7fad;
     margin-bottom: 20px;
@@ -7200,7 +7199,7 @@ mark {
 }
 
 .breadcrumbs-area .breadcrumb-content .title-3 {
-    font-family: 'Spectral SC', serif;
+    font-family: 'Cormorant Infant', serif;
     font-size: 30px;
     font-weight: 700;
 }
