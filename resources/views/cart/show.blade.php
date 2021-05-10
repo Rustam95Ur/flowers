@@ -22,7 +22,7 @@
                             @foreach($products as $product)
                                 <tr id="cart-product-{{$product['id']}}">
                                     <td class="pro-thumbnail">
-                                        <a href="{{route('product_show', $product['id'])}}">
+                                        <a href="{{route('product_show', $product['slug'])}}">
                                             @foreach(json_decode($product['images']) as $image)
                                                 <img alt="{{$product['title']}}" src="{{ Voyager::image($image) }}"
                                                      class="img-fluid"/>
@@ -32,7 +32,7 @@
                                         </a>
                                     </td>
                                     <td class="pro-title">
-                                        <a href="{{route('product_show', $product['id'])}}">
+                                        <a href="{{route('product_show', $product['slug'])}}">
                                             {{$product['title']}}
                                         </a>
                                     </td>

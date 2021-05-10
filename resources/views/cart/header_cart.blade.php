@@ -7,7 +7,7 @@
             @foreach($mini_cart_products as $product)
                 <div class="single-cart-item">
                     <div class="cart-img">
-                        <a href="{{route('product_show', $product['id'])}}">
+                        <a href="{{route('product_show', $product['slug'])}}">
                             @foreach(json_decode($product['images']) as $image)
                                 <img alt="{{$product['title']}}" src="{{ Voyager::image($image) }}"/>
                                 @break
@@ -15,7 +15,7 @@
                         </a>
                     </div>
                     <div class="cart-text">
-                        <h5 class="title"><a href="{{route('product_show', $product['id'])}}">{{ $product['title']}}</a></h5>
+                        <h5 class="title"><a href="{{route('product_show', $product['slug'])}}">{{ $product['title']}}</a></h5>
                         <div class="cart-text-btn">
                             <div class="cart-qty">
                                 <span>{{ $product['qty']}}×</span>
