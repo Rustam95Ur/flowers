@@ -112,7 +112,7 @@
         Swiper Slider Activation Js
     ------------------------------------------*/
     // Home 01 Slider
-    var intro11Slider = new Swiper('.intro11-slider', {
+    new Swiper('.intro11-slider', {
         loop: true,
         speed: 400,
         slidesPerView: 1,
@@ -130,7 +130,7 @@
         //autoplay: {},
     });
     // Product Carousel
-    var intro11Slider = new Swiper('.product-slider', {
+    new Swiper('.product-slider', {
         slidesPerView: 1,
         spaceBetween: 10,
         pagination: {
@@ -484,9 +484,29 @@ function updated_after_delete(product_id, value) {
         sub_total_price = 0,
         price = $('#price-' + product_id).text();
     $('#subtotal-' + product_id).html(parseInt(price) * parseInt(value) + ' ₸')
-    $('.subtotal').each(function (e) {
+    $('.subtotal').each(function () {
         sub_total_price += parseInt($(this).text())
     })
     $('.sub-total').html(sub_total_price + ' ₸')
     $('.total-amount').html(sub_total_price + shipping_price + ' ₸')
+}
+
+/*----------------------------------------*/
+/*-----  City Search
+---------------------------------*/
+function search_city() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("search_city");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("cities_link");
+    li = ul.getElementsByTagName("div");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
 }

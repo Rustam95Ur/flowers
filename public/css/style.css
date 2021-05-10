@@ -7455,3 +7455,6 @@ mark {
 .text-pink {
     color: #4e7fad !important;
 }
+.city_link {
+    font-size: 15px;
+}

@@ -4,26 +4,17 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-4  mt-3 col-xs-12">
-                    <nav class="main-nav d-lg-flex">
-                        <ul class="nav">
-                            <li class="p-0">
-                                <h4 class="text-pink mb-0">
-                                    <a href="#">
-                                        @if ($selected_city)
-                                            <span class="menu-text text-uppercase"><i class="lnr lnr-map-marker"></i>Алматы</span>
+                    <h4 class="text-pink mb-0 text-uppercase">
+                        <a  href="#select_city_modal" title="Quick View" data-toggle="modal"
+                            data-target="#select_city_modal">
+                            @if ($selected_city)
+                                <i class="lnr lnr-map-marker"></i>{{$selected_city_name->title}}
 
-                                        @else
-                                            <span class="menu-text text-uppercase"><i class="lnr lnr-map-marker"></i>Ваш город</span>
-                                        @endif
-                                        <i class="fa fa-angle-down"></i>
-                                    </a>
-                                </h4>
-                                <ul class="dropdown-submenu dropdown-hover">
-                                    <li><a href="{{route('select_city', 1)}}">Алматы</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
+                            @else
+                                <i class="lnr lnr-map-marker"></i>Ваш город
+                            @endif
+                        </a>
+                    </h4>
                 </div>
                 <div class="col-md-4 mt-3 col-xs-12">
                     <h4 class="text-pink mb-0"><i class="lnr lnr-smartphone"></i>

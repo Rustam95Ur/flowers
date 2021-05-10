@@ -32,7 +32,10 @@
                                         <i class="fa fa-star-o"></i>
                                         <span>1 Review</span>
                                     </div>
-                                    <p class="desc-content">we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound to ensue; and equal blame bel...</p>
+                                    <p class="desc-content">we denounce with righteous indignation and dislike men who
+                                        are so beguiled and demoralized by the charms of pleasure of the moment, so
+                                        blinded by desire, that they cannot foresee the pain and trouble that are bound
+                                        to ensue; and equal blame bel...</p>
                                     <form class="d-flex flex-column w-100" action="#">
                                         <div class="form-group">
                                             <select class="form-control nice-select w-100">
@@ -55,13 +58,52 @@
                                             </div>
                                         </div>
                                         <div class="add-to_btn">
-                                            <a class="btn product-cart button-icon flosun-button dark-btn" href="cart.html">Add to cart</a>
-                                            <a class="btn flosun-button secondary-btn rounded-0" href="wishlist.html">Add to wishlist</a>
+                                            <a class="btn product-cart button-icon flosun-button dark-btn"
+                                               href="cart.html">Add to cart</a>
+                                            <a class="btn flosun-button secondary-btn rounded-0" href="wishlist.html">Add
+                                                to wishlist</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal flosun-modal fade" id="select_city_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+                <span class="close-icon" aria-hidden="true">x</span>
+            </button>
+            <div class="modal-header justify-content-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="modal-title text-center mb-3">{{trans('modal.select_city')}}</h3>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input id="search_city" type="text" onkeyup="search_city()" class="form-control"
+                                       placeholder="Поиск" aria-label="Поиск">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid custom-area">
+                    <div class="row" id="cities_link">
+                        @foreach($cities as $city)
+                            <div class="col-md-3 ">
+                                <a href="{{route('select_city', $city->id)}}"
+                                   class="city_link {{($city->is_big == 1) ? 'font-weight-bold' : ''}}">{{$city->title}}</a>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

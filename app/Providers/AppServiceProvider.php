@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\Shop\CartController;
 use App\Locale;
+use App\Models\City;
 use App\Models\Product;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
@@ -34,7 +34,12 @@ class AppServiceProvider extends ServiceProvider
             $wish_count = 0;
             $total_price = 0;
             $products = [];
+            $city_title = false;
             $selected_city = session()->get('city', null);
+            if ($selected_city) {
+                $city_title = City::where('id', $selected_city)->select('title')->first();
+            }
+            $cities = City::orderBy('title', 'ASC')->get();
             $pages = Page::where('status', 'ACTIVE')->get();
             $count_cart_items = session()->get('cart');
             if ($count_cart_items) {
@@ -61,7 +66,9 @@ class AppServiceProvider extends ServiceProvider
                 ->with('mini_cart_total_price', $total_price)
                 ->with('categories', $categories)
                 ->with('selected_city', $selected_city)
+                ->with('selected_city_name', $city_title)
                 ->with('pages', $pages)
+                ->with('cities', $cities)
             ->with('wish_count', $wish_count);
         });
 
