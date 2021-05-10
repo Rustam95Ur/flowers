@@ -22,6 +22,7 @@ use App\Http\Controllers\Shop\CartController;
 Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(function () {
     Route::get('/', [BaseController::class, 'home'])->name('home');
     Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product_show');
+    Route::get('/product/quick-view/{id}', [ProductController::class, 'quick_view'])->name('product_quick_view');
     Route::get('/contact', [BaseController::class, 'contact'])->name('contact');
     Route::get('/wishlists', [CartController::class, 'wishlists'])->name('wishlists');
     Route::get('/wishlist/{product_id}/{type}', [CartController::class, 'update_wishlist'])->name('update_wishlist');

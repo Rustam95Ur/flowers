@@ -41,6 +41,7 @@
     // $('.cart-plus-minus').append(
     // 	'<div class="dec qtybutton"><i class="fa fa-minus"></i></div><div class="inc qtybutton"><i class="fa fa-plus"></i></div>'
     // );
+
     $('.qtybutton').on('click', function () {
         var $button = $(this),
             oldValue = $button.parent().find('input').val(),
@@ -496,6 +497,7 @@ function updated_after_delete(product_id, value) {
 }
 
 /*----------------------------------------*/
+
 /*-----  City Search
 ---------------------------------*/
 function search_city() {
@@ -513,4 +515,44 @@ function search_city() {
             li[i].style.display = "none";
         }
     }
+}
+
+/*----------------------------------------*/
+
+/*-----  Quick View Product
+---------------------------------*/
+function quick_view_product($id) {
+    let ajax_url = '/product/quick-view/' + $id
+    $.ajax(
+        {
+            url: ajax_url,
+            type: "get",
+            datatype: "html",
+            success: function (data) {
+                $("#product_quick_block").empty().html(data);
+                $('#quick_product_modal').modal('show');
+            },
+            error: function (jqXHR, ajaxOptions, thrownError) {
+                console.log(jqXHR)
+                console.log(ajaxOptions)
+                console.log(thrownError)
+            }
+        });
+}
+
+function plus_minus($id, type) {
+    var oldValue = $('#product-' + $id),
+        newVal = parseFloat(oldValue.val());
+    if (type === 'inc') {
+        newVal += 1;
+    } else {
+        // Don't allow decrementing below zero
+        if (oldValue.val() > 1) {
+            newVal -= 1;
+        } else {
+            $('#cart-' + $id).remove()
+        }
+    }
+    oldValue.val(newVal);
+    updated_after_delete($id, newVal)
 }

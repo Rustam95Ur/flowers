@@ -5,7 +5,7 @@
             <div class="row text-center">
                 <div class="col-md-4  mt-3 col-xs-12">
                     <h4 class="text-pink mb-0 text-uppercase">
-                        <a  href="#select_city_modal" title="Quick View" data-toggle="modal"
+                        <a  href="#select_city_modal" title="select_city" data-toggle="modal"
                             data-target="#select_city_modal">
                             @if ($selected_city)
                                 <i class="lnr lnr-map-marker"></i>{{$selected_city_name->title}}

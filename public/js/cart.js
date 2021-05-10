@@ -48,7 +48,6 @@ function count_wish() {
         type: "GET",
         url: '/wishlists/count',
         success: function (data) {
-            console.log(data.count)
             $('#wish_count').html(data.count);
         }
     });

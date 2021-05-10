@@ -119,8 +119,7 @@
                                                            data-placement="left"
                                                            title="{{trans('button.wishlist')}}"></i>
                                                     </a>
-                                                    <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                                       data-target="#exampleModalCenter">
+                                                    <a onclick="quick_view_product({{$flower['id']}})">
                                                         <i class="lnr lnr-eye" data-toggle="tooltip"
                                                            data-placement="left"
                                                            title="{{trans('button.quick_view')}}"></i>
@@ -205,8 +204,7 @@
                                                     <i class="lnr lnr-heart" data-toggle="tooltip"
                                                        data-placement="left" title="{{trans('button.wishlist')}}"></i>
                                                 </a>
-                                                <a href="#exampleModalCenter" title="Quick View" data-toggle="modal"
-                                                   data-target="#exampleModalCenter">
+                                                <a onclick="quick_view_product({{$flower['id']}})">
                                                     <i class="lnr lnr-eye" data-toggle="tooltip"
                                                        data-placement="left" title="{{trans('button.quick_view')}}"></i>
                                                 </a>

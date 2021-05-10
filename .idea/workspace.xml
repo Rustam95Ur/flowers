@@ -3,9 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/wishlist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/wishlist.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/modal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -308,7 +313,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620639141868</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Updated product link">
+      <created>1620642519513</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1620642519513</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,6 +343,7 @@
     <MESSAGE value="Added modal and select city" />
     <MESSAGE value="Updated font-style" />
     <MESSAGE value="Updated style" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated style" />
+    <MESSAGE value="Updated product link" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated product link" />
   </component>
 </project>
