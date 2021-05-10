@@ -45,14 +45,14 @@
 /*    01 - Global - Default
 /*----------------------------------------*/
 /*-- Google Font --*/
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Spectral+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif+Caption&display=swap");
 
 body {
     line-height: 1.6;
     font-weight: 400;
     color: #484848;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     scroll-behavior: smooth;
     font-size: 14px;
 }
@@ -63,10 +63,10 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     color: #000000;
-    font-weight: 500;
     margin-top: 0;
+    font-weight: 400;
     line-height: 1;
 }
 
@@ -212,7 +212,7 @@ input[type="checkbox"] + label:after {
     top: 0;
     display: block;
     content: "\f00c";
-    font-family: 'FontAwesome', serif;
+    font-family: 'FontAwesome';
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -449,7 +449,7 @@ mark {
     letter-spacing: 3px;
     margin: 0 0 15px 0;
     position: relative;
-    font-family: 'Lobster', cursive;
+    font-family: 'Spectral SC', serif;
 }
 
 @media (max-width: 479px) {
@@ -461,7 +461,7 @@ mark {
 
 .section-title .section-title-3 {
     font-size: 36px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "Josefin Slab", serif;
     font-weight: 700;
     margin-bottom: 0;
     padding-bottom: 25px;
@@ -491,7 +491,7 @@ mark {
 
 .section-title .section-title-2 {
     font-size: 28px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     color: #010101;
     margin-bottom: 15px;
     text-transform: uppercase;
@@ -513,7 +513,7 @@ mark {
 
 .section-title .section-title-large {
     font-size: 80px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "Josefin Slab", serif;
     font-weight: 600;
 }
 
@@ -619,7 +619,7 @@ mark {
     border: none;
     width: 92%;
     margin: 0 auto;
-    /*margin-bottom: 0;*/
+    margin-bottom: 22px;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
@@ -734,7 +734,7 @@ mark {
 
 .countdown-wrapper .single-countdown .single-countdown_time {
     font-size: 40px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 400;
     line-height: 40px;
     color: #555555;
@@ -757,7 +757,7 @@ mark {
 .countdown-wrapper .single-countdown .single-countdown_text {
     font-size: 14px;
     line-height: 16px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 400;
     color: #999999;
 }
@@ -801,7 +801,7 @@ mark {
 
 .countdown-style-2 .single-countdown .single-countdown_time {
     font-size: 14px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 500;
     line-height: 16px;
     color: #000000;
@@ -811,7 +811,7 @@ mark {
 .countdown-style-2 .single-countdown .single-countdown_text {
     font-size: 14px;
     line-height: 16px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 500;
     color: #000000;
 }
@@ -1096,7 +1096,7 @@ mark {
     padding: 0;
     margin: 0;
     height: auto;
-    /*line-height: auto;*/
+    line-height: normal;
 }
 
 .myniceselect.nice-select span {
@@ -1717,8 +1717,8 @@ mark {
     padding: 8px 10px;
     font-size: 15px;
     text-transform: uppercase;
-    font-family: 'PT Serif Caption', sans-serif;
-    font-weight: 300;
+    font-family: "PT Serif Caption", sans-serif;
+    font-weight: 400;
     line-height: 18px;
     color: #000000;
 }
@@ -1762,7 +1762,7 @@ mark {
     -ms-flex-pack: justify;
     justify-content: space-between;
     text-transform: uppercase;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     line-height: 18px;
     position: relative;
     color: #000000;
@@ -1841,7 +1841,7 @@ mark {
 .mega-menu .menu-colum ul li .mega-menu-text {
     position: relative;
     font-size: 18px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     display: table-caption;
     padding: 0 20px 0 0;
     margin: 0 0 10px 20px;
@@ -1861,7 +1861,7 @@ mark {
 .mega-menu .menu-colum ul li a {
     padding: 10px 20px;
     display: block;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     line-height: 20px;
     color: #000000;
     font-size: 14px;
@@ -2074,7 +2074,7 @@ mark {
     font-weight: 600;
     margin-top: 0;
     margin-bottom: 8px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
 }
 
 .header-right-area .cart-item-wrapper .single-cart-item .cart-text .cart-text-btn {
@@ -2390,7 +2390,7 @@ mark {
     padding-bottom: 8px;
     color: #000000;
     line-height: 25px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Spectral SC', serif;
 }
 
 .offcanvas-widget-area .menu-top-menu > li > a:hover {
@@ -2438,7 +2438,7 @@ mark {
 
 .offcanvas-widget-area .switcher-menu > ul > li > a:before {
     content: '\f107';
-    font-family: FontAwesome, serif;
+    font-family: FontAwesome;
     font-size: 12px;
     position: absolute;
     right: 0;
@@ -2782,8 +2782,8 @@ mark {
     line-height: 1;
     position: relative;
     padding-bottom: 12px;
-    margin-bottom: 15px;
-    font-family: 'PT Serif Caption', sans-serif;
+    margin-bottom: 30px;
+    font-family: "Josefin Slab", serif;
 }
 
 .shop-main-area .sidebar_widget .widget_inner .widget-title:after, .blog-main-area .sidebar_widget .widget_inner .widget-title:after {
@@ -2853,7 +2853,7 @@ mark {
 }
 
 .shop-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container li, .blog-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container li {
-    padding: 5px 0;
+    padding: 10px 0;
 }
 
 .shop-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container .custom-control-input, .blog-main-area .sidebar_widget .widget_inner .widget-list .sidebar-body .checkbox-container .custom-control-input {
@@ -2962,7 +2962,7 @@ mark {
     font-weight: 600;
     display: inline-block;
     margin-bottom: 3px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
 }
 
 .sidebar-product .product-content .title-2:hover {
@@ -3358,6 +3358,7 @@ mark {
     height: 45px;
     width: 45px;
     line-height: 45px;
+    text-align: center;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -3844,7 +3845,7 @@ mark {
     color: #ffffff;
     background-color: #000000;
     font-size: 18px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     border-color: #000000;
     border-radius: 0;
 }
@@ -3982,7 +3983,7 @@ mark {
 }
 
 .product-summery .product-head .product-title {
-    font-size: 31px;
+    font-size: 30px;
 }
 
 @media (max-width: 479px) {
@@ -5341,7 +5342,7 @@ mark {
 
 .about-area .section-title-wrap .title {
     font-size: 42px;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 700;
     line-height: 1.2;
     color: #000000;
@@ -5369,7 +5370,7 @@ mark {
 }
 
 .about-area .section-title-wrap .andro_list li:before {
-    font-family: "FontAwesome", serif;
+    font-family: "FontAwesome";
     content: "\f055";
     -webkit-font-smoothing: antialiased;
     font-style: normal;
@@ -5778,7 +5779,7 @@ mark {
 
 .intro11-slider .intro11-content-2 .different-title {
     font-size: 190px;
-    font-family: 'Lobster', cursive;
+    font-family: 'Spectral SC', serif;
     line-height: 150px;
     color: #4e7fad;
     margin-bottom: 20px;
@@ -6043,7 +6044,7 @@ mark {
     display: inline-block;
     font-size: 15px;
     font-weight: 500;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     height: 45px;
     letter-spacing: 0.025em;
     line-height: 45px;
@@ -6207,6 +6208,7 @@ mark {
     -o-transition: all 0.3s;
     transition: all 0.3s;
     content: "\e82e";
+    font-family: Linearicons-Free;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -6451,7 +6453,7 @@ mark {
     top: 30px;
     left: 30px;
     background: #000000;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 500;
     font-size: 12px;
     height: 20px;
@@ -7198,7 +7200,7 @@ mark {
 }
 
 .breadcrumbs-area .breadcrumb-content .title-3 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Spectral SC', serif;
     font-size: 30px;
     font-weight: 700;
 }
@@ -7234,7 +7236,7 @@ mark {
 .breadcrumbs-area .breadcrumb-content ul li a {
     font-size: 18px;
     color: #000000;
-    font-family: 'PT Serif Caption', sans-serif;
+    font-family: "PT Serif Caption", sans-serif;
     font-weight: 400;
     line-height: 1;
 }
@@ -7455,6 +7457,7 @@ mark {
 .text-pink {
     color: #4e7fad !important;
 }
+
 .city_link {
     font-size: 15px;
 }
