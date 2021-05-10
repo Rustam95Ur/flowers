@@ -1,7 +1,7 @@
 $(window).on('hashchange', function () {
     if (window.location.hash) {
         var page = window.location.hash.replace('#', '');
-        if (page == Number.NaN || page <= 0) {
+        if (page === Number.NaN || page <= 0) {
             return false;
         } else {
             product_filter(page);
@@ -9,7 +9,7 @@ $(window).on('hashchange', function () {
     }
 });
 /*  POPOVER JS END*/
-window.onpageshow = function (event) {
+window.onpageshow = function () {
     var url_parameters = window.location.search;
     if (url_parameters.length === 0) clear_for_load()
 };
@@ -92,10 +92,10 @@ $("select[name='sort']").change(function () {
     var filter = $('#filter_form').serialize()
     product_filter(filter)
 });
-var amount = $('#amount')
+let amount = $('#amount')
 amount.on('keyup', function () {
-    var min_max_val = $(this).val().split('-')
-    var updated_range_val = [];
+    var min_max_val = $(this).val().split('-'),
+        updated_range_val = [];
     for (var i = 0; i < min_max_val.length; ++i) {
         updated_range_val.push( min_max_val[i].replace('₸', '').replace(/\s+/g, ''))
     }

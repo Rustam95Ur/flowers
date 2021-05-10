@@ -10,10 +10,10 @@
                                 <h4 class="text-pink mb-0">
                                     <a href="#">
                                         @if ($selected_city)
-                                            <span class="menu-text"><i class="lnr lnr-map-marker"></i>Алматы</span>
+                                            <span class="menu-text text-uppercase"><i class="lnr lnr-map-marker"></i>Алматы</span>
 
                                         @else
-                                            <span class="menu-text"><i class="lnr lnr-map-marker"></i>Ваш город</span>
+                                            <span class="menu-text text-uppercase"><i class="lnr lnr-map-marker"></i>Ваш город</span>
                                         @endif
                                         <i class="fa fa-angle-down"></i>
                                     </a>
@@ -150,7 +150,7 @@
                                 <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-search">
                                     <li>
                                         <form action="{{route('shop')}}">
-                                            <input name="title" id="search" placeholder="Поиск" type="text">
+                                            <label for="search" class="d-none"></label><input name="title" id="search" placeholder="Поиск" type="text">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </li>
@@ -183,7 +183,7 @@
             <div class="off-canvas-inner">
                 <div class="search-box-offcanvas">
                     <form action="{{route('shop')}}">
-                        <input type="text" name="title" placeholder="Поиск...">
+                        <label for="search_product" class="d-none"></label><input id="search_product" type="text" name="title" placeholder="Поиск...">
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
