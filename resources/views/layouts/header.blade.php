@@ -117,7 +117,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="{{route('galleries')}}">
                                     <span class="menu-text">{{trans('header.gallery')}}</span>
                                 </a>
                             </li>

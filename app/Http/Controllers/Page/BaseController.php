@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\Category;
 use TCG\Voyager\Models\Page;
@@ -74,11 +75,23 @@ class BaseController extends Controller
         ]);
     }
 
-
+    /**
+     * @param $city_id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function select_city($city_id): \Illuminate\Http\RedirectResponse
     {
         session()->put('city', $city_id);
         return redirect()->back();
+    }
+
+    public function galleries()
+    {
+        $images = Gallery::all();
+
+        return view('pages.gallery', [
+            'gallery_images' => $images
+        ]);
     }
 
 

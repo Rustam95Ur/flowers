@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <!-- Wishlist main wrapper start -->
-    <div class="wishlist-main-wrapper mt-no-text">
+    <div class="wishlist-main-wrapper mt-no-text mb-5 pb-5">
         <div class="container container-default-2 custom-area">
             <div class="row">
                 <div class="col-lg-12">
