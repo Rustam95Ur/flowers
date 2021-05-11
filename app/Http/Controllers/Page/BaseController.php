@@ -94,5 +94,11 @@ class BaseController extends Controller
         ]);
     }
 
+    public function calculator()
+    {
+        return view('pages.calculator');
+    }
+
+
 
 }

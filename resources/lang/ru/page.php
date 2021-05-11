@@ -34,4 +34,14 @@ return [
         'sub_total' => 'Сумма товаров',
         'cart_total' => 'Итоги корзины',
     ],
+    'calculator' => [
+        'title' => 'Цветочный калькулятор',
+        'order' => 'Ваш заказ',
+        'product' => 'Продукт',
+        'total' => 'Итог',
+        'count' => 'Количество',
+        'count_place' => 'штук',
+        'total_price' => 'Цена',
+        'place_order' => 'Сделать заказ',
+    ],
 ];

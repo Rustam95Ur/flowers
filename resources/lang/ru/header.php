@@ -8,7 +8,7 @@ return [
     'information' => 'Информация',
     'calculator' => 'Калькулятор',
     'contact' => 'Контакты',
-    'gallery' => 'Галерия',
+    'gallery' => 'Галерея',
     'phone' => 'Номер телефона',
     'language'  => 'Язык',
     'about_us' => 'О нас',

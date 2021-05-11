@@ -34,6 +34,7 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
     Route::get('/information/{slug}', [BaseController::class, 'information_page'])->name('information_page');
     Route::get('/gallery', [BaseController::class, 'galleries'])->name('galleries');
+    Route::get('/calculator', [BaseController::class, 'calculator'])->name('calculator');
     Route::get('/select-city/{city_id}', [BaseController::class, 'select_city'])->name('select_city');
 
 });

@@ -74,8 +74,9 @@
         $('#checkout_coupon').slideToggle(900);
     });
     // showlogin toggle
-    $('#cbox').on('click', function () {
-        $('#cbox-info').slideToggle(900);
+    $('.category_checkbox').on('click', function () {
+        var id = $(this).attr('id')
+        $('#' + id + '-info').slideToggle(900);
     });
 
     // Ship box toggle

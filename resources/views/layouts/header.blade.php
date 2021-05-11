@@ -107,7 +107,7 @@
                             </li>
 
                             <li>
-                                <a href="#">
+                                <a href="{{route('calculator')}}">
                                     <span class="menu-text">{{trans('header.calculator')}}</span>
                                 </a>
                             </li>
