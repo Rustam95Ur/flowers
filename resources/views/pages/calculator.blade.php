@@ -9,17 +9,41 @@
                         <div class="checkbox-form">
                             <h3>{{trans('page.calculator.title')}}</h3>
                             <div class="row">
-                                @foreach($categories as $category)
                                 <div class="col-md-6 col-custom">
-                                    <div class="checkout-form-list create-acc">
-                                        <input id="cbox-{{$category->id}}" type="checkbox" class="category_checkbox">
-                                        <label for="cbox-{{$category->id}}">{{$category->name}}</label>
-                                    </div>
-                                    <div id="cbox-{{$category->id}}-info" class="checkout-form-list create-account">
-                                        <label for="category-{{$category->id}}">{{trans('page.calculator.count')}}</label>
-                                        <input id="category-{{$category->id}}" class="calculator_count" placeholder="{{trans('page.calculator.count_place')}}" type="number">
+                                    <div class="checkout-form-list">
+                                        <label for='green'>{{trans('page.calculator.green')}}</label>
+                                        <select class="form-control" id="green">
+                                            <option value="1">Да</option>
+                                            <option value="0">Нет</option>
+                                        </select>
                                     </div>
                                 </div>
+                                <div class="col-md-6 col-custom">
+                                    <label for="decor">{{trans('page.calculator.decor')}}</label>
+                                    <select class="form-control" id="decor">
+                                        <option>Сетка</option>
+                                        <option>Фетр</option>
+                                        <option>Газета</option>
+                                        <option>Лента</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                @foreach($categories as $category)
+                                    <div class="col-md-6 col-custom">
+                                        <div class="checkout-form-list create-acc">
+                                            <input id="cbox-{{$category->id}}" type="checkbox"
+                                                   class="category_checkbox">
+                                            <label for="cbox-{{$category->id}}">{{$category->name}}</label>
+                                        </div>
+                                        <div id="cbox-{{$category->id}}-info" class="checkout-form-list create-account">
+                                            <label
+                                                for="category-{{$category->id}}">{{trans('page.calculator.count')}}</label>
+                                            <input id="category-{{$category->id}}" class="calculator_count"
+                                                   placeholder="{{trans('page.calculator.count_place')}}" type="number">
+                                            <input type="hidden" value="{{$category->price}}" id="category-price-{{$category->id}}">
+                                        </div>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -49,7 +73,8 @@
                         <div class="payment-method">
                             <div class="payment-accordion">
                                 <div class="order-button-payment">
-                                    <button class="btn flosun-button secondary-btn black-color rounded-0 w-100">{{trans('page.calculator.order')}}</button>
+                                    <button
+                                        class="btn flosun-button secondary-btn black-color rounded-0 w-100">{{trans('page.calculator.place_order')}}</button>
                                 </div>
                             </div>
                         </div>

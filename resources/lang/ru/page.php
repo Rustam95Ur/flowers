@@ -43,5 +43,7 @@ return [
         'count_place' => 'штук',
         'total_price' => 'Цена',
         'place_order' => 'Сделать заказ',
+        'green' => 'Зелень',
+        'decor' => 'Оформление',
     ],
 ];

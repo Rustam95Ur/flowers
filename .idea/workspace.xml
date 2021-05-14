@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ru/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -333,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620738703412</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added calculator page">
+      <created>1620746007012</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1620746007012</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,6 +362,7 @@
     <MESSAGE value="Updated product link" />
     <MESSAGE value="Added quick view modal" />
     <MESSAGE value="Added gallery page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added gallery page" />
+    <MESSAGE value="Added calculator page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added calculator page" />
   </component>
 </project>
