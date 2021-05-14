@@ -84,6 +84,33 @@ class ProductFilter extends QueryFilter
      * @param $value
      * @return mixed
      */
+    public function types($value)
+    {
+        return $this->builder->where(function ($query) use ($value) {
+            $query->whereHas('types', function ($q) use ($value) {
+                $q->whereIn('type_id', $value);
+            });
+        });
+    }
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function intendeds($value)
+    {
+        return $this->builder->where(function ($query) use ($value) {
+            $query->whereHas('intendeds', function ($q) use ($value) {
+                $q->whereIn('intended_id', $value);
+            });
+        });
+    }
+
+
+    /**
+     * @param $value
+     * @return mixed
+     */
     public function sort($value)
     {
         switch ($value) {

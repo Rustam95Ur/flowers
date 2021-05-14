@@ -86,6 +86,54 @@
                                 </div>
                             </div>
                             <div class="widget-list">
+                                <h3 class="widget-title">{{trans('shop.filter.types')}}</h3>
+                                <div class="sidebar-body">
+                                    <ul class="checkbox-container colors-list">
+                                        @foreach($types as $type)
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input form="filter_form" name="types[]" type="checkbox"
+                                                           value="{{$type->id}}"
+                                                           class="custom-control-input form-check-input"
+                                                           id="type_checkbox_{{$type->id}}"
+                                                           @if(array_key_exists('types', $filters) and in_array($type->id, $filters['types']))
+                                                           checked
+                                                        @endif
+                                                    >
+                                                    <label class="custom-control-label"
+                                                           for="type_checkbox_{{$type->id}}">{{$type->title}}</label>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="widget-list">
+                                <h3 class="widget-title">{{trans('shop.filter.intendeds')}}</h3>
+                                <div class="sidebar-body">
+                                    <ul class="checkbox-container colors-list">
+                                        @foreach($intendeds as $intended)
+                                            <li>
+                                                <div class="custom-control custom-checkbox">
+                                                    <input form="filter_form" name="types[]" type="checkbox"
+                                                           value="{{$intended->id}}"
+                                                           class="custom-control-input form-check-input"
+                                                           id="intended_checkbox_{{$intended->id}}"
+                                                           @if(array_key_exists('intendeds', $filters) and in_array($intended->id, $filters['intendeds']))
+                                                           checked
+                                                        @endif
+                                                    >
+                                                    <label class="custom-control-label"
+                                                           for="intended_checkbox_{{$intended->id}}">{{$intended->title}}</label>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="widget-list">
                                 <h3 class="widget-title">{{trans('shop.filter.size')}}</h3>
                                 <div class="sidebar-body">
                                     <ul class="checkbox-container colors-list">

@@ -8,7 +8,7 @@ $('.calculator_count').on('keyup', function () {
         id = $(this).attr('id').replace('category-', ''),
         category_name = $("label[for='cbox-" + id + "']").text(),
         checked_status = false,
-        price = $('#category-price-'+ id).val();
+        price = $('#category-price-' + id).val();
     if ($('#cbox-' + id).is(':checked')) {
         checked_status = true
     }
@@ -42,15 +42,18 @@ $('.category_checkbox').on('change', function () {
 $('#green').on('change', function () {
     var value = $(this).val(),
         new_price = 1000,
-        count = 1
+        count = 1,
+        checked_status = true
     if (parseInt(value) === 0) {
         new_price = 500
         count = 0
+        checked_status = false
     }
     total_product_list.some(function (el) {
         if (el.title === 'Зелень') {
             el.price = new_price
             el.count = count
+            el.checked = checked_status
         }
     });
     get_total_price()

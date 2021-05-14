@@ -15,9 +15,9 @@ class Category extends Model
 
     protected $fillable = ['slug', 'name'];
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function products(): \Illuminate\Database\Eloquent\Relations\belongsToMany
     {
-        return $this->hasMany(Product::class, 'id');
+        return $this->belongsToMany(Product::class, 'product_category');
     }
 
     public function parentId(): \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -25,7 +25,4 @@ class Category extends Model
         return $this->belongsTo(self::class);
     }
 
-    public function getTotalProductsAttribute(){
-        return $this->hasMany(Product::class, 'id')->where('id',$this->id)->count();
-    }
 }

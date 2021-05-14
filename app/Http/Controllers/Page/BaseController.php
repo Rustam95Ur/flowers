@@ -7,18 +7,15 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use App\Models\Product;
-use App\Models\Category;
 use TCG\Voyager\Models\Page;
-
-//use App\Models\Comment;
-//use App\Models\Gallery;
+use App\Models\Comment;
 
 class BaseController extends Controller
 {
 
     public function home()
     {
-
+        $flowers_count = Product::count();
         $flowers = Product::all()->toarray();
         $temp_featured_flowers = $flowers;
         $temp_array = [];
@@ -36,11 +33,12 @@ class BaseController extends Controller
         }
 
 //        $galleries = Gallery::limit(10)->orderBy('created_at', 'DESC')->get();
-//        $comments = Comment::all();
+        $comments = Comment::all();
         return view('pages.home', [
             'featured_flowers' => $featured_flowers,
             'sale_flowers'  => $flowers,
-//            'galleries'  => $galleries
+            'product_count'  => $flowers_count,
+            'comments'  => $comments
         ]);
     }
 

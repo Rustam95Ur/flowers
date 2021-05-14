@@ -62,7 +62,24 @@
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
-
+                                    @foreach($types as $type)
+                                        <li>
+                                            <a href="{{route('shop')}}?types[]={{$type->id}}">{{$type->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{route('home')}}">
+                                    <span class="menu-text"> {{trans('header.intendeds')}}</span>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-submenu dropdown-hover">
+                                    @foreach($intendeds as $intended)
+                                        <li>
+                                            <a href="{{route('shop')}}?intendeds[]={{$intended->id}}">{{$intended->title}}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li>

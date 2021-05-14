@@ -9,6 +9,7 @@ return [
     'calculator' => 'Калькулятор',
     'contact' => 'Контакты',
     'gallery' => 'Галерея',
+    'intendeds' => 'Кому',
     'phone' => 'Номер телефона',
     'language'  => 'Язык',
     'about_us' => 'О нас',

@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use App\Locale;
 use App\Models\City;
+use App\Models\Intended;
 use App\Models\Product;
+use App\Models\Type;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Category;
 use TCG\Voyager\Models\Page;
@@ -58,6 +60,8 @@ class AppServiceProvider extends ServiceProvider
                 $wish_count = count($count_wish_items);
             }
             $categories  = Category::all();
+            $types  = Type::all();
+            $intendeds  = Intended::all();
 
             $locale = Locale::lang();
             $view->with('locale', $locale)
@@ -68,7 +72,9 @@ class AppServiceProvider extends ServiceProvider
                 ->with('selected_city', $selected_city)
                 ->with('selected_city_name', $city_title)
                 ->with('pages', $pages)
+                ->with('types', $types)
                 ->with('cities', $cities)
+                ->with('intendeds', $intendeds)
             ->with('wish_count', $wish_count);
         });
 

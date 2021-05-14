@@ -251,53 +251,25 @@
                         <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
                         <div class="categories-content">
                             <h3>{{trans('header.category.all')}}</h3>
-                            <h4>{{trans('page.home.category_item_count', ['count'=> 12])}}</h4>
+                            <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
                         </div>
                     </div>
                 </div>
                 <div class="cat-2 col-md-8 col-sm-12 col-custom">
-                    <div class="row">
+                    <div class="row elements-grid">
                         @foreach($categories as $category)
-                            <div class="cat-{{3 + $loop->iteration}} col-md-{{random_int(4, 10)}} col-custom">
+                            <div class="cat-{{3 + $loop->iteration}} col-md-4 col-custom column-win">
                                 <div class="categories-img mb-30">
                                     <a href="{{route('shop')}}?categories[]={{$category->id}}">
-                                        <img src="{{ str_ireplace('%image_num%',random_int(2, 5), asset('images/category/home1-category-%image_num%.jpg'))}}"
-                                            alt="{{$category->title}}"></a>
+                                        <img src="{{Voyager::image($category->image)}}"
+                                             alt="{{$category->title}}"></a>
                                     <div class="categories-content">
                                         <h3>{{$category->name}}</h3>
-                                        <h4>{{trans('page.home.category_item_count', ['count'=> ($category->total_products)])}}</h4>
+                                        <h4>{{trans('page.home.category_item_count', ['count'=> ($category->products()->count())])}}</h4>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
-                        {{--                        <div class="cat-4 col-md-5 col-custom">--}}
-                        {{--                            <div class="categories-img mb-30">--}}
-                        {{--                                <a href="#"><img src="images/category/home1-category-3.jpg" alt=""></a>--}}
-                        {{--                                <div class="categories-content">--}}
-                        {{--                                    <h3>Potted Plant</h3>--}}
-                        {{--                                    <h4>18 items</h4>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="cat-5 col-md-4 col-custom">--}}
-                        {{--                            <div class="categories-img mb-30">--}}
-                        {{--                                <a href="#"><img src="images/category/home1-category-4.jpg" alt=""></a>--}}
-                        {{--                                <div class="categories-content">--}}
-                        {{--                                    <h3>Potted Plant</h3>--}}
-                        {{--                                    <h4>18 items</h4>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                        <div class="cat-6 col-md-8 col-custom">--}}
-                        {{--                            <div class="categories-img mb-30">--}}
-                        {{--                                <a href="#"><img src="images/category/home1-category-5.jpg" alt=""></a>--}}
-                        {{--                                <div class="categories-content">--}}
-                        {{--                                    <h3>Potted Plant</h3>--}}
-                        {{--                                    <h4>18 items</h4>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
                     </div>
                 </div>
             </div>
@@ -320,91 +292,48 @@
             <div class="row">
                 <div class="testimonial-carousel swiper-container intro11-carousel-wrap col-12 col-custom">
                     <div class="swiper-wrapper">
-                        <div class="single-item swiper-slide">
-                            <!--Single Testimonial Start-->
-                            <div class="single-testimonial text-center">
-                                <div class="testimonial-content">
-                                    <p>These guys have been absolutely outstanding. Perfect Themes and the best of all
-                                        that you have many options to choose! Best Support team ever! Very fast
-                                        responding! Thank you very much! I highly recommend this theme and these
-                                        people!</p>
-                                    <div class="testimonial-author">
-                                        <h6>Katherine Sullivan <span>Customer</span></h6>
+                        @foreach($comments as $comment)
+                            <div class="single-item swiper-slide">
+                                <!--Single Testimonial Start-->
+                                <div class="single-testimonial text-center">
+                                    <div class="testimonial-content">
+                                        <p>{{$comment->body}}</p>
+                                        <div class="testimonial-author">
+                                            <h6>{{$comment->full_name}}</h6>
+                                        </div>
                                     </div>
                                 </div>
+                                <!--Single Testimonial End-->
                             </div>
-                            <!--Single Testimonial End-->
-                        </div>
-                        <div class="single-item swiper-slide">
-                            <!--Single Testimonial Start-->
-                            <div class="single-testimonial text-center">
-                                <div class="testimonial-content">
-                                    <p>These guys have been absolutely outstanding. Perfect Themes and the best of all
-                                        that you have many options to choose! Best Support team ever! Very fast
-                                        responding! Thank you very much! I highly recommend this theme and these
-                                        people!</p>
-                                    <div class="testimonial-author">
-                                        <h6>Katherine Sullivan <span>Customer</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Single Testimonial End-->
-                        </div>
+                        @endforeach
                     </div>
-                    <!-- Slider Navigation -->
-                    <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i>
-                    </div>
-                    <div class="home1-slider-next swiper-button-next main-slider-nav"><i
-                            class="lnr lnr-arrow-right"></i></div>
-                    <!-- Slider pagination -->
-                    <div class="swiper-pagination default-pagination"></div>
                 </div>
+                <!-- Slider Navigation -->
+                <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i>
+                </div>
+                <div class="home1-slider-next swiper-button-next main-slider-nav"><i
+                        class="lnr lnr-arrow-right"></i></div>
+                <!-- Slider pagination -->
+                <div class="swiper-pagination default-pagination"></div>
             </div>
         </div>
+    </div>
     </div>
     <!-- Testimonial Area End Here -->
-    <!-- Brand Logo Area Start Here -->
-    <div class="brand-logo-area gray-bg pt-no-text pb-no-text mt-text-5">
-        <div class="container custom-area">
-            <div class="row">
-                <div class="col-12 col-custom">
-                    <div class="brand-logo-carousel swiper-container intro11-carousel-wrap arrow-style-3">
-                        <div class="swiper-wrapper">
-                            <div class="single-brand swiper-slide">
-                                <a href="#">
-                                    <img src="images/brand/1.png" alt="Brand Logo">
-                                </a>
-                            </div>
-                            <div class="single-brand swiper-slide">
-                                <a href="#">
-                                    <img src="images/brand/2.png" alt="Brand Logo">
-                                </a>
-                            </div>
-                            <div class="single-brand swiper-slide">
-                                <a href="#">
-                                    <img src="images/brand/3.png" alt="Brand Logo">
-                                </a>
-                            </div>
-                            <div class="single-brand swiper-slide">
-                                <a href="#">
-                                    <img src="images/brand/4.png" alt="Brand Logo">
-                                </a>
-                            </div>
-                            <div class="single-brand swiper-slide">
-                                <a href="#">
-                                    <img src="images/brand/5.png" alt="Brand Logo">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Slider Navigation -->
-                        <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i
-                                class="lnr lnr-arrow-left"></i></div>
-                        <div class="home1-slider-next swiper-button-next main-slider-nav"><i
-                                class="lnr lnr-arrow-right"></i></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Brand Logo Area End Here -->
+    @push('scripts')
+        <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+        <script>
+            function masonry_grid() {
+                $('.elements-grid').masonry({
+                    // options
+                    itemSelector: '.column-win',
+                    horizontalOrder: true
+                });
+            }
+
+            $(document).ready(function () {
+                masonry_grid()
+            });
+        </script>
+    @endpush
 @endsection

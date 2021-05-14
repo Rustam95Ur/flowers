@@ -15,6 +15,8 @@ return [
     'filter' => [
         'color' => 'Цвет',
         'price' => 'Цена',
+        'types' => 'Тип',
+        'intendeds' => 'Кому',
         'categories' => 'Категории',
         'size' => 'Размеры',
         'no_result' => 'По вашему фильтру ничего не найдено'
