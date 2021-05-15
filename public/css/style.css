@@ -7461,3 +7461,35 @@ mark {
 .city_link {
     font-size: 15px;
 }
+
+
+.dropdown-submenu-v2, .dropdown-submenu{
+    position: absolute;
+    z-index: 5;
+    min-width: 200px;
+    background: white;
+    /*border-top: 1px solid #CBCBCC;*/
+    /*border-left: 1px solid #CBCBCC;*/
+    /*border-right: 1px solid #CBCBCC;*/
+    visibility: hidden;
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: rotateX(-90deg);
+    transition: .3s linear;
+}
+.dropdown-submenu-v2 li, .dropdown-submenu li{position: relative;}
+.dropdown-submenu-v2 li {
+    padding: 10px 20px;
+}
+
+.dropdown-submenu .dropdown-submenu-v2 {
+    position: absolute;
+    left: 100%;
+    top: -1px;
+    transition: .3s linear;
+}
+nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
+    transform: rotateX(0deg);
+    visibility: visible;
+    opacity: 1;
+}

@@ -5,8 +5,8 @@
             <div class="row text-center">
                 <div class="col-md-4  mt-3 col-xs-12">
                     <h4 class="text-pink mb-0 text-uppercase">
-                        <a  href="#select_city_modal" title="select_city" data-toggle="modal"
-                            data-target="#select_city_modal">
+                        <a href="#select_city_modal" title="select_city" data-toggle="modal"
+                           data-target="#select_city_modal">
                             @if ($selected_city)
                                 <i class="lnr lnr-map-marker"></i>{{$selected_city_name->title}}
 
@@ -50,9 +50,27 @@
                                 <ul class="dropdown-submenu dropdown-hover">
                                     <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
                                     @foreach($categories as $category)
-                                        <li>
-                                            <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}</a>
-                                        </li>
+                                        @if(!$category->parent_id)
+                                            <li>
+                                                <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}
+                                                    @foreach($categories as $chill_category)
+                                                        @if($chill_category->parent_id == $category->id)
+                                                            <span class="fa fa-angle-down"></span>
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                </a>
+                                                @foreach($categories as $chill_category)
+                                                    @if($chill_category->parent_id == $category->id)
+                                                        <ul class="dropdown-submenu-v2">
+                                                            <li>
+                                                                <a href="{{route('shop')}}?categories[]={{$chill_category->id}}">{{$chill_category->name}} </a>
+                                                            </li>
+                                                        </ul>
+                                                    @endif
+                                                @endforeach
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </li>
@@ -63,9 +81,27 @@
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
                                     @foreach($types as $type)
-                                        <li>
-                                            <a href="{{route('shop')}}?types[]={{$type->id}}">{{$type->title}}</a>
-                                        </li>
+                                        @if(!$type->parent_id)
+                                            <li>
+                                                <a href="{{route('shop')}}?types[]={{$type->id}}">{{$type->title}}
+                                                    @foreach($types as $chill_type)
+                                                        @if($chill_type->parent_id == $type->id)
+                                                            <span class="fa fa-angle-down"></span>
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                </a>
+                                                <ul class="dropdown-submenu-v2">
+                                                    @foreach($types as $chill_type)
+                                                        @if($chill_type->parent_id and $chill_type->parent_id == $type->id)
+                                                            <li>
+                                                                <a href="{{route('shop')}}?types[]={{$chill_type->id}}">{{$chill_type->title}} </a>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </li>
@@ -158,7 +194,9 @@
                                 <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-search">
                                     <li>
                                         <form action="{{route('shop')}}">
-                                            <label for="search" class="d-none"></label><input name="title" id="search" placeholder="Поиск" type="text">
+                                            <label for="search" class="d-none"></label><input name="title" id="search"
+                                                                                              placeholder="Поиск"
+                                                                                              type="text">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </li>
@@ -191,7 +229,8 @@
             <div class="off-canvas-inner">
                 <div class="search-box-offcanvas">
                     <form action="{{route('shop')}}">
-                        <label for="search_product" class="d-none"></label><input id="search_product" type="text" name="title" placeholder="Поиск...">
+                        <label for="search_product" class="d-none"></label><input id="search_product" type="text"
+                                                                                  name="title" placeholder="Поиск...">
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
@@ -247,9 +286,9 @@
                                                     </li>
                                                 @else
                                                     @if(request()->route()->getName() == 'home')
-                                                    <li>
-                                                        <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
-                                                    </li>
+                                                        <li>
+                                                            <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
+                                                        </li>
                                                     @else
                                                         <li>
                                                             <a href="{{ url($key.'/'.request()->route()->getName()) }}">{{$language}}</a>
@@ -317,9 +356,9 @@
                                                     </li>
                                                 @else
                                                     @if(request()->route()->getName() == 'home')
-                                                    <li>
-                                                        <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
-                                                    </li>
+                                                        <li>
+                                                            <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
+                                                        </li>
                                                     @else
                                                         <li>
                                                             <a href="{{ url($key.'/'.request()->route()->getName()) }}">{{$language}}</a>
