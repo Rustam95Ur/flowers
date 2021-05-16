@@ -41,4 +41,14 @@ class Product extends Model
         return $this->belongsToMany(Intended::class, 'product_intended');
     }
 
+    public function extra_products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(self::class, 'product_extra', 'product_id', 'extra_product_id');
+    }
+
+    public function scopeExtra($query)
+    {
+        return $query->where('is_extra', 1);
+    }
+
 }

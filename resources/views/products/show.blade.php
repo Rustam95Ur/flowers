@@ -43,6 +43,7 @@
                         </div>
                         <div class="price-box mb-4">
                             <h4 class=""><b>{{trans('page.product.price')}}:</b> {{$flower->price}} ₸</h4>
+                            <input name="product_price" value="{{$flower->price}}" type="hidden">
                         </div>
                         <div class="product-meta mt-3">
                             <div class="product-material custom-radio mb-4">
@@ -59,27 +60,36 @@
                                 <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
                                 <div class="custom-control mt-3 ">
                                     <div class="row">
-                                        <div class="col-md-4 mr-3 custom-checkbox-image">
-                                            <input type="checkbox" name="dop" value="1217" id="test">
-                                            <label class="checkbox-div pay-checkbox" for="test">
-                                                <div class="sidebar-product align-items-center">
-                                                    <img class="image"
-                                                         src="https://cvetyastana.kz//upload/iblock/b6c/33.jpg"
-                                                         alt="product">
-                                                    <div class="product-content">
-                                                        <div class="product-title">
-                                                            <h5 class="font-weight-bold">Шоколад ручной работы</h5>
-                                                        </div>
-                                                        <div class="price-box">
-                                                            <span class="font-weight-bold">2500 ₸</span>
+                                        @foreach($flower->extra_products as $product)
+                                            <div class="col-md-4 mr-3 custom-checkbox-image">
+                                                <input type="checkbox" name="extra" value="{{$product->price}}" id="extra_product_{{$product->id}}">
+                                                <label class="checkbox-div pay-checkbox" for="extra_product_{{$product->id}}">
+                                                    <div class="sidebar-product align-items-center">
+                                                        @foreach(json_decode($product->images) as $extra_image)
+                                                        <img class="image"
+                                                             src="{{Voyager::image($extra_image)}}"
+                                                             alt="{{$product->title}}">
+                                                            @break
+                                                        @endforeach
+                                                        <div class="product-content">
+                                                            <div class="product-title">
+                                                                <h5 class="font-weight-bold">{{$product->title}}</h5>
+                                                            </div>
+                                                            <div class="price-box">
+                                                                <span class="font-weight-bold">{{$product->price}}₸</span>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </label>
-                                        </div>
+                                                </label>
+                                            </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div id="total_extra_price" class="price-box mb-4" style="display:none;">
+                            <h4><b>{{trans('page.cart.total_price')}}:</b></h4>
+                            <h5 id="extra_prices"></h5>
                         </div>
                         <div class="quantity-with_btn mb-5">
                             <div class="quantity">
@@ -91,8 +101,8 @@
                                 </div>
                             </div>
                             <div class="add-to_cart">
-                                <a class="btn product-cart button-icon flosun-button dark-btn"
-                                   onclick="$(this).addClass('bg-success'); update_cart({{$flower->id}}, $('.cart-plus-minus-box').val());">
+                                <a class="btn product-cart button-icon flosun-button dark-btn" id="product_add_cart_btn"
+                                   onclick="product_and_extra_add({{$flower->id}})">
                                     {{trans('button.add_to_cart')}}
                                 </a>
                                 <a class="btn flosun-button secondary-btn  secondary-border rounded-0"
@@ -301,4 +311,7 @@
         </div>
     </div>
     <!--Product Area End-->
+    @push('scripts')
+        <script src="{{asset('js/extra_product.js')}}"></script>
+    @endpush
 @endsection

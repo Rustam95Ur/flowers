@@ -64,6 +64,7 @@ class CartController extends Controller
         $item = ['product_id' => $product_id, 'qty' => $qty];
         $message = trans('cart.success.add-cart');
         $session_items = session()->get('cart');
+        $product_exist = false;
         if ($session_items and count($session_items) > 0) {
             $product_exist = array_search($product_id, array_column($session_items, 'product_id'));
             if ($product_exist === false and $type == 'add') {
@@ -99,7 +100,7 @@ class CartController extends Controller
                 session()->push('cart', $item);
             }
         }
-        return response()->json(['success' => $message], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+        return response()->json(['success' => $message], 201, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
 
