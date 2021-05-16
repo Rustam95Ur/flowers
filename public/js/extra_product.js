@@ -37,9 +37,7 @@ function product_and_extra_add(product_id) {
     update_cart(product_id, $('.cart-plus-minus-box').val());
     if (extra_products_price.length > 0) {
         extra_products_price.forEach(function (item) {
-            setTimeout(function () {
                 update_cart(item.id.replace('extra_product_', ''), 1);
-            }, 2000);
         })
     }
 }

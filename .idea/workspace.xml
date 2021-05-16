@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/extra_product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/extra_product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -370,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621191194550</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Fix product">
+      <created>1621191941085</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1621191941085</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,6 +406,7 @@
     <MESSAGE value="Updated header for multi level menu" />
     <MESSAGE value="Updated product shop page" />
     <MESSAGE value="Updated product show page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated product show page" />
+    <MESSAGE value="Fix product" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix product" />
   </component>
 </project>
