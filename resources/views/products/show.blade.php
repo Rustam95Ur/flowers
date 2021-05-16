@@ -56,6 +56,7 @@
                                            for="size_checkbox-{{$size->id}}">{{$size->title}}</label>
                                 @endforeach
                             </div>
+                            @if(count($flower->extra_products) > 0)
                             <div class="product-material mb-4">
                                 <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
                                 <div class="custom-control mt-3 ">
@@ -86,6 +87,7 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                         <div id="total_extra_price" class="price-box mb-4" style="display:none;">
                             <h4><b>{{trans('page.cart.total_price')}}:</b></h4>

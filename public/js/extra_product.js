@@ -39,7 +39,7 @@ function product_and_extra_add(product_id) {
         extra_products_price.forEach(function (item) {
             setTimeout(function () {
                 update_cart(item.id.replace('extra_product_', ''), 1);
-            }, 3000);
+            }, 2000);
         })
     }
 }

@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated product shop page">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/extra_product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/extra_product.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -366,7 +363,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621173207820</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Updated product show page">
+      <created>1621191194550</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1621191194550</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +384,6 @@
     <MESSAGE value="added cart page" />
     <MESSAGE value="Updated cart page" />
     <MESSAGE value="Updated mini cart" />
-    <MESSAGE value="Updated product show page" />
     <MESSAGE value="Fixed header locale" />
     <MESSAGE value="Added shop page" />
     <MESSAGE value="Updated shop page" />
@@ -397,6 +400,7 @@
     <MESSAGE value="Added new models and updated header" />
     <MESSAGE value="Updated header for multi level menu" />
     <MESSAGE value="Updated product shop page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated product shop page" />
+    <MESSAGE value="Updated product show page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated product show page" />
   </component>
 </project>
