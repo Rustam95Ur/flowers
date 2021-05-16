@@ -47,12 +47,13 @@
                         <div class="product-meta mt-3">
                             <div class="product-material custom-radio mb-4">
                                 <h4 class="mb-3"><b>{{trans('page.product.size')}}:</b></h4>
-                                <input type="radio" name="size" class="custom-control-input" id="customCheck2">
-                                <label class="custom-control-label" for="customCheck2">black (20)</label>
-                                <input type="radio" name="size" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">black (10)</label>
-                                <input type="radio" name="size" class="custom-control-input" id="customCheck3">
-                                <label class="custom-control-label" for="customCheck3">black (30)</label>
+                                @foreach($flower->sizes as $size)
+                                    <input type="radio" name="size" class="custom-control-input"
+                                           id="size_checkbox-{{$size->id}}"
+                                           @if(count($flower->sizes) == 1) checked @endif>
+                                    <label class="custom-control-label"
+                                           for="size_checkbox-{{$size->id}}">{{$size->title}}</label>
+                                @endforeach
                             </div>
                             <div class="product-material mb-4">
                                 <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
@@ -76,63 +77,6 @@
                                                 </div>
                                             </label>
                                         </div>
-                                        {{--                                        <div class="col-sm-6 col-12 custom-checkbox-image">--}}
-                                        {{--                                            <input type="checkbox" name="dop" value="1217" id="test">--}}
-                                        {{--                                            <label class="checkbox-div pay-checkbox" for="test">--}}
-                                        {{--                                                <img alt="" src="https://cvetyastana.kz//upload/iblock/b6c/33.jpg">--}}
-                                        {{--                                                <br>--}}
-                                        {{--                                                <span> Шоколад ручной работы</span>--}}
-                                        {{--                                                <br>--}}
-                                        {{--                                                <span class="font-weight-bold"> 2500 ₸</span>--}}
-                                        {{--                                            </label>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                        <div class="col-sm-6 col-12">--}}
-                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/388/vaza-dlya-cvetov-ikea-vasen-vysota-20sm-d-14-sm-50371734.jpg">--}}
-                                        {{--                                                4&nbsp;000 ₸<br>Ваза из стекла "Рона" <input type="checkbox" name="dop"--}}
-                                        {{--                                                                                             value="1218"--}}
-                                        {{--                                                                                             data-price="4000"--}}
-                                        {{--                                                                                             data-price2="4,000.00">--}}
-                                        {{--                                                <span class="checkmark"></span>--}}
-                                        {{--                                            </label>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                        <div class="col-sm-6 col-12">--}}
-                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/9a7/2860d709.jpg"> 12&nbsp;000--}}
-                                        {{--                                                ₸<br>Мишка 80см <input type="checkbox" name="dop" value="1512"--}}
-                                        {{--                                                                       data-price="12000" data-price2="12,000.00">--}}
-                                        {{--                                                <span class="checkmark"></span>--}}
-                                        {{--                                            </label>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                        <div class="col-sm-6 col-12">--}}
-                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/ec7/9800012701_1_default_default.jpg">--}}
-                                        {{--                                                3&nbsp;500 ₸<br>Ferrero Rocher <input type="checkbox" name="dop"--}}
-                                        {{--                                                                                      value="1520" data-price="3500"--}}
-                                        {{--                                                                                      data-price2="3,500.00">--}}
-                                        {{--                                                <span class="checkmark"></span>--}}
-                                        {{--                                            </label>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                        <div class="col-sm-6 col-12">--}}
-                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/10a/31_03_2018_15_40_54_8430mQO1.jpg">--}}
-                                        {{--                                                5&nbsp;500 ₸<br>Фонтан из шаров "Розовое золото" <input type="checkbox"--}}
-                                        {{--                                                                                                        name="dop"--}}
-                                        {{--                                                                                                        value="1522"--}}
-                                        {{--                                                                                                        data-price="5500"--}}
-                                        {{--                                                                                                        data-price2="5,500.00">--}}
-                                        {{--                                                <span class="checkmark"></span>--}}
-                                        {{--                                            </label>--}}
-                                        {{--                                        </div>--}}
-                                        {{--                                        <div class="col-sm-6 col-12">--}}
-                                        {{--                                            <label class="checkbox-div pay-checkbox"><img--}}
-                                        {{--                                                    src="https://cvetyastana.kz//upload/iblock/e51/1181.970.jpg"> 1&nbsp;000--}}
-                                        {{--                                                ₸<br>Шар "Сердце", 1 шт. <input type="checkbox" name="dop" value="1527"--}}
-                                        {{--                                                                                data-price="1000"--}}
-                                        {{--                                                                                data-price2="1,000.00">--}}
-                                        {{--                                                <span class="checkmark"></span>--}}
-                                        {{--                                            </label>--}}
-                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>
