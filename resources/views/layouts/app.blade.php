@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{Voyager::setting('site.title')}} - @yield('title')</title>
-    <meta name="robots" content="noindex, follow" />
+    <meta name="robots" content="noindex, follow"/>
     <meta name="description" content="@yield('description', Voyager::setting('site.description'))">
     <meta name="keywords" content="@yield('keywords', Voyager::setting('site.keywords'))"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{{asset('css/plugins/magnific-popup.css')}}">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
+    @stack('css')
 </head>
 
 <body>
@@ -51,9 +51,9 @@
 <!-- Header Area End Here -->
 
 @if(request()->route()->getName() != 'home')
-<!-- Breadcrumb Area Start Here -->
-@include('layouts.breadcrumb')
-<!-- Breadcrumb Area End Here -->
+    <!-- Breadcrumb Area Start Here -->
+    @include('layouts.breadcrumb')
+    <!-- Breadcrumb Area End Here -->
 @endif
 
 
@@ -102,7 +102,18 @@
 <script src="{{asset('js/cart.js')}}"></script>
 @stack('scripts')
 
-
+@if ($message = session()->get('success') or $message =  session()->get('error') or $message = session()->get('warning') or $message =  session()->get('info') or $errors->any())
+    <script>
+        (function ($) {
+            $(function () {
+                $('#message_modal').modal('show');
+                setTimeout(function () {
+                    $('#message_modal').modal('hie')
+                }, 5000);
+            });
+        })(jQuery);
+    </script>
+@endif
 </body>
 
 </html>

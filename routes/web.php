@@ -22,6 +22,7 @@ use App\Http\Controllers\Shop\CartController;
 Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(function () {
     Route::get('/', [BaseController::class, 'home'])->name('home');
     Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product_show');
+    Route::post('/product/comment/add', [ProductController::class, 'add_comment'])->name('product_add_comment');
     Route::get('/product/quick-view/{id}', [ProductController::class, 'quick_view'])->name('product_quick_view');
     Route::get('/contact', [BaseController::class, 'contact'])->name('contact');
     Route::get('/wishlists', [CartController::class, 'wishlists'])->name('wishlists');

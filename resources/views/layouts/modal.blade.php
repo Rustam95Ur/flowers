@@ -53,3 +53,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal flosun-modal fade" id="message_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
+                <span class="close-icon" aria-hidden="true">x</span>
+            </button>
+            <div class="modal-body">
+                <div class="container-fluid custom-area">
+                    <div class="row" id="product_quick_block">
+                        @if ($message = session()->get('success'))
+                            <h3 class="text-center text-success">{!! $message !!}</h3>
+                        @endif
+                        @if ($message = session()->get('error'))
+                            <h3 class="text-center text-danger">{!! $message !!}</h3>
+                        @endif
+                        @if ($message = session()->get('warning'))
+                            <h3 class="text-center text-danger">{!! $message !!}</h3>
+                        @endif
+                        @if ($message = session()->get('info'))
+                            <h3 class="text-center text-danger">{!! $message !!}</h3>
+                        @endif
+                        @if ($errors->any())
+                            @foreach($errors->all() as $error)
+                                <ul class="questions text-center">
+                                    <li class="text-danger"><h3>{!! $error !!}</h3></li>
+                                </ul>
+                            @endforeach
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

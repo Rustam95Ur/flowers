@@ -2,6 +2,9 @@
 @section('title', $flower->title)
 @section('description', $flower->meta_description)
 @section('keywords', $flower->meta_keywords)
+@push('css')
+    <link rel="stylesheet" href="{{asset('css/rating_star.css')}}">
+@endpush
 @section('content')
     <!-- Single Product Main Area Start -->
     <div class="single-product-main-area">
@@ -57,36 +60,39 @@
                                 @endforeach
                             </div>
                             @if(count($flower->extra_products) > 0)
-                            <div class="product-material mb-4">
-                                <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
-                                <div class="custom-control mt-3 ">
-                                    <div class="row">
-                                        @foreach($flower->extra_products as $product)
-                                            <div class="col-md-4 mr-3 custom-checkbox-image">
-                                                <input type="checkbox" name="extra" value="{{$product->price}}" id="extra_product_{{$product->id}}">
-                                                <label class="checkbox-div pay-checkbox" for="extra_product_{{$product->id}}">
-                                                    <div class="sidebar-product align-items-center">
-                                                        @foreach(json_decode($product->images) as $extra_image)
-                                                        <img class="image"
-                                                             src="{{Voyager::image($extra_image)}}"
-                                                             alt="{{$product->title}}">
-                                                            @break
-                                                        @endforeach
-                                                        <div class="product-content">
-                                                            <div class="product-title">
-                                                                <h5 class="font-weight-bold">{{$product->title}}</h5>
-                                                            </div>
-                                                            <div class="price-box">
-                                                                <span class="font-weight-bold">{{$product->price}}₸</span>
+                                <div class="product-material mb-4">
+                                    <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
+                                    <div class="custom-control mt-3 ">
+                                        <div class="row">
+                                            @foreach($flower->extra_products as $product)
+                                                <div class="col-md-4 mr-3 custom-checkbox-image">
+                                                    <input type="checkbox" name="extra" value="{{$product->price}}"
+                                                           id="extra_product_{{$product->id}}">
+                                                    <label class="checkbox-div pay-checkbox"
+                                                           for="extra_product_{{$product->id}}">
+                                                        <div class="sidebar-product align-items-center">
+                                                            @foreach(json_decode($product->images) as $extra_image)
+                                                                <img class="image"
+                                                                     src="{{Voyager::image($extra_image)}}"
+                                                                     alt="{{$product->title}}">
+                                                                @break
+                                                            @endforeach
+                                                            <div class="product-content">
+                                                                <div class="product-title">
+                                                                    <h5 class="font-weight-bold">{{$product->title}}</h5>
+                                                                </div>
+                                                                <div class="price-box">
+                                                                    <span
+                                                                        class="font-weight-bold">{{$product->price}}₸</span>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                        @endforeach
+                                                    </label>
+                                                </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                             @endif
                         </div>
                         <div id="total_extra_price" class="price-box mb-4" style="display:none;">
@@ -146,69 +152,108 @@
                             <div class="product_tab_content  border p-3">
                                 <div class="review_address_inner">
                                     <!-- Start Single Review -->
-                                    <div class="pro_review mb-5">
-                                        <div class="review_thumb">
-                                            <img alt="review images" src="/images/review/1.jpg">
-                                        </div>
-                                        <div class="review_details">
-                                            <div class="review_info mb-2">
-                                                <div class="product-rating mb-2">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
-                                                <h5>Admin - <span> December 19, 2020</span></h5>
+                                    @foreach($comments as $comment)
+                                        <div class="pro_review mb-5">
+                                            <div class="review_thumb">
+                                                <img alt="review images" src="{{asset('/images/review/1.jpg')}}">
                                             </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in viverra
-                                                ex, vitae vestibulum arcu. Duis sollicitudin metus sed lorem commodo, eu
-                                                dapibus libero interdum. Morbi convallis viverra erat, et aliquet orci
-                                                congue vel. Integer in odio enim. Pellentesque in dignissim leo. Vivamus
-                                                varius ex sit amet quam tincidunt iaculis.</p>
+                                            <div class="review_details">
+                                                <div class="review_info mb-2">
+                                                    <div class="product-rating mb-2">
+                                                        <i class="fa fa-star{{ $comment->rating >= 1 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ $comment->rating >= 2 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ $comment->rating >= 3 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ $comment->rating >= 4 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ $comment->rating == 5 ? '' : '-o'}}"></i>
+                                                    </div>
+                                                    <h5>{{$comment->full_name}} - <span> {{$comment->created_at}}</span></h5>
+                                                </div>
+                                                <p>{{$comment->body}}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endforeach
                                     <!-- End Single Review -->
                                 </div>
                                 <!-- Start RAting Area -->
                                 <div class="rating_wrap">
-                                    <h5 class="rating-title-1 font-weight-bold mb-2">Add a review </h5>
-                                    <p class="mb-2">Your email address will not be published. Required fields are marked
-                                        *</p>
-                                    <h6 class="rating-title-2 mb-2">Your Rating</h6>
+                                    <h5 class="rating-title-1 font-weight-bold mb-2">{{trans('page.product.add_comment')}}</h5>
+                                    <h6 class="rating-title-2 mb-2">{{trans('page.product.ratting')}}</h6>
                                     <div class="rating_list mb-4">
                                         <div class="review_info">
                                             <div class="product-rating mb-3">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
+                                                <input form="add_comment_form" value="1" type="radio" name="stars"
+                                                       id="star-1"/>
+                                                <input form="add_comment_form" value="2" type="radio" name="stars"
+                                                       id="star-2"/>
+                                                <input form="add_comment_form" value="3" type="radio" name="stars"
+                                                       id="star-3"/>
+                                                <input form="add_comment_form" value="4" type="radio" name="stars"
+                                                       id="star-4" checked/>
+                                                <input form="add_comment_form" value="5" type="radio" name="stars"
+                                                       id="star-5"/>
+                                                <section class="stars">
+                                                    <label for="star-1">
+                                                        <svg width="255" height="240" viewBox="0 0 51 48">
+                                                            <path
+                                                                d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                                                        </svg>
+                                                    </label>
+                                                    <label for="star-2">
+                                                        <svg width="255" height="240" viewBox="0 0 51 48">
+                                                            <path
+                                                                d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                                                        </svg>
+                                                    </label>
+                                                    <label for="star-3">
+                                                        <svg width="255" height="240" viewBox="0 0 51 48">
+                                                            <path
+                                                                d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                                                        </svg>
+                                                    </label>
+                                                    <label for="star-4">
+                                                        <svg width="255" height="240" viewBox="0 0 51 48">
+                                                            <path
+                                                                d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                                                        </svg>
+                                                    </label>
+                                                    <label for="star-5">
+                                                        <svg width="255" height="240" viewBox="0 0 51 48">
+                                                            <path
+                                                                d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                                                        </svg>
+                                                    </label>
+                                                </section>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- End RAting Area -->
+                                <!-- End Rating Area -->
                                 <div class="comments-area comments-reply-area">
                                     <div class="row">
                                         <div class="col-lg-12 col-custom">
-                                            <form action="#" class="comment-form-area">
+                                            <form action="{{route('product_add_comment')}}" id="add_comment_form"
+                                                  class="comment-form-area" method="post">
+                                                @csrf
+                                                <input type="hidden" value="{{$flower->id}}" name="product_id">
                                                 <div class="row comment-input">
                                                     <div class="col-md-6 col-custom comment-form-author mb-3">
-                                                        <label>Name <span class="required">*</span></label>
-                                                        <input type="text" required="required" name="Name">
+                                                        <label for="name">{{trans('page.product.form.name')}} <span
+                                                                class="required">*</span></label>
+                                                        <input type="text" required="required" name="name" id="name">
                                                     </div>
                                                     <div class="col-md-6 col-custom comment-form-emai mb-3">
-                                                        <label>Email <span class="required">*</span></label>
-                                                        <input type="text" required="required" name="email">
+                                                        <label for="email">Email <span class="required">*</span></label>
+                                                        <input type="text" required="required" name="email" id="email">
                                                     </div>
                                                 </div>
                                                 <div class="comment-form-comment mb-3">
-                                                    <label>Comment</label>
-                                                    <textarea class="comment-notes" required="required"></textarea>
+                                                    <label for="comment">{{trans('page.product.form.comment')}} </label>
+                                                    <textarea class="comment-notes" name="body" id='comment'
+                                                              required="required"></textarea>
                                                 </div>
                                                 <div class="comment-form-submit">
-                                                    <button class="btn flosun-button secondary-btn rounded-0">Submit
+                                                    <button type="submit"
+                                                            class="btn flosun-button secondary-btn rounded-0">{{trans('button.send')}}
                                                     </button>
                                                 </div>
                                             </form>

@@ -33,7 +33,7 @@ class BaseController extends Controller
         }
 
 //        $galleries = Gallery::limit(10)->orderBy('created_at', 'DESC')->get();
-        $comments = Comment::all();
+        $comments = Comment::where('product_id', null)->get();
         return view('pages.home', [
             'featured_flowers' => $featured_flowers,
             'sale_flowers'  => $flowers,
