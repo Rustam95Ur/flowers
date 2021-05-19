@@ -25,7 +25,7 @@ class BaseController extends Controller
         $mailForm->message = $request['message'];
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($mailForm));
 
-        return redirect()->back()->with('success', trans('request.send-success'));
+        return redirect()->back()->with('success', trans('mail.contact-success'));
     }
 
 
@@ -48,7 +48,7 @@ class BaseController extends Controller
         $payment_type = $request_data['payment_type'];
         $requestForm->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($requestForm));
-        return redirect()->back()->with('success', trans('request.send-success'));
+        return redirect()->back()->with('success', trans('mail.payment-success'));
     }
 
 }

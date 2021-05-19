@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreMailForm;
+use Illuminate\Http\Request;
 use TCG\Voyager\Models\Page;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Comment;
@@ -19,7 +20,9 @@ use App\Models\Comment;
 
 class BaseController extends Controller
 {
-
+    /**
+     * @return Application|Factory|View
+     */
     public function home()
     {
         $flowers_count = Product::count();
@@ -113,6 +116,9 @@ class BaseController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function galleries()
     {
         $images = Gallery::all();
@@ -122,10 +128,18 @@ class BaseController extends Controller
         ]);
     }
 
+    /**
+     * @return Application|Factory|View
+     */
     public function calculator()
     {
         return view('pages.calculator');
     }
 
+
+    public function calculator_send(Request $request)
+    {
+        dd($request['order']);
+    }
 
 }

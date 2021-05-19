@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/contact.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Mail/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Mail/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/page.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +203,7 @@
       <updated>1619452928273</updated>
       <workItem from="1619452929973" duration="48189000" />
       <workItem from="1619944355754" duration="81948000" />
-      <workItem from="1621346215698" duration="19320000" />
+      <workItem from="1621346215698" duration="20036000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -405,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621412583591</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added send email func">
+      <created>1621446736665</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1621446736665</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -413,7 +416,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added product show page" />
     <MESSAGE value="added cart page" />
     <MESSAGE value="Updated cart page" />
     <MESSAGE value="Updated mini cart" />
@@ -438,6 +440,7 @@
     <MESSAGE value="Added comment for products" />
     <MESSAGE value="Added payment" />
     <MESSAGE value="disable online payment" />
-    <option name="LAST_COMMIT_MESSAGE" value="disable online payment" />
+    <MESSAGE value="added send email func" />
+    <option name="LAST_COMMIT_MESSAGE" value="added send email func" />
   </component>
 </project>

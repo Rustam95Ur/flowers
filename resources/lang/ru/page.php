@@ -48,7 +48,7 @@ return [
         'count' => 'Количество',
         'count_place' => 'штук',
         'total_price' => 'Цена',
-        'place_order' => 'Сделать заказ',
+        'place_order' => 'Заказать букет',
         'green' => 'Зелень',
         'decor' => 'Оформление',
     ],
