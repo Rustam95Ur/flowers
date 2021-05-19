@@ -73,8 +73,18 @@
                         <div class="payment-method">
                             <div class="payment-accordion">
                                 <div class="order-button-payment">
-                                    <button
-                                        class="btn flosun-button secondary-btn black-color rounded-0 w-100">{{trans('page.calculator.place_order')}}</button>
+                                    <form method="post" action="{{route('calculator_send')}}">
+                                        @csrf
+                                        <input type="hidden" name="order" value="">
+                                        <div>
+                                            <label for="phone">Телефон<span class="required">*</span></label>
+                                            <input placeholder="" type="text" name="phone" id="phone" class="form-control">
+                                        </div>
+                                        <button class="btn mt-3 flosun-button secondary-btn black-color rounded-0 w-100" type="submit">
+                                            {{trans('page.calculator.place_order')}}
+                                        </button>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

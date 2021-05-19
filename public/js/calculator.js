@@ -2,7 +2,7 @@ var total_product_list = [
     {'title': 'Зелень', 'count': 1, 'price': 1000, 'checked': true, 'text': ''},
     {'title': 'Оформление', 'count': 1, 'price': 0, 'checked': true, 'text': ' (Сетка) '}
 ]
-
+$('input[name="order"]').val(JSON.stringify(total_product_list))
 $('.calculator_count').on('keyup', function () {
     var product_count = $(this).val(),
         id = $(this).attr('id').replace('category-', ''),

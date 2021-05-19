@@ -137,9 +137,6 @@ class BaseController extends Controller
     }
 
 
-    public function calculator_send(Request $request)
-    {
-        dd($request['order']);
-    }
+
 
 }

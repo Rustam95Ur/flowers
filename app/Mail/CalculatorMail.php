@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ContactMail extends Mailable
+class CalculatorMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,10 +28,10 @@ class ContactMail extends Mailable
      *
      * @return $this
      */
-    public function build(): ContactMail
+    public function build(): CalculatorMail
     {
         return $this->from(env('MAIL_USERNAME'))
-            ->subject('Сообщние от пользователя')
-            ->view('mail.contact');
+            ->subject('Цветочный калькулятор')
+            ->view('mail.calculator');
     }
 }
