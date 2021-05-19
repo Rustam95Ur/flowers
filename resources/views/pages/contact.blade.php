@@ -64,11 +64,18 @@
                                                name="email" id="con_email" placeholder="Email">
                                     </div>
                                 </div>
-                                <div class="col-12 col-custom">
+                                <div class="col-6 col-custom">
                                     <div class="input-item mb-4">
-                                        <input class="border-0 rounded-0 w-100 input-area email gray-bg" type="text"
+                                        <input class="border-0 rounded-0 w-100 input-area gray-bg" type="text"
                                                name="subject" id="con_content"
                                                placeholder="{{trans('contact.subject')}}">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-custom">
+                                    <div class="input-item mb-4">
+                                        <input class="border-0 rounded-0 w-100 input-area gray-bg" type="text"
+                                               name="phone" id="con_content"
+                                               placeholder="{{trans('contact.phone_number')}}">
                                     </div>
                                 </div>
                                 <div class="col-12 col-custom">

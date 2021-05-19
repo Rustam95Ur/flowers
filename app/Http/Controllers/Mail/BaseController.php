@@ -22,6 +22,7 @@ class BaseController extends Controller
         $mailForm->name = $request['name'];
         $mailForm->subject = $request['subject'];
         $mailForm->email = $request['email'];
+        $mailForm->phone = $request['phone'];
         $mailForm->message = $request['message'];
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new ContactMail($mailForm));
 

@@ -45,6 +45,7 @@
                                         <h3 style="text-align: center; margin-top: 50px">Информация о пользователе</h3>
                                         <p><b>Имя:</b> {{ $mail->name }}</p>
                                         <p><b>Email:</b> {{ $mail->email }}</p>
+                                        <p><b>Номер телефона:</b> {{ $mail->phone }}</p>
                                         <p><b>Тема:</b>&nbsp;{{ $mail->subject}}</p>
                                         <p><b>Сообщение:</b>&nbsp;{{ $mail->message }}</p>
                                     </td>
