@@ -194,9 +194,8 @@
                                 <ul class="dropdown-sidemenu dropdown-hover-2 dropdown-search">
                                     <li>
                                         <form action="{{route('shop')}}">
-                                            <label for="search" class="d-none"></label><input name="title" id="search"
-                                                                                              placeholder="Поиск"
-                                                                                              type="text">
+                                            <label for="search" class="d-none"></label>
+                                            <input name="title" id="search" placeholder="Поиск" type="text">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </li>

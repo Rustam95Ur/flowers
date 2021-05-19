@@ -5,12 +5,9 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutForm;
 
-//use App\Mail\PaymentMail;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Mail;
-use mysql_xdevapi\Session;
 
 class PaymentController extends Controller
 {
@@ -22,6 +19,9 @@ class PaymentController extends Controller
     {
         $total_price = 0;
         $session_items = session()->get('cart');
+        if (!$session_items) {
+            return redirect()->back();
+        }
         $products = '';
         foreach ($session_items as $item) {
             $product = Product::where('id', '=', $item['product_id'])->first();
@@ -84,29 +84,23 @@ class PaymentController extends Controller
             $paymentSave->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
             $paymentSave->save();
             session()->forget('cart');
-//            $this->sendMail($full_name, $email, $phone, $total_price, $products, trans('checkout.' . $shipping_type, [], 'ru'), trans('checkout.payment.' . $payment_type, [], 'ru'), $address);
+
+            (new \App\Http\Controllers\Mail\BaseController)->payment_send_mail($request, $total_price, $products);
             return redirect()->route('cart')->with('success', trans('cart.checkout.success-offline'));
         }
+
         return back()->with('error', trans('cart.checkout.error'));
     }
 
     /**
      * @param $id
      */
-    public function success($id)
+    public function success($id): RedirectResponse
     {
-        $updateStatus = Payment::where('id', '=', $id)->update(['status' => 'Пользователь оплатил']);
+        Payment::where('id', '=', $id)->update(['status' => 'Пользователь оплатил']);
         $paymentInfo = Payment::where('id', '=', $id)->first();
-        $address = [];
-        if ($paymentInfo->shipping_type == trans('checkout.exline')) {
-            $address = [
-                'city' => $paymentInfo->city,
-                'street' => $paymentInfo->street,
-                'tariff' => $paymentInfo->tariff
-            ];
-        }
         session()->forget('cart');
-        $this->sendMail($paymentInfo->full_name, $paymentInfo->email, $paymentInfo->user_phone, $paymentInfo->total, $paymentInfo->products, $paymentInfo->shipping_type, $paymentInfo->payment_type, $address);
+//        $this->sendMail($paymentInfo->full_name, $paymentInfo->email, $paymentInfo->user_phone, $paymentInfo->total, $paymentInfo->products, $paymentInfo->shipping_type, $paymentInfo->payment_type, $address);
         return redirect()->route('cart')->with('success', trans('checkout.success-offline'));
     }
 
@@ -114,40 +108,10 @@ class PaymentController extends Controller
      * @param $id
      * @return RedirectResponse
      */
-    public function error($id)
+    public function error($id): RedirectResponse
     {
-        $updateStatus = Payment::where('id', '=', $id)->update(['status' => 'Отмена платежа']);
+        Payment::where('id', '=', $id)->update(['status' => 'Отмена платежа']);
         return redirect()->route('cart')->with('success', trans('checkout.error'));
     }
 
-
-    /**
-     * @param $user_full_name
-     * @param $user_email
-     * @param $user_phone
-     * @param $price
-     * @param $products
-     * @param $shipping_type
-     * @param $payment_type
-     * @param null $address
-     * @return RedirectResponse
-     */
-    protected function sendMail($user_full_name, $user_email, $user_phone, $price, $products, $shipping_type, $payment_type, $address = null)
-    {
-        $requestForm = new \stdClass();
-        $requestForm->full_name = $user_full_name;
-        $requestForm->email = $user_email;
-        $requestForm->phone = $user_phone;
-        $requestForm->price = $price;
-        $requestForm->products = $products;
-        $requestForm->shipping_type = $shipping_type;
-        $requestForm->payment_type = $payment_type;
-        if (count($address) > 0) {
-            $requestForm->city = $address['city'];
-            $requestForm->street = $address['street'];
-            $requestForm->tariff = $address['tariff'];
-        }
-//        Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($requestForm));
-        return redirect()->back()->with('success', trans('request.send-success'));
-    }
 }

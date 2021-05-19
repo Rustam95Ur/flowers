@@ -7,8 +7,15 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use App\Models\Product;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\StoreMailForm;
 use TCG\Voyager\Models\Page;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Comment;
+
 
 class BaseController extends Controller
 {
@@ -43,7 +50,7 @@ class BaseController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function contact()
     {
@@ -51,6 +58,9 @@ class BaseController extends Controller
     }
 
 
+    /**
+     * @return Application|Factory|View|RedirectResponse
+     */
     public function checkout()
     {
         $carts_product = session()->get('cart');
@@ -82,7 +92,7 @@ class BaseController extends Controller
 
     /**
      * @param $slug
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function information_page($slug)
     {
@@ -95,9 +105,9 @@ class BaseController extends Controller
 
     /**
      * @param $city_id
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function select_city($city_id): \Illuminate\Http\RedirectResponse
+    public function select_city($city_id): RedirectResponse
     {
         session()->put('city', $city_id);
         return redirect()->back();
