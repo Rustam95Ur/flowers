@@ -36,7 +36,8 @@
                                             {{$product['title']}}
                                         </a>
                                     </td>
-                                    <td class="pro-price"><span id="price-{{$product['id']}}">{{$product['price']}} ₸</span></td>
+                                    <td class="pro-price"><span
+                                            id="price-{{$product['id']}}">{{$product['price']}} ₸</span></td>
                                     <td class="pro-quantity">
                                         <div class="quantity">
 
@@ -57,7 +58,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="pro-subtotal"><span class="subtotal" id="subtotal-{{$product['id']}}">{{$product['price'] * $product['qty']}} ₸</span></td>
+                                    <td class="pro-subtotal"><span class="subtotal" id="subtotal-{{$product['id']}}">{{$product['price'] * $product['qty']}} ₸</span>
+                                    </td>
                                     <td class="pro-remove">
                                         <a onclick="update_cart('{{$product['id']}}', 0, 'remove'); $('#cart-product-{{$product['id']}}').remove(); updated_after_delete()">
                                             <i class="lnr lnr-trash"></i>
@@ -83,14 +85,18 @@
                                         <td>{{trans('page.cart.sub_total')}}</td>
                                         <td class="sub-total">{{$total_price}} ₸</td>
                                     </tr>
-                                    <tr>
-                                        <td>{{trans('page.cart.shipping')}}</td>
-                                        <td class="shipping-price">{{$shipping_price}} ₸</td>
-                                    </tr>
-                                    <tr class="total">
-                                        <td>{{trans('page.cart.total_price')}}</td>
-                                        <td class="total-amount">{{$total_price + $shipping_price}} ₸</td>
-                                    </tr>
+                                    @if($total_price > 0)
+                                        @if($shipping_price > 0)
+                                            <tr>
+                                                <td>{{trans('page.cart.shipping')}}</td>
+                                                <td class="shipping-price">{{$shipping_price}} ₸</td>
+                                            </tr>
+                                        @endif
+                                        <tr class="total">
+                                            <td>{{trans('page.cart.total_price')}}</td>
+                                            <td class="total-amount">{{$total_price + $shipping_price}} ₸</td>
+                                        </tr>
+                                    @endif
                                 </table>
                             </div>
                         </div>

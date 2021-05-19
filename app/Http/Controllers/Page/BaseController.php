@@ -36,9 +36,9 @@ class BaseController extends Controller
         $comments = Comment::where('product_id', null)->get();
         return view('pages.home', [
             'featured_flowers' => $featured_flowers,
-            'sale_flowers'  => $flowers,
-            'product_count'  => $flowers_count,
-            'comments'  => $comments
+            'sale_flowers' => $flowers,
+            'product_count' => $flowers_count,
+            'comments' => $comments
         ]);
     }
 
@@ -51,12 +51,32 @@ class BaseController extends Controller
     }
 
 
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function checkout()
     {
-        return view('cart.checkout');
+        $carts_product = session()->get('cart');
+        if ($carts_product) {
+            $products = [];
+            $total_sum = 0;
+            foreach ($carts_product as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $results = [
+                    'id' => $product->id,
+                    'title' => $product->title,
+                    'price' => $product->price,
+                    'qty' => $item['qty']
+                ];
+                array_push($products, $results);
+                $total_sum += $product['price'] * $item['qty'];
+            }
+            return view('cart.checkout', [
+                'checkout_products' => $products,
+                'total_sum' => $total_sum,
+            ]);
+
+        } else {
+            return redirect()->back();
+        }
+
     }
 
 
@@ -96,7 +116,6 @@ class BaseController extends Controller
     {
         return view('pages.calculator');
     }
-
 
 
 }

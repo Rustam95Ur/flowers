@@ -4,219 +4,74 @@
     <div class="checkout-area mt-no-text">
         <div class="container custom-container">
             <div class="row">
-                <div class="col-12 col-custom">
-                    <div class="coupon-accordion">
-                        <h3>Returning customer? <span id="showlogin">Click here to login</span></h3>
-                        <div id="checkout-login" class="coupon-content">
-                            <div class="coupon-info">
-                                <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est
-                                    sit amet ipsum luctus.</p>
-                                <form action="#">
-                                    <p class="form-row-first">
-                                        <label>Username or email <span class="required">*</span></label>
-                                        <input type="text">
-                                    </p>
-                                    <p class="form-row-last">
-                                        <label>Password <span class="required">*</span></label>
-                                        <input type="password">
-                                    </p>
-                                    <p class="form-row">
-                                        <input type="checkbox" id="remember_me">
-                                        <label for="remember_me">Remember me</label>
-                                    </p>
-                                    <p class="lost-password"><a href="#">Lost your password?</a></p>
-                                </form>
-                            </div>
-                        </div>
-                        <h3>Have a coupon? <span id="showcoupon">Click here to enter your code</span></h3>
-                        <div id="checkout_coupon" class="coupon-checkout-content">
-                            <div class="coupon-info">
-                                <form action="#">
-                                    <p class="checkout-coupon">
-                                        <input placeholder="Coupon code" type="text">
-                                        <input class="coupon-inner_btn" value="Apply Coupon" type="submit">
-                                    </p>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-6 col-12 col-custom">
-                    <form action="#">
+                    <form action="{{route('payment')}}" method="post" id="payment_form">
+                        @csrf
                         <div class="checkbox-form">
-                            <h3>Billing Details</h3>
+                            <h3>{{trans('cart.checkout.customer_billing_details')}}</h3>
                             <div class="row">
                                 <div class="col-md-12 col-custom">
-                                    <div class="country-select clearfix">
-                                        <label>Country <span class="required">*</span></label>
-                                        <select class="myniceselect nice-select wide rounded-0">
-                                            <option data-display="Bangladesh">Bangladesh</option>
-                                            <option value="uk">London</option>
-                                            <option value="rou">Romania</option>
-                                            <option value="fr">French</option>
-                                            <option value="de">Germany</option>
-                                            <option value="aus">Australia</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
-                                        <label>First Name <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-custom">
-                                    <div class="checkout-form-list">
-                                        <label>Last Name <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
+                                        <label for="customer_name">{{trans('cart.checkout.customer_name')}}</label>
+                                        <input placeholder="" type="text" name="customer_name" id="customer_name">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
-                                        <label>Company Name</label>
-                                        <input placeholder="" type="text">
+                                        <label for="customer_phone">{{trans('cart.checkout.customer_phone')}}<span
+                                                class="required">*</span></label>
+                                        <input placeholder="" type="text" name="customer_phone" id="customer_phone">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-custom">
+                                    <div class="checkout-form-list">
+                                        <label for="customer_email">Email {{trans('cart.checkout.no_required')}}</label>
+                                        <input placeholder="" id="customer_email" name="customer_email" type="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <h3>{{trans('cart.checkout.receiver_billing_details')}}</h3>
+                            <div class="row">
+                                <div class="col-md-12 col-custom">
+                                    <div class="checkout-form-list">
+                                        <label for="receiver_name">{{trans('cart.checkout.receiver_name')}}</label>
+                                        <input placeholder="" type="text" name="receiver_name" id="receiver_name">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
-                                        <label>Address <span class="required">*</span></label>
-                                        <input placeholder="Street address" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-custom">
-                                    <div class="checkout-form-list">
-                                        <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-custom">
-                                    <div class="checkout-form-list">
-                                        <label>Town / City <span class="required">*</span></label>
-                                        <input type="text">
+                                        <label for="receiver_phone">{{trans('cart.checkout.receiver_phone')}}</label>
+                                        <input placeholder="" type="text" name="receiver_phone" id="receiver_phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
-                                        <label>State / County <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
+                                        <label for="address">{{trans('cart.checkout.receiver_address')}}</label>
+                                        <input placeholder="" type="text" name="address" id="address">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
-                                        <label>Postcode / Zip <span class="required">*</span></label>
-                                        <input placeholder="" type="text">
+                                        <label for="date">{{trans('cart.checkout.date')}}</label>
+                                        <input placeholder="" type="text" name="date" id="date">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
-                                        <label>Email Address <span class="required">*</span></label>
-                                        <input placeholder="" type="email">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-custom">
-                                    <div class="checkout-form-list">
-                                        <label>Phone <span class="required">*</span></label>
-                                        <input type="text">
+                                        <label for="time">{{trans('cart.checkout.time')}}</label>
+                                        <input placeholder="" type="text" name="time" id="time">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list create-acc">
-                                        <input id="cbox" type="checkbox">
-                                        <label for="cbox">Create an account?</label>
-                                    </div>
-                                    <div id="cbox-info" class="checkout-form-list create-account">
-                                        <p class="mb-2">Create an account by entering the information below. If you are a returning customer please login at the top of the page.</p>
-                                        <label>Account password <span class="required">*</span></label>
-                                        <input placeholder="password" type="password">
+                                        <input id="surprise" name="surprise"  type="checkbox">
+                                        <label for="surprise">{{trans('cart.checkout.surprise')}}</label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="different-address">
-                                <div class="ship-different-title">
-                                    <div>
-                                        <input id="ship-box" type="checkbox">
-                                        <label for="ship-box">Ship to a different address?</label>
-                                    </div>
-                                </div>
-                                <div id="ship-box-info" class="row mt-2">
-                                    <div class="col-md-12 col-custom">
-                                        <div class="myniceselect country-select clearfix">
-                                            <label>Country <span class="required">*</span></label>
-                                            <select class="myniceselect nice-select wide rounded-0">
-                                                <option data-display="Bangladesh">Bangladesh</option>
-                                                <option value="uk">London</option>
-                                                <option value="rou">Romania</option>
-                                                <option value="fr">French</option>
-                                                <option value="de">Germany</option>
-                                                <option value="aus">Australia</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>First Name <span class="required">*</span></label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Last Name <span class="required">*</span></label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Company Name</label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Address <span class="required">*</span></label>
-                                            <input placeholder="Street address" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Town / City <span class="required">*</span></label>
-                                            <input type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>State / County <span class="required">*</span></label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Postcode / Zip <span class="required">*</span></label>
-                                            <input placeholder="" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Email Address <span class="required">*</span></label>
-                                            <input placeholder="" type="email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-custom">
-                                        <div class="checkout-form-list">
-                                            <label>Phone <span class="required">*</span></label>
-                                            <input type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="order-notes mt-3">
-                                    <div class="checkout-form-list checkout-form-list-2">
-                                        <label>Order Notes</label>
-                                        <textarea id="checkout-mess" cols="30" rows="10" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                <div class="col-md-12 col-custom">
+                                    <div class="checkout-form-list create-acc">
+                                        <input id="photo" name="photo" type="checkbox">
+                                        <label for="photo">{{trans('cart.checkout.photo')}}</label>
                                     </div>
                                 </div>
                             </div>
@@ -225,87 +80,64 @@
                 </div>
                 <div class="col-lg-6 col-12 col-custom">
                     <div class="your-order">
-                        <h3>Your order</h3>
+                        <h3>{{trans('page.calculator.order')}}</h3>
                         <div class="your-order-table table-responsive">
                             <table class="table">
                                 <thead>
                                 <tr>
-                                    <th class="cart-product-name">Product</th>
-                                    <th class="cart-product-total">Total</th>
+                                    <th class="cart-product-name">{{trans('page.calculator.product')}}</th>
+                                    <th class="cart-product-total">{{trans('page.calculator.total')}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr class="cart_item">
-                                    <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity">
-                                            × 1</strong></td>
-                                    <td class="cart-product-total text-center"><span class="amount">£165.00</span></td>
-                                </tr>
-                                <tr class="cart_item">
-                                    <td class="cart-product-name"> Vestibulum suscipit<strong class="product-quantity">
-                                            × 1</strong></td>
-                                    <td class="cart-product-total text-center"><span class="amount">£165.00</span></td>
-                                </tr>
+                                @foreach($checkout_products as $product)
+                                    <tr class="cart_item">
+                                        <td class="cart-product-name">{{$product['title']}}<strong
+                                                class="product-quantity">
+                                                × {{$product['qty']}}</strong></td>
+                                        <td class="cart-product-total text-center"><span
+                                                class="amount">{{$product['price']}} ₸</span></td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                                 <tfoot>
-                                <tr class="cart-subtotal">
-                                    <th>Cart Subtotal</th>
-                                    <td class="text-center"><span class="amount">£215.00</span></td>
-                                </tr>
                                 <tr class="order-total">
-                                    <th>Order Total</th>
-                                    <td class="text-center"><strong><span class="amount">£215.00</span></strong></td>
+                                    <th>{{trans('page.cart.total_price')}}</th>
+                                    <td class="text-center"><strong><span
+                                                class="amount">{{$total_sum}} ₸</span></strong></td>
                                 </tr>
                                 </tfoot>
                             </table>
                         </div>
                         <div class="payment-method">
                             <div class="payment-accordion">
-                                <div id="accordion">
-                                    <div class="card">
-                                        <div class="card-header" id="#payment-1">
-                                            <h5 class="panel-title mb-3">
-                                                <a href="#" class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                    Direct Bank Transfer.
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
-                                            <div class="card-body mb-2 mt-2">
-                                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                <div class="checkbox-form">
+                                    <div class="row">
+                                        <div class="col-md-12 col-custom">
+                                            <div class="checkout-form-list">
+                                                <label for="payment">Оплата</label>
+                                                <select form="payment_form" name="payment_type" class="form-control" id="payment">
+                                                    @foreach(trans('cart.checkout.payment') as $key => $value)
+                                                        <option value="{{$key}}">{{$value}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="#payment-2">
-                                            <h5 class="panel-title mb-3">
-                                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    Cheque Payment
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                            <div class="card-body mb-2 mt-2">
-                                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header" id="#payment-3">
-                                            <h5 class="panel-title mb-3">
-                                                <a href="#" class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                    PayPal
-                                                </a>
-                                            </h5>
-                                        </div>
-                                        <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                            <div class="card-body mb-2 mt-2">
-                                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.</p>
+                                        <div class="col-md-12 col-custom">
+                                            <div class="checkout-form-list">
+                                                <label for="shipping">Доставка</label>
+                                                <select form="payment_form" name="shipping_type" class="form-control" id="shipping">
+                                                    <option>Бесконтактная доставка до получателя - бесплатно</option>
+                                                    <option>Доставка за город</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order-button-payment">
-                                    <button class="btn flosun-button secondary-btn black-color rounded-0 w-100">Place Order</button>
+                                    <button form="payment_form" type="submit" class="btn flosun-button secondary-btn black-color rounded-0 w-100">
+                                        {{trans('cart.checkout.place_order')}}
+                                    </button>
                                 </div>
                             </div>
                         </div>

@@ -17,6 +17,7 @@ use TCG\Voyager\Facades\Voyager;
 use App\Http\Controllers\Page\BaseController;
 use App\Http\Controllers\Page\ProductController;
 use App\Http\Controllers\Shop\CartController;
+use App\Http\Controllers\Shop\PaymentController;
 
 
 Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(function () {
@@ -32,6 +33,9 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/cart/count', [CartController::class, 'count_cart'])->name('count_cart');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');
+
+    Route::post('/payment', [PaymentController::class, 'index'])->name('payment');
+
     Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
     Route::get('/information/{slug}', [BaseController::class, 'information_page'])->name('information_page');
     Route::get('/gallery', [BaseController::class, 'galleries'])->name('galleries');
