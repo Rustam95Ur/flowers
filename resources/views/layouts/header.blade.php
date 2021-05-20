@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="main-header header-sticky">
-        <div class="container-fluid">
+        <div class="container-fluid header-block">
             <div class="row align-items-center">
                 <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
                     <div class="header-logo d-flex align-items-center">

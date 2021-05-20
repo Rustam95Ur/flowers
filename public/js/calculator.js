@@ -83,7 +83,7 @@ function get_total_price() {
             total_price += element.count * element.price
         }
     })
-    $('.amounts').text(total_price)
+    $('.amounts').text(total_price + ' ₸')
 }
 
 get_total_price()

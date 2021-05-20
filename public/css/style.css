@@ -1719,7 +1719,7 @@ mark {
     font-family: "PT Serif Caption", sans-serif;
     font-weight: 400;
     line-height: 18px;
-    color: #000000;
+    color: #ffffff !important;
 }
 
 .main-nav > ul > li > a.active {
@@ -1978,7 +1978,7 @@ mark {
 }
 
 .header-right-area.main-nav > ul > li > a > i:hover {
-    color: #4e7fad;
+    color: #ffffff;
 }
 
 .header-right-area.main-nav > ul > li.account-menu-wrap a.active {
@@ -2004,13 +2004,13 @@ mark {
 }
 
 .header-right-area.main-nav > ul > li.minicart-wrap .minicart-btn i:hover {
-    color: #4e7fad;
+    color: #ffffff;
 }
 
 .header-right-area.main-nav > ul > li.minicart-wrap .minicart-btn .cart-item_count {
-    background-color: #4e7fad;
+    background-color: #ffffff;
     border-radius: 50%;
-    color: #ffffff;
+    color: #4e7fad;
     display: block;
     font-size: 12px;
     text-align: center;
@@ -2665,7 +2665,7 @@ mark {
 /*----------------------------------------*/
 .footer-area .footer-widget-area {
     padding: 100px 0;
-    background-color: #1b1b1b;
+    background-color: #4e7fad;
 }
 
 @media (max-width: 991px) {
@@ -7461,7 +7461,7 @@ mark {
 }
 
 
-.dropdown-submenu-v2, .dropdown-submenu{
+.dropdown-submenu-v2, .dropdown-submenu {
     position: absolute;
     z-index: 5;
     min-width: 200px;
@@ -7475,7 +7475,11 @@ mark {
     transform: rotateX(-90deg);
     transition: .3s linear;
 }
-.dropdown-submenu-v2 li, .dropdown-submenu li{position: relative;}
+
+.dropdown-submenu-v2 li, .dropdown-submenu li {
+    position: relative;
+}
+
 .dropdown-submenu-v2 li {
     padding: 10px 20px;
 }
@@ -7486,13 +7490,20 @@ mark {
     top: -1px;
     transition: .3s linear;
 }
+
 nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
     transform: rotateX(0deg);
     visibility: visible;
     opacity: 1;
 }
+
 .custom-checkbox-image input[type="checkbox"] + label {
     border: 2px solid #e1e1e1;
     border-radius: 25px;
     padding: 0;
 }
+
+.header-block {
+    background-color: #4e7fad
+}
+

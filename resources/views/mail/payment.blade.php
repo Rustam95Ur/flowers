@@ -54,7 +54,7 @@
 
                                         <h3 style="text-align: center; margin-top: 50px">Информация о товаре/ах</h3>
                                         <p><b>Название и количество:</b> {{ $mail->products }}</p>
-                                        <p><b>Цена:</b> {{ $mail->total  }}</p>
+                                        <p><b>Цена:</b> {{ $mail->total  }} ₸</p>
                                         <p><b>Доставка:</b> {{ $mail->shipping_type }}</p>
                                         <p><b>Оплата:</b> {{ $mail->payment_type }}</p>
                                     </td>
