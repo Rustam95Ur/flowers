@@ -4,28 +4,41 @@
     <div class="intro11-slider-wrap section-2 mrl-50">
         <div class="intro11-slider swiper-container">
             <div class="swiper-wrapper">
-                <div class="intro11-section swiper-slide slide-4 slide-bg-2 bg-position">
-                    <!-- Intro Content Start -->
-                    <div class="intro11-content-2 text-center">
-                        <h1 class="different-title">{{trans('page.home.welcome')}}</h1>
-                        <h2 class="title text-uppercase">{{Voyager::setting('site.title')}}</h2>
-                        <a href="{{route('shop')}}" class="btn flosun-button secondary-btn theme-color rounded-0">
-                            {{trans('page.home.shops')}}
-                        </a>
+                @foreach($banners as $banner)
+                    <div class="intro11-section swiper-slide  slide-bg-2 bg-position"
+                         style="background-image: url({{Voyager::image($banner->image)}});">
+                        <!-- Intro Content Start -->
+                        <div class="intro11-content-2 {{$banner->css_class }}">
+                            <h1 class="different-title">{{$banner->title }}</h1>
+                            <h2 class="title text-uppercase">{{$banner->body}}</h2>
+                            <a href="{{route('shop')}}" class="btn flosun-button secondary-btn theme-color rounded-0">
+                                {{trans('page.home.shops')}}
+                            </a>
+                        </div>
+                        <!-- Intro Content End -->
                     </div>
-                    <!-- Intro Content End -->
-                </div>
-                <div class="intro11-section swiper-slide slide-3 slide-bg-2 bg-position">
-                    <!-- Intro Content Start -->
-                    <div class="intro11-content text-left">
-                        <h3 class="title-slider text-uppercase">Top Trend</h3>
-                        <h2 class="title">Flowers and Candle <br> Birthday Gift</h2>
-                        <p class="desc-content">Lorem ipsum dolor sit amet, pri autem nemore bonorum te. Autem fierent
-                            ullamcorper ius no, nec ea quodsi invenire. </p>
-                        <a href="product-details.html" class="btn flosun-button secondary-btn rounded-0">Shop Now</a>
-                    </div>
-                    <!-- Intro Content End -->
-                </div>
+                @endforeach
+{{--                <div class="intro11-section swiper-slide slide-4 slide-bg-2 bg-position">--}}
+{{--                    <!-- Intro Content Start -->--}}
+{{--                    <div class="intro11-content-2 text-center">--}}
+{{--                        <h1 class="different-title">{{trans('page.home.welcome')}}</h1>--}}
+{{--                        <h2 class="title text-uppercase">{{Voyager::setting('site.title')}}</h2>--}}
+{{--                        <a href="{{route('shop')}}" class="btn flosun-button secondary-btn theme-color rounded-0">--}}
+{{--                            {{trans('page.home.shops')}}--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
+{{--                    <!-- Intro Content End -->--}}
+{{--                </div>--}}
+{{--                <div class="intro11-section swiper-slide slide-3 slide-bg-2 bg-position">--}}
+{{--                    <!-- Intro Content Start -->--}}
+{{--                    <div class="intro11-content text-left">--}}
+{{--                        <h2 class="title">Flowers and Candle <br> Birthday Gift</h2>--}}
+{{--                        <p class="desc-content">Lorem ipsum dolor sit amet, pri autem nemore bonorum te. Autem fierent--}}
+{{--                            ullamcorper ius no, nec ea quodsi invenire. </p>--}}
+{{--                        <a href="product-details.html" class="btn flosun-button secondary-btn rounded-0">Shop Now</a>--}}
+{{--                    </div>--}}
+{{--                    <!-- Intro Content End -->--}}
+{{--                </div>--}}
             </div>
             <!-- Slider Navigation -->
             <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i></div>
@@ -102,7 +115,7 @@
                                                     @endforeach
                                                 </a>
                                                 @if($flower['is_sale'])
-                                                <span class="onsale">Sale!</span>
+                                                    <span class="onsale">Sale!</span>
                                                 @endif
                                                 <div class="add-action d-flex flex-column position-absolute">
                                                     <a onclick="update_wish_list({{$flower['id']}}, 'add');"
@@ -167,7 +180,8 @@
                 <!--Countdown Start-->
                 <div class="col-12 col-custom">
                     <div class="countdown-area">
-                        <div class="countdown-wrapper d-flex justify-content-center" data-countdown="2021/05/24"></div>
+                        <div class="countdown-wrapper d-flex justify-content-center"
+                             data-countdown="{{ Voyager::image(setting('site.sale_time'))}}"></div>
                     </div>
                 </div>
                 <!--Countdown End-->
@@ -177,56 +191,59 @@
                     <div class="item-carousel-2 swiper-container anime-element-multi product-area">
                         <div class="swiper-wrapper">
                             @foreach($sale_flowers as $flower)
-                                <div class="single-item swiper-slide">
-                                    <!--Single Product Start-->
-                                    <div class="single-product position-relative mb-30">
-                                        <div class="product-image">
-                                            <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
-                                                @foreach(json_decode($flower['images']) as $image)
-                                                    @if($loop->index < 2)
-                                                        <img alt="{{$flower['title']}}"
-                                                             src="{{ Voyager::image($image) }}"
-                                                             class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
-                                                    @endif
-                                                @endforeach
-                                            </a>
-                                            @if($flower['is_sale'])
+                                @if($flower['is_sale'])
+                                    <div class="single-item swiper-slide">
+                                        <!--Single Product Start-->
+                                        <div class="single-product position-relative mb-30">
+                                            <div class="product-image">
+                                                <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
+                                                    @foreach(json_decode($flower['images']) as $image)
+                                                        @if($loop->index < 2)
+                                                            <img alt="{{$flower['title']}}"
+                                                                 src="{{ Voyager::image($image) }}"
+                                                                 class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
+                                                        @endif
+                                                    @endforeach
+                                                </a>
+
                                                 <span class="onsale">Sale!</span>
-                                            @endif
-                                            <div class="add-action d-flex flex-column position-absolute">
-                                                <a onclick="update_wish_list({{$flower['id']}}, 'add');"
-                                                   title="{{trans('page.home.add_to_wish')}}">
-                                                    <i class="lnr lnr-heart" data-toggle="tooltip"
-                                                       data-placement="left" title="{{trans('button.wishlist')}}"></i>
-                                                </a>
-                                                <a onclick="quick_view_product({{$flower['id']}})">
-                                                    <i class="lnr lnr-eye" data-toggle="tooltip"
-                                                       data-placement="left" title="{{trans('button.quick_view')}}"></i>
-                                                </a>
+                                                <div class="add-action d-flex flex-column position-absolute">
+                                                    <a onclick="update_wish_list({{$flower['id']}}, 'add');"
+                                                       title="{{trans('page.home.add_to_wish')}}">
+                                                        <i class="lnr lnr-heart" data-toggle="tooltip"
+                                                           data-placement="left"
+                                                           title="{{trans('button.wishlist')}}"></i>
+                                                    </a>
+                                                    <a onclick="quick_view_product({{$flower['id']}})">
+                                                        <i class="lnr lnr-eye" data-toggle="tooltip"
+                                                           data-placement="left"
+                                                           title="{{trans('button.quick_view')}}"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-content">
+                                                <div class="product-title">
+                                                    <h4 class="title-2"><a
+                                                            href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
+                                                    </h4>
+                                                </div>
+                                                <div class="product-rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                                <div class="price-box">
+                                                    <span class="regular-price ">{{$flower['price']}} ₸</span>
+                                                </div>
+                                                <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
+                                                   class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                             </div>
                                         </div>
-                                        <div class="product-content">
-                                            <div class="product-title">
-                                                <h4 class="title-2"><a
-                                                        href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
-                                                </h4>
-                                            </div>
-                                            <div class="product-rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star-o"></i>
-                                                <i class="fa fa-star-o"></i>
-                                            </div>
-                                            <div class="price-box">
-                                                <span class="regular-price ">{{$flower['price']}} ₸</span>
-                                            </div>
-                                            <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
-                                               class="btn product-cart">{{trans('button.add_to_cart')}}</a>
-                                        </div>
+                                        <!--Single Product End-->
                                     </div>
-                                    <!--Single Product End-->
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                         <!-- Slider pagination -->
@@ -271,12 +288,12 @@
                     </div>
                 </div>
                 <!-- Slider Navigation -->
-{{--                <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i>--}}
-{{--                </div>--}}
-{{--                <div class="home1-slider-next swiper-button-next main-slider-nav"><i--}}
-{{--                        class="lnr lnr-arrow-right"></i></div>--}}
-{{--                <!-- Slider pagination -->--}}
-{{--                <div class="swiper-pagination default-pagination"></div>--}}
+                {{--                <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i>--}}
+                {{--                </div>--}}
+                {{--                <div class="home1-slider-next swiper-button-next main-slider-nav"><i--}}
+                {{--                        class="lnr lnr-arrow-right"></i></div>--}}
+                {{--                <!-- Slider pagination -->--}}
+                {{--                <div class="swiper-pagination default-pagination"></div>--}}
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Gallery;
 use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
@@ -27,6 +28,7 @@ class BaseController extends Controller
     {
         $flowers_count = Product::count();
         $flowers = Product::all()->toarray();
+        $banners = Banner::where('page', 'home')->get();
         $temp_featured_flowers = $flowers;
         $temp_array = [];
         $featured_flowers = [];
@@ -48,7 +50,8 @@ class BaseController extends Controller
             'featured_flowers' => $featured_flowers,
             'sale_flowers' => $flowers,
             'product_count' => $flowers_count,
-            'comments' => $comments
+            'comments' => $comments,
+            'banners' => $banners
         ]);
     }
 

@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Mail/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Mail/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
     </list>
@@ -169,7 +166,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/mail" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -179,9 +176,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\flowers\app\Models" />
       <recent name="C:\OSPanel\domains\flowers\resources\views\mail" />
       <recent name="C:\OSPanel\domains\flowers\app\Mail" />
-      <recent name="C:\OSPanel\domains\flowers\app\Models" />
       <recent name="C:\OSPanel\domains\flowers\resources\views\products" />
       <recent name="C:\OSPanel\domains\flowers\app\Http\Controllers\Page" />
     </key>
@@ -434,7 +431,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621449447598</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="updated codes">
+      <created>1621523799388</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1621523799388</updated>
+    </task>
+    <task id="LOCAL-00034" summary="updated color">
+      <created>1621523874975</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1621523874976</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +453,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated mini cart" />
     <MESSAGE value="Fixed header locale" />
     <MESSAGE value="Added shop page" />
     <MESSAGE value="Updated shop page" />
@@ -465,8 +475,9 @@
     <MESSAGE value="Added payment" />
     <MESSAGE value="disable online payment" />
     <MESSAGE value="added send email func" />
-    <MESSAGE value="updated codes" />
     <MESSAGE value="calculator add func" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculator add func" />
+    <MESSAGE value="updated codes" />
+    <MESSAGE value="updated color" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated color" />
   </component>
 </project>

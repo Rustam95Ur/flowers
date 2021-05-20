@@ -234,8 +234,8 @@
             <div class="off-canvas-inner">
                 <div class="search-box-offcanvas">
                     <form action="{{route('shop')}}">
-                        <label for="search_product" class="d-none"></label><input id="search_product" type="text"
-                                                                                  name="title" placeholder="Поиск...">
+                        <label for="search_product" class="d-none"></label>
+                        <input id="search_product" type="text" name="title" placeholder="Поиск...">
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
