@@ -35,50 +35,40 @@
         </div>
     </div>
     <!-- Slider/Intro Section End -->
-    <!-- Banner Area Start Here -->
-    <div class="banner-area mt-30">
-        <div class="container-fluid">
+    <!--Categories Area Start-->
+    <div class="categories-area mt-no-text">
+        <div class="container-fluid custom-area">
             <div class="row">
-                <div class="col-md-4 col-custom">
-                    <!--Single Banner Area Start-->
-                    <div class="single-banner hover-style mb-30">
-                        <div class="banner-img">
-                            <a href="#">
-                                <img src="images/banner/1-1.jpg" alt="">
-                                <div class="overlay-1"></div>
-                            </a>
+                <div class="cat-1 col-md-4 col-sm-12 col-custom">
+                    <div class="categories-img mb-30">
+                        <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
+                        <div class="categories-content">
+                            <h3>{{trans('header.category.all')}}</h3>
+                            <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
                         </div>
                     </div>
-                    <!--Single Banner Area End-->
                 </div>
-                <div class="col-md-4 col-custom">
-                    <!--Single Banner Area Start-->
-                    <div class="single-banner hover-style mb-30">
-                        <div class="banner-img">
-                            <a href="#">
-                                <img src="images/banner/1-2.jpg" alt="">
-                                <div class="overlay-1"></div>
-                            </a>
-                        </div>
+                <div class="cat-2 col-md-8 col-sm-12 col-custom">
+                    <div class="row elements-grid">
+                        @foreach($categories as $category)
+                            <div class="cat-{{3 + $loop->iteration}} col-md-4 col-custom column-win">
+                                <div class="categories-img mb-30">
+                                    <a href="{{route('shop')}}?categories[]={{$category->id}}">
+                                        <img src="{{Voyager::image($category->image)}}"
+                                             alt="{{$category->title}}"></a>
+                                    <div class="categories-content">
+                                        <h3>{{$category->name}}</h3>
+                                        <h4>{{trans('page.home.category_item_count', ['count'=> ($category->products()->count())])}}</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
-                    <!--Single Banner Area End-->
-                </div>
-                <div class="col-md-4 col-custom">
-                    <!--Single Banner Area Start-->
-                    <div class="single-banner hover-style mb-30">
-                        <div class="banner-img">
-                            <a href="#">
-                                <img src="images/banner/1-3.jpg" alt="">
-                                <div class="overlay-1"></div>
-                            </a>
-                        </div>
-                    </div>
-                    <!--Single Banner Area End-->
                 </div>
             </div>
         </div>
     </div>
-    <!-- Banner Area End Here -->
+    <!--Categories Area End-->
     <!--Product Area Start-->
     <div class="product-area mt-text-2 mb-text-3">
         <div class="container custom-area-2 overflow-hidden">
@@ -111,7 +101,9 @@
                                                         @endif
                                                     @endforeach
                                                 </a>
+                                                @if($flower['is_sale'])
                                                 <span class="onsale">Sale!</span>
+                                                @endif
                                                 <div class="add-action d-flex flex-column position-absolute">
                                                     <a onclick="update_wish_list({{$flower['id']}}, 'add');"
                                                        title="{{trans('page.home.add_to_wish')}}">
@@ -198,6 +190,9 @@
                                                     @endif
                                                 @endforeach
                                             </a>
+                                            @if($flower['is_sale'])
+                                                <span class="onsale">Sale!</span>
+                                            @endif
                                             <div class="add-action d-flex flex-column position-absolute">
                                                 <a onclick="update_wish_list({{$flower['id']}}, 'add');"
                                                    title="{{trans('page.home.add_to_wish')}}">
@@ -242,40 +237,7 @@
         </div>
     </div>
     <!-- Product Countdown Area End Here -->
-    <!--Categories Area Start-->
-    <div class="categories-area mt-no-text">
-        <div class="container custom-area">
-            <div class="row">
-                <div class="cat-1 col-md-4 col-sm-12 col-custom">
-                    <div class="categories-img mb-30">
-                        <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
-                        <div class="categories-content">
-                            <h3>{{trans('header.category.all')}}</h3>
-                            <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="cat-2 col-md-8 col-sm-12 col-custom">
-                    <div class="row elements-grid">
-                        @foreach($categories as $category)
-                            <div class="cat-{{3 + $loop->iteration}} col-md-4 col-custom column-win">
-                                <div class="categories-img mb-30">
-                                    <a href="{{route('shop')}}?categories[]={{$category->id}}">
-                                        <img src="{{Voyager::image($category->image)}}"
-                                             alt="{{$category->title}}"></a>
-                                    <div class="categories-content">
-                                        <h3>{{$category->name}}</h3>
-                                        <h4>{{trans('page.home.category_item_count', ['count'=> ($category->products()->count())])}}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Categories Area End-->
+
     <!-- Testimonial Area Start Here -->
     <div class="testimonial-area mt-text-2">
         <div class="container custom-area">
@@ -309,12 +271,12 @@
                     </div>
                 </div>
                 <!-- Slider Navigation -->
-                <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i>
-                </div>
-                <div class="home1-slider-next swiper-button-next main-slider-nav"><i
-                        class="lnr lnr-arrow-right"></i></div>
-                <!-- Slider pagination -->
-                <div class="swiper-pagination default-pagination"></div>
+{{--                <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i>--}}
+{{--                </div>--}}
+{{--                <div class="home1-slider-next swiper-button-next main-slider-nav"><i--}}
+{{--                        class="lnr lnr-arrow-right"></i></div>--}}
+{{--                <!-- Slider pagination -->--}}
+{{--                <div class="swiper-pagination default-pagination"></div>--}}
             </div>
         </div>
     </div>

@@ -14,7 +14,9 @@
                                 @endif
                             @endforeach
                         </a>
-                        <span class="onsale">Sale!</span>
+                        @if($product->is_sale)
+                            <span class="onsale">Sale!</span>
+                        @endif
                         <div class="add-action d-flex flex-column position-absolute">
                             <a onclick="update_wish_list({{$product->id}}, 'add');"
                                title="{{trans('page.home.add_to_wish')}}">

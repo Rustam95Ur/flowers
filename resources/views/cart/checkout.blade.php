@@ -20,7 +20,7 @@
                                     <div class="checkout-form-list">
                                         <label for="customer_phone">{{trans('cart.checkout.customer_phone')}}<span
                                                 class="required">*</span></label>
-                                        <input placeholder="" type="text" name="customer_phone" id="customer_phone">
+                                        <input placeholder="" required type="text" name="customer_phone" id="customer_phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">

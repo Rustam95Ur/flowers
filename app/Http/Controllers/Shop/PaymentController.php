@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Page\BaseController;
 use App\Http\Requests\StoreCheckoutForm;
-
+use App\Http\Controllers\Mail\BaseController as MailBaseController;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
@@ -75,6 +76,7 @@ class PaymentController extends Controller
 //            $query = http_build_query($payment_request);
 //            $link = 'https://api.paybox.money/payment.php?' . $query;
 //            $paymentSave->request = $query;
+            $paymentSave->status = 'В ожиданий';
             $paymentSave->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
             $paymentSave->save();
 //            return redirect()->to($link);
@@ -85,7 +87,7 @@ class PaymentController extends Controller
             $paymentSave->save();
             session()->forget('cart');
 
-            (new \App\Http\Controllers\Mail\BaseController)->payment_send_mail($request, $total_price, $products);
+            MailBaseController::payment_send_mail($request, $total_price, $products);
             return redirect()->route('cart')->with('success', trans('cart.checkout.success-offline'));
         }
 

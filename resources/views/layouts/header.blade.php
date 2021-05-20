@@ -1,6 +1,6 @@
-<header class="main-header-area">
+<header class="main-header-area mb-1">
     <!-- Main Header Area Start -->
-    <div class="d-none d-lg-flex">
+    <div class="d-none d-lg-flex mb-3">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-4  mt-3 col-xs-12">
@@ -16,12 +16,17 @@
                         </a>
                     </h4>
                 </div>
-                <div class="col-md-4 mt-3 col-xs-12">
-                    <h4 class="text-pink mb-0"><i class="lnr lnr-smartphone"></i>
-                        <a href="tel:{{Voyager::setting('site.phone')}}">{{Voyager::setting('site.phone')}}</a>
-                    </h4>
+                <div class="col-md-4 mt-1 col-xs-12">
+                    <div class="header-logo d-flex justify-content-center">
+                        <a href="{{route('home')}}">
+                            <img class="img-full" src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">
+                        </a>
+                    </div>
                 </div>
                 <div class="col-md-4 mt-3 col-xs-12">
+                    <h4 class="text-pink mb-3"><i class="lnr lnr-smartphone"></i>
+                        <a href="tel:{{Voyager::setting('site.phone')}}">{{Voyager::setting('site.phone')}}</a>
+                    </h4>
                     <h4 class="text-pink mb-0"><i class="lnr lnr-envelope"></i>
                         <a href="mailto:{{Voyager::setting('site.email')}}">{{Voyager::setting('site.email')}}</a>
                     </h4>
@@ -32,14 +37,15 @@
     <div class="main-header header-sticky">
         <div class="container-fluid header-block">
             <div class="row align-items-center">
-                <div class="col-lg-2 col-xl-2 col-sm-6 col-6 col-custom">
+                <div class="col-lg-2 col-xl-2 col-md-6 col-6 col-custom d-block d-sm-none">
                     <div class="header-logo d-flex align-items-center">
                         <a href="{{route('home')}}">
                             <img class="img-full" src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-8 d-none d-lg-flex justify-content-center col-custom">
+                <div class="col-lg-10 d-none d-lg-flex justify-content-center col-custom">
+
                     <nav class="main-nav mr-5 d-none d-lg-flex">
                         <ul class="nav">
                             <li>
@@ -177,7 +183,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-2 col-md-6 col-6 col-custom">
+                <div class="col-lg-2 col-md-6 col-6 col-custom justify-content-end">
                     <div class="header-right-area main-nav">
                         <ul class="nav">
                             <li class="minicart-wrap">
@@ -250,7 +256,62 @@
                             </li>
                             <li class="menu-item-has-children "><a href="#">{{trans('header.type_bouquet')}}</a>
                                 <ul class="dropdown">
-
+                                    @foreach($types as $type)
+                                        @if(!$type->parent_id)
+                                            <li>
+                                                <a href="{{route('shop')}}?types[]={{$type->id}}">{{$type->title}}
+                                                    @foreach($types as $chill_type)
+                                                        @if($chill_type->parent_id == $type->id)
+                                                            <span class="fa fa-angle-down"></span>
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                </a>
+                                                <ul class="dropdown-submenu-v2">
+                                                    @foreach($types as $chill_type)
+                                                        @if($chill_type->parent_id and $chill_type->parent_id == $type->id)
+                                                            <li>
+                                                                <a href="{{route('shop')}}?types[]={{$chill_type->id}}">{{$chill_type->title}} </a>
+                                                            </li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children "><a href="#"> {{trans('header.intendeds')}}</a>
+                                <ul class="dropdown">
+                                    @foreach($intendeds as $intended)
+                                        <li>
+                                            <a href="{{route('shop')}}?intendeds[]={{$intended->id}}">{{$intended->title}}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children "><a href="#"> {{trans('header.price')}}</a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=0-10000">
+                                            {{trans('header.price_to', ['price'=>10000])}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=10000-25000">
+                                            {{trans('header.price_from_to', ['from_price'=>10000, 'to_price' => 25000])}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=25000-50000">
+                                            {{trans('header.price_from_to', ['from_price'=>25000, 'to_price' => 50000])}}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('shop')}}?price[]=50000-200000">
+                                            {{trans('header.price_from', ['price' => 50000])}}
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="menu-item-has-children "><a href="#"> {{trans('header.information')}}</a>
@@ -261,9 +322,9 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a href="#">{{trans('header.calculator')}}</a></li>
+                            <li><a href="{{route('calculator')}}">{{trans('header.calculator')}}</a></li>
                             <li><a href="{{route('contact')}}">{{trans('header.contact')}}</a></li>
-                            <li><a href="#">{{trans('header.gallery')}}</a></li>
+                            <li><a href="{{route('galleries')}}">{{trans('header.gallery')}}</a></li>
 
                         </ul>
                     </nav>
