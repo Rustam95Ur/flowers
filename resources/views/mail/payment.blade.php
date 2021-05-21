@@ -43,7 +43,7 @@
                                         <p><b>Телефон :</b> {{ $mail->customer_phone }}</p>
                                         <p><b>Email:</b> {{ $mail->customer_email }}</p>
 
-                                        <h3 style="text-align: center; margin-top: 50px">Информация о ПОЛУЧАТЕЛЯ</h3>
+                                        <h3 style="text-align: center; margin-top: 50px">Информация о получателе</h3>
                                         <p><b>Имя :</b> {{ $mail->receiver_name }}</p>
                                         <p><b>Телефон :</b> {{ $mail->receiver_phone }}</p>
                                         <p><b>Адрес:</b> {{ $mail->address }}</p>
