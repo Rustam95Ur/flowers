@@ -18,27 +18,6 @@
                         <!-- Intro Content End -->
                     </div>
                 @endforeach
-{{--                <div class="intro11-section swiper-slide slide-4 slide-bg-2 bg-position">--}}
-{{--                    <!-- Intro Content Start -->--}}
-{{--                    <div class="intro11-content-2 text-center">--}}
-{{--                        <h1 class="different-title">{{trans('page.home.welcome')}}</h1>--}}
-{{--                        <h2 class="title text-uppercase">{{Voyager::setting('site.title')}}</h2>--}}
-{{--                        <a href="{{route('shop')}}" class="btn flosun-button secondary-btn theme-color rounded-0">--}}
-{{--                            {{trans('page.home.shops')}}--}}
-{{--                        </a>--}}
-{{--                    </div>--}}
-{{--                    <!-- Intro Content End -->--}}
-{{--                </div>--}}
-{{--                <div class="intro11-section swiper-slide slide-3 slide-bg-2 bg-position">--}}
-{{--                    <!-- Intro Content Start -->--}}
-{{--                    <div class="intro11-content text-left">--}}
-{{--                        <h2 class="title">Flowers and Candle <br> Birthday Gift</h2>--}}
-{{--                        <p class="desc-content">Lorem ipsum dolor sit amet, pri autem nemore bonorum te. Autem fierent--}}
-{{--                            ullamcorper ius no, nec ea quodsi invenire. </p>--}}
-{{--                        <a href="product-details.html" class="btn flosun-button secondary-btn rounded-0">Shop Now</a>--}}
-{{--                    </div>--}}
-{{--                    <!-- Intro Content End -->--}}
-{{--                </div>--}}
             </div>
             <!-- Slider Navigation -->
             <div class="home1-slider-prev swiper-button-prev main-slider-nav"><i class="lnr lnr-arrow-left"></i></div>
@@ -52,19 +31,19 @@
     <div class="categories-area mt-no-text">
         <div class="container-fluid custom-area">
             <div class="row">
-                <div class="cat-1 col-md-4 col-sm-12 col-custom">
-                    <div class="categories-img mb-30">
-                        <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
-                        <div class="categories-content">
-                            <h3>{{trans('header.category.all')}}</h3>
-                            <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="cat-2 col-md-8 col-sm-12 col-custom">
+                <div class="col-md-12 col-custom">
                     <div class="row elements-grid">
+                        <div class="col-md-2 col-custom column-win">
+                            <div class="categories-img mb-30">
+                                <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
+                                <div class="categories-content">
+                                    <h3>{{trans('header.category.all')}}</h3>
+                                    <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
+                                </div>
+                            </div>
+                        </div>
                         @foreach($categories as $category)
-                            <div class="cat-{{3 + $loop->iteration}} col-md-4 col-custom column-win">
+                            <div class="col-md-2 col-custom column-win">
                                 <div class="categories-img mb-30">
                                     <a href="{{route('shop')}}?categories[]={{$category->id}}">
                                         <img src="{{Voyager::image($category->image)}}"
