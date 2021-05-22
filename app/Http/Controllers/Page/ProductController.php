@@ -25,12 +25,19 @@ class ProductController extends Controller
     public function show($slug)
     {
         $featured_flowers = Product::limit(10)->get();
+        $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
+            ->where('product_id', '!=', null)
+            ->where('is_active', 1)
+            ->groupBy('product_id')
+            ->get();
         $flower = Product::where('slug', $slug)->firstOrFail();
         $comments = Comment::where('product_id', $flower->id)->where('is_active', 1)->get();
         return view('products.show', [
             'flower' => $flower,
             'comments' => $comments,
             'featured_flowers' => $featured_flowers,
+            'product_ratings' => $product_ratings->toarray(),
+
         ]);
     }
 
