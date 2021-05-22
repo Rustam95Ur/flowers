@@ -7507,3 +7507,41 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
     background-color: #4e7fad
 }
 
+@media (max-width: 479px) {
+    .header-right-area.main-nav > ul > li.minicart-wrap {
+        margin-right: 20px;
+    }
+
+    .header-right-area.main-nav > ul > li.sidemenu-wrap {
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .main-nav > ul > li > a {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .header-right-area.main-nav > ul > li.minicart-wrap {
+        margin-right: 25px;
+    }
+
+    .header-right-area.main-nav > ul > li.sidemenu-wrap {
+        margin-right: 20px;
+    }
+}
+.mobile_logo {
+    display: none !important;
+}
+@media (max-width: 987px) {
+        .mobile_logo {
+            display: block !important;
+        }
+}
+
+/*@media (min-width: 576px) {*/
+/*    .d-sm-none {*/
+/*        display: block !important;*/
+/*    }*/
+/*}*/

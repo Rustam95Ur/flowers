@@ -37,7 +37,7 @@
     <div class="main-header header-sticky">
         <div class="container-fluid header-block">
             <div class="row align-items-center">
-                <div class="col-lg-2 col-xl-2 col-md-6 col-6 col-custom d-block d-sm-none">
+                <div class="col-lg-2 col-xl-2 col-md-6 col-6 col-custom d-block mobile_logo">
                     <div class="header-logo d-flex align-items-center">
                         <a href="{{route('home')}}">
                             <img class="img-full" src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +206,7 @@
       <workItem from="1621346215698" duration="22216000" />
       <workItem from="1621517034930" duration="1489000" />
       <workItem from="1621582910330" duration="1290000" />
-      <workItem from="1621599048983" duration="5279000" />
+      <workItem from="1621599048983" duration="6387000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -473,7 +474,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621667557212</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="updated codes">
+      <created>1621677160207</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1621677160207</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -500,12 +508,12 @@
     <MESSAGE value="disable online payment" />
     <MESSAGE value="added send email func" />
     <MESSAGE value="calculator add func" />
-    <MESSAGE value="updated codes" />
     <MESSAGE value="updated color" />
     <MESSAGE value="added banners" />
     <MESSAGE value="updated category banner size" />
     <MESSAGE value="updated text" />
     <MESSAGE value="avg rating" />
-    <option name="LAST_COMMIT_MESSAGE" value="avg rating" />
+    <MESSAGE value="updated codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated codes" />
   </component>
 </project>
