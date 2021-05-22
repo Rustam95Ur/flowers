@@ -29,7 +29,6 @@
                                     <td align="center">
                                     <td align="center">
                                         <h3 style="color:#4e7fad; text-transform: uppercase;">
-
                                             Информация о заказе
                                         </h3>
                                     </td>

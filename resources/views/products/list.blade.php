@@ -37,13 +37,20 @@
                                 </a>
                             </h4>
                         </div>
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </div>
+                        @php $key = array_search($product->id, array_column($product_ratings, 'product_id')) @endphp
+                        @if($key !== false)
+                            <div class="product-rating">
+                                <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 1 ? '' : '-o'}}"></i>
+                                <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 2 ? '' : '-o'}}"></i>
+                                <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 3 ? '' : '-o'}}"></i>
+                                <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 4 ? '' : '-o'}}"></i>
+                                <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] == 5 ? '' : '-o'}}"></i>
+                            </div>
+                        @else
+                            <div class="product-rating mb-4">
+
+                            </div>
+                        @endif
                         <div class="price-box">
                             <span class="regular-price ">{{$product->price}} ₸</span>
                         </div>

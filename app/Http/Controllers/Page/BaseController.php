@@ -32,6 +32,12 @@ class BaseController extends Controller
         $temp_featured_flowers = $flowers;
         $temp_array = [];
         $featured_flowers = [];
+        $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
+            ->where('product_id', '!=', null)
+            ->where('is_active', 1)
+            ->groupBy('product_id')
+            ->get();
+
         while (True) {
             array_push($temp_array, $temp_featured_flowers[0]);
             if (count($temp_array) == 2 or (count($temp_featured_flowers) < 2)) {
@@ -43,7 +49,6 @@ class BaseController extends Controller
                 break;
             }
         }
-
 //        $galleries = Gallery::limit(10)->orderBy('created_at', 'DESC')->get();
         $comments = Comment::where('product_id', null)->get();
         return view('pages.home', [
@@ -51,6 +56,7 @@ class BaseController extends Controller
             'sale_flowers' => $flowers,
             'product_count' => $flowers_count,
             'comments' => $comments,
+            'product_ratings' => $product_ratings->toarray(),
             'banners' => $banners
         ]);
     }

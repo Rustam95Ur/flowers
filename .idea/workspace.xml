@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mail/payment.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/payment.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mail/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mail/calculator.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +208,8 @@
       <workItem from="1619944355754" duration="81948000" />
       <workItem from="1621346215698" duration="22216000" />
       <workItem from="1621517034930" duration="1489000" />
-      <workItem from="1621582910330" duration="1146000" />
+      <workItem from="1621582910330" duration="1290000" />
+      <workItem from="1621599048983" duration="4350000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -458,7 +463,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621583546479</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="updated text">
+      <created>1621588910888</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1621588910888</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -466,7 +478,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated shop page" />
     <MESSAGE value="Updated filter and header link" />
     <MESSAGE value="Updated font and style" />
     <MESSAGE value="Added modal and select city" />
@@ -491,6 +502,7 @@
     <MESSAGE value="updated color" />
     <MESSAGE value="added banners" />
     <MESSAGE value="updated category banner size" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated category banner size" />
+    <MESSAGE value="updated text" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated text" />
   </component>
 </project>

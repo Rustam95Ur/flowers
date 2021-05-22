@@ -35,7 +35,8 @@
                     <div class="row elements-grid">
                         <div class="col-md-2 col-custom column-win">
                             <div class="categories-img mb-30">
-                                <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}" alt=""></a>
+                                <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}"
+                                                                 alt=""></a>
                                 <div class="categories-content">
                                     <h3>{{trans('header.category.all')}}</h3>
                                     <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
@@ -78,6 +79,7 @@
                 <div class="col-12 col-custom">
                     <div class="product-slider swiper-container anime-element-multi">
                         <div class="swiper-wrapper">
+                            @php $key = false @endphp
                             @foreach($featured_flowers as $flowers)
                                 <div class="single-item swiper-slide">
                                 @foreach($flowers as $flower)
@@ -116,13 +118,20 @@
                                                         <a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
                                                     </h4>
                                                 </div>
-                                                <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
+                                                @php $key = array_search($flower['id'], array_column($product_ratings, 'product_id')) @endphp
+                                                @if($key !== false)
+                                                    <div class="product-rating">
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 1 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 2 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 3 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 4 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] == 5 ? '' : '-o'}}"></i>
+                                                    </div>
+                                                @else
+                                                    <div class="product-rating mb-4">
+
+                                                    </div>
+                                                @endif
                                                 <div class="price-box">
                                                     <span class="regular-price ">{{$flower['price']}} ₸</span>
                                                 </div>
@@ -206,13 +215,21 @@
                                                             href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
                                                     </h4>
                                                 </div>
-                                                <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                    <i class="fa fa-star-o"></i>
-                                                </div>
+                                                @php $key = array_search($flower['id'], array_column($product_ratings, 'product_id')) @endphp
+                                                @if($key !== false)
+                                                    <div class="product-rating">
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 1 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 2 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 3 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 4 ? '' : '-o'}}"></i>
+                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] == 5 ? '' : '-o'}}"></i>
+                                                    </div>
+                                                @else
+                                                    <div class="product-rating mb-4">
+
+                                                    </div>
+                                                @endif
+
                                                 <div class="price-box">
                                                     <span class="regular-price ">{{$flower['price']}} ₸</span>
                                                 </div>

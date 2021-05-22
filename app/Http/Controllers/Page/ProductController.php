@@ -56,17 +56,25 @@ class ProductController extends Controller
             ->orderBy('is_extra', 'ASC')->paginate(20);
         $colors = Color::all();
         $sizes = Size::all();
+        $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
+            ->where('product_id', '!=', null)
+            ->where('is_active', 1)
+            ->groupBy('product_id')
+            ->get();
         if (request()->ajax()) {
             return view('products.list', [
                 'products' => $products,
+                'product_ratings' => $product_ratings->toarray(),
             ]);
         }
+
         $request_filter = request()->input();
         return view('products.shop', [
             'products' => $products,
             'colors' => $colors,
             'sizes' => $sizes,
             'filters' => $request_filter,
+            'product_ratings' => $product_ratings->toarray(),
         ]);
     }
 
