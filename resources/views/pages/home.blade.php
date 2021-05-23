@@ -33,10 +33,11 @@
             <div class="row">
                 <div class="col-md-12 col-custom">
                     <div class="row elements-grid">
-                        <div class="col-md-2 col-custom column-win">
+                        <div class="col-md-2">
                             <div class="categories-img mb-30">
-                                <a href="{{route('shop')}}"><img src="{{asset('images/category/home1-category-1.jpg')}}"
-                                                                 alt=""></a>
+                                <a href="{{route('shop')}}">
+                                    <img src="{{asset('images/category/home1-category-1.jpg')}}" alt="">
+                                </a>
                                 <div class="categories-content">
                                     <h3>{{trans('header.category.all')}}</h3>
                                     <h4>{{trans('page.home.category_item_count', ['count'=> $product_count])}}</h4>
@@ -44,7 +45,7 @@
                             </div>
                         </div>
                         @foreach($categories as $category)
-                            <div class="col-md-2 col-custom column-win">
+                            <div class="col-md-2">
                                 <div class="categories-img mb-30">
                                     <a href="{{route('shop')}}?categories[]={{$category->id}}">
                                         <img src="{{Voyager::image($category->image)}}"
@@ -293,22 +294,5 @@
             </div>
         </div>
     </div>
-    </div>
     <!-- Testimonial Area End Here -->
-    @push('scripts')
-        <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
-        <script>
-            function masonry_grid() {
-                $('.elements-grid').masonry({
-                    // options
-                    itemSelector: '.column-win',
-                    horizontalOrder: true
-                });
-            }
-
-            $(document).ready(function () {
-                masonry_grid()
-            });
-        </script>
-    @endpush
 @endsection

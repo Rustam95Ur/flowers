@@ -27,9 +27,9 @@ class BaseController extends Controller
     public function home()
     {
         $flowers_count = Product::count();
-        $flowers = Product::all()->toarray();
+        $flowers = Product::where('is_extra', 0)->orderBy('id', 'DESC')->limit(50)->get();
         $banners = Banner::where('page', 'home')->get();
-        $temp_featured_flowers = $flowers;
+        $temp_featured_flowers = $flowers->toarray();
         $temp_array = [];
         $featured_flowers = [];
         $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
@@ -53,7 +53,7 @@ class BaseController extends Controller
         $comments = Comment::where('product_id', null)->get();
         return view('pages.home', [
             'featured_flowers' => $featured_flowers,
-            'sale_flowers' => $flowers,
+            'sale_flowers' => $flowers->toarray(),
             'product_count' => $flowers_count,
             'comments' => $comments,
             'product_ratings' => $product_ratings->toarray(),
