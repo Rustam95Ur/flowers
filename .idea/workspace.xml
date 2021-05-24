@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="updated css">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/shop.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/shop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/breadcrumb.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/breadcrumb.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/wishlist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/wishlist.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/shop.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/shop.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +205,8 @@
       <workItem from="1621346215698" duration="22216000" />
       <workItem from="1621517034930" duration="1489000" />
       <workItem from="1621582910330" duration="1290000" />
-      <workItem from="1621599048983" duration="11919000" />
+      <workItem from="1621599048983" duration="12360000" />
+      <workItem from="1621881864101" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -508,7 +502,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621781971197</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="updated css, added breadcrumb text custom page">
+      <created>1621880089377</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1621880089377</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -516,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated style" />
     <MESSAGE value="Updated product link" />
     <MESSAGE value="Added quick view modal" />
     <MESSAGE value="Added gallery page" />
@@ -541,6 +541,7 @@
     <MESSAGE value="updated mobile logo" />
     <MESSAGE value="test code" />
     <MESSAGE value="updated home page" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated home page" />
+    <MESSAGE value="updated css, added breadcrumb text custom page" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated css, added breadcrumb text custom page" />
   </component>
 </project>

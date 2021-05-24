@@ -6370,11 +6370,11 @@ mark {
     width: 100%;
     display: flex;
     justify-content: center;
-    height: 150px;
+    height: 200px;
 }
 
 .category-block .col-md-1 {
-    width: 8.333333%;
+    width: 16.666667%;
 }
 @media (max-width: 1500px) {
     .category-block .col-md-1 {
