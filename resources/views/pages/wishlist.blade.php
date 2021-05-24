@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('page_title', trans('button.wishlist'))
+@section('link_title', trans('button.wishlist'))
 @section('content')
     <!-- Wishlist main wrapper start -->
     <div class="wishlist-main-wrapper mt-no-text mb-5 pb-5">

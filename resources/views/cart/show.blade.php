@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('page_title', trans('header.cart'))
+@section('link_title', trans('header.cart'))
 @section('content')
     <!-- cart main wrapper start -->
     <div class="cart-main-wrapper mt-no-text">

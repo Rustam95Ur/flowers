@@ -11,7 +11,7 @@ return [
         ],
     ],
     'search' => 'Поиск',
-
+    'page_title' => 'Товары',
     'filter' => [
         'color' => 'Цвет',
         'price' => 'Цена',

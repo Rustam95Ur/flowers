@@ -2,6 +2,8 @@
 @section('title', $page->title)
 @section('description', $page->meta_description)
 @section('keywords', $page->meta_keywords)
+@section('page_title', $page->title)
+@section('link_title', $page->title)
 @section('content')
     <!-- Blog Main Area Start Here -->
     <div class="blog-main-area">

@@ -32,8 +32,8 @@
         <div class="container-fluid custom-area">
             <div class="row">
                 <div class="col-md-12 col-custom">
-                    <div class="row elements-grid">
-                        <div class="col-md-2">
+                    <div class="row elements-grid category-block">
+                        <div class="col-md-1">
                             <div class="categories-img mb-30">
                                 <a href="{{route('shop')}}">
                                     <img src="{{asset('images/category/home1-category-1.jpg')}}" alt="">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         @foreach($categories as $category)
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="categories-img mb-30">
                                     <a href="{{route('shop')}}?categories[]={{$category->id}}">
                                         <img src="{{Voyager::image($category->image)}}"

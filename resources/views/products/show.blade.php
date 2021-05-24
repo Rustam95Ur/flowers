@@ -2,6 +2,8 @@
 @section('title', $flower->title)
 @section('description', $flower->meta_description)
 @section('keywords', $flower->meta_keywords)
+@section('page_title', trans('shop.page_title'))
+@section('link_title', $flower->title)
 @push('css')
     <link rel="stylesheet" href="{{asset('css/rating_star.css')}}">
 @endpush

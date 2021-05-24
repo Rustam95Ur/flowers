@@ -1,4 +1,6 @@
 @extends('layouts.app')
+@section('page_title', trans('header.contact'))
+@section('link_title', trans('header.contact'))
 @section('content')
 
     <!-- Contact Us Area Start Here -->

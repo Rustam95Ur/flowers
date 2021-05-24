@@ -7,6 +7,8 @@ return [
     'price' => 'Цена',
     'information' => 'Информация',
     'calculator' => 'Калькулятор',
+    'cart' => 'Корзина',
+    'payment' => 'Оплата',
     'contact' => 'Контакты',
     'gallery' => 'Галерея',
     'intendeds' => 'Кому',
