@@ -33,7 +33,7 @@ class BaseController extends Controller
     }
 
 
-    public function payment_send_mail($request_data, $total_price, $products): RedirectResponse
+    public static function payment_send_mail($request_data, $total_price, $products): bool
     {
         $requestForm = new \stdClass();
         $requestForm->customer_name = $request_data['customer_name'];
@@ -52,7 +52,7 @@ class BaseController extends Controller
         $payment_type = $request_data['payment_type'];
         $requestForm->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
         Mail::to(env('MAIL_FROM_ADDRESS'))->send(new PaymentMail($requestForm));
-        return redirect()->back()->with('success', trans('mail.payment-success'));
+        return true;
     }
 
 

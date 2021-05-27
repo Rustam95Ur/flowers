@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use TCG\Voyager\Facades\Voyager;
 
 class CartController extends Controller
 {
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -22,8 +26,9 @@ class CartController extends Controller
         $shipping_price = Voyager::setting('site.shipping_price') ? (int)Voyager::setting('site.shipping_price') : 0;
         if ($cart_items) {
             foreach ($cart_items as $item) {
-                $product = Product::where('id', $item['product_id'])->first()->toarray();
+                $product = Product::where('id', $item['product_id'])->with('city_price')->first()->toarray();
                 $product['qty'] = $item['qty'];
+                $product['price'] =  $product['city_price'] ? $product['city_price']['price'] : $product['price'];
                 array_push($products, $product);
                 $total_price += $product['price'] * $item['qty'];
             }
@@ -43,9 +48,9 @@ class CartController extends Controller
 
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    protected function count_cart(): \Illuminate\Http\JsonResponse
+    protected function count_cart(): JsonResponse
     {
         $count = 0;
         $count_cart_items = session()->get('cart');
@@ -57,14 +62,20 @@ class CartController extends Controller
         return response()->json(['count' => $count], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
-
-    protected function update_to_cart(int $product_id, int $qty, string $type = 'add'): \Illuminate\Http\JsonResponse
+    /**
+     * @param int $product_id
+     * @param int $qty
+     * @param string $type
+     * @param array $sizes
+     * @param array $cities
+     * @return JsonResponse
+     */
+    protected function update_to_cart(int $product_id, int $qty, string $type = 'add', array $sizes = [], array $cities = []): JsonResponse
     {
         Product::where('id', '=', $product_id)->firstOrFail();
-        $item = ['product_id' => $product_id, 'qty' => $qty];
+        $item = ['product_id' => $product_id, 'qty' => $qty, 'sizes' => $sizes, 'cities' => $cities];
         $message = trans('cart.success.add-cart');
         $session_items = session()->get('cart');
-        $product_exist = false;
         if ($session_items and count($session_items) > 0) {
             $product_exist = array_search($product_id, array_column($session_items, 'product_id'));
             if ($product_exist === false and $type == 'add') {
@@ -105,7 +116,7 @@ class CartController extends Controller
 
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return Application|Factory|View
      */
     public function wishlists()
     {
@@ -125,9 +136,9 @@ class CartController extends Controller
     /**
      * @param int $product_id
      * @param string $type
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function update_wishlist(int $product_id, $type = 'add'): \Illuminate\Http\JsonResponse
+    public function update_wishlist(int $product_id, $type = 'add'): JsonResponse
     {
         $message = trans('cart.success.add-wish');
         $wish_lists = session()->get('wish');
@@ -149,9 +160,9 @@ class CartController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    protected function count_wish(): \Illuminate\Http\JsonResponse
+    protected function count_wish(): JsonResponse
     {
         $wish_count = 0;
         $count_wish_items = session()->get('wish');

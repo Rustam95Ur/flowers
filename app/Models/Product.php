@@ -51,4 +51,10 @@ class Product extends Model
         return $query->where('is_extra', 1);
     }
 
+    public function city_price(): \Illuminate\Database\Eloquent\Relations\hasOne
+    {
+        return $this->hasOne(ProductCityPrice::class, 'product_id')->where('city_id', '=', session('city', 0));
+    }
+
+
 }

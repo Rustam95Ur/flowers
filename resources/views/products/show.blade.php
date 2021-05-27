@@ -47,8 +47,8 @@
                             <h2 class="product-title">{{$flower->title}}</h2>
                         </div>
                         <div class="price-box mb-4">
-                            <h4 class=""><b>{{trans('page.product.price')}}:</b> {{$flower->price}} ₸</h4>
-                            <input name="product_price" value="{{$flower->price}}" type="hidden">
+                            <h4 class=""><b>{{trans('page.product.price')}}:</b> {{ $flower->city_price ? $flower->city_price->price : $flower->price }} ₸</h4>
+                            <input name="product_price" value="{{ $flower->city_price ? $flower->city_price->price : $flower->price }}" type="hidden">
                         </div>
                         <div class="product-meta mt-3">
                             <div class="product-material custom-radio mb-4">
@@ -349,7 +349,7 @@
                                                 </div>
                                             @endif
                                             <div class="price-box">
-                                                <span class="regular-price ">{{$flower['price']}} ₸</span>
+                                                <span class="regular-price "> {{ $flower['city_price'] ? $flower['city_price']['price'] : $flower['price'] }} ₸</span>
                                             </div>
                                             <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
                                                class="btn product-cart">{{trans('button.add_to_cart')}}</a>

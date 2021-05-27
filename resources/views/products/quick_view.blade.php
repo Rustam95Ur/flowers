@@ -16,7 +16,7 @@
                 <h4 class="title">{{$quick_product->title}}</h4>
             </div>
             <div class="price-box">
-                <span class="regular-price ">{{$quick_product->price}} ₸</span>
+                <span class="regular-price ">{{$new_price}} ₸</span>
             </div>
             <div class="product-rating">
                 <i class="fa fa-star"></i>

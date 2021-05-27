@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Models\Comment;
+use App\Models\ProductCityPrice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
@@ -59,7 +60,7 @@ class ProductController extends Controller
      */
     public function shop(ProductFilter $filters)
     {
-        $products = Product::where('price', '>', 0)->filter($filters)
+        $products = Product::where('price', '>', 0)->with('city_price')->filter($filters)
             ->orderBy('is_extra', 'ASC')->paginate(20);
         $colors = Color::all();
         $sizes = Size::all();

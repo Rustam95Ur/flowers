@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Page\BaseController;
 use App\Http\Requests\StoreCheckoutForm;
 use App\Http\Controllers\Mail\BaseController as MailBaseController;
+use App\Models\City;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
@@ -27,13 +28,20 @@ class PaymentController extends Controller
         foreach ($session_items as $item) {
             $product = Product::where('id', '=', $item['product_id'])->first();
             if ($product) {
+                $price = $product->city_price ? $product->city_price->price : $product->price;
                 $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
-                $total_price += $product->price * $item['qty'];
+                $total_price += $price * $item['qty'];
             }
 
         }
+        if (session('city')) {
+            $city = City::find(session('city'));
+            $products .= 'Город: ' . $city->title;
+            $city_info = ['city_id' => $city->id, 'city_title' => $city->title];
+            array_push($session_items, $city_info);
+        }
         if ($total_price < 100) {
-            return back()->with('error', 'cart.checkout.min_price_error');
+            return back()->with('error', trans('cart.checkout.min_price_error'));
         }
         $paymentSave = new Payment();
         $paymentSave->customer_name = $request['customer_name'];
@@ -49,6 +57,7 @@ class PaymentController extends Controller
         $paymentSave->add_photo = $request['photo'] == 'on' ? 1 : 0;
         $paymentSave->surprise = $request['surprise'] == 'on' ? 1 : 0;
         $paymentSave->total = $total_price;
+        $paymentSave->request = json_encode($session_items);
         $paymentSave->products = $products;
         $payment_type = $request['payment_type'];
         if ($payment_type === 'online') {
@@ -75,7 +84,7 @@ class PaymentController extends Controller
 //            unset($payment_request[0], $payment_request[1]);
 //            $query = http_build_query($payment_request);
 //            $link = 'https://api.paybox.money/payment.php?' . $query;
-//            $paymentSave->request = $query;
+//            $paymentSave->payment_request = $query;
             $paymentSave->status = 'В ожиданий';
             $paymentSave->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
             $paymentSave->save();

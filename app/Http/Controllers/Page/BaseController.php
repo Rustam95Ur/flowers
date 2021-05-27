@@ -27,7 +27,7 @@ class BaseController extends Controller
     public function home()
     {
         $flowers_count = Product::count();
-        $flowers = Product::where('is_extra', 0)->orderBy('id', 'DESC')->limit(50)->get();
+        $flowers = Product::where('is_extra', 0)->orderBy('id', 'DESC')->with('city_price')->limit(50)->get();
         $banners = Banner::where('page', 'home')->get();
         $temp_featured_flowers = $flowers->toarray();
         $temp_array = [];
@@ -80,15 +80,16 @@ class BaseController extends Controller
             $products = [];
             $total_sum = 0;
             foreach ($carts_product as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->first();
+                $product = Product::where('id', '=', $item['product_id'])->with('city_price')->first();
+                $product_price = $product->city_price ? $product->city_price->price : $product->price;
                 $results = [
                     'id' => $product->id,
                     'title' => $product->title,
-                    'price' => $product->price,
+                    'price' => $product_price,
                     'qty' => $item['qty']
                 ];
                 array_push($products, $results);
-                $total_sum += $product['price'] * $item['qty'];
+                $total_sum += $product_price* $item['qty'];
             }
             return view('cart.checkout', [
                 'checkout_products' => $products,
