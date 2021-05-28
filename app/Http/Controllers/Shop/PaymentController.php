@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Page\BaseController;
 use App\Http\Requests\StoreCheckoutForm;
 use App\Http\Controllers\Mail\BaseController as MailBaseController;
 use App\Models\City;
@@ -28,7 +27,7 @@ class PaymentController extends Controller
         foreach ($session_items as $item) {
             $product = Product::where('id', '=', $item['product_id'])->first();
             if ($product) {
-                $price = $product->city_price ? $product->city_price->price : $product->price;
+                $price = $product->updated_price;
                 $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
                 $total_price += $price * $item['qty'];
             }

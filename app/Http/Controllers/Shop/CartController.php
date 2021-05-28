@@ -26,11 +26,13 @@ class CartController extends Controller
         $shipping_price = Voyager::setting('site.shipping_price') ? (int)Voyager::setting('site.shipping_price') : 0;
         if ($cart_items) {
             foreach ($cart_items as $item) {
-                $product = Product::where('id', $item['product_id'])->with('city_price')->first()->toarray();
+                $product = Product::where('id', $item['product_id'])->with('city_price')->first();
+                $product_price = $product->updated_price;
+                $product = $product->toarray();
                 $product['qty'] = $item['qty'];
-                $product['price'] =  $product['city_price'] ? $product['city_price']['price'] : $product['price'];
+                $product['price'] =  $product_price;
                 array_push($products, $product);
-                $total_price += $product['price'] * $item['qty'];
+                $total_price += $product_price * $item['qty'];
             }
         }
         if (request()->ajax()) {
@@ -124,7 +126,7 @@ class CartController extends Controller
         $wish_items = session()->get('wish');
         if ($wish_items) {
             foreach ($wish_items as $item) {
-                $product = Product::where('id', $item)->first()->toarray();
+                $product = Product::where('id', $item)->with('city_price')->first()->toarray();
                 array_push($wish_products, $product);
             }
         }

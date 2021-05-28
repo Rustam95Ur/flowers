@@ -47,8 +47,12 @@
                             <h2 class="product-title">{{$flower->title}}</h2>
                         </div>
                         <div class="price-box mb-4">
-                            <h4 class=""><b>{{trans('page.product.price')}}:</b> {{ $flower->city_price ? $flower->city_price->price : $flower->price }} ₸</h4>
-                            <input name="product_price" value="{{ $flower->city_price ? $flower->city_price->price : $flower->price }}" type="hidden">
+                            <h4 class=""><b>{{trans('page.product.price')}}:</b>
+                                {{$flower->updated_price }} ₸
+                            </h4>
+                            <input name="product_price"
+                                   value="{{$flower->updated_price }}"
+                                   type="hidden">
                         </div>
                         <div class="product-meta mt-3">
                             <div class="product-material custom-radio mb-4">
@@ -68,7 +72,7 @@
                                         <div class="row">
                                             @foreach($flower->extra_products as $product)
                                                 <div class="col-md-4 mr-3 custom-checkbox-image">
-                                                    <input type="checkbox" name="extra" value="{{$product->price}}"
+                                                    <input type="checkbox" name="extra" value="{{$product->updated_price}}"
                                                            id="extra_product_{{$product->id}}">
                                                     <label class="checkbox-div pay-checkbox"
                                                            for="extra_product_{{$product->id}}">
@@ -85,7 +89,7 @@
                                                                 </div>
                                                                 <div class="price-box">
                                                                     <span
-                                                                        class="font-weight-bold">{{$product->price}}₸</span>
+                                                                        class="font-weight-bold">{{$product->updated_price}}₸</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -168,13 +172,14 @@
                                                         <i class="fa fa-star{{ $comment->rating >= 4 ? '' : '-o'}}"></i>
                                                         <i class="fa fa-star{{ $comment->rating == 5 ? '' : '-o'}}"></i>
                                                     </div>
-                                                    <h5>{{$comment->full_name}} - <span> {{$comment->created_at}}</span></h5>
+                                                    <h5>{{$comment->full_name}} - <span> {{$comment->created_at}}</span>
+                                                    </h5>
                                                 </div>
                                                 <p>{{$comment->body}}</p>
                                             </div>
                                         </div>
-                                    @endforeach
-                                    <!-- End Single Review -->
+                                @endforeach
+                                <!-- End Single Review -->
                                 </div>
                                 <!-- Start RAting Area -->
                                 <div class="rating_wrap">
@@ -349,7 +354,8 @@
                                                 </div>
                                             @endif
                                             <div class="price-box">
-                                                <span class="regular-price "> {{ $flower['city_price'] ? $flower['city_price']['price'] : $flower['price'] }} ₸</span>
+                                                <span class="regular-price ">
+                                                    {{ $flower['updated_price'] }} ₸</span>
                                             </div>
                                             <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
                                                class="btn product-cart">{{trans('button.add_to_cart')}}</a>

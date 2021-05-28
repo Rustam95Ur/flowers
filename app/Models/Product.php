@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filters\QueryFilter;
 use App\Models\Category;
+use TCG\Voyager\Facades\Voyager;
 
 class Product extends Model
 {
@@ -54,6 +55,21 @@ class Product extends Model
     public function city_price(): \Illuminate\Database\Eloquent\Relations\hasOne
     {
         return $this->hasOne(ProductCityPrice::class, 'product_id')->where('city_id', '=', session('city', 0));
+    }
+
+    public function getUpdatedPriceAttribute()
+    {
+        $product_price =  $this->getAttributes()['price'];
+        if ($this->city_price()->value('price')) {
+
+            $product_price = $this->city_price()->value('price');
+        }
+        $number_percent = 0;
+        if (Voyager::setting('site.price_update')) {
+            $percent = Voyager::setting('site.price_update');
+            $number_percent = $product_price / 100 * $percent;
+        }
+        return $product_price + $number_percent;
     }
 
 

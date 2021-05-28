@@ -12,10 +12,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\StoreMailForm;
-use Illuminate\Http\Request;
 use TCG\Voyager\Models\Page;
-use Illuminate\Support\Facades\Mail;
 use App\Models\Comment;
 
 
@@ -27,9 +24,17 @@ class BaseController extends Controller
     public function home()
     {
         $flowers_count = Product::count();
-        $flowers = Product::where('is_extra', 0)->orderBy('id', 'DESC')->with('city_price')->limit(50)->get();
+        $flowers = Product::where('is_extra', 0)->orderBy('id', 'DESC')->limit(50)->get();
         $banners = Banner::where('page', 'home')->get();
-        $temp_featured_flowers = $flowers->toarray();
+        $temp_featured_flowers = [];
+        $sale_flowers_array = [];
+        foreach ($flowers as $flower) {
+            $product_price = $flower->updated_price;
+            $product = $flower->toarray();
+            $product['updated_price'] =  $product_price;
+            array_push($temp_featured_flowers, $product);
+            array_push($sale_flowers_array, $product);
+        }
         $temp_array = [];
         $featured_flowers = [];
         $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
@@ -37,7 +42,6 @@ class BaseController extends Controller
             ->where('is_active', 1)
             ->groupBy('product_id')
             ->get();
-
         while (True) {
             array_push($temp_array, $temp_featured_flowers[0]);
             if (count($temp_array) == 3 or (count($temp_featured_flowers) < 2)) {
@@ -49,11 +53,10 @@ class BaseController extends Controller
                 break;
             }
         }
-//        $galleries = Gallery::limit(10)->orderBy('created_at', 'DESC')->get();
         $comments = Comment::where('product_id', null)->get();
         return view('pages.home', [
             'featured_flowers' => $featured_flowers,
-            'sale_flowers' => $flowers->toarray(),
+            'sale_flowers' => $sale_flowers_array,
             'product_count' => $flowers_count,
             'comments' => $comments,
             'product_ratings' => $product_ratings->toarray(),
@@ -81,7 +84,7 @@ class BaseController extends Controller
             $total_sum = 0;
             foreach ($carts_product as $item) {
                 $product = Product::where('id', '=', $item['product_id'])->with('city_price')->first();
-                $product_price = $product->city_price ? $product->city_price->price : $product->price;
+                $product_price = $product->updated_price;
                 $results = [
                     'id' => $product->id,
                     'title' => $product->title,

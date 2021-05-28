@@ -134,7 +134,7 @@
                                                     </div>
                                                 @endif
                                                 <div class="price-box">
-                                                    <span class="regular-price ">{{ $flower['city_price'] ? $flower['city_price']['price'] : $flower['price'] }} ₸</span>
+                                                    <span class="regular-price ">{{ $flower['updated_price']}} ₸</span>
                                                 </div>
                                                 <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
                                                    class="btn product-cart">{{trans('button.add_to_cart')}}</a>
@@ -232,7 +232,7 @@
                                                 @endif
 
                                                 <div class="price-box">
-                                                    <span class="regular-price ">{{ $flower['city_price'] ? $flower['city_price']['price'] : $flower['price'] }} ₸</span>
+                                                    <span class="regular-price ">{{ $flower['updated_price'] }} ₸</span>
                                                 </div>
                                                 <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
                                                    class="btn product-cart">{{trans('button.add_to_cart')}}</a>

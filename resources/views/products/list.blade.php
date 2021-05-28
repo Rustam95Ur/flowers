@@ -53,7 +53,7 @@
                         @endif
                         <div class="price-box">
 
-                            <span class="regular-price ">{{ $product->city_price ? $product->city_price->price : $product->price }} ₸</span>
+                            <span class="regular-price ">{{ $product->updated_price }} ₸</span>
                         </div>
                         <a onclick="update_cart('{{$product->id}}', 1); $(this).addClass('text-success')"
                            class="btn product-cart">
@@ -76,7 +76,7 @@
                             <i class="fa fa-star-o"></i>
                         </div>
                         <div class="price-box">
-                            <span class="regular-price ">{{$product->price}} ₸</span>
+                            <span class="regular-price ">{{$product->updated_price}} ₸</span>
                         </div>
                         <p class="desc-content">{!! substr($product->description, 0, 300) !!}</p>
                         <div class="button-listview">

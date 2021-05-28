@@ -36,7 +36,7 @@
                                             {{$product['title']}}
                                         </a>
                                     </td>
-                                    <td class="pro-price"><span>{{$product['price']}} ₸</span></td>
+                                    <td class="pro-price"><span>{{ $product['updated_price'] }} ₸</span></td>
                                     <td class="pro-cart">
                                         <a onclick="update_cart({{$product['id']}}, 1, 'add'); $(this).addClass('bg-success')"
                                            class="btn product-cart button-icon flosun-button dark-btn ">
