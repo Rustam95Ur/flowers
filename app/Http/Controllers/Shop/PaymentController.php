@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Payment;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use TCG\Voyager\Facades\Voyager;
 
 class PaymentController extends Controller
 {
@@ -21,7 +22,7 @@ class PaymentController extends Controller
         $total_price = 0;
         $session_items = session()->get('cart');
         if (!$session_items) {
-            return redirect()->back();
+            return redirect()->route('cart');
         }
         $products = '';
         foreach ($session_items as $item) {
@@ -33,11 +34,18 @@ class PaymentController extends Controller
             }
 
         }
+        $city_title = 'Не выбрано';
+        $city_info = ['city_id' => null, 'city_title' => $city_title];
         if (session('city')) {
             $city = City::find(session('city'));
-            $products .= 'Город: ' . $city->title;
             $city_info = ['city_id' => $city->id, 'city_title' => $city->title];
-            array_push($session_items, $city_info);
+            $city_title = $city->title;
+        }
+        $products .= 'Город: ' . $city_title. ' ';
+        array_push($session_items, $city_info);
+        if (Voyager::setting('site.price_update')) {
+            $products .= 'Измененая цена на: ' . Voyager::setting('site.price_update'). '%';
+            array_push($session_items, ['price_update_val' => Voyager::setting('site.price_update')]);
         }
         if ($total_price < 100) {
             return back()->with('error', trans('cart.checkout.min_price_error'));
