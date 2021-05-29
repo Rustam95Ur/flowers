@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
             $count_cart_items = session()->get('cart');
             if ($count_cart_items) {
                 foreach ($count_cart_items as $item) {
-                    $product = Product::where('id', $item['product_id'])->with('city_price')->first();
+                    $product = Product::where('id', $item['product_id'])->first();
                     $product_price = $product->updated_price;
                     $product = $product->toarray();
                     $product['qty'] = $item['qty'];

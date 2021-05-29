@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\ProductSizePrice;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -26,11 +27,11 @@ class CartController extends Controller
         $shipping_price = Voyager::setting('site.shipping_price') ? (int)Voyager::setting('site.shipping_price') : 0;
         if ($cart_items) {
             foreach ($cart_items as $item) {
-                $product = Product::where('id', $item['product_id'])->with('city_price')->first();
+                $product = Product::where('id', $item['product_id'])->first();
                 $product_price = $product->updated_price;
                 $product = $product->toarray();
                 $product['qty'] = $item['qty'];
-                $product['price'] =  $product_price;
+                $product['price'] = $product_price;
                 array_push($products, $product);
                 $total_price += $product_price * $item['qty'];
             }
@@ -68,22 +69,35 @@ class CartController extends Controller
      * @param int $product_id
      * @param int $qty
      * @param string $type
-     * @param array $sizes
-     * @param array $cities
+     * @param int|null $size_id
      * @return JsonResponse
      */
-    protected function update_to_cart(int $product_id, int $qty, string $type = 'add', array $sizes = [], array $cities = []): JsonResponse
+    protected function update_to_cart(int $product_id, int $qty, string $type = 'add', int $size_id = null): JsonResponse
     {
-        Product::where('id', '=', $product_id)->firstOrFail();
-        $item = ['product_id' => $product_id, 'qty' => $qty, 'sizes' => $sizes, 'cities' => $cities];
+        $product = Product::where('id', '=', $product_id)->firstOrFail();
+        $sizes_info = [];
+
+        if ($size_id) {
+            $product_price = $product->size_price($product->id, $size_id, $product->updated_price);
+
+            $sizes_info = ['id' => $size_id, 'price' => $product_price];
+        }
+        $item = ['product_id' => $product_id, 'qty' => $qty, 'sizes' => $sizes_info];
         $message = trans('cart.success.add-cart');
         $session_items = session()->get('cart');
         if ($session_items and count($session_items) > 0) {
+            $size_exist = array_filter($session_items, function ($value) use ($product_id, $size_id) {
+                if (count($value['sizes']) > 0 and $product_id ==  $value['product_id'] and $value['sizes']['id'] == $size_id) {
+                    return true;
+                }
+                return false;
+            });
             $product_exist = array_search($product_id, array_column($session_items, 'product_id'));
             if ($product_exist === false and $type == 'add') {
                 array_push($session_items, $item);
                 session()->put('cart', $session_items);
             } else {
+
                 if ($qty == 0 and $type == 'remove') {
                     $message = trans('cart.success.remove-cart');
                     unset($session_items[$product_exist]);
@@ -91,7 +105,6 @@ class CartController extends Controller
                 } else {
                     $results = [];
                     for ($i = 0; $i < count($session_items); $i++) {
-
                         $new_qty = $session_items[$i]['qty'] + $qty;
                         if ($type == 'remove') {
                             $new_qty = $session_items[$i]['qty'] - $qty;
@@ -101,6 +114,7 @@ class CartController extends Controller
                             $new_product_array = [
                                 'product_id' => $session_items[$i]['product_id'],
                                 'qty' => $product_qty,
+                                'sizes' => $sizes_info,
                             ];
                             array_push($results, $new_product_array);
                         }
@@ -126,7 +140,10 @@ class CartController extends Controller
         $wish_items = session()->get('wish');
         if ($wish_items) {
             foreach ($wish_items as $item) {
-                $product = Product::where('id', $item)->with('city_price')->first()->toarray();
+                $product = Product::where('id', $item)->first();
+                $product_price = $product->updated_price;
+                $product_array = $product->toarray();
+                $product_array['updated_price'] = $product_price;
                 array_push($wish_products, $product);
             }
         }

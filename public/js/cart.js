@@ -1,5 +1,5 @@
-function update_cart(product_id, qty = 1, type = 'add') {
-    var ajax_url = '/cart/update/' + product_id + '/' + qty + '/' + type;
+function update_cart(product_id, qty = 1, type = 'add', size_id = 0) {
+    var ajax_url = '/cart/update/' + product_id + '/' + qty + '/' + type + '/' + size_id;
     let xhr = new XMLHttpRequest();
     xhr.open('GET', ajax_url, false);
     xhr.send();

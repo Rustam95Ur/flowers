@@ -55,13 +55,13 @@
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="date">{{trans('cart.checkout.date')}}</label>
-                                        <input placeholder="" type="text" name="date" id="date">
+                                        <input placeholder="" type="date" name="date" id="date">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="time">{{trans('cart.checkout.time')}}</label>
-                                        <input placeholder="" type="text" name="time" id="time">
+                                        <input placeholder="" type="time" name="time" id="time">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">

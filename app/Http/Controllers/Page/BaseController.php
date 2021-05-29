@@ -83,7 +83,7 @@ class BaseController extends Controller
             $products = [];
             $total_sum = 0;
             foreach ($carts_product as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->with('city_price')->first();
+                $product = Product::where('id', '=', $item['product_id'])->first();
                 $product_price = $product->updated_price;
                 $results = [
                     'id' => $product->id,

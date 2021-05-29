@@ -27,6 +27,8 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product_show');
     Route::post('/product/comment/add', [ProductController::class, 'add_comment'])->name('product_add_comment');
     Route::get('/product/quick-view/{id}', [ProductController::class, 'quick_view'])->name('product_quick_view');
+    Route::get('/product/size-price/{product_id}/{size_id}', [ProductController::class, 'size_price'])->name('product_size_price');
+
 
     Route::get('/contact', [BaseController::class, 'contact'])->name('contact');
     Route::post('/contact/message/send', [MailBase::class, 'contact_message_send'])->name('contact_message_send');
@@ -35,7 +37,7 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/wishlist/{product_id}/{type}', [CartController::class, 'update_wishlist'])->name('update_wishlist');
     Route::get('/wishlists/count', [CartController::class, 'count_wish'])->name('count_wish');
 
-    Route::get('/cart/update/{product_id}/{qty}/{type}', [CartController::class, 'update_to_cart'])->name('update_to_cart');
+    Route::get('/cart/update/{product_id}/{qty}/{type}/{size_id}', [CartController::class, 'update_to_cart'])->name('update_to_cart');
     Route::get('/cart/count', [CartController::class, 'count_cart'])->name('count_cart');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
