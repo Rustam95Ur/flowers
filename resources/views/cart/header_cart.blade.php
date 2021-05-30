@@ -15,7 +15,7 @@
                         </a>
                     </div>
                     <div class="cart-text">
-                        <h5 class="title"><a href="{{route('product_show', $product['slug'])}}">{{ $product['title']}}</a></h5>
+                        <h5 class="title"><a href="{{route('product_show', $product['slug'])}}">{{ $product['title']}} {{$product['size_title']}}</a></h5>
                         <div class="cart-text-btn">
                             <div class="cart-qty">
                                 <span>{{ $product['qty']}}×</span>

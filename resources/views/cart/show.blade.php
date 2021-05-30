@@ -35,7 +35,7 @@
                                     </td>
                                     <td class="pro-title">
                                         <a href="{{route('product_show', $product['slug'])}}">
-                                            {{$product['title']}}
+                                            {{$product['title']}} {{$product['size_title']}}
                                         </a>
                                     </td>
                                     <td class="pro-price"><span

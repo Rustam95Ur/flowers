@@ -37,7 +37,8 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/wishlist/{product_id}/{type}', [CartController::class, 'update_wishlist'])->name('update_wishlist');
     Route::get('/wishlists/count', [CartController::class, 'count_wish'])->name('count_wish');
 
-    Route::get('/cart/update/{product_id}/{qty}/{type}/{size_id}', [CartController::class, 'update_to_cart'])->name('update_to_cart');
+    Route::get('/cart/update/{product_id}/{qty}/{type}', [CartController::class, 'update_to_cart'])->name('update_to_cart');
+    Route::get('/cart/update/{product_id}/{qty}/{type}/{size_id}', [CartController::class, 'update_to_cart_size'])->name('update_to_cart_size');
     Route::get('/cart/count', [CartController::class, 'count_cart'])->name('count_cart');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 

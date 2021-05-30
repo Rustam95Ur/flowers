@@ -37,9 +37,9 @@ function extra_total_price() {
 function product_and_extra_add(product_id) {
     $('#product_add_cart_btn').addClass('bg-success');
     if (product_size_id) {
-        update_cart(product_id, $('.cart-plus-minus-box').val(), 'add', product_size_id);
+        update_cart(product_id, $('.cart-plus-minus-box').val(), 'add', '/' + product_size_id);
     } else {
-
+        update_cart(product_id, $('.cart-plus-minus-box').val(), 'add');
     }
     if (extra_products_price.length > 0) {
         extra_products_price.forEach(function (item) {

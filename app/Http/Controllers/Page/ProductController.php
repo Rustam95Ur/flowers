@@ -55,15 +55,13 @@ class ProductController extends Controller
         ]);
     }
 
-    public function size_price( $product_id, $size_id): \Illuminate\Http\JsonResponse
+    public function size_price($product_id, $size_id): \Illuminate\Http\JsonResponse
     {
         $product = Product::find($product_id);
         $product_price = $product->size_price($product->id, $size_id, $product->updated_price);
         return response()->json(['price' => $product_price], 201, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
 
     }
-
-
 
     /***
      * @param ProductFilter $filters
