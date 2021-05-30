@@ -483,6 +483,7 @@ function updated_after_delete(product_id, value) {
     var shipping_price = parseInt($('.shipping-price').text()),
         sub_total_price = 0,
         price = $('#price-' + product_id).text();
+    console.log('ssssss')
     $('#subtotal-' + product_id).html(parseInt(price) * parseInt(value) + ' ₸')
     $('.subtotal').each(function () {
         sub_total_price += parseInt($(this).text())

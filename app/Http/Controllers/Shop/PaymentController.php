@@ -8,6 +8,7 @@ use App\Http\Controllers\Mail\BaseController as MailBaseController;
 use App\Models\City;
 use App\Models\Payment;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\RedirectResponse;
 use TCG\Voyager\Facades\Voyager;
 
@@ -21,7 +22,8 @@ class PaymentController extends Controller
     {
         $total_price = 0;
         $session_items = session()->get('cart');
-        if (!$session_items) {
+        $size_items = session()->get('size_cart');
+        if (!$session_items or !$size_items) {
             return redirect()->route('cart');
         }
         $products = '';
@@ -30,6 +32,20 @@ class PaymentController extends Controller
             if ($product) {
                 $price = $product->updated_price;
                 $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
+                $total_price += $price * $item['qty'];
+            }
+
+        }
+        foreach ($size_items as $item) {
+            $product = Product::where('id', '=', $item['product_id'])->first();
+            if ($product) {
+                $size_title = ' ';
+                if (isset($item['sizes'])) {
+                    $size_info = Size::find($item['sizes']['id']);
+                    $size_title = ' (' . $size_info->title . ') ';
+                }
+                $price = $product->updated_price;
+                $products .= $product->title. $size_title . ' x ' . $item['qty'] . ' штук.';
                 $total_price += $price * $item['qty'];
             }
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Gallery;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -79,7 +80,8 @@ class BaseController extends Controller
     public function checkout()
     {
         $carts_product = session()->get('cart');
-        if ($carts_product) {
+        $size_product = session()->get('size_cart');
+        if ($carts_product or $size_product) {
             $products = [];
             $total_sum = 0;
             foreach ($carts_product as $item) {
@@ -89,10 +91,25 @@ class BaseController extends Controller
                     'id' => $product->id,
                     'title' => $product->title,
                     'price' => $product_price,
+                    'size_title' => '',
                     'qty' => $item['qty']
                 ];
                 array_push($products, $results);
                 $total_sum += $product_price* $item['qty'];
+            }
+            foreach ($size_product as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $product_price = $item['sizes']['price'];
+                $size_info = Size::find($item['sizes']['id']);
+                $results = [
+                    'id' => $product->id,
+                    'title' => $product->title,
+                    'price' => $product_price ,
+                    'size_title' => '('.$size_info->title.')',
+                    'qty' => $item['qty']
+                ];
+                array_push($products, $results);
+                $total_sum += $product_price * $item['qty'];
             }
             return view('cart.checkout', [
                 'checkout_products' => $products,

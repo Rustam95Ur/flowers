@@ -53,6 +53,7 @@ class CartController extends Controller
                 $product['size_title'] = $size_title;
                 $product['qty'] = $item['qty'];
                 $product['type'] = 'size';
+                $product['size_id'] = $item['sizes']['id'];
                 $product['price'] = $product_price;
                 array_push($products, $product);
                 $total_price += $product_price * $item['qty'];
@@ -97,6 +98,13 @@ class CartController extends Controller
         return response()->json(['count' => $count], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
+    /***
+     * @param $product_id
+     * @param int $qty
+     * @param string $type
+     * @param int|null $size_id
+     * @return JsonResponse
+     */
     protected function update_to_cart_size($product_id, int $qty, string $type = 'add', int $size_id = null): JsonResponse
     {
         $product = Product::where('id', '=', $product_id)->firstOrFail();
@@ -107,9 +115,38 @@ class CartController extends Controller
             $sizes_info = ['id' => $size_id, 'price' => $product_price];
         }
         $item = ['product_id' => $product_id, 'qty' => $qty, 'sizes' => $sizes_info];
-        $session_items = session()->get('size_cart');
-        $updated_cart_message = $this->update_session_cart($session_items, $item, $product_id, $qty, $type, 'size_cart');
-        return response()->json(['success' => $updated_cart_message], 201, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+        $sessions = session()->get('size_cart');
+        if ($sessions and count($sessions) > 0) {
+            $current_item = [];
+            $sessions_items = [];
+            for ($i = 0; $i < count($sessions); $i++) {
+                if ($sessions[$i]['product_id'] == $product_id and $sessions[$i]['sizes']['id'] == $size_id) {
+                    $current_item = $sessions[$i];
+                } else {
+                    array_push($sessions_items, $sessions[$i]);
+                }
+            }
+            if ($current_item) {
+                if ($qty > 0) {
+                    $new_qty = $current_item['qty'] + $qty;
+                    if ($type == 'remove') {
+                        $new_qty = $current_item['qty'] - $qty;
+                    }
+                    if ($new_qty > 0) {
+                        $current_item['qty'] = $new_qty;
+                        array_push($sessions_items, $current_item);
+                    }
+                }
+            } else {
+                array_push($sessions_items, $item);
+            }
+            session()->put('size_cart', $sessions_items);
+        } else {
+            if ($type == 'add') {
+                session()->push('size_cart', $item);
+            }
+        }
+        return response()->json(['success' => 'success'], 201, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
     /**
@@ -191,7 +228,15 @@ class CartController extends Controller
         return response()->json(['count' => $wish_count], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
     }
 
-
+    /**
+     * @param $session
+     * @param $item
+     * @param $product_id
+     * @param $qty
+     * @param $type
+     * @param $cart_name
+     * @return array|Application|\Illuminate\Contracts\Translation\Translator|string|null
+     */
     protected function update_session_cart($session, $item, $product_id, $qty, $type, $cart_name)
     {
         $message = trans('cart.success.add-cart');

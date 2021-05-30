@@ -94,11 +94,11 @@
                                 <tbody>
                                 @foreach($checkout_products as $product)
                                     <tr class="cart_item">
-                                        <td class="cart-product-name">{{$product['title']}}<strong
+                                        <td class="cart-product-name">{{$product['title']}} {{$product['size_title']}}<strong
                                                 class="product-quantity">
                                                 × {{$product['qty']}}</strong></td>
                                         <td class="cart-product-total text-center"><span
-                                                class="amount">{{$product['price']}} ₸</span></td>
+                                                class="amount">{{$product['price'] * $product['qty']}}  ₸</span></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
