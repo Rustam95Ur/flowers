@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="select city modal">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="select city link for mobile">
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,14 +209,7 @@
       <workItem from="1622056455021" duration="12753000" />
       <workItem from="1622295214945" duration="32387000" />
       <workItem from="1622520002268" duration="1893000" />
-      <workItem from="1622533758373" duration="3147000" />
-    </task>
-    <task id="LOCAL-00002" summary="updated header and footer">
-      <created>1619627923788</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1619627923788</updated>
+      <workItem from="1622533758373" duration="3549000" />
     </task>
     <task id="LOCAL-00003" summary="added product show page">
       <created>1619727739647</created>
@@ -555,7 +547,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622535638913</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="select city link for mobile">
+      <created>1622551927976</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1622551927976</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added new models and updated header" />
     <MESSAGE value="Updated header for multi level menu" />
     <MESSAGE value="Updated product shop page" />
     <MESSAGE value="Updated product show page" />
@@ -600,6 +598,7 @@
     <MESSAGE value="saved city and updated price info" />
     <MESSAGE value="updated code" />
     <MESSAGE value="select city modal" />
-    <option name="LAST_COMMIT_MESSAGE" value="select city modal" />
+    <MESSAGE value="select city link for mobile" />
+    <option name="LAST_COMMIT_MESSAGE" value="select city link for mobile" />
   </component>
 </project>
