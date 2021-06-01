@@ -12,6 +12,7 @@ use App\Models\Size;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use TCG\Voyager\Models\Page;
 use App\Models\Comment;
@@ -43,15 +44,17 @@ class BaseController extends Controller
             ->where('is_active', 1)
             ->groupBy('product_id')
             ->get();
-        while (True) {
-            array_push($temp_array, $temp_featured_flowers[0]);
-            if (count($temp_array) == 3 or (count($temp_featured_flowers) < 2)) {
-                array_push($featured_flowers, $temp_array);
-                $temp_array = [];
-            }
-            array_shift($temp_featured_flowers);
-            if (count($temp_featured_flowers) == 0) {
-                break;
+        if($temp_featured_flowers) {
+            while (True) {
+                array_push($temp_array, $temp_featured_flowers[0]);
+                if (count($temp_array) == 3 or (count($temp_featured_flowers) < 2)) {
+                    array_push($featured_flowers, $temp_array);
+                    $temp_array = [];
+                }
+                array_shift($temp_featured_flowers);
+                if (count($temp_featured_flowers) == 0) {
+                    break;
+                }
             }
         }
         $comments = Comment::where('product_id', null)->get();
@@ -143,8 +146,19 @@ class BaseController extends Controller
     public function select_city($city_id): RedirectResponse
     {
         session()->put('city', $city_id);
+        session()->put('city_modal_disable', true);
         return redirect()->back();
     }
+
+    /**
+     * @return JsonResponse
+     */
+    public function select_city_close(): JsonResponse
+    {
+        session()->put('city_modal_disable', true);
+        return response()->json(['message' => 'success'], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+    }
+
 
     /**
      * @return Application|Factory|View

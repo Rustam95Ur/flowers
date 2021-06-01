@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $total_price = 0;
             $products = [];
             $city_title = false;
-            $selected_city = session()->get('city', null);
+            $selected_city = session()->get('city', 2);
             if ($selected_city) {
                 $city_title = City::where('id', $selected_city)->select('title')->first();
             }

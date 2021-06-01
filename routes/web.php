@@ -55,6 +55,7 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::post('/calculator/send', [MailBase::class, 'calculator_send'])->name('calculator_send');
 
     Route::get('/select-city/{city_id}', [BaseController::class, 'select_city'])->name('select_city');
+    Route::get('/select-city-close', [BaseController::class, 'select_city_close'])->name('select_city_close');
 
 });
 

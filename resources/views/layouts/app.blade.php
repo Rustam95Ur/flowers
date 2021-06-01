@@ -115,6 +115,15 @@
         })(jQuery);
     </script>
 @endif
+@if(!session('city_modal_disable'))
+    <script>
+        (function ($) {
+            $(function () {
+                $('#select_city_modal').modal('show');
+            });
+        })(jQuery);
+    </script>
+@endif
 </body>
 
 </html>
