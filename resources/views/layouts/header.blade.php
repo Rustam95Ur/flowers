@@ -37,12 +37,25 @@
     <div class="main-header header-sticky">
         <div class="container-fluid header-block">
             <div class="row align-items-center">
-                <div class="col-lg-2 col-xl-2 col-md-6 col-6 col-custom d-block mobile_logo">
+                <div class="col-lg-2 col-xl-2 col-md-3 col-3 col-custom d-block mobile_logo">
                     <div class="header-logo d-flex align-items-center">
                         <a href="{{route('home')}}">
                             <img class="img-full" src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">
                         </a>
                     </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-3 col-custom d-lg-none justify-content-end">
+                    <h6 class="text-pink mb-0 text-uppercase">
+                        <a href="#select_city_modal" title="select_city" data-toggle="modal"
+                           data-target="#select_city_modal" class="text-white">
+                            @if ($selected_city)
+                                <i class="lnr lnr-map-marker"></i>{{$selected_city_name->title}}
+
+                            @else
+                                <i class="lnr lnr-map-marker"></i>Ваш город
+                            @endif
+                        </a>
+                    </h6>
                 </div>
                 <div class="col-lg-10 d-none d-lg-flex justify-content-center col-custom">
 
