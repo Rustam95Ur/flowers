@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="select city link for mobile">
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" afterDir="false" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="added required for phone input">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +163,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../metoo-backup" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -209,14 +209,8 @@
       <workItem from="1622056455021" duration="12753000" />
       <workItem from="1622295214945" duration="32387000" />
       <workItem from="1622520002268" duration="1893000" />
-      <workItem from="1622533758373" duration="3549000" />
-    </task>
-    <task id="LOCAL-00003" summary="added product show page">
-      <created>1619727739647</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1619727739647</updated>
+      <workItem from="1622533758373" duration="3924000" />
+      <workItem from="1623935781547" duration="21000" />
     </task>
     <task id="LOCAL-00004" summary="added cart page">
       <created>1619944405605</created>
@@ -554,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622551927976</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="added required for phone input">
+      <created>1622552202387</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1622552202387</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +575,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated header for multi level menu" />
     <MESSAGE value="Updated product shop page" />
     <MESSAGE value="Updated product show page" />
     <MESSAGE value="Fix product" />
@@ -599,6 +599,7 @@
     <MESSAGE value="updated code" />
     <MESSAGE value="select city modal" />
     <MESSAGE value="select city link for mobile" />
-    <option name="LAST_COMMIT_MESSAGE" value="select city link for mobile" />
+    <MESSAGE value="added required for phone input" />
+    <option name="LAST_COMMIT_MESSAGE" value="added required for phone input" />
   </component>
 </project>
