@@ -7601,3 +7601,6 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 /*        display: block !important;*/
 /*    }*/
 /*}*/
+.product-image img {
+    height: 300px;
+}
