@@ -4,7 +4,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Models\Comment;
-use App\Models\ProductCityPrice;
+use App\Models\ProductSizePrice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
@@ -15,6 +15,7 @@ use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use TCG\Voyager\Facades\Voyager;
 
 
 class ProductController extends Controller
@@ -54,13 +55,21 @@ class ProductController extends Controller
         ]);
     }
 
+    public function size_price($product_id, $size_id): \Illuminate\Http\JsonResponse
+    {
+        $product = Product::find($product_id);
+        $product_price = $product->size_price($product->id, $size_id, $product->updated_price);
+        return response()->json(['price' => $product_price], 201, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+
+    }
+
     /***
      * @param ProductFilter $filters
      * @return Application|Factory|View
      */
     public function shop(ProductFilter $filters)
     {
-        $products = Product::where('price', '>', 0)->with('city_price')->filter($filters)
+        $products = Product::where('price', '>', 0)->filter($filters)
             ->orderBy('is_extra', 'ASC')->paginate(20);
         $colors = Color::all();
         $sizes = Size::all();

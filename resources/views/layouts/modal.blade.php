@@ -21,7 +21,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <button type="button" class="close close-button" data-dismiss="modal" aria-label="Close">
-                <span class="close-icon" aria-hidden="true">x</span>
+                <span class="close-icon" onclick="select_modal_close()" aria-hidden="true">x</span>
             </button>
             <div class="modal-header justify-content-center">
                 <div class="container">

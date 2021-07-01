@@ -32,6 +32,7 @@
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @stack('css')
+    <script src="//code-ya.jivosite.com/widget/{{env('JIVO_TOKEN')}}" async></script>
 </head>
 
 <body>
@@ -110,6 +111,15 @@
                 setTimeout(function () {
                     $('#message_modal').modal('hie')
                 }, 5000);
+            });
+        })(jQuery);
+    </script>
+@endif
+@if(!session('city_modal_disable'))
+    <script>
+        (function ($) {
+            $(function () {
+                $('#select_city_modal').modal('show');
             });
         })(jQuery);
     </script>

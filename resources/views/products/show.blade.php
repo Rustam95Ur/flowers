@@ -48,7 +48,7 @@
                         </div>
                         <div class="price-box mb-4">
                             <h4 class=""><b>{{trans('page.product.price')}}:</b>
-                                {{$flower->updated_price }} ₸
+                                <span id="product_price">{{$flower->updated_price }} ₸</span>
                             </h4>
                             <input name="product_price"
                                    value="{{$flower->updated_price }}"
@@ -58,7 +58,7 @@
                             <div class="product-material custom-radio mb-4">
                                 <h4 class="mb-3"><b>{{trans('page.product.size')}}:</b></h4>
                                 @foreach($flower->sizes as $size)
-                                    <input type="radio" name="size" class="custom-control-input"
+                                    <input type="radio" name="size" value="{{$size->id}}" class="custom-control-input"
                                            id="size_checkbox-{{$size->id}}"
                                            @if(count($flower->sizes) == 1) checked @endif>
                                     <label class="custom-control-label"
@@ -78,9 +78,8 @@
                                                            for="extra_product_{{$product->id}}">
                                                         <div class="sidebar-product align-items-center">
                                                             @foreach(json_decode($product->images) as $extra_image)
-                                                                <img class="image"
-                                                                     src="{{Voyager::image($extra_image)}}"
-                                                                     alt="{{$product->title}}">
+                                                                <img class="image" alt="{{$product->title}}"
+                                                                     src="{{Voyager::image($extra_image)}}">
                                                                 @break
                                                             @endforeach
                                                             <div class="product-content">

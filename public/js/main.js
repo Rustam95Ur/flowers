@@ -380,6 +380,7 @@
             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
         }
     });
+
     /*---------------------------------
     /* 	MailChimp
     -----------------------------------*/
@@ -483,6 +484,7 @@ function updated_after_delete(product_id, value) {
     var shipping_price = parseInt($('.shipping-price').text()),
         sub_total_price = 0,
         price = $('#price-' + product_id).text();
+    console.log('ssssss')
     $('#subtotal-' + product_id).html(parseInt(price) * parseInt(value) + ' ₸')
     $('.subtotal').each(function () {
         sub_total_price += parseInt($(this).text())
@@ -550,4 +552,17 @@ function plus_minus($id, type) {
     }
     oldValue.val(newVal);
     updated_after_delete($id, newVal)
+}
+
+function select_modal_close() {
+    $.ajax(
+        {
+            url: '/select-city-close/',
+            type: "get",
+            error: function (jqXHR, ajaxOptions, thrownError) {
+                console.log(jqXHR)
+                console.log(ajaxOptions)
+                console.log(thrownError)
+            }
+        });
 }

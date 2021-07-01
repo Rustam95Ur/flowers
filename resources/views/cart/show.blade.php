@@ -22,7 +22,7 @@
                             </thead>
                             <tbody>
                             @foreach($products as $product)
-                                <tr id="cart-product-{{$product['id']}}">
+                                <tr id="cart-product-{{$product['id']}}{{$product['type'] == 'size' ? '-'.$product['size_id'] : '' }}">
                                     <td class="pro-thumbnail">
                                         <a href="{{route('product_show', $product['slug'])}}">
                                             @foreach(json_decode($product['images']) as $image)
@@ -35,37 +35,73 @@
                                     </td>
                                     <td class="pro-title">
                                         <a href="{{route('product_show', $product['slug'])}}">
-                                            {{$product['title']}}
+                                            {{$product['title']}} {{$product['size_title']}}
                                         </a>
                                     </td>
-                                    <td class="pro-price"><span
-                                            id="price-{{$product['id']}}">{{$product['price']}} ₸</span></td>
+                                    <td class="pro-price">
+                                        @if($product['type'] == 'size')
+                                            <span id="price-{{$product['id']}}-{{$product['size_id']}}">{{$product['price']}} ₸</span>
+                                        @else
+                                            <span id="price-{{$product['id']}}">{{$product['price']}} ₸</span>
+                                        @endif
+                                    </td>
                                     <td class="pro-quantity">
                                         <div class="quantity">
 
                                             <div class="cart-plus-minus">
-                                                <input class="cart-plus-minus-box" id="product-{{$product['id']}}"
-                                                       value="{{$product['qty']}}"
-                                                       type="text">
+                                                @if($product['type'] == 'size')
+                                                    <input class="cart-plus-minus-box"
+                                                           id="product-{{$product['id']}}-{{$product['size_id']}}"
+                                                           value="{{$product['qty']}}"
+                                                           type="text">
+                                                @else
+                                                    <input class="cart-plus-minus-box" id="product-{{$product['id']}}"
+                                                           value="{{$product['qty']}}"
+                                                           type="text">
+                                                @endif
                                                 <div class="dec qtybutton">-</div>
                                                 <div class="inc qtybutton">+</div>
-                                                <div class="dec qtybutton"
-                                                     onclick="update_cart('{{$product['id']}}', 1, 'remove')">
-                                                    <i class="fa fa-minus"></i>
-                                                </div>
-                                                <div class="inc qtybutton"
-                                                     onclick="update_cart('{{$product['id']}}', 1)">
-                                                    <i class="fa fa-plus"></i>
-                                                </div>
+                                                @if($product['type'] == 'size')
+                                                    <div class="dec qtybutton"
+                                                         onclick="update_cart('{{$product['id']}}', 1, 'remove', '/' + {{$product['size_id']}})">
+                                                        <i class="fa fa-minus"></i>
+                                                    </div>
+                                                    <div class="inc qtybutton"
+                                                         onclick="update_cart('{{$product['id']}}', 1, 'add', '/' + {{$product['size_id']}})">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                @else
+                                                    <div class="dec qtybutton"
+                                                         onclick="update_cart('{{$product['id']}}', 1, 'remove')">
+                                                        <i class="fa fa-minus"></i>
+                                                    </div>
+                                                    <div class="inc qtybutton"
+                                                         onclick="update_cart('{{$product['id']}}', 1)">
+                                                        <i class="fa fa-plus"></i>
+                                                    </div>
+                                                @endif
+
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="pro-subtotal"><span class="subtotal" id="subtotal-{{$product['id']}}">{{$product['price'] * $product['qty']}} ₸</span>
+                                    <td class="pro-subtotal">
+                                        @if($product['type'] == 'size')
+                                            <span class="subtotal"
+                                                  id="subtotal-{{$product['id']}}-{{$product['size_id']}}">{{$product['price'] * $product['qty']}} ₸</span>
+                                        @else
+                                            <span class="subtotal" id="subtotal-{{$product['id']}}">{{$product['price'] * $product['qty']}} ₸</span>
+                                        @endif
                                     </td>
                                     <td class="pro-remove">
-                                        <a onclick="update_cart('{{$product['id']}}', 0, 'remove'); $('#cart-product-{{$product['id']}}').remove(); updated_after_delete()">
-                                            <i class="lnr lnr-trash"></i>
-                                        </a>
+                                        @if($product['type'] == 'size')
+                                            <a onclick="update_cart('{{$product['id']}}', 0, 'remove', '/' + {{$product['size_id']}}); $('#cart-product-{{$product['id']}}-{{$product['size_id']}}').remove(); updated_after_delete()">
+                                                <i class="lnr lnr-trash"></i>
+                                            </a>
+                                        @else
+                                            <a onclick="update_cart('{{$product['id']}}', 0, 'remove'); $('#cart-product-{{$product['id']}}').remove(); updated_after_delete()">
+                                                <i class="lnr lnr-trash"></i>
+                                            </a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

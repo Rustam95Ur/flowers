@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Gallery;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use TCG\Voyager\Models\Page;
 use App\Models\Comment;
@@ -42,15 +44,17 @@ class BaseController extends Controller
             ->where('is_active', 1)
             ->groupBy('product_id')
             ->get();
-        while (True) {
-            array_push($temp_array, $temp_featured_flowers[0]);
-            if (count($temp_array) == 3 or (count($temp_featured_flowers) < 2)) {
-                array_push($featured_flowers, $temp_array);
-                $temp_array = [];
-            }
-            array_shift($temp_featured_flowers);
-            if (count($temp_featured_flowers) == 0) {
-                break;
+        if($temp_featured_flowers) {
+            while (True) {
+                array_push($temp_array, $temp_featured_flowers[0]);
+                if (count($temp_array) == 3 or (count($temp_featured_flowers) < 2)) {
+                    array_push($featured_flowers, $temp_array);
+                    $temp_array = [];
+                }
+                array_shift($temp_featured_flowers);
+                if (count($temp_featured_flowers) == 0) {
+                    break;
+                }
             }
         }
         $comments = Comment::where('product_id', null)->get();
@@ -79,20 +83,36 @@ class BaseController extends Controller
     public function checkout()
     {
         $carts_product = session()->get('cart');
-        if ($carts_product) {
+        $size_product = session()->get('size_cart');
+        if ($carts_product or $size_product) {
             $products = [];
             $total_sum = 0;
             foreach ($carts_product as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->with('city_price')->first();
+                $product = Product::where('id', '=', $item['product_id'])->first();
                 $product_price = $product->updated_price;
                 $results = [
                     'id' => $product->id,
                     'title' => $product->title,
                     'price' => $product_price,
+                    'size_title' => '',
                     'qty' => $item['qty']
                 ];
                 array_push($products, $results);
                 $total_sum += $product_price* $item['qty'];
+            }
+            foreach ($size_product as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $product_price = $item['sizes']['price'];
+                $size_info = Size::find($item['sizes']['id']);
+                $results = [
+                    'id' => $product->id,
+                    'title' => $product->title,
+                    'price' => $product_price ,
+                    'size_title' => '('.$size_info->title.')',
+                    'qty' => $item['qty']
+                ];
+                array_push($products, $results);
+                $total_sum += $product_price * $item['qty'];
             }
             return view('cart.checkout', [
                 'checkout_products' => $products,
@@ -126,8 +146,19 @@ class BaseController extends Controller
     public function select_city($city_id): RedirectResponse
     {
         session()->put('city', $city_id);
+        session()->put('city_modal_disable', true);
         return redirect()->back();
     }
+
+    /**
+     * @return JsonResponse
+     */
+    public function select_city_close(): JsonResponse
+    {
+        session()->put('city_modal_disable', true);
+        return response()->json(['message' => 'success'], 200, array('Content-Type' => 'application/json;charset=utf8'), JSON_UNESCAPED_UNICODE);
+    }
+
 
     /**
      * @return Application|Factory|View

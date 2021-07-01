@@ -8,7 +8,9 @@ use App\Http\Controllers\Mail\BaseController as MailBaseController;
 use App\Models\City;
 use App\Models\Payment;
 use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Http\RedirectResponse;
+use TCG\Voyager\Facades\Voyager;
 
 class PaymentController extends Controller
 {
@@ -20,8 +22,9 @@ class PaymentController extends Controller
     {
         $total_price = 0;
         $session_items = session()->get('cart');
-        if (!$session_items) {
-            return redirect()->back();
+        $size_items = session()->get('size_cart');
+        if (!$session_items or !$size_items) {
+            return redirect()->route('cart');
         }
         $products = '';
         foreach ($session_items as $item) {
@@ -33,11 +36,32 @@ class PaymentController extends Controller
             }
 
         }
+        foreach ($size_items as $item) {
+            $product = Product::where('id', '=', $item['product_id'])->first();
+            if ($product) {
+                $size_title = ' ';
+                if (isset($item['sizes'])) {
+                    $size_info = Size::find($item['sizes']['id']);
+                    $size_title = ' (' . $size_info->title . ') ';
+                }
+                $price = $product->updated_price;
+                $products .= $product->title. $size_title . ' x ' . $item['qty'] . ' штук.';
+                $total_price += $price * $item['qty'];
+            }
+
+        }
+        $city_title = 'Не выбрано';
+        $city_info = ['city_id' => null, 'city_title' => $city_title];
         if (session('city')) {
             $city = City::find(session('city'));
-            $products .= 'Город: ' . $city->title;
             $city_info = ['city_id' => $city->id, 'city_title' => $city->title];
-            array_push($session_items, $city_info);
+            $city_title = $city->title;
+        }
+        $products .= 'Город: ' . $city_title. ' ';
+        array_push($session_items, $city_info);
+        if (Voyager::setting('site.price_update')) {
+            $products .= 'Измененая цена на: ' . Voyager::setting('site.price_update'). '%';
+            array_push($session_items, ['price_update_val' => Voyager::setting('site.price_update')]);
         }
         if ($total_price < 100) {
             return back()->with('error', trans('cart.checkout.min_price_error'));
