@@ -26,7 +26,7 @@ class BaseController extends Controller
     public function home()
     {
         $flowers_count = Product::count();
-        $flowers = Product::where('is_extra', 0)->orderBy('id', 'DESC')->limit(50)->get();
+        $flowers = Product::where('is_extra', 0)->orderByRaw(' -sort_id DESC')->limit(50)->get();
         $banners = Banner::where('page', 'home')->get();
         $temp_featured_flowers = [];
         $sale_flowers_array = [];

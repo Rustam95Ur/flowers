@@ -4,18 +4,15 @@
 namespace App\Http\Controllers\Page;
 
 use App\Models\Comment;
-use App\Models\ProductSizePrice;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
 use App\Models\Product;
 use App\Filters\ProductFilter;
 use App\Models\Size;
-use App\Models\Category;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
-use TCG\Voyager\Facades\Voyager;
 
 
 class ProductController extends Controller
@@ -26,13 +23,13 @@ class ProductController extends Controller
      */
     public function show($slug)
     {
-        $featured_flowers = Product::limit(10)->get();
         $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
             ->where('product_id', '!=', null)
             ->where('is_active', 1)
             ->groupBy('product_id')
             ->get();
         $flower = Product::where('slug', $slug)->firstOrFail();
+        $featured_flowers = Product::where('id', '!=', $flower->id)->limit(10)->orderByRaw('-sort_id DESC')->get();
         $comments = Comment::where('product_id', $flower->id)->where('is_active', 1)->get();
         return view('products.show', [
             'flower' => $flower,
@@ -69,7 +66,7 @@ class ProductController extends Controller
      */
     public function shop(ProductFilter $filters)
     {
-        $products = Product::where('price', '>', 0)->filter($filters)
+        $products = Product::where('price', '>', 0)->filter($filters)->orderByRaw(' -sort_id DESC')
             ->orderBy('is_extra', 'ASC')->paginate(20);
         $colors = Color::all();
         $sizes = Size::all();
