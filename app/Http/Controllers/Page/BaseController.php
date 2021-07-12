@@ -47,7 +47,7 @@ class BaseController extends Controller
         if($temp_featured_flowers) {
             while (True) {
                 array_push($temp_array, $temp_featured_flowers[0]);
-                if (count($temp_array) == 3 or (count($temp_featured_flowers) < 2)) {
+                if (count($temp_array) == 8 or (count($temp_featured_flowers) < 2)) {
                     array_push($featured_flowers, $temp_array);
                     $temp_array = [];
                 }
