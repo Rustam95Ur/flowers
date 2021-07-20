@@ -33,7 +33,7 @@ class BaseController extends Controller
         foreach ($flowers as $flower) {
             $product_price = $flower->updated_price;
             $product = $flower->toarray();
-            $product['updated_price'] =  $product_price;
+            $product['updated_price'] = $product_price;
             array_push($temp_featured_flowers, $product);
             array_push($sale_flowers_array, $product);
         }
@@ -44,7 +44,7 @@ class BaseController extends Controller
             ->where('is_active', 1)
             ->groupBy('product_id')
             ->get();
-        if($temp_featured_flowers) {
+        if ($temp_featured_flowers) {
             while (True) {
                 array_push($temp_array, $temp_featured_flowers[0]);
                 if (count($temp_array) == 8 or (count($temp_featured_flowers) < 2)) {
@@ -98,21 +98,23 @@ class BaseController extends Controller
                     'qty' => $item['qty']
                 ];
                 array_push($products, $results);
-                $total_sum += $product_price* $item['qty'];
-            }
-            foreach ($size_product as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->first();
-                $product_price = $item['sizes']['price'];
-                $size_info = Size::find($item['sizes']['id']);
-                $results = [
-                    'id' => $product->id,
-                    'title' => $product->title,
-                    'price' => $product_price ,
-                    'size_title' => '('.$size_info->title.')',
-                    'qty' => $item['qty']
-                ];
-                array_push($products, $results);
                 $total_sum += $product_price * $item['qty'];
+            }
+            if ($size_product) {
+                foreach ($size_product as $item) {
+                    $product = Product::where('id', '=', $item['product_id'])->first();
+                    $product_price = $item['sizes']['price'];
+                    $size_info = Size::find($item['sizes']['id']);
+                    $results = [
+                        'id' => $product->id,
+                        'title' => $product->title,
+                        'price' => $product_price,
+                        'size_title' => '(' . $size_info->title . ')',
+                        'qty' => $item['qty']
+                    ];
+                    array_push($products, $results);
+                    $total_sum += $product_price * $item['qty'];
+                }
             }
             return view('cart.checkout', [
                 'checkout_products' => $products,
@@ -179,8 +181,6 @@ class BaseController extends Controller
     {
         return view('pages.calculator');
     }
-
-
 
 
 }
