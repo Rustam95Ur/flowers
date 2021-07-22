@@ -302,7 +302,7 @@
             </div>
             <div class="row product-row">
                 <div class="col-12 col-custom">
-                    <div class="product-slider swiper-container anime-element-multi">
+                    <div class="products-slider swiper-container anime-element-multi">
                         <div class="swiper-wrapper">
                             @foreach($featured_flowers as $flower)
                                 <div class="single-item swiper-slide">

@@ -243,8 +243,8 @@ class CartController extends Controller
         if ($session and count($session) > 0) {
             $product_exist = array_search($product_id, array_column($session, 'product_id'));
             if ($product_exist === false and $type == 'add') {
-                array_push($session_items, $item);
-                session()->put($cart_name, $session_items);
+                array_push($session, $item);
+                session()->put($cart_name, $session);
             } else {
                 if ($qty == 0 and $type == 'remove') {
                     $message = trans('cart.success.remove-cart');

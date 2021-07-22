@@ -80,69 +80,74 @@
                 <div class="col-12 col-custom">
                     <div class="product-slider swiper-container anime-element-multi">
                         <div class="swiper-wrapper">
-                            @php $key = false @endphp
                             @foreach($featured_flowers as $flowers)
-                                <div class="single-item swiper-slide">
+                            <div class=" swiper-slide">
+                                <div class="row">
                                 @foreach($flowers as $flower)
                                     <!--Single Product Start-->
-                                        <div class="single-product position-relative mb-30">
-                                            <div class="product-image">
-                                                <a class="d-block" href="{{route('product_show', $flower['slug'])}}">
-                                                    @foreach(json_decode($flower['images']) as $image)
-                                                        @if($loop->index < 2)
-                                                            <img alt="{{$flower['title']}}"
-                                                                 src="{{ Voyager::image($image) }}"
-                                                                 class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
-                                                        @endif
-                                                    @endforeach
-                                                </a>
-                                                @if($flower['is_sale'])
-                                                    <span class="onsale">Sale!</span>
-                                                @endif
-                                                <div class="add-action d-flex flex-column position-absolute">
-                                                    <a onclick="update_wish_list({{$flower['id']}}, 'add');"
-                                                       title="{{trans('page.home.add_to_wish')}}">
-                                                        <i class="lnr lnr-heart" data-toggle="tooltip"
-                                                           data-placement="left"
-                                                           title="{{trans('button.wishlist')}}"></i>
+                                        <div class="col-md-3">
+                                            <div class="single-product position-relative mb-30">
+                                                <div class="product-image">
+                                                    <a class="d-block"
+                                                       href="{{route('product_show', $flower['slug'])}}">
+                                                        @foreach(json_decode($flower['images']) as $image)
+                                                            @if($loop->index < 2)
+                                                                <img alt="{{$flower['title']}}"
+                                                                     src="{{ Voyager::image($image) }}"
+                                                                     class="product-image-{{$loop->iteration}} {{ $loop->iteration == 2 ? 'position-absolute' : '' }} w-100"/>
+                                                            @endif
+                                                        @endforeach
                                                     </a>
-                                                    <a onclick="quick_view_product({{$flower['id']}})">
-                                                        <i class="lnr lnr-eye" data-toggle="tooltip"
-                                                           data-placement="left"
-                                                           title="{{trans('button.quick_view')}}"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="product-title">
-                                                    <h4 class="title-2">
-                                                        <a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
-                                                    </h4>
-                                                </div>
-                                                @php $key = array_search($flower['id'], array_column($product_ratings, 'product_id')) @endphp
-                                                @if($key !== false)
-                                                    <div class="product-rating">
-                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 1 ? '' : '-o'}}"></i>
-                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 2 ? '' : '-o'}}"></i>
-                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 3 ? '' : '-o'}}"></i>
-                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 4 ? '' : '-o'}}"></i>
-                                                        <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] == 5 ? '' : '-o'}}"></i>
+                                                    @if($flower['is_sale'])
+                                                        <span class="onsale">Sale!</span>
+                                                    @endif
+                                                    <div class="add-action d-flex flex-column position-absolute">
+                                                        <a onclick="update_wish_list({{$flower['id']}}, 'add');"
+                                                           title="{{trans('page.home.add_to_wish')}}">
+                                                            <i class="lnr lnr-heart" data-toggle="tooltip"
+                                                               data-placement="left"
+                                                               title="{{trans('button.wishlist')}}"></i>
+                                                        </a>
+                                                        <a onclick="quick_view_product({{$flower['id']}})">
+                                                            <i class="lnr lnr-eye" data-toggle="tooltip"
+                                                               data-placement="left"
+                                                               title="{{trans('button.quick_view')}}"></i>
+                                                        </a>
                                                     </div>
-                                                @else
-                                                    <div class="product-rating mb-4">
+                                                </div>
+                                                <div class="product-content">
+                                                    <div class="product-title">
+                                                        <h4 class="title-2">
+                                                            <a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
+                                                        </h4>
+                                                    </div>
+                                                    @php $key = array_search($flower['id'], array_column($product_ratings, 'product_id')) @endphp
+                                                    @if($key !== false)
+                                                        <div class="product-rating">
+                                                            <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 1 ? '' : '-o'}}"></i>
+                                                            <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 2 ? '' : '-o'}}"></i>
+                                                            <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 3 ? '' : '-o'}}"></i>
+                                                            <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 4 ? '' : '-o'}}"></i>
+                                                            <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] == 5 ? '' : '-o'}}"></i>
+                                                        </div>
+                                                    @else
+                                                        <div class="product-rating mb-4">
 
+                                                        </div>
+                                                    @endif
+                                                    <div class="price-box">
+                                                        <span
+                                                            class="regular-price ">{{ $flower['updated_price']}} ₸</span>
                                                     </div>
-                                                @endif
-                                                <div class="price-box">
-                                                    <span class="regular-price ">{{ $flower['updated_price']}} ₸</span>
+                                                    <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
+                                                       class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                                 </div>
-                                                <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
-                                                   class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                             </div>
                                         </div>
                                         <!--Single Product End-->
                                     @endforeach
                                 </div>
+                            </div>
                             @endforeach
                         </div>
                         <!-- Slider pagination -->
