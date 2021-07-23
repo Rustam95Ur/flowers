@@ -7604,7 +7604,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 /*    }*/
 /*}*/
 .single-product .product-image img {
-    height: auto;
+    height: 20rem;
 }
 
 .single-product .product-image {
