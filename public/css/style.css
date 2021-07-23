@@ -7603,10 +7603,10 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 /*        display: block !important;*/
 /*    }*/
 /*}*/
-.product-area .single-product .product-image img {
+.single-product .product-image img {
     height: auto;
 }
 
-.product-area .single-product .product-image {
+.single-product .product-image {
     max-height: 36rem;
 }

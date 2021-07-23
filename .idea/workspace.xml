@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="updated ccs">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
     </list>
@@ -211,7 +211,8 @@
       <workItem from="1623557213945" duration="51000" />
       <workItem from="1625168122276" duration="429000" />
       <workItem from="1625898640933" duration="603000" />
-      <workItem from="1626970932767" duration="134000" />
+      <workItem from="1626970932767" duration="842000" />
+      <workItem from="1627042605845" duration="288000" />
     </task>
     <task id="LOCAL-00001" summary="added locale and updated header">
       <created>1619531477245</created>
@@ -535,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1625168315298</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="updated ccs">
+      <created>1626971108539</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1626971108539</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
