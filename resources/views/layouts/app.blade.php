@@ -72,6 +72,17 @@
 <a class="scroll-to-top" href="#">
     <i class="lnr lnr-arrow-up"></i>
 </a>
+<div class="drop_up">
+    <button class="drop_btn">Соц. сети</button>
+    <div class="drop_up-content">
+        <a href="#" class="text-secondary"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
+        <a href="#" class="text-danger"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>
+        <a href="#" class="text-success"><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</a>
+        <a href="#" class="text-primary"><i class="fa fa-telegram" aria-hidden="true"></i> Telegram</a>
+        <a href="#" class="text-pink"><i class="fa fa-phone" aria-hidden="true"></i> Viber</a>
+    </div>
+</div>
+
 <!-- Scroll to Top End -->
 
 <!-- JS

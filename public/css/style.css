@@ -7610,3 +7610,64 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 .single-product .product-image {
     max-height: 36rem;
 }
+
+
+.drop_btn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 7px;
+}
+
+.drop_up {
+    z-index: 100000;
+    position: fixed;
+    display: inline-block;
+    bottom: 0;
+    left: 1rem;
+    border-radius: 1rem;
+}
+
+.drop_up-content {
+    display: none;
+    position: absolute;
+    bottom: 50px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.drop_up-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.drop_up-content a:hover {background-color: #ddd}
+
+.drop_up:hover .drop_up-content {
+    display: block;
+}
+
+.drop_up:hover .drop_btn {
+    background-color: #2980B9;
+}
+
+@media (max-width: 479px) {
+    .single-product .product-image img {
+        height: 10rem;
+    }
+
+    .single-product .product-image {
+        max-height: 15rem;
+    }
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
+}

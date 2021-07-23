@@ -23,32 +23,33 @@ class PaymentController extends Controller
         $total_price = 0;
         $session_items = session()->get('cart');
         $size_items = session()->get('size_cart');
-        if (!$session_items or !$size_items) {
-            return redirect()->route('cart');
-        }
         $products = '';
-        foreach ($session_items as $item) {
-            $product = Product::where('id', '=', $item['product_id'])->first();
-            if ($product) {
-                $price = $product->updated_price;
-                $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
-                $total_price += $price * $item['qty'];
-            }
-
-        }
-        foreach ($size_items as $item) {
-            $product = Product::where('id', '=', $item['product_id'])->first();
-            if ($product) {
-                $size_title = ' ';
-                if (isset($item['sizes'])) {
-                    $size_info = Size::find($item['sizes']['id']);
-                    $size_title = ' (' . $size_info->title . ') ';
+        if ($session_items) {
+            foreach ($session_items as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                if ($product) {
+                    $price = $product->updated_price;
+                    $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
+                    $total_price += $price * $item['qty'];
                 }
-                $price = $product->updated_price;
-                $products .= $product->title. $size_title . ' x ' . $item['qty'] . ' штук.';
-                $total_price += $price * $item['qty'];
-            }
 
+            }
+        }
+        if ($size_items) {
+            foreach ($size_items as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                if ($product) {
+                    $size_title = ' ';
+                    if (isset($item['sizes'])) {
+                        $size_info = Size::find($item['sizes']['id']);
+                        $size_title = ' (' . $size_info->title . ') ';
+                    }
+                    $price = $product->updated_price;
+                    $products .= $product->title . $size_title . ' x ' . $item['qty'] . ' штук.';
+                    $total_price += $price * $item['qty'];
+                }
+
+            }
         }
         $city_title = 'Не выбрано';
         $city_info = ['city_id' => null, 'city_title' => $city_title];
@@ -57,10 +58,10 @@ class PaymentController extends Controller
             $city_info = ['city_id' => $city->id, 'city_title' => $city->title];
             $city_title = $city->title;
         }
-        $products .= 'Город: ' . $city_title. ' ';
+        $products .= 'Город: ' . $city_title . ' ';
         array_push($session_items, $city_info);
         if (Voyager::setting('site.price_update')) {
-            $products .= 'Измененая цена на: ' . Voyager::setting('site.price_update'). '%';
+            $products .= 'Измененая цена на: ' . Voyager::setting('site.price_update') . '%';
             array_push($session_items, ['price_update_val' => Voyager::setting('site.price_update')]);
         }
         if ($total_price < 100) {
@@ -82,6 +83,7 @@ class PaymentController extends Controller
         $paymentSave->total = $total_price;
         $paymentSave->request = json_encode($session_items);
         $paymentSave->products = $products;
+        $paymentSave->comment = $request['comment'];
         $payment_type = $request['payment_type'];
         if ($payment_type === 'online') {
 

@@ -134,6 +134,12 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-md-12 col-custom">
+                                            <div class="checkout-form-list">
+                                                <label for="comment">Доставка</label>
+                                                <textarea rows="3" form="payment_form" name="comment" class="form-control" id="comment"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="order-button-payment">
