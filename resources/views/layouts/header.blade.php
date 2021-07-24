@@ -419,6 +419,10 @@
                                                         <li>
                                                             <a href="{{url($key, stristr(request()->url(), $key, false))}}">{{$language}}</a>
                                                         </li>
+                                                    @elseif(request()->route()->getName() == 'product_show')
+                                                        <li>
+                                                            <a href="{{url($key.'/'.stristr(request()->url(), 'product', false))}}">{{$language}}</a>
+                                                        </li>
                                                     @else
                                                         <li>
                                                             <a href="{{ url($key.'/'.request()->route()->getName()) }}">{{$language}}</a>
