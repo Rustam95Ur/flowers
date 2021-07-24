@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filters\QueryFilter;
 use App\Models\Category;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Traits\Translatable;
 
 class Product extends Model
 {
     protected $table = 'products';
 
+    use Translatable;
+
+    protected $translatable = ['title', 'description', 'seo_title'];
     /**
      * @param Builder $builder
      * @param QueryFilter $filters

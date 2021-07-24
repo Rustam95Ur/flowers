@@ -3,7 +3,7 @@
 @section('description', $flower->meta_description)
 @section('keywords', $flower->meta_keywords)
 @section('page_title', trans('shop.page_title'))
-@section('link_title', $flower->title)
+@section('link_title', $flower->getTranslatedAttribute('title', $locale, 'fallbackLocale'))
 @push('css')
     <link rel="stylesheet" href="{{asset('css/rating_star.css')}}">
 @endpush
@@ -20,7 +20,7 @@
                                     <div class="swiper-slide">
                                         <a class="w-100" href="{{ Voyager::image($image) }}">
                                             <img class="w-100" src="{{ Voyager::image($image) }}"
-                                                 alt="{{$flower->title}}">
+                                                 alt="{{$flower->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}">
                                         </a>
                                     </div>
                                 @endforeach
@@ -30,7 +30,7 @@
                             <div class="swiper-wrapper">
                                 @foreach(json_decode($flower->images) as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{ Voyager::image($image) }}" alt="{{$flower->title}}">
+                                        <img src="{{ Voyager::image($image) }}" alt="{{$flower->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}">
                                     </div>
                                 @endforeach
                             </div>
@@ -44,7 +44,7 @@
                 <div class="col-lg-7 col-custom">
                     <div class="product-summery position-relative">
                         <div class="product-head mb-4">
-                            <h2 class="product-title">{{$flower->title}}</h2>
+                            <h2 class="product-title">{{$flower->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</h2>
                         </div>
                         <div class="price-box mb-4">
                             <h4 class=""><b>{{trans('page.product.price')}}:</b>
@@ -72,7 +72,7 @@
                                            id="size_checkbox-{{$size->id}}"
                                            @if(count($flower->sizes) == 1) checked @endif>
                                     <label class="custom-control-label"
-                                           for="size_checkbox-{{$size->id}}">{{$size->title}}</label>
+                                           for="size_checkbox-{{$size->id}}">{{$size->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</label>
                                 @endforeach
                             </div>
                             @if(count($flower->extra_products) > 0)
@@ -94,7 +94,9 @@
                                                             @endforeach
                                                             <div class="product-content">
                                                                 <div class="product-title">
-                                                                    <h5 class="font-weight-bold">{{$product->title}}</h5>
+                                                                    <h5 class="font-weight-bold">
+                                                                        {{$product->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                                    </h5>
                                                                 </div>
                                                                 <div class="price-box">
                                                                     <span
@@ -167,7 +169,7 @@
                         <div class="tab-pane fade show active" id="connect-1" role="tabpanel"
                              aria-labelledby="home-tab">
                             <div class="desc-content">
-                                {!! $flower->description !!}
+                                {!! $flower->getTranslatedAttribute('description', $locale, 'fallbackLocale') !!}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="connect-2" role="tabpanel" aria-labelledby="profile-tab">
@@ -289,13 +291,13 @@
                         </div>
                         <div class="tab-pane fade" id="connect-3" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="shipping-policy">
-                                {!! Voyager::setting('site.shipping_policy') !!}
+                                {!! Voyager::setting('site.shipping_policy_'.$locale) !!}
                             </div>
                         </div>
                         <div class="tab-pane fade" id="connect-4" role="tabpanel" aria-labelledby="review-tab">
                             <div class="size-tab table-responsive-lg">
                                 <div class="shipping-policy">
-                                    {!! Voyager::setting('site.delivery') !!}
+                                    {!! Voyager::setting('site.delivery_'.$locale) !!}
                                 </div>
                             </div>
                         </div>
@@ -342,7 +344,7 @@
                                                     <i class="lnr lnr-heart" data-toggle="tooltip"
                                                        data-placement="left" title="{{trans('button.wishlist')}}"></i>
                                                 </a>
-                                                <a onclick="quick_view_product({{$flower->id}})">
+                                                <a onclick="quick_view_product({{$flower->id}}, '{{$locale}}')">
                                                     <i class="lnr lnr-eye" data-toggle="tooltip"
                                                        data-placement="left" title="{{trans('button.quick_view')}}"></i>
                                                 </a>
@@ -352,7 +354,7 @@
                                             <div class="product-title">
                                                 <h4 class="title-2">
                                                     <a href="{{route('product_show', $flower->slug)}}">
-                                                        {{$flower->title}}
+                                                        {{$flower->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                                     </a>
                                                 </h4>
                                             </div>

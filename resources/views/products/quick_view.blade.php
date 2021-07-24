@@ -13,7 +13,7 @@
     <div class="modal-product">
         <div class="product-content">
             <div class="product-title">
-                <h4 class="title">{{$quick_product->title}}</h4>
+                <h4 class="title">{{$quick_product->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</h4>
             </div>
             <div class="price-box">
                 <span class="regular-price ">
@@ -33,7 +33,7 @@
                 <i class="fa fa-star-o"></i>
                 <i class="fa fa-star-o"></i>
             </div>
-            <p class="desc-content">{!! $quick_product->description !!}</p>
+            <p class="desc-content">{!! $quick_product->getTranslatedAttribute('description', $locale, 'fallbackLocale') !!}</p>
             <div class="quantity-with-btn">
                 <div class="quantity">
 

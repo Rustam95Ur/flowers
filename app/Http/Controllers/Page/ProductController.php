@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\Page;
 
+use App\Locale;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

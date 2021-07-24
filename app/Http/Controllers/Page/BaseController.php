@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 
 
 use App\Http\Controllers\Controller;
+use App\Locale;
 use App\Models\Banner;
 use App\Models\Currency;
 use App\Models\Gallery;
@@ -33,8 +34,10 @@ class BaseController extends Controller
         $sale_flowers_array = [];
         foreach ($flowers as $flower) {
             $product_price = $flower->updated_price;
+            $flower_title = $flower->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale');
             $product = $flower->toarray();
             $product['updated_price'] = $product_price;
+            $product['title'] = $flower_title;
             array_push($temp_featured_flowers, $product);
             array_push($sale_flowers_array, $product);
         }

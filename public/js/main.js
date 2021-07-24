@@ -550,8 +550,8 @@ function search_city() {
 
 /*-----  Quick View Product
 ---------------------------------*/
-function quick_view_product($id) {
-    let ajax_url = '/product/quick-view/' + $id
+function quick_view_product($id, $locale) {
+    let ajax_url = '/' + $locale + '/product/quick-view/' + $id
     $.ajax(
         {
             url: ajax_url,

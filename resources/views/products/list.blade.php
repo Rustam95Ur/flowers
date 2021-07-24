@@ -23,7 +23,7 @@
                                 <i class="lnr lnr-heart" data-toggle="tooltip"
                                    data-placement="left" title="{{trans('button.wishlist')}}"></i>
                             </a>
-                            <a onclick="quick_view_product({{$product->id}})">
+                            <a onclick="quick_view_product({{$product->id}}, '{{$locale}}')">
                                 <i class="lnr lnr-eye" data-toggle="tooltip"
                                    data-placement="left" title="{{trans('button.quick_view')}}"></i>
                             </a>
@@ -33,7 +33,7 @@
                         <div class="product-title">
                             <h4 class="title-2">
                                 <a href="{{route('product_show', $product->slug)}}">
-                                    {{$product->title}}
+                                    {{$product->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                 </a>
                             </h4>
                         </div>

@@ -109,7 +109,7 @@
                                                                    data-placement="left"
                                                                    title="{{trans('button.wishlist')}}"></i>
                                                             </a>
-                                                            <a onclick="quick_view_product({{$flower['id']}})">
+                                                            <a onclick="quick_view_product({{$flower['id']}}, '{{$locale}}'')">
                                                                 <i class="lnr lnr-eye" data-toggle="tooltip"
                                                                    data-placement="left"
                                                                    title="{{trans('button.quick_view')}}"></i>
@@ -119,7 +119,9 @@
                                                     <div class="product-content">
                                                         <div class="product-title">
                                                             <h4 class="title-2">
-                                                                <a href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
+                                                                <a href="{{route('product_show', $flower['slug'])}}">
+                                                                    {{$flower['title']}}
+                                                                </a>
                                                             </h4>
                                                         </div>
                                                         @php $key = array_search($flower['id'], array_column($product_ratings, 'product_id')) @endphp
@@ -217,7 +219,7 @@
                                                            data-placement="left"
                                                            title="{{trans('button.wishlist')}}"></i>
                                                     </a>
-                                                    <a onclick="quick_view_product({{$flower['id']}})">
+                                                    <a onclick="quick_view_product({{$flower['id']}}, '{{$locale}}')">
                                                         <i class="lnr lnr-eye" data-toggle="tooltip"
                                                            data-placement="left"
                                                            title="{{trans('button.quick_view')}}"></i>
