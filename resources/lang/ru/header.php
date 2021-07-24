@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'your_town' => 'Ваш город',
     'home' => 'Главная',
     'flowers' => 'Цветы',
     'type_bouquet' => 'Тип букета',

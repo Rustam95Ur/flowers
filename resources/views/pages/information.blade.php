@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title', $page->title)
-@section('description', $page->meta_description)
-@section('keywords', $page->meta_keywords)
-@section('page_title', $page->title)
-@section('link_title', $page->title)
+@section('description', $page->getTranslatedAttribute('meta_description', $locale, 'fallbackLocale'))
+@section('keywords', $page->getTranslatedAttribute('meta_keywords', $locale, 'fallbackLocale'))
+@section('page_title', $page->getTranslatedAttribute('title', $locale, 'fallbackLocale'))
+@section('link_title', $page->getTranslatedAttribute('title', $locale, 'fallbackLocale'))
 @section('content')
     <!-- Blog Main Area Start Here -->
     <div class="blog-main-area">
@@ -14,8 +14,10 @@
                     <div class="blog-post-details">
                         <section class="blog-post-wrapper product-summery">
                             <div class="section-content section-title">
-                                <h2 class="section-title-2 mb-5 text-center">{{$page->title}}</h2>
-                                {!! $page->body !!}
+                                <h2 class="section-title-2 mb-5 text-center">
+                                    {{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                </h2>
+                                {!! $page->getTranslatedAttribute('body', $locale, 'fallbackLocale') !!}
                             </div>
                         </section>
                     </div>

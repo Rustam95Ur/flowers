@@ -32,7 +32,7 @@
                         <div class="col-md-12">
                             <div class="input-group">
                                 <input id="search_city" type="text" onkeyup="search_city()" class="form-control"
-                                       placeholder="Поиск" aria-label="Поиск">
+                                       placeholder="{{trans('shop.search')}}" aria-label="Поиск">
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,9 @@
                         @foreach($cities as $city)
                             <div class="col-md-3 ">
                                 <a href="{{route('select_city', $city->id)}}"
-                                   class="city_link {{($city->is_big == 1) ? 'font-weight-bold' : ''}}">{{$city->title}}</a>
+                                   class="city_link {{($city->is_big == 1) ? 'font-weight-bold' : ''}}">
+                                    {{$city->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                </a>
                             </div>
                         @endforeach
                     </div>

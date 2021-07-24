@@ -5,8 +5,8 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{Voyager::setting('site.title')}} - @yield('title')</title>
     <meta name="robots" content="noindex, follow"/>
-    <meta name="description" content="@yield('description', Voyager::setting('site.description'))">
-    <meta name="keywords" content="@yield('keywords', Voyager::setting('site.keywords'))"/>
+    <meta name="description" content="@yield('description', Voyager::setting('site.description_'.$locale))">
+    <meta name="keywords" content="@yield('keywords', Voyager::setting('site.keywords_'.$locale))"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('images/favicon.ico')}}">

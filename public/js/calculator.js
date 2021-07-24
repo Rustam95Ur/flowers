@@ -1,10 +1,15 @@
-var total_product_list = [
-    {'title': 'Зелень', 'count': 1, 'price': 1000, 'checked': true, 'text': ''},
-    {'title': 'Оформление', 'count': 1, 'price': 0, 'checked': true, 'text': ' (Сетка) '}
-]
 let currency_left_icon = $('input[name="currency_left_icon"]').val(),
-    currency_right_icon = $('input[name="currency_right_icon"]').val();
-var currency_value = $('input[name="currency_value"]').val()
+    currency_right_icon = $('input[name="currency_right_icon"]').val(),
+    currency_value = $('input[name="currency_value"]').val(),
+    green_title = $('input[name="green_title"]').val(),
+    decor_title = $('input[name="decor_title"]').val(),
+    default_decor_variable =  $('input[name="default_decor"]').val();
+
+let total_product_list = [
+    {'title': green_title, 'count': 1, 'price': 1000, 'checked': true, 'text': ''},
+    {'title': decor_title, 'count': 1, 'price': 0, 'checked': true, 'text': ' ('+ default_decor_variable +') '}
+]
+
 $('input[name="order"]').val(JSON.stringify(total_product_list))
 $('.calculator_count').on('keyup', function () {
     var product_count = $(this).val(),
@@ -64,7 +69,7 @@ $('#green').on('change', function () {
 $('#decor').on('change', function () {
     var value = $(this).val();
     total_product_list.some(function (el) {
-        if (el.title === 'Оформление') {
+        if (el.title === decor_title) {
             el.text = ' (' + value + ') '
         }
     });

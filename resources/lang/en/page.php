@@ -51,5 +51,13 @@ return [
         'place_order' => 'Order a bouquet',
         'green' => 'Greens',
         'decor' => 'Decoration',
+        'yes' => 'Yes',
+        'no' => 'No',
+        'mesh' => 'Mesh',
+        'felt' => 'Felt',
+        'newspaper' => 'Newspaper',
+        'ribbon' => 'Ribbon',
+        'phone' => 'Phone',
+
     ],
 ];

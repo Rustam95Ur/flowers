@@ -9,7 +9,7 @@
                                 <img src="{{ Voyager::image(setting('site.logo'))}}" alt="logo">
                             </a>
                         </div>
-                        <p class="desc-content">{{ Voyager::setting('site.description')}}</p>
+                        <p class="desc-content">{{ Voyager::setting('site.description_'.$locale)}}</p>
                         <div class="social-links">
                             <ul class="d-flex">
                                 <li>
@@ -46,7 +46,11 @@
                         <h2 class="widget-title">{{trans('header.information')}}</h2>
                         <ul class="widget-list">
                             @foreach($pages as $page )
-                                <li><a href="{{route('information_page', $page->slug)}}">{{$page->title}}</a></li>
+                                <li>
+                                    <a href="{{route('information_page', $page->slug)}}">
+                                        {{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                    </a>
+                                </li>
                             @endforeach
                         </ul>
                     </div>
@@ -58,7 +62,9 @@
                             <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
                             @foreach($categories as $category)
                                 <li>
-                                    <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}</a>
+                                    <a href="{{route('shop')}}?categories[]={{$category->id}}">
+                                        {{$category->getTranslatedAttribute('name', $locale, 'fallbackLocale')}}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>

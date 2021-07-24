@@ -16,18 +16,18 @@
                                     <div class="checkout-form-list">
                                         <label for='green'>{{trans('page.calculator.green')}}</label>
                                         <select class="form-control" id="green">
-                                            <option value="1">Да</option>
-                                            <option value="0">Нет</option>
+                                            <option value="1">{{trans('page.calculator.yes')}}</option>
+                                            <option value="0">{{trans('page.calculator.no')}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <label for="decor">{{trans('page.calculator.decor')}}</label>
                                     <select class="form-control" id="decor">
-                                        <option>Сетка</option>
-                                        <option>Фетр</option>
-                                        <option>Газета</option>
-                                        <option>Лента</option>
+                                        <option>{{trans('page.calculator.mesh')}}</option>
+                                        <option>{{trans('page.calculator.felt')}}</option>
+                                        <option>{{trans('page.calculator.newspaper')}}</option>
+                                        <option>{{trans('page.calculator.ribbon')}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -37,7 +37,9 @@
                                         <div class="checkout-form-list create-acc">
                                             <input id="cbox-{{$category->id}}" type="checkbox"
                                                    class="category_checkbox">
-                                            <label for="cbox-{{$category->id}}">{{$category->name}}</label>
+                                            <label for="cbox-{{$category->id}}">
+                                                {{$category->getTranslatedAttribute('name', $locale, 'fallbackLocale')}}
+                                            </label>
                                         </div>
                                         <div id="cbox-{{$category->id}}-info" class="checkout-form-list create-account">
                                             <label
@@ -58,6 +60,9 @@
                         <input type="hidden" value="{{$main_currency->left_icon}}" name="currency_left_icon">
                         <input type="hidden" value="{{$main_currency->right_icon}}" name="currency_right_icon">
                         <input type="hidden" value="{{$main_currency->value}}" name="currency_value">
+                        <input type="hidden" value="{{trans('page.calculator.green')}}" name="green_title">
+                        <input type="hidden" value="{{trans('page.calculator.decor')}}" name="decor_title">
+                        <input type="hidden" value="{{trans('page.calculator.mesh')}}" name="default_decor">
                         <div class="your-order-table table-responsive">
                             <table class="table">
                                 <thead>
@@ -83,7 +88,7 @@
                                         @csrf
                                         <input type="hidden" name="order" value="">
                                         <div>
-                                            <label for="phone">Телефон<span class="required">*</span></label>
+                                            <label for="phone">{{trans('page.calculator.phone')}}<span class="required">*</span></label>
                                             <input placeholder="" type="text" name="phone" id="phone" class="form-control" required>
                                         </div>
                                         <button class="btn mt-3 flosun-button secondary-btn black-color rounded-0 w-100" type="submit">

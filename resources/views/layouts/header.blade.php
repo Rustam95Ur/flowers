@@ -8,10 +8,10 @@
                         <a href="#select_city_modal" title="select_city" data-toggle="modal"
                            data-target="#select_city_modal">
                             @if ($selected_city)
-                                <i class="lnr lnr-map-marker"></i>{{$selected_city_name->title}}
-
+                                <i class="lnr lnr-map-marker"></i>
+                                {{$selected_city_name->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                             @else
-                                <i class="lnr lnr-map-marker"></i>Ваш город
+                                <i class="lnr lnr-map-marker"></i>{{trans('header.your_town')}}
                             @endif
                         </a>
                     </h4>
@@ -105,7 +105,8 @@
                                     @foreach($types as $type)
                                         @if(!$type->parent_id)
                                             <li>
-                                                <a href="{{route('shop')}}?types[]={{$type->id}}">{{$type->title}}
+                                                <a href="{{route('shop')}}?types[]={{$type->id}}">
+                                                    {{$type->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                                     @foreach($types as $chill_type)
                                                         @if($chill_type->parent_id == $type->id)
                                                             <span class="fa fa-angle-down"></span>
@@ -117,7 +118,9 @@
                                                     @foreach($types as $chill_type)
                                                         @if($chill_type->parent_id and $chill_type->parent_id == $type->id)
                                                             <li>
-                                                                <a href="{{route('shop')}}?types[]={{$chill_type->id}}">{{$chill_type->title}} </a>
+                                                                <a href="{{route('shop')}}?types[]={{$chill_type->id}}">
+                                                                    {{$chill_type->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                                </a>
                                                             </li>
                                                         @endif
                                                     @endforeach
@@ -135,7 +138,7 @@
                                 <ul class="dropdown-submenu dropdown-hover">
                                     @foreach($intendeds as $intended)
                                         <li>
-                                            <a href="{{route('shop')}}?intendeds[]={{$intended->id}}">{{$intended->title}}</a>
+                                            <a href="{{route('shop')}}?intendeds[]={{$intended->id}}">{{$intended->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -162,7 +165,9 @@
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
                                     @foreach($pages as $page )
-                                        <li><a href="{{route('information_page', $page->slug)}}">{{$page->title}}</a>
+                                        <li><a href="{{route('information_page', $page->slug)}}">
+                                                {{$page->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -204,7 +209,7 @@
                                     <li>
                                         <form action="{{route('shop')}}">
                                             <label for="search" class="d-none"></label>
-                                            <input name="title" id="search" placeholder="Поиск" type="text">
+                                            <input name="title" id="search" placeholder="{{trans('shop.search')}}" type="text">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </li>
@@ -238,7 +243,7 @@
                 <div class="search-box-offcanvas">
                     <form action="{{route('shop')}}">
                         <label for="search_product" class="d-none"></label>
-                        <input id="search_product" type="text" name="title" placeholder="Поиск...">
+                        <input id="search_product" type="text" name="title" placeholder="{{trans('shop.search')}}...">
                         <button class="search-btn"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
@@ -264,7 +269,8 @@
                                     @foreach($types as $type)
                                         @if(!$type->parent_id)
                                             <li>
-                                                <a href="{{route('shop')}}?types[]={{$type->id}}">{{$type->title}}
+                                                <a href="{{route('shop')}}?types[]={{$type->id}}">
+                                                    {{$type->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                                     @foreach($types as $chill_type)
                                                         @if($chill_type->parent_id == $type->id)
                                                             <span class="fa fa-angle-down"></span>
@@ -277,7 +283,7 @@
                                                         @if($chill_type->parent_id and $chill_type->parent_id == $type->id)
                                                             <li>
                                                                 <a href="{{route('shop')}}?types[]={{$chill_type->id}}">
-                                                                    {{$chill_type->title}}
+                                                                    {{$chill_type->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                                                 </a>
                                                             </li>
                                                         @endif
@@ -394,7 +400,7 @@
                     <ul class="menu-top-menu">
                         <li><a>{{trans('header.about_us')}}</a></li>
                     </ul>
-                    <p class="desc-content">{{Voyager::setting('site.description')}}</p>
+                    <p class="desc-content">{{Voyager::setting('site.description_'.$locale)}}</p>
                     <div class="switcher">
                         <div class="language">
                             <span class="switcher-title">{{trans('header.language')}}: </span>

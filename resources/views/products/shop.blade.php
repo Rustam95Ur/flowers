@@ -80,7 +80,9 @@
                                                         @endif
                                                     >
                                                     <label class="custom-control-label"
-                                                           for="color_checkbox_{{$color->id}}">{{$color->title}}</label>
+                                                           for="color_checkbox_{{$color->id}}">
+                                                        {{$color->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                    </label>
                                                 </div>
                                             </li>
                                         @endforeach
@@ -104,7 +106,9 @@
                                                         @endif
                                                     >
                                                     <label class="custom-control-label"
-                                                           for="type_checkbox_{{$type->id}}">{{$type->title}}</label>
+                                                           for="type_checkbox_{{$type->id}}">
+                                                        {{$type->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                    </label>
                                                 </div>
                                             </li>
                                         @endforeach
@@ -128,7 +132,9 @@
                                                         @endif
                                                     >
                                                     <label class="custom-control-label"
-                                                           for="intended_checkbox_{{$intended->id}}">{{$intended->title}}</label>
+                                                           for="intended_checkbox_{{$intended->id}}">
+                                                        {{$intended->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                    </label>
                                                 </div>
                                             </li>
                                         @endforeach
@@ -152,7 +158,9 @@
                                                         @endif
                                                     >
                                                     <label class="custom-control-label"
-                                                           for="size_checkbox_{{$size->id}}">{{$size->title}}</label>
+                                                           for="size_checkbox_{{$size->id}}">
+                                                        {{$size->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                    </label>
                                                 </div>
                                             </li>
                                         @endforeach
