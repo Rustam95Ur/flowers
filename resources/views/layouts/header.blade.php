@@ -444,18 +444,37 @@
                                 </ul>
                             </div>
                         </div>
-                        {{--                        <div class="currency">--}}
-                        {{--                            <span class="switcher-title">Currency: </span>--}}
-                        {{--                            <div class="switcher-menu">--}}
-                        {{--                                <ul>--}}
-                        {{--                                    <li><a href="#">$ USD</a>--}}
-                        {{--                                        <ul class="switcher-dropdown">--}}
-                        {{--                                            <li><a href="#">€ EUR</a></li>--}}
-                        {{--                                        </ul>--}}
-                        {{--                                    </li>--}}
-                        {{--                                </ul>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
+                        <div class="currency">
+                            <span class="switcher-title">{{trans('header.currency')}}: </span>
+                            <div class="switcher-menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            @if($main_currency->left_icon)
+                                                {{$main_currency->left_icon}}
+                                            @else
+                                                {{$main_currency->right_icon}}
+                                            @endif
+                                            {{$main_currency->title}}
+                                        </a>
+                                        <ul class="switcher-dropdown">
+                                            @foreach($currencies as $currency)
+                                                <li>
+                                                    <a href="{{route('select_currency', $currency->id)}}">
+                                                        @if($currency->left_icon)
+                                                            {{$currency->left_icon}}
+                                                        @else
+                                                            {{$currency->right_icon}}
+                                                        @endif
+                                                        {{$currency->title}}
+                                                    </a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     <div class="top-info-wrap text-left text-black">
                         <ul class="address-info">

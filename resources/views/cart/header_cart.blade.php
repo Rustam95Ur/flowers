@@ -19,7 +19,9 @@
                         <div class="cart-text-btn">
                             <div class="cart-qty">
                                 <span>{{ $product['qty']}}×</span>
-                                <span class="cart-price">{{ $product['price']}}</span>
+                                <span class="cart-price">
+                                    {{ $product['price'] * $main_currency->value}}
+                                </span>
                             </div>
                             <button type="button"><i class="ion-trash-b"></i></button>
                         </div>
@@ -30,7 +32,15 @@
 
         <div class="cart-price-total d-flex justify-content-between">
             <h5>{{trans('page.cart.total')}} :</h5>
-            <h5>{{$mini_cart_total_price}} ₸</h5>
+            <h5>
+                @if($main_currency->left_icon)
+                    {{$main_currency->left_icon}}
+                @endif
+                {{ $mini_cart_total_price * $main_currency->value}}
+                @if($main_currency->right_icon)
+                    {{$main_currency->right_icon}}
+                @endif
+            </h5>
         </div>
         <div class="cart-links d-flex justify-content-between">
             <a class="btn product-cart button-icon flosun-button dark-btn"

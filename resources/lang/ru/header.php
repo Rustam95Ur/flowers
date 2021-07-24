@@ -13,6 +13,7 @@ return [
     'gallery' => 'Галерея',
     'intendeds' => 'Кому',
     'phone' => 'Номер телефона',
+    'currency'  => 'Валюта',
     'language'  => 'Язык',
     'about_us' => 'О нас',
     'support' => 'Помощь',

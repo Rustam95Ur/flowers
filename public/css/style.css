@@ -7615,7 +7615,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 .drop_btn {
     background-color: #3498DB;
     color: white;
-    padding: 16px;
+    padding: 1rem 2.5rem 1rem 2.5rem;
     font-size: 16px;
     border: none;
     border-radius: 7px;
@@ -7636,7 +7636,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
     bottom: 50px;
     background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
 }
 

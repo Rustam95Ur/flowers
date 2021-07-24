@@ -99,15 +99,34 @@
                                                 class="product-quantity">
                                                 × {{$product['qty']}}</strong></td>
                                         <td class="cart-product-total text-center"><span
-                                                class="amount">{{$product['price'] * $product['qty']}}  ₸</span></td>
+                                                class="amount">
+                                                @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ $product['price'] * $product['qty'] * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </span>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                                 <tfoot>
                                 <tr class="order-total">
                                     <th>{{trans('page.cart.total_price')}}</th>
-                                    <td class="text-center"><strong><span
-                                                class="amount">{{$total_sum}} ₸</span></strong></td>
+                                    <td class="text-center"><strong>
+                                            <span class="amount">
+                                                 @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ $total_sum * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </span>
+                                        </strong>
+                                    </td>
                                 </tr>
                                 </tfoot>
                             </table>

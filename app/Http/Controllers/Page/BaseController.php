@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Currency;
 use App\Models\Gallery;
 use App\Models\Product;
 use App\Models\Size;
@@ -149,6 +150,17 @@ class BaseController extends Controller
     {
         session()->put('city', $city_id);
         session()->put('city_modal_disable', true);
+        return redirect()->back();
+    }
+
+    /**
+     * @param $currency_id
+     * @return RedirectResponse
+     */
+    public function select_currency($currency_id): RedirectResponse
+    {
+        $currency = Currency::find($currency_id);
+        session()->put('currency', $currency->code);
         return redirect()->back();
     }
 

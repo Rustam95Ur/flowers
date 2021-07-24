@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Locale;
 use App\Models\City;
+use App\Models\Currency;
 use App\Models\Intended;
 use App\Models\Product;
 use App\Models\Size;
@@ -33,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
     {
 
         view()->composer('*', function ($view) {
+            $session_currency_code = session()->get('currency', env('MAIN_CURRENCY_CODE'));
+            $main_currency = Currency::where('code', '=', $session_currency_code)->first();
+            $currencies = Currency::where('is_active', 1)->where('code', '!=', $session_currency_code)->get();
             $product_qty = 0;
             $wish_count = 0;
             $total_price = 0;
@@ -97,6 +101,8 @@ class AppServiceProvider extends ServiceProvider
                 ->with('types', $types)
                 ->with('cities', $cities)
                 ->with('intendeds', $intendeds)
+                ->with('currencies', $currencies)
+                ->with('main_currency', $main_currency)
             ->with('wish_count', $wish_count);
         });
 

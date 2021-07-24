@@ -48,7 +48,15 @@
                         </div>
                         <div class="price-box mb-4">
                             <h4 class=""><b>{{trans('page.product.price')}}:</b>
-                                <span id="product_price">{{$flower->updated_price }} ₸</span>
+                                <span id="product_price">
+                                    @if($main_currency->left_icon)
+                                        {{$main_currency->left_icon}}
+                                    @endif
+                                    {{ $flower->updated_price * $main_currency->value}}
+                                    @if($main_currency->right_icon)
+                                        {{$main_currency->right_icon}}
+                                    @endif
+                                </span>
                             </h4>
                             <input name="product_price"
                                    value="{{$flower->updated_price }}"
@@ -353,8 +361,15 @@
                                                 </div>
                                             @endif
                                             <div class="price-box">
-                                                <span class="regular-price ">
-                                                    {{ $flower['updated_price'] }} ₸</span>
+                                                <span class="regular-price">
+                                                   @if($main_currency->left_icon)
+                                                        {{$main_currency->left_icon}}
+                                                    @endif
+                                                    {{ $flower['updated_price'] * $main_currency->value}}
+                                                    @if($main_currency->right_icon)
+                                                        {{$main_currency->right_icon}}
+                                                    @endif
+                                                </span>
                                             </div>
                                             <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
                                                class="btn product-cart">{{trans('button.add_to_cart')}}</a>

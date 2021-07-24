@@ -153,10 +153,9 @@ class CartController extends Controller
      * @param int $product_id
      * @param int $qty
      * @param string $type
-     * @param int|null $size_id
      * @return JsonResponse
      */
-    protected function update_to_cart(int $product_id, int $qty, string $type = 'add', int $size_id = null): JsonResponse
+    protected function update_to_cart(int $product_id, int $qty, string $type = 'add'): JsonResponse
     {
         Product::where('id', '=', $product_id)->firstOrFail();
         $item = ['product_id' => $product_id, 'qty' => $qty];
@@ -249,6 +248,7 @@ class CartController extends Controller
                 if ($qty == 0 and $type == 'remove') {
                     $message = trans('cart.success.remove-cart');
                     unset($session[$product_exist]);
+                    $session = array_values($session);
                     session()->put($cart_name, $session);
                 } else {
                     $results = [];

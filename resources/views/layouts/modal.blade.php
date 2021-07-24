@@ -88,3 +88,18 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="add_cart_modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="container-fluid custom-area">
+                    <div class="row" id="product_quick_block">
+                       <h4 class="text-center text-success">Товар добавлен</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

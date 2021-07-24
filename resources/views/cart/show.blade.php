@@ -41,9 +41,25 @@
                                     </td>
                                     <td class="pro-price">
                                         @if($product['type'] == 'size')
-                                            <span id="price-{{$product['id']}}-{{$product['size_id']}}">{{$product['price']}} ₸</span>
+                                            <span id="price-{{$product['id']}}-{{$product['size_id']}}">
+                                                @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ $product['price'] * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </span>
                                         @else
-                                            <span id="price-{{$product['id']}}">{{$product['price']}} ₸</span>
+                                            <span id="price-{{$product['id']}}">
+                                               @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ $product['price'] * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </span>
                                         @endif
                                     </td>
                                     <td class="pro-quantity">
@@ -87,10 +103,26 @@
                                     </td>
                                     <td class="pro-subtotal">
                                         @if($product['type'] == 'size')
-                                            <span class="subtotal"
-                                                  id="subtotal-{{$product['id']}}-{{$product['size_id']}}">{{$product['price'] * $product['qty']}} ₸</span>
+                                            <span id="subtotal-{{$product['id']}}-{{$product['size_id']}}"
+                                                  class="subtotal">
+                                                @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ $product['price'] * $product['qty'] * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </span>
                                         @else
-                                            <span class="subtotal" id="subtotal-{{$product['id']}}">{{$product['price'] * $product['qty']}} ₸</span>
+                                            <span class="subtotal" id="subtotal-{{$product['id']}}">
+                                                @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ $product['price'] * $product['qty'] * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </span>
                                         @endif
                                     </td>
                                     <td class="pro-remove">
@@ -122,18 +154,42 @@
                                 <table class="table">
                                     <tr>
                                         <td>{{trans('page.cart.sub_total')}}</td>
-                                        <td class="sub-total">{{$total_price}} ₸</td>
+                                        <td class="sub-total">
+                                            @if($main_currency->left_icon)
+                                                {{$main_currency->left_icon}}
+                                            @endif
+                                            {{ $total_price * $main_currency->value}}
+                                            @if($main_currency->right_icon)
+                                                {{$main_currency->right_icon}}
+                                            @endif
+                                        </td>
                                     </tr>
                                     @if($total_price > 0)
                                         @if($shipping_price > 0)
                                             <tr>
                                                 <td>{{trans('page.cart.shipping')}}</td>
-                                                <td class="shipping-price">{{$shipping_price}} ₸</td>
+                                                <td class="shipping-price">
+                                                    @if($main_currency->left_icon)
+                                                        {{$main_currency->left_icon}}
+                                                    @endif
+                                                    {{ $shipping_price * $main_currency->value}}
+                                                    @if($main_currency->right_icon)
+                                                        {{$main_currency->right_icon}}
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endif
                                         <tr class="total">
                                             <td>{{trans('page.cart.total_price')}}</td>
-                                            <td class="total-amount">{{$total_price + $shipping_price}} ₸</td>
+                                            <td class="total-amount">
+                                                @if($main_currency->left_icon)
+                                                    {{$main_currency->left_icon}}
+                                                @endif
+                                                {{ ($total_price + $shipping_price) * $main_currency->value}}
+                                                @if($main_currency->right_icon)
+                                                    {{$main_currency->right_icon}}
+                                                @endif
+                                            </td>
                                         </tr>
                                     @endif
                                 </table>

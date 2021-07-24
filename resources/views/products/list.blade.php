@@ -52,8 +52,15 @@
                             </div>
                         @endif
                         <div class="price-box">
-
-                            <span class="regular-price ">{{ $product->updated_price }} ₸</span>
+                            <span class="regular-price ">
+                               @if($main_currency->left_icon)
+                                    {{$main_currency->left_icon}}
+                                @endif
+                                {{ $product->updated_price * $main_currency->value}}
+                                @if($main_currency->right_icon)
+                                    {{$main_currency->right_icon}}
+                                @endif
+                            </span>
                         </div>
                         <a onclick="update_cart('{{$product->id}}', 1); $(this).addClass('text-success')"
                            class="btn product-cart">
@@ -76,7 +83,15 @@
                             <i class="fa fa-star-o"></i>
                         </div>
                         <div class="price-box">
-                            <span class="regular-price ">{{$product->updated_price}} ₸</span>
+                            <span class="regular-price ">
+                             @if($main_currency->left_icon)
+                                    {{$main_currency->left_icon}}
+                            @endif
+                            {{ $product->updated_price * $main_currency->value}}
+                            @if($main_currency->right_icon)
+                                {{$main_currency->right_icon}}
+                            @endif
+                            </span>
                         </div>
                         <p class="desc-content">{!! substr($product->description, 0, 300) !!}</p>
                         <div class="button-listview">
@@ -100,19 +115,19 @@
         </div>
     @endforeach
     @if(count($products) == 0)
-            <h3 class="section-title-3 font-weight-bold mt-4 text-center">{{trans('shop.filter.no_result')}}</h3>
+        <h3 class="section-title-3 font-weight-bold mt-4 text-center">{{trans('shop.filter.no_result')}}</h3>
     @endif
 </div>
 <!-- Shop Wrapper End -->
 <!-- Bottom Toolbar Start -->
 @if(count($products) > 0 and $products->hasPages())
-<div class="row">
-    <div class="col-sm-12 col-custom">
-        <div class="toolbar-bottom">
-            {{$products->appends(request()->input())->links('vendor.pagination.custom')}}
+    <div class="row">
+        <div class="col-sm-12 col-custom">
+            <div class="toolbar-bottom">
+                {{$products->appends(request()->input())->links('vendor.pagination.custom')}}
+            </div>
         </div>
     </div>
-</div>
 @endif
 
 <!-- Bottom Toolbar End -->
