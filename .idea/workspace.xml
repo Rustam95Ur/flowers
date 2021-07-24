@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated quick_view">
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footer.blade.php" afterDir="false" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated footer">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/extra_product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/extra_product.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,13 +222,6 @@
       <workItem from="1626970932767" duration="842000" />
       <workItem from="1627042605845" duration="6594000" />
       <workItem from="1627120821685" duration="12486000" />
-    </task>
-    <task id="LOCAL-00011" summary="Updated filter and header link">
-      <created>1620474915839</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1620474915839</updated>
     </task>
     <task id="LOCAL-00012" summary="Updated font and style">
       <created>1620627543880</created>
@@ -565,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627162562429</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Updated footer">
+      <created>1627162847355</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1627162847355</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -585,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="disable online payment" />
     <MESSAGE value="added send email func" />
     <MESSAGE value="calculator add func" />
     <MESSAGE value="updated color" />
@@ -610,6 +610,7 @@
     <MESSAGE value="Updated calculator locale" />
     <MESSAGE value="Fix style" />
     <MESSAGE value="Updated quick_view" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated quick_view" />
+    <MESSAGE value="Updated footer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated footer" />
   </component>
 </project>

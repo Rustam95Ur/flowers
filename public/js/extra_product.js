@@ -4,8 +4,6 @@ let product_price = $('input[name="product_price"]').val(),
     currency_left_icon = $('input[name="currency_left_icon"]').val(),
     currency_right_icon = $('input[name="currency_right_icon"]').val(),
     currency_value = $('input[name="currency_value"]').val()
-console.log(currency_left_icon)
-console.log(currency_right_icon)
 $('input[name="extra"]').on('change', function () {
     var price = $(this).val(),
         id = $(this).attr('id');
@@ -64,9 +62,12 @@ $('input[name="size"]').on('change', function () {
 async function get_price(url, size_id) {
     let response = await fetch(url);
     if (response.ok) {
-        let json = await response.json();
-        $('#product_price').html(currency_left_icon + ' ' + json.price + ' ' + currency_right_icon)
+        let json = await response.json(),
+            json_price = (json.price * currency_value).toFixed(2)
+        product_price = json_price
+        $('#product_price').html(currency_left_icon + ' ' + json_price + ' ' + currency_right_icon)
         product_size_id = size_id
+        extra_total_price()
     } else {
         console.log("Ошибка HTTP: " + response.status);
     }
