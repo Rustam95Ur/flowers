@@ -2782,7 +2782,7 @@ mark {
     position: relative;
     padding-bottom: 12px;
     margin-bottom: 15px;
-    font-family: "Josefin Slab", serif;
+    font-family: 'Cormorant Infant', serif;
 }
 
 .shop-main-area .sidebar_widget .widget_inner .widget-title:after, .blog-main-area .sidebar_widget .widget_inner .widget-title:after {

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('page_title', trans('header.gallery'))
 @section('link_title', trans('header.gallery'))
+@section('title', trans('header.gallery'))
 @section('content')
     <!-- Blog Main Area Start Here -->
     <div class="blog-main-area">

@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', trans('header.home'))
 @section('content')
     <!-- Slider/Intro Section Start -->
     <div class="intro11-slider-wrap section-2 mrl-50">

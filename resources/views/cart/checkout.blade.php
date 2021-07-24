@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('page_title', trans('header.payment'))
 @section('link_title', trans('header.payment'))
+@section('title', trans('header.payment'))
 @section('content')
     <!-- Checkout Area Start Here -->
     <div class="checkout-area mt-no-text">

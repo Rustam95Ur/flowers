@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('page_title', trans('shop.page_title'))
 @section('link_title', trans('shop.page_title'))
+@section('title', trans('shop.page_title'))
 @section('content')
     <!-- Shop Main Area Start Here -->
     <div class="shop-main-area">
