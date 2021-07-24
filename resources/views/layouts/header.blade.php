@@ -143,26 +143,13 @@
                                     <i class="fa fa-angle-down"></i>
                                 </a>
                                 <ul class="dropdown-submenu dropdown-hover">
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=0-10000">
-                                            {{trans('header.price_to', ['price'=>10000])}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=10000-25000">
-                                            {{trans('header.price_from_to', ['from_price'=>10000, 'to_price' => 25000])}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=25000-50000">
-                                            {{trans('header.price_from_to', ['from_price'=>25000, 'to_price' => 50000])}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=50000-200000">
-                                            {{trans('header.price_from', ['price' => 50000])}}
-                                        </a>
-                                    </li>
+                                    @foreach($header_price_range as $header_price)
+                                        <li>
+                                            <a href="{{$header_price['href']}}">
+                                                {{$header_price['title']}}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li>
@@ -305,26 +292,13 @@
                             </li>
                             <li class="menu-item-has-children "><a href="#"> {{trans('header.price')}}</a>
                                 <ul class="dropdown">
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=0-10000">
-                                            {{trans('header.price_to', ['price'=>10000])}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=10000-25000">
-                                            {{trans('header.price_from_to', ['from_price'=>10000, 'to_price' => 25000])}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=25000-50000">
-                                            {{trans('header.price_from_to', ['from_price'=>25000, 'to_price' => 50000])}}
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{route('shop')}}?price[]=50000-200000">
-                                            {{trans('header.price_from', ['price' => 50000])}}
-                                        </a>
-                                    </li>
+                                    @foreach($header_price_range as $header_price)
+                                        <li>
+                                            <a href="{{$header_price['href']}}">
+                                                {{$header_price['title']}}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="menu-item-has-children "><a href="#"> {{trans('header.information')}}</a>

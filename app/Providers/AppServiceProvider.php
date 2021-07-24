@@ -50,6 +50,8 @@ class AppServiceProvider extends ServiceProvider
             $pages = Page::where('status', 'ACTIVE')->get();
             $count_cart_items = session()->get('cart');
             $size_cart_items = session()->get('size_cart');
+
+            $header_price_range = $this->flower_price_range_menu($main_currency);
             if ($count_cart_items) {
                 foreach ($count_cart_items as $item) {
                     $product = Product::where('id', $item['product_id'])->first();
@@ -57,7 +59,7 @@ class AppServiceProvider extends ServiceProvider
                     $product = $product->toarray();
                     $product['size_title'] = '';
                     $product['qty'] = $item['qty'];
-                    $product['price'] =  $product_price;
+                    $product['price'] = $product_price;
                     array_push($products, $product);
                     $total_price += $product_price * $item['qty'];
                     $product_qty += $item['qty'];
@@ -73,7 +75,7 @@ class AppServiceProvider extends ServiceProvider
                     $size_title = '(' . $size_info->title . ')';
                     $product['size_title'] = $size_title;
                     $product['qty'] = $item['qty'];
-                    $product['price'] =  $product_price;
+                    $product['price'] = $product_price;
                     array_push($products, $product);
                     $total_price += $product_price * $item['qty'];
                     $product_qty += $item['qty'];
@@ -85,9 +87,9 @@ class AppServiceProvider extends ServiceProvider
 
                 $wish_count = count($count_wish_items);
             }
-            $categories  = Category::all();
-            $types  = Type::all();
-            $intendeds  = Intended::all();
+            $categories = Category::all();
+            $types = Type::all();
+            $intendeds = Intended::all();
 
             $locale = Locale::lang();
             $view->with('locale', $locale)
@@ -103,8 +105,65 @@ class AppServiceProvider extends ServiceProvider
                 ->with('intendeds', $intendeds)
                 ->with('currencies', $currencies)
                 ->with('main_currency', $main_currency)
-            ->with('wish_count', $wish_count);
+                ->with('header_price_range', $header_price_range)
+                ->with('wish_count', $wish_count);
         });
 
+    }
+
+    protected function flower_price_range_menu($currency): array
+    {
+        return [
+            [
+                'href' => route('shop') . '?price[]=0-10000',
+                'title' => $this->get_price_range_title($currency, 10000)
+            ],
+            [
+                'href' => route('shop') . '?price[]=10000-25000',
+                'title' => $this->get_price_range_title($currency, 10000, 25000)
+            ],
+            [
+                'href' => route('shop') . '?price[]=25000-50000',
+                'title' => $this->get_price_range_title($currency, 25000,50000 )
+            ],
+            [
+                'href' => route('shop') . '?price[]=50000-200000',
+                'title' => $this->get_price_range_title($currency, false, 200000)
+            ],
+        ];
+    }
+
+    protected function get_price_range_title($currency, $from_price = null, $to_price = null)
+    {
+
+        if ($from_price and !$to_price) {
+            if ($currency->left_icon) {
+                $price = $currency->left_icon . ' ' . ($from_price * $currency->value);
+            } else {
+                $price = ($from_price * $currency->value) . ' ' . $currency->right_icon;
+            }
+            $locale_variable = 'price_from';
+            $locale_value = ['price_from' => $price];
+        } elseif ($to_price and !$from_price) {
+            if ($currency->left_icon) {
+                $price = $currency->left_icon . ' ' . ($to_price * $currency->value);
+            } else {
+                $price = ($to_price * $currency->value) . ' ' . $currency->right_icon;
+            }
+            $locale_variable = 'price_to';
+            $locale_value = ['price_to' => $price];
+        } else {
+            if ($currency->left_icon) {
+                $from_price_info = $currency->left_icon . ' ' . ($from_price * $currency->value);
+                $to_price_info = $currency->left_icon . ' ' . ($to_price * $currency->value);
+            } else {
+                $from_price_info = ($from_price * $currency->value) . ' ' . $currency->right_icon;
+                $to_price_info = ($to_price * $currency->value) . ' ' . $currency->right_icon;
+            }
+            $locale_variable = 'price_from_to';
+            $locale_value = ['from_price' => $from_price_info, 'to_price' => $to_price_info];
+        }
+
+        return trans('header.' . $locale_variable, $locale_value);
     }
 }

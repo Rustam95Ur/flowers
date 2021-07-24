@@ -25,8 +25,8 @@ return [
         'all' => 'Все цветы',
     ],
 
-    'price_from' => 'от :price ₸',
-    'price_to' => 'до :price ₸',
-    'price_from_to' => 'от :from_price ₸ до :to_price ₸',
+    'price_from' => 'от :price_from',
+    'price_to' => 'до :price_to',
+    'price_from_to' => 'от :from_price  до :to_price ',
 
 ];
