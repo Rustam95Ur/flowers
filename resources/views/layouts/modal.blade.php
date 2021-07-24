@@ -96,7 +96,7 @@
             <div class="modal-body">
                 <div class="container-fluid custom-area">
                     <div class="row" id="product_quick_block">
-                       <h4 class="text-center text-success">Товар добавлен</h4>
+                       <h4 class="text-center text-success" id="modal_message"></h4>
                     </div>
                 </div>
             </div>

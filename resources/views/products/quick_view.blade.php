@@ -55,7 +55,8 @@
                 </div>
                 <div class="add-to_btn">
                     <a class="btn product-cart button-icon flosun-button dark-btn"
-                       onclick="$(this).addClass('bg-success'); update_cart({{$quick_product->id}}, open_modal(); $('.cart-plus-minus-box').val());">
+                       onclick="$(this).addClass('bg-success'); update_cart({{$quick_product->id}},
+                           open_modal('{{trans('cart.success.add-cart')}}'); $('.cart-plus-minus-box').val());">
                         {{trans('button.add_to_cart')}}
                     </a>
                     <a  onclick="update_wish_list({{$quick_product->id}}, 'add'); $(this).addClass('active-btn')"

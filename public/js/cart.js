@@ -7,7 +7,8 @@ function update_cart(product_id, qty = 1, type = 'add', size_id = '', msg_modal 
     count_item();
 }
 
-function open_modal() {
+function open_modal(message) {
+    $('#modal_message').text(message)
     $('#add_cart_modal').modal('show');
     setTimeout(function () {
         $('#add_cart_modal').modal('hie')

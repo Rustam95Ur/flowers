@@ -147,7 +147,8 @@
                                                             @endif
                                                         </span>
                                                         </div>
-                                                        <a onclick="update_cart('{{$flower['id']}}', 1); open_modal(); $(this).addClass('text-success')"
+                                                        <a onclick="update_cart('{{$flower['id']}}', 1);
+                                                        open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
                                                            class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                                     </div>
                                                 </div>
@@ -255,7 +256,8 @@
                                                         @endif
                                                     </span>
                                                 </div>
-                                                <a onclick="update_cart('{{$flower['id']}}', 1); open_modal(); $(this).addClass('text-success')"
+                                                <a onclick="update_cart('{{$flower['id']}}', 1);
+                                                open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
                                                    class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                             </div>
                                         </div>
