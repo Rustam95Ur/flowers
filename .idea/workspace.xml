@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated localization">
-      <change beforePath="$PROJECT_DIR$/public/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/modal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/modal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/quick_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/quick_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Added message for cart-message modal">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/voyager.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/voyager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +174,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -186,11 +184,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\flowers\app\Models" />
       <recent name="C:\OpenServer\domains\flowers\resources\lang\en" />
       <recent name="C:\OSPanel\domains\flowers\app\Models" />
       <recent name="C:\OSPanel\domains\flowers\resources\views\mail" />
       <recent name="C:\OSPanel\domains\flowers\app\Mail" />
-      <recent name="C:\OSPanel\domains\flowers\resources\views\products" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OSPanel\domains\flowers\database\migrations" />
@@ -226,13 +224,6 @@
       <workItem from="1626970932767" duration="842000" />
       <workItem from="1627042605845" duration="6594000" />
       <workItem from="1627120821685" duration="12486000" />
-    </task>
-    <task id="LOCAL-00006" summary="Updated mini cart">
-      <created>1620145500589</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1620145500589</updated>
     </task>
     <task id="LOCAL-00007" summary="Updated product show page">
       <created>1620153962698</created>
@@ -570,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627153071342</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Added message for cart-message modal">
+      <created>1627153448229</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1627153448229</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +588,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated product shop page" />
     <MESSAGE value="Updated product show page" />
     <MESSAGE value="Fix product" />
     <MESSAGE value="Added comment for products" />
@@ -615,6 +612,7 @@
     <MESSAGE value="Added currency" />
     <MESSAGE value="Updated currency for calculate page" />
     <MESSAGE value="Updated localization" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated localization" />
+    <MESSAGE value="Added message for cart-message modal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added message for cart-message modal" />
   </component>
 </project>

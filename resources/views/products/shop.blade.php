@@ -176,7 +176,9 @@
                                                         @endif
                                                     >
                                                     <label class="custom-control-label"
-                                                           for="category_checkbox_{{$category->id}}">{{$category->name}}</label>
+                                                           for="category_checkbox_{{$category->id}}">
+                                                        {{$category->getTranslatedAttribute('name', $locale, 'fallbackLocale')}}
+                                                    </label>
                                                 </div>
                                             </li>
                                         @endforeach

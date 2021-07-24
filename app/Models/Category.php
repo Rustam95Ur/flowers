@@ -9,7 +9,7 @@ class Category extends Model
 {
     use Translatable;
 
-    protected $translatable = ['slug', 'name'];
+    protected $translatable = ['name'];
 
     protected $table = 'categories';
 

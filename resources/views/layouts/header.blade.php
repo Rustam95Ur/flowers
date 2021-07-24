@@ -71,7 +71,8 @@
                                     @foreach($categories as $category)
                                         @if(!$category->parent_id)
                                             <li>
-                                                <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}
+                                                <a href="{{route('shop')}}?categories[]={{$category->id}}">
+                                                    {{$category->getTranslatedAttribute('name', $locale, 'fallbackLocale')}}
                                                     @foreach($categories as $chill_category)
                                                         @if($chill_category->parent_id == $category->id)
                                                             <span class="fa fa-angle-down"></span>
@@ -83,7 +84,9 @@
                                                     @if($chill_category->parent_id == $category->id)
                                                         <ul class="dropdown-submenu-v2">
                                                             <li>
-                                                                <a href="{{route('shop')}}?categories[]={{$chill_category->id}}">{{$chill_category->name}} </a>
+                                                                <a href="{{route('shop')}}?categories[]={{$chill_category->id}}">
+                                                                    {{$chill_category->getTranslatedAttribute('name', $locale, 'fallbackLocale')}}
+                                                                </a>
                                                             </li>
                                                         </ul>
                                                     @endif
@@ -249,7 +252,9 @@
                                     <li><a href="{{route('shop')}}">{{trans('header.category.all')}}</a></li>
                                     @foreach($categories as $category)
                                         <li>
-                                            <a href="{{route('shop')}}?categories[]={{$category->id}}">{{$category->name}}</a>
+                                            <a href="{{route('shop')}}?categories[]={{$category->id}}">
+                                                {{$category->getTranslatedAttribute('name', $locale, 'fallbackLocale')}}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -271,7 +276,9 @@
                                                     @foreach($types as $chill_type)
                                                         @if($chill_type->parent_id and $chill_type->parent_id == $type->id)
                                                             <li>
-                                                                <a href="{{route('shop')}}?types[]={{$chill_type->id}}">{{$chill_type->title}} </a>
+                                                                <a href="{{route('shop')}}?types[]={{$chill_type->id}}">
+                                                                    {{$chill_type->title}}
+                                                                </a>
                                                             </li>
                                                         @endif
                                                     @endforeach
