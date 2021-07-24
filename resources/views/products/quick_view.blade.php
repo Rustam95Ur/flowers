@@ -16,7 +16,15 @@
                 <h4 class="title">{{$quick_product->title}}</h4>
             </div>
             <div class="price-box">
-                <span class="regular-price ">{{$quick_product->updated_price}} ₸</span>
+                <span class="regular-price ">
+                    @if($main_currency->left_icon)
+                        {{$main_currency->left_icon}}
+                    @endif
+                    {{ $quick_product->updated_price * $main_currency->value}}
+                    @if($main_currency->right_icon)
+                        {{$main_currency->right_icon}}
+                    @endif
+                </span>
             </div>
             <div class="product-rating">
                 <i class="fa fa-star"></i>
@@ -47,7 +55,7 @@
                 </div>
                 <div class="add-to_btn">
                     <a class="btn product-cart button-icon flosun-button dark-btn"
-                       onclick="$(this).addClass('bg-success'); update_cart({{$quick_product->id}}, $('.cart-plus-minus-box').val());">
+                       onclick="$(this).addClass('bg-success'); update_cart({{$quick_product->id}}, open_modal(); $('.cart-plus-minus-box').val());">
                         {{trans('button.add_to_cart')}}
                     </a>
                     <a  onclick="update_wish_list({{$quick_product->id}}, 'add'); $(this).addClass('active-btn')"

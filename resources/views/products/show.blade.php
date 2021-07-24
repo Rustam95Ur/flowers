@@ -58,9 +58,11 @@
                                     @endif
                                 </span>
                             </h4>
-                            <input name="product_price"
-                                   value="{{$flower->updated_price }}"
-                                   type="hidden">
+                            <input name="product_price" type="hidden"
+                                   value="{{$flower->updated_price * $main_currency->value}}">
+                            <input type="hidden" value="{{$main_currency->left_icon}}" name="currency_left_icon">
+                            <input type="hidden" value="{{$main_currency->right_icon}}" name="currency_right_icon">
+                            <input type="hidden" value="{{$main_currency->value}}" name="currency_value">
                         </div>
                         <div class="product-meta mt-3">
                             <div class="product-material custom-radio mb-4">
@@ -80,7 +82,7 @@
                                         <div class="row">
                                             @foreach($flower->extra_products as $product)
                                                 <div class="col-md-4 mr-3 custom-checkbox-image">
-                                                    <input type="checkbox" name="extra" value="{{$product->updated_price}}"
+                                                    <input type="checkbox" name="extra" value="{{$product->updated_price * $main_currency->value}}"
                                                            id="extra_product_{{$product->id}}">
                                                     <label class="checkbox-div pay-checkbox"
                                                            for="extra_product_{{$product->id}}">
@@ -96,7 +98,15 @@
                                                                 </div>
                                                                 <div class="price-box">
                                                                     <span
-                                                                        class="font-weight-bold">{{$product->updated_price}}₸</span>
+                                                                        class="font-weight-bold">
+                                                                        @if($main_currency->left_icon)
+                                                                            {{$main_currency->left_icon}}
+                                                                        @endif
+                                                                        {{$product->updated_price * $main_currency->value}}
+                                                                        @if($main_currency->right_icon)
+                                                                            {{$main_currency->right_icon}}
+                                                                        @endif
+                                                                    </span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,11 +133,11 @@
                             </div>
                             <div class="add-to_cart">
                                 <a class="btn product-cart button-icon flosun-button dark-btn" id="product_add_cart_btn"
-                                   onclick="product_and_extra_add({{$flower->id}})">
+                                   onclick="product_and_extra_add({{$flower->id}}); open_modal();">
                                     {{trans('button.add_to_cart')}}
                                 </a>
                                 <a class="btn flosun-button secondary-btn  secondary-border rounded-0"
-                                   onclick="update_wish_list({{$flower['id']}}, 'add'); $(this).addClass('active-btn')">{{trans('button.wishlist')}}</a>
+                                   onclick="update_wish_list({{$flower['id']}}, 'add');  $(this).addClass('active-btn')">{{trans('button.wishlist')}}</a>
                             </div>
                         </div>
                     </div>
@@ -371,7 +381,7 @@
                                                     @endif
                                                 </span>
                                             </div>
-                                            <a onclick="update_cart('{{$flower['id']}}', 1); $(this).addClass('text-success')"
+                                            <a onclick="update_cart('{{$flower['id']}}', 1);  open_modal(); $(this).addClass('text-success')"
                                                class="btn product-cart">{{trans('button.add_to_cart')}}</a>
                                         </div>
                                     </div>

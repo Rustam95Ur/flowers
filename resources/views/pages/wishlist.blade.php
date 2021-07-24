@@ -36,7 +36,16 @@
                                             {{$product['title']}}
                                         </a>
                                     </td>
-                                    <td class="pro-price"><span>{{ $product['updated_price'] }} ₸</span></td>
+                                    <td class="pro-price"><span>
+                                               @if($main_currency->left_icon)
+                                                {{$main_currency->left_icon}}
+                                            @endif
+                                            {{ $product['updated_price'] * $main_currency->value}}
+                                            @if($main_currency->right_icon)
+                                                {{$main_currency->right_icon}}
+                                            @endif
+                                        </span>
+                                    </td>
                                     <td class="pro-cart">
                                         <a onclick="update_cart({{$product['id']}}, 1, 'add'); $(this).addClass('bg-success')"
                                            class="btn product-cart button-icon flosun-button dark-btn ">

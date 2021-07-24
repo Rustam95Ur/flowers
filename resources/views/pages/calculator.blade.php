@@ -55,6 +55,9 @@
                 <div class="col-lg-6 col-12 col-custom">
                     <div class="your-order">
                         <h3>{{trans('page.calculator.order')}}</h3>
+                        <input type="hidden" value="{{$main_currency->left_icon}}" name="currency_left_icon">
+                        <input type="hidden" value="{{$main_currency->right_icon}}" name="currency_right_icon">
+                        <input type="hidden" value="{{$main_currency->value}}" name="currency_value">
                         <div class="your-order-table table-responsive">
                             <table class="table">
                                 <thead>

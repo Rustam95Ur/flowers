@@ -64,7 +64,6 @@
                                     </td>
                                     <td class="pro-quantity">
                                         <div class="quantity">
-
                                             <div class="cart-plus-minus">
                                                 @if($product['type'] == 'size')
                                                     <input class="cart-plus-minus-box"

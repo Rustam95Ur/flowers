@@ -95,7 +95,7 @@
                         </div>
                         <p class="desc-content">{!! substr($product->description, 0, 300) !!}</p>
                         <div class="button-listview">
-                            <a onclick="update_cart('{{$product->id}}', 1); $(this).addClass('text-white bg-success ')"
+                            <a onclick="update_cart('{{$product->id}}', 1);  open_modal(); $(this).addClass('text-white bg-success ')"
                                class="btn product-cart button-icon flosun-button dark-btn"
                                data-toggle="tooltip" data-placement="top" title="{{trans('button.add_to_cart')}}">
                                 <span>

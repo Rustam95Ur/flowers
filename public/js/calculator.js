@@ -2,6 +2,9 @@ var total_product_list = [
     {'title': 'Зелень', 'count': 1, 'price': 1000, 'checked': true, 'text': ''},
     {'title': 'Оформление', 'count': 1, 'price': 0, 'checked': true, 'text': ' (Сетка) '}
 ]
+let currency_left_icon = $('input[name="currency_left_icon"]').val(),
+    currency_right_icon = $('input[name="currency_right_icon"]').val();
+var currency_value = $('input[name="currency_value"]').val()
 $('input[name="order"]').val(JSON.stringify(total_product_list))
 $('.calculator_count').on('keyup', function () {
     var product_count = $(this).val(),
@@ -75,15 +78,17 @@ function get_total_price() {
     var total_price = 0
     total_product_list.forEach((element) => {
         if (element.checked) {
-            var tr_val = '<tr class="cart_item"><td class="cart-product-name">' + element.title + element.text +
+            let price = element.count * element.price * currency_value
+            let tr_val = '<tr class="cart_item"><td class="cart-product-name">' + element.title + element.text +
                 '<strong class="product-quantity">×' + element.count + '</strong></td>\n' +
-                '<td class="cart-product-total text-center"><span class="amount">' + element.count * element.price + '  ₸</span></td>\n' +
+                '<td class="cart-product-total text-center"><span class="amount">' + currency_left_icon + ' ' + price.toFixed(2)  + '  '
+                + currency_right_icon + '</span></td>\n' +
                 '</tr>'
             $("#cart_items_table").append(tr_val);
-            total_price += element.count * element.price
+            total_price += element.count * element.price * currency_value
         }
     })
-    $('.amounts').text(total_price + ' ₸')
+    $('.amounts').text(currency_left_icon + ' ' + total_price.toFixed(2) + ' ' + currency_right_icon)
 }
 
 get_total_price()

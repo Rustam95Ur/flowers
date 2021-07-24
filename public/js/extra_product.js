@@ -1,7 +1,11 @@
 let product_price = $('input[name="product_price"]').val(),
     extra_products_price = [],
-    product_size_id = false;
-
+    product_size_id = false,
+    currency_left_icon = $('input[name="currency_left_icon"]').val(),
+    currency_right_icon = $('input[name="currency_right_icon"]').val(),
+    currency_value = $('input[name="currency_value"]').val()
+console.log(currency_left_icon)
+console.log(currency_right_icon)
 $('input[name="extra"]').on('change', function () {
     var price = $(this).val(),
         id = $(this).attr('id');
@@ -23,11 +27,12 @@ function extra_total_price() {
         var extra_products = '',
             total_price = parseInt(product_price);
         extra_products_price.forEach(function (item) {
-            extra_products += ' + ' + item.price + ' ₸'
+            extra_products += ' + ' + currency_left_icon + ' ' + item.price + ' ' + currency_right_icon
             total_price += parseInt(item.price)
 
         })
-        document.getElementById('extra_prices').innerHTML = product_price + ' ₸' + extra_products + ' = ' + total_price + ' ₸'
+        document.getElementById('extra_prices').innerHTML = currency_left_icon + ' ' + product_price + ' ' +
+            currency_right_icon + extra_products + ' = ' + currency_left_icon + ' ' + total_price + ' '+ currency_right_icon
     } else {
         $('#total_extra_price').hide()
         $('#extra_prices').append('')
@@ -60,7 +65,7 @@ async function get_price(url, size_id) {
     let response = await fetch(url);
     if (response.ok) {
         let json = await response.json();
-        $('#product_price').html(json.price + ' ₸')
+        $('#product_price').html(currency_left_icon + ' ' + json.price + ' ' + currency_right_icon)
         product_size_id = size_id
     } else {
         console.log("Ошибка HTTP: " + response.status);

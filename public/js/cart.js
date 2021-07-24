@@ -1,15 +1,17 @@
-function update_cart(product_id, qty = 1, type = 'add', size_id = '') {
+function update_cart(product_id, qty = 1, type = 'add', size_id = '', msg_modal = false) {
     var ajax_url = '/cart/update/' + product_id + '/' + qty + '/' + type + size_id;
     let xhr = new XMLHttpRequest();
     xhr.open('GET', ajax_url, false);
     xhr.send();
-    if (type === 'add') {
-        $('#add_cart_modal').modal('show');
-        setTimeout(function () {
-            $('#add_cart_modal').modal('hie')
-        }, 5000);
-    }
+
     count_item();
+}
+
+function open_modal() {
+    $('#add_cart_modal').modal('show');
+    setTimeout(function () {
+        $('#add_cart_modal').modal('hie')
+    }, 5000);
 }
 
 function count_item() {
