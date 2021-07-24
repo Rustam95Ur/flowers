@@ -75,7 +75,7 @@
                         <h2 class="widget-title">{{trans('header.contact')}}</h2>
                         <div class="widget-body">
                             <address>
-                                {{ Voyager::setting('site.address')}}
+                                {{ Voyager::setting('site.address_'.$locale)}}
                                 <br>
                                 {{trans('header.phone')}}: {{ Voyager::setting('site.phone')}}
                                 <br>
