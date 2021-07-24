@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/extra_product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/extra_product.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/pages/wishlist.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/wishlist.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/quick_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/quick_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
-    </list>
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,14 +218,7 @@
       <workItem from="1625898640933" duration="603000" />
       <workItem from="1626970932767" duration="842000" />
       <workItem from="1627042605845" duration="6594000" />
-      <workItem from="1627120821685" duration="12085000" />
-    </task>
-    <task id="LOCAL-00004" summary="added cart page">
-      <created>1619944405605</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1619944405606</updated>
+      <workItem from="1627120821685" duration="12486000" />
     </task>
     <task id="LOCAL-00005" summary="Updated cart page">
       <created>1619968040285</created>
@@ -575,7 +556,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627136093501</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Updated currency for calculate page">
+      <created>1627139923837</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1627139923837</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -583,7 +571,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added new models and updated header" />
     <MESSAGE value="Updated header for multi level menu" />
     <MESSAGE value="Updated product shop page" />
     <MESSAGE value="Updated product show page" />
@@ -608,6 +595,7 @@
     <MESSAGE value="updated ccs" />
     <MESSAGE value="Added page title for page" />
     <MESSAGE value="Added currency" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added currency" />
+    <MESSAGE value="Updated currency for calculate page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated currency for calculate page" />
   </component>
 </project>
