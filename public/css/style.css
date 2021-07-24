@@ -7659,7 +7659,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 
 @media (max-width: 479px) {
     .single-product .product-image img {
-        height: 10rem;
+        height: 15rem;
     }
 
     .single-product .product-image {
