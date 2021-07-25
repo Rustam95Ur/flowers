@@ -2,6 +2,8 @@
 
 namespace App\Filters;
 
+use App\Models\Currency;
+
 class ProductFilter extends QueryFilter
 {
     /**
@@ -51,12 +53,13 @@ class ProductFilter extends QueryFilter
     public function price($prices)
     {
         $ranges = [];
+        $currency = new Currency();
+        $currency_value = $currency->get_currency_value(session()->get('currency', env('MAIN_CURRENCY_CODE')));
         foreach ($prices as $price) {
             $min_max = explode('-', $price);
-            $min_val = ['price', '>=', (int)$min_max[0]];
-            $max_val = ['price', '<', (int)$min_max[1]];
+            $min_val = ['price', '>=', (int)((int)$min_max[0] / $currency_value)];
+            $max_val = ['price', '<', (int)((int)$min_max[1] / $currency_value)];
             array_push($ranges, [$min_val, $max_val]);
-
         }
         return $this->builder->where(function ($query) use ($ranges) {
             foreach ($ranges as $value) {

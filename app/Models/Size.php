@@ -11,4 +11,5 @@ class Size extends Model
     use Translatable;
 
     protected $translatable = ['title'];
+
 }

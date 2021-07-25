@@ -7671,3 +7671,18 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
     }
 
 }
+#product_preloader {
+    position: relative;
+    top: 5rem;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    z-index: 99999999;
+}
+#product_preloader .preloader {
+    top: 100%;
+}
+#product_preloader .spinner {
+    position: fixed;
+}

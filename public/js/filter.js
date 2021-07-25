@@ -1,6 +1,6 @@
 $(window).on('hashchange', function () {
     if (window.location.hash) {
-        var page = window.location.hash.replace('#', '');
+        let page = window.location.hash.replace('#', '');
         if (page === Number.NaN || page <= 0) {
             return false;
         } else {
@@ -10,12 +10,12 @@ $(window).on('hashchange', function () {
 });
 /*  POPOVER JS END*/
 window.onpageshow = function () {
-    var url_parameters = window.location.search;
+    let url_parameters = window.location.search;
     if (url_parameters.length === 0) clear_for_load()
 };
 $(document).ready(function () {
 
-    var url_parameters = window.location.search;
+    let url_parameters = window.location.search;
     if (url_parameters.length === 0) clear_for_load()
     $(document).on('click', '.pagination a', function (event) {
         event.preventDefault();
@@ -23,18 +23,16 @@ $(document).ready(function () {
         $('li').removeClass('active');
         $(this).parent('li').addClass('active');
 
-        var page = $(this).attr('href').split('page=')[1];
-        var filter = $('#filter_form').serialize()
+        let page = $(this).attr('href').split('page=')[1];
+        let filter = $('#filter_form').serialize()
         product_filter(filter, page)
-
     });
-
 
 });
 
 
 function product_filter(filter, page = 1) {
-    var ajax_url = '?' + filter + '&page=' + page
+    let ajax_url = '?' + filter + '&page=' + page
     setupPage();
     history.pushState(ajax_url, document.title, ajax_url);
     onpopstate = function (event) {
@@ -45,12 +43,18 @@ function product_filter(filter, page = 1) {
         document.links[0].href = ''
         document.links[0].href = ajax_url;
     }
-
     $.ajax(
         {
             url: ajax_url,
             type: "get",
             datatype: "html",
+            beforeSend: function(){
+                $("#product_list").empty().html('');
+                $("#product_preloader").show()
+            },
+            complete: function(){
+                $("#product_preloader").hide()
+            },
             success: function (data) {
                 $("#product_list").empty().html(data);
 
@@ -68,7 +72,7 @@ function clear_filter() {
     $("input[type=checkbox]").prop('checked', false)
     $('.custom-select-trigger').text('по умолчанию')
     $('#inputState').find('option:not(:first)').remove();
-    var filter = $('#filter_form').serialize()
+    let filter = $('#filter_form').serialize()
     product_filter(filter, '')
     $("input[name=title]").val('')
 }
@@ -79,61 +83,71 @@ function clear_for_load() {
 }
 
 $('#search-main').on('keyup', function () {
-    var filter = $('#filter_form').serialize()
+    let filter = $('#filter_form').serialize()
     product_filter(filter)
 })
 
 $(".form-check-input").change(function () {
-    var filter = $('#filter_form').serialize()
+    let filter = $('#filter_form').serialize()
     product_filter(filter)
 });
 
 $("select[name='sort']").change(function () {
-    var filter = $('#filter_form').serialize()
+    let filter = $('#filter_form').serialize()
     product_filter(filter)
 });
 let amount = $('#amount')
 amount.on('keyup', function () {
-    var min_max_val = $(this).val().split('-'),
+    let min_max_val = $(this).val().split('-'),
         updated_range_val = [];
-    for (var i = 0; i < min_max_val.length; ++i) {
-        updated_range_val.push( min_max_val[i].replace('₸', '').replace(/\s+/g, ''))
+    for (let i = 0; i < min_max_val.length; ++i) {
+        let update_val = min_max_val[i].replace(currency_right_icon, '').replace(currency_left_icon, '').replace(/[a-zа-яё]/gi, '').replace(/[^a-zа-яё0-9\s]/gi, '')
+        updated_range_val.push(update_val)
     }
-    SliderRange(updated_range_val[0].replace('₸', ''), updated_range_val[1].replace('₸', ''));
-    var filter = $('#filter_form').serialize()
-    product_filter(filter)
-
+    SliderRange(parseInt(updated_range_val[0]), updated_range_val[1], currency_value);
+    let filter = $('#filter_form').serialize()
+    setTimeout(function () {
+        product_filter(filter)
+    }, 3000);
 })
 
 /*--------------------------------
  Price Slider Active
  -------------------------------- */
 if (amount.val()) {
-    var count_array = amount.val().split('-');
-    SliderRange(count_array[0].replace('₸', ''), count_array[1].replace('₸', ''));
-
+    let count_array = amount.val().split('-'),
+        start_val = count_array[0].replace(currency_left_icon, '').replace(currency_right_icon, ''),
+        end_val = count_array[1].replace(currency_left_icon, '').replace(currency_right_icon, '');
+    SliderRange(start_val, end_val, currency_value);
 } else {
-    SliderRange()
+    start_val = 0
+    end_val = 200000 * currency_value
+    SliderRange(start_val, end_val, currency_value);
 }
 
-function SliderRange(start = 0, end = 200000) {
-    var slider_range = $("#slider-range")
+function SliderRange(start = 0, end = 200000, currency_value = 1) {
+    let slider_range = $("#slider-range")
     slider_range.slider({
         range: true,
         min: 0,
-        max: 200000,
+        max: 200000 * currency_value,
         values: [start, end],
         slide: function (event, ui) {
             if ((ui.values[0] + 39) >= ui.values[1]) {
                 return false;
             }
-            $("#amount").val(ui.values[0] + " ₸" + " - " + ui.values[1] + ' ₸');
-            var filter = $('#filter_form').serialize()
-            product_filter(filter)
+            let min_val = currency_left_icon + ' ' + ui.values[0] + ' ' + currency_right_icon
+            let max_val = currency_left_icon + ' ' + ui.values[1] + ' ' + currency_right_icon
+            $("#amount").val(min_val + " - " + max_val);
+            let filter = $('#filter_form').serialize()
+            setTimeout(function () {
+                product_filter(filter)
+            }, 1000);
         }
     });
-    $("#amount").val(slider_range.slider("values", 0) + " ₸" +
-        " - " + slider_range.slider("values", 1) + " ₸");
+    let slider_min_val = currency_left_icon + ' ' + slider_range.slider("values", 0) + ' ' + currency_right_icon,
+        slider_max_val = currency_left_icon + ' ' + slider_range.slider("values", 1) + ' ' + currency_right_icon;
+    $("#amount").val(slider_min_val + " - " + slider_max_val);
 }
 
 

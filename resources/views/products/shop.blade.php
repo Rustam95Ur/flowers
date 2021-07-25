@@ -30,9 +30,19 @@
                             </form>
                         </div>
                     </div>
-                    <div id="product_list">
-                        @include('products.list')
+                    <div>
+                        <div id="product_preloader" style="display: none">
+                            <div class="preloader">
+                                <div class="spinner-block">
+                                    <h1 class="spinner spinner-3 mb-0">.</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="product_list">
+                            @include('products.list')
+                        </div>
                     </div>
+
                 </div>
                 <div class="col-lg-3 col-12 col-custom">
                     <!-- Sidebar Widget Start -->

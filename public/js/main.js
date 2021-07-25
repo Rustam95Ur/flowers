@@ -512,17 +512,20 @@
     });
 
 })(jQuery);
+let currency_left_icon = $('input[name="currency_left_icon"]').val(),
+    currency_right_icon = $('input[name="currency_right_icon"]').val(),
+    currency_value = $('input[name="currency_value"]').val();
 
 function updated_after_delete(product_id, value) {
-    var shipping_price = parseInt($('.shipping-price').text()),
+    var shipping_price = parseFloat($('.shipping-price').text().replace(currency_left_icon, '')),
         sub_total_price = 0,
         price = $('#price-' + product_id).text();
-    $('#subtotal-' + product_id).html(parseInt(price) * parseInt(value) + ' ₸')
+    $('#subtotal-' + product_id).html(currency_left_icon + ' ' + (parseFloat(price) * parseFloat(value)) + ' ' + currency_right_icon)
     $('.subtotal').each(function () {
-        sub_total_price += parseInt($(this).text())
+        sub_total_price += parseFloat($(this).text().replace(currency_left_icon, ''))
     })
-    $('.sub-total').html(sub_total_price + ' ₸')
-    $('.total-amount').html(sub_total_price + shipping_price + ' ₸')
+    $('.sub-total').html(currency_left_icon + ' ' + sub_total_price + ' ' + currency_right_icon)
+    $('.total-amount').html(currency_left_icon + ' ' + (sub_total_price + shipping_price) + ' ' + currency_right_icon)
 }
 
 /*----------------------------------------*/

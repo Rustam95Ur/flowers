@@ -21,8 +21,9 @@ class PaymentController extends Controller
      */
     public function index(StoreCheckoutForm $request): RedirectResponse
     {
-        $session_currency_code = session()->get('currency', env('MAIN_CURRENCY_CODE'));
-        $currency_info = Currency::where('code', $session_currency_code)->first();
+        $currency = new Currency();
+        $currency_value = $currency->get_currency_value(session()->get('currency', env('MAIN_CURRENCY_CODE')));
+        $currency_title = $currency->get_currency_title(session()->get('currency', env('MAIN_CURRENCY_CODE')));
         $total_price = 0;
         $products = '';
         $session_product = [];
@@ -31,7 +32,7 @@ class PaymentController extends Controller
             foreach ($session_one_product['products'] as $item) {
                 $product = Product::where('id', '=', $item['id'])->first();
                 if ($product) {
-                    $price = $product->updated_price * $currency_info->value;
+                    $price = $product->updated_price * $currency_value;
                     $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
                     $total_price += $price * $item['qty'];
                 }
@@ -44,7 +45,7 @@ class PaymentController extends Controller
                 foreach ($session_items as $item) {
                     $product = Product::where('id', '=', $item['product_id'])->first();
                     if ($product) {
-                        $price = $product->updated_price * $currency_info->value;
+                        $price = $product->updated_price * $currency_value;
                         $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
                         $total_price += $price * $item['qty'];
                     }
@@ -83,8 +84,8 @@ class PaymentController extends Controller
             $products .= 'Изменённая цена на: ' . Voyager::setting('site.price_update') . '%';
             array_push($session_product, ['price_update_val' => Voyager::setting('site.price_update')]);
         }
-        if ($total_price < (100 * $currency_info->value)) {
-            return back()->with('error', trans('cart.checkout.min_price_error', ['min_price'=> 100 * $currency_info->value]));
+        if ($total_price < (100 * $currency_value)) {
+            return back()->with('error', trans('cart.checkout.min_price_error', ['min_price'=> 100 * $currency_value]));
         }
         $paymentSave = new Payment();
         $paymentSave->customer_name = $request['customer_name'];
@@ -103,7 +104,7 @@ class PaymentController extends Controller
         $paymentSave->request = json_encode($session_product);
         $paymentSave->products = $products;
         $paymentSave->comment = $request['comment'];
-        $paymentSave->currency = $currency_info->title;
+        $paymentSave->currency = $currency_title;
         $payment_type = $request['payment_type'];
         if ($payment_type === 'online') {
 

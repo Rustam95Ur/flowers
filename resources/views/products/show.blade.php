@@ -60,9 +60,7 @@
                             </h4>
                             <input name="product_price" type="hidden"
                                    value="{{$flower->updated_price * $main_currency->value}}">
-                            <input type="hidden" value="{{$main_currency->left_icon}}" name="currency_left_icon">
-                            <input type="hidden" value="{{$main_currency->right_icon}}" name="currency_right_icon">
-                            <input type="hidden" value="{{$main_currency->value}}" name="currency_value">
+
                         </div>
                         <div class="product-meta mt-3">
                             <div class="product-material custom-radio mb-4">
