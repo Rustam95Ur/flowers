@@ -65,3 +65,6 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+Auth::routes();
+

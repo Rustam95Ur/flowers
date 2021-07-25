@@ -515,8 +515,9 @@
                             </li>
                         </ul>
                         <div class="widget-social">
-                            <a class="facebook-color-bg" title="Facebook-f" href="#"><i
-                                    class="fa fa-facebook-f"></i></a>
+                            <a class="facebook-color-bg" title="Facebook-f" href="#">
+                                <i class="fa fa-facebook-f"></i>
+                            </a>
                             <a class="twitter-color-bg" title="Twitter" href="#"><i class="fa fa-twitter"></i></a>
                             <a class="linkedin-color-bg" title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a>
                             <a class="youtube-color-bg" title="Youtube" href="#"><i class="fa fa-youtube"></i></a>
