@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Shop\CartController;
 use App\Locale;
 use App\Models\City;
 use App\Models\Currency;
@@ -37,10 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $session_currency_code = session()->get('currency', env('MAIN_CURRENCY_CODE'));
             $main_currency = Currency::where('code', '=', $session_currency_code)->first();
             $currencies = Currency::where('is_active', 1)->where('code', '!=', $session_currency_code)->get();
-            $product_qty = 0;
             $wish_count = 0;
-            $total_price = 0;
-            $products = [];
             $city_title = false;
             $selected_city = session()->get('city', 2);
             if ($selected_city) {
@@ -48,40 +46,9 @@ class AppServiceProvider extends ServiceProvider
             }
             $cities = City::orderBy('title', 'ASC')->get();
             $pages = Page::where('status', 'ACTIVE')->get();
-            $count_cart_items = session()->get('cart');
-            $size_cart_items = session()->get('size_cart');
-
+            $cart_products = new CartController();
+            $session_products = $cart_products->get_cart_products();
             $header_price_range = $this->flower_price_range_menu($main_currency);
-            if ($count_cart_items) {
-                foreach ($count_cart_items as $item) {
-                    $product = Product::where('id', $item['product_id'])->first();
-                    $product_price = $product->updated_price;
-                    $product = $product->toarray();
-                    $product['size_title'] = '';
-                    $product['qty'] = $item['qty'];
-                    $product['price'] = $product_price;
-                    array_push($products, $product);
-                    $total_price += $product_price * $item['qty'];
-                    $product_qty += $item['qty'];
-
-                }
-            }
-            if ($size_cart_items) {
-                foreach ($size_cart_items as $item) {
-                    $product = Product::where('id', $item['product_id'])->first();
-                    $product_price = $item['sizes']['price'];
-                    $product = $product->toarray();
-                    $size_info = Size::find($item['sizes']['id']);
-                    $size_title = '(' . $size_info->title . ')';
-                    $product['size_title'] = $size_title;
-                    $product['qty'] = $item['qty'];
-                    $product['price'] = $product_price;
-                    array_push($products, $product);
-                    $total_price += $product_price * $item['qty'];
-                    $product_qty += $item['qty'];
-
-                }
-            }
             $count_wish_items = session()->get('wish');
             if ($count_wish_items) {
 
@@ -90,12 +57,11 @@ class AppServiceProvider extends ServiceProvider
             $categories = Category::all();
             $types = Type::all();
             $intendeds = Intended::all();
-
             $locale = Locale::lang();
             $view->with('locale', $locale)
-                ->with('qty_cart', $product_qty)
-                ->with('mini_cart_products', $products)
-                ->with('mini_cart_total_price', $total_price)
+                ->with('qty_cart', $session_products['total_product'])
+                ->with('mini_cart_products', $session_products['products'])
+                ->with('mini_cart_total_price', $session_products['total_price'])
                 ->with('categories', $categories)
                 ->with('selected_city', $selected_city)
                 ->with('selected_city_name', $city_title)

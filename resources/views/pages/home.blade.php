@@ -109,7 +109,7 @@
                                                                    data-placement="left"
                                                                    title="{{trans('button.wishlist')}}"></i>
                                                             </a>
-                                                            <a onclick="quick_view_product({{$flower['id']}}, '{{$locale}}'')">
+                                                            <a onclick="quick_view_product({{$flower['id']}}, '{{$locale}}')">
                                                                 <i class="lnr lnr-eye" data-toggle="tooltip"
                                                                    data-placement="left"
                                                                    title="{{trans('button.quick_view')}}"></i>

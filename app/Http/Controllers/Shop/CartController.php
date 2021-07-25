@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
+use App\Locale;
 use App\Models\Product;
 use App\Models\ProductSizePrice;
 use App\Models\Size;
@@ -21,53 +22,17 @@ class CartController extends Controller
      */
     public function index()
     {
-        $cart_items = session()->get('cart');
-        $size_cart_items = session()->get('size_cart');
-        $products = [];
-        $total_price = 0;
-
         $shipping_price = Voyager::setting('site.shipping_price') ? (int)Voyager::setting('site.shipping_price') : 0;
-        if ($cart_items) {
-            foreach ($cart_items as $item) {
-                $product = Product::where('id', $item['product_id'])->first();
-                $product_price = $product->updated_price;
-                $product = $product->toarray();
-                $product['size_title'] = '';
-                $product['qty'] = $item['qty'];
-                $product['type'] = 'default';
-                $product['price'] = $product_price;
-                array_push($products, $product);
-                $total_price += $product_price * $item['qty'];
-            }
-        }
-        if ($size_cart_items) {
-            foreach ($size_cart_items as $item) {
-                $product = Product::where('id', $item['product_id'])->first();
-                $product = $product->toarray();
-                $size_title = '';
-                if (isset($item['sizes'])) {
-                    $size_info = Size::find($item['sizes']['id']);
-                    $size_title = '(' . $size_info->title . ')';
-                }
-                $product_price = $item['sizes']['price'];
-                $product['size_title'] = $size_title;
-                $product['qty'] = $item['qty'];
-                $product['type'] = 'size';
-                $product['size_id'] = $item['sizes']['id'];
-                $product['price'] = $product_price;
-                array_push($products, $product);
-                $total_price += $product_price * $item['qty'];
-            }
-        }
+        $session_product = $this->get_cart_products();
         if (request()->ajax()) {
             return view('cart.header_cart', [
-                'mini_cart_products' => $products,
-                'total_price' => $total_price,
+                'mini_cart_products' => $session_product['products'],
+                'total_price' => $session_product['total_price'],
             ]);
         }
         return view('cart.show', [
-            'products' => $products,
-            'total_price' => $total_price,
+            'products' => $session_product['products'],
+            'total_price' =>  $session_product['total_price'],
             'shipping_price' => $shipping_price,
         ]);
     }
@@ -278,6 +243,54 @@ class CartController extends Controller
             }
         }
         return $message;
+    }
+
+    public function get_cart_products(): array
+    {
+        $cart_items = session()->get('cart');
+        $size_cart_items = session()->get('size_cart');
+        $products = [];
+        $total_price = 0;
+        $total_product = 0;
+        if ($cart_items) {
+            foreach ($cart_items as $item) {
+                $product = Product::where('id', $item['product_id'])->first();
+                $product_price = $product->updated_price;
+                $product['title'] = $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale');
+                $product['description'] = $product->getTranslatedAttribute('description', Locale::lang(), 'fallbackLocale');
+                $product = $product->toarray();
+                $product['size_title'] = '';
+                $product['qty'] = $item['qty'];
+                $product['type'] = 'default';
+                $product['price'] = $product_price;
+                array_push($products, $product);
+                $total_price += $product_price * $item['qty'];
+                $total_product += $item['qty'];
+            }
+        }
+        if ($size_cart_items) {
+            foreach ($size_cart_items as $item) {
+                $product = Product::where('id', $item['product_id'])->first();
+                $product['title'] = $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale');
+                $product['description'] = $product->getTranslatedAttribute('description', Locale::lang(), 'fallbackLocale');
+                $product = $product->toarray();
+                $size_title = '';
+                if (isset($item['sizes'])) {
+                    $size_info = Size::find($item['sizes']['id']);
+                    $size_title = '(' . $size_info->title . ')';
+                }
+                $product_price = $item['sizes']['price'];
+                $product['size_title'] = $size_title;
+                $product['qty'] = $item['qty'];
+                $product['type'] = 'size';
+                $product['size_id'] = $item['sizes']['id'];
+                $product['price'] = $product_price;
+                array_push($products, $product);
+                $total_price += $product_price * $item['qty'];
+                $total_product += $item['qty'];
+            }
+        }
+        return ['products' => $products, 'total_price' => $total_price, 'total_product' => $total_product];
     }
 
 }

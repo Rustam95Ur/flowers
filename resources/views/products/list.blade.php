@@ -62,8 +62,8 @@
                                 @endif
                             </span>
                         </div>
-                        <a onclick="update_cart('{{$product->id}}', 1); $(this).addClass('text-success')"
-                           class="btn product-cart">
+                        <a onclick="update_cart('{{$product->id}}', 1); open_modal('{{trans('cart.success.add-cart')}}');
+                        $(this).addClass('text-success')" class="btn product-cart">
                             {{trans('button.add_to_cart')}}
                         </a>
                     </div>

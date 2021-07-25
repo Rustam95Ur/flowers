@@ -28,9 +28,10 @@ function count_item() {
 
 
 function updated_mini_cart() {
+    let locale = $('input[name="locale"]').val()
     $.ajax({
         type: "GET",
-        url: '/cart',
+        url: '/' + locale + '/cart',
         success: function (data) {
             $('#mini_cart').html(data);
         }

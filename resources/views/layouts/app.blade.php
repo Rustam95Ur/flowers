@@ -67,7 +67,7 @@
 
 <!-- Modal -->
 @extends('layouts.modal')
-
+<input type="hidden" name="locale" value="{{$locale}}">
 <!-- Scroll to Top Start -->
 <a class="scroll-to-top" href="#">
     <i class="lnr lnr-arrow-up"></i>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Fixed extra product script">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Fixed product update locale">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,13 +228,6 @@
       <workItem from="1626970932767" duration="842000" />
       <workItem from="1627042605845" duration="6594000" />
       <workItem from="1627120821685" duration="12486000" />
-    </task>
-    <task id="LOCAL-00013" summary="Added modal and select city">
-      <created>1620632241806</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1620632241806</updated>
     </task>
     <task id="LOCAL-00014" summary="Updated font-style">
       <created>1620637963365</created>
@@ -566,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627163542819</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="Fixed product update locale">
+      <created>1627165869376</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1627165869376</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="calculator add func" />
     <MESSAGE value="updated color" />
     <MESSAGE value="added banners" />
     <MESSAGE value="updated category banner size" />
@@ -611,6 +616,7 @@
     <MESSAGE value="Updated quick_view" />
     <MESSAGE value="Updated footer" />
     <MESSAGE value="Fixed extra product script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed extra product script" />
+    <MESSAGE value="Fixed product update locale" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed product update locale" />
   </component>
 </project>
