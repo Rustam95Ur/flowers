@@ -2,6 +2,7 @@
 
 return [
     'your_town' => 'Ваш город',
+    'social_network' => 'Соц. сети',
     'home' => 'Главная',
     'flowers' => 'Цветы',
     'type_bouquet' => 'Тип букета',

@@ -40,6 +40,8 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/cart/update/{product_id}/{qty}/{type}', [CartController::class, 'update_to_cart'])->name('update_to_cart');
     Route::get('/cart/update/{product_id}/{qty}/{type}/{size_id}', [CartController::class, 'update_to_cart_size'])->name('update_to_cart_size');
     Route::get('/cart/count', [CartController::class, 'count_cart'])->name('count_cart');
+    Route::post('/cart/buy/one', [CartController::class, 'buy_one_product'])->name('buy_one_product');
+    Route::get('/cart/buy/all', [CartController::class, 'buy_all_product'])->name('buy_all_product');
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
     Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');

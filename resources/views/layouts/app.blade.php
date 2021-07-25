@@ -73,7 +73,7 @@
     <i class="lnr lnr-arrow-up"></i>
 </a>
 <div class="drop_up">
-    <button class="drop_btn">Соц. сети</button>
+    <button class="drop_btn">{{trans('header.social_network')}}</button>
     <div class="drop_up-content">
         <a href="#" class="text-secondary"><i class="fa fa-whatsapp" aria-hidden="true"></i> Whatsapp</a>
         <a href="#" class="text-danger"><i class="fa fa-instagram" aria-hidden="true"></i> Instagram</a>

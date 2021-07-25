@@ -69,7 +69,7 @@
                                 <h4 class="mb-3"><b>{{trans('page.product.size')}}:</b></h4>
                                 @foreach($flower->sizes as $size)
                                     <input type="radio" name="size" value="{{$size->id}}" class="custom-control-input"
-                                           id="size_checkbox-{{$size->id}}"
+                                           id="size_checkbox-{{$size->id}}" form="buy_now_form"
                                            @if(count($flower->sizes) == 1) checked @endif>
                                     <label class="custom-control-label"
                                            for="size_checkbox-{{$size->id}}">{{$size->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}</label>
@@ -80,10 +80,13 @@
                                     <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
                                     <div class="custom-control mt-3 ">
                                         <div class="row">
+                                            <input type="hidden" name="extra_products[]" value=""
+                                                   form="buy_now_form">
                                             @foreach($flower->extra_products as $product)
                                                 <div class="col-md-4 mr-3 custom-checkbox-image">
                                                     <input type="checkbox" name="extra" value="{{$product->updated_price * $main_currency->value}}"
                                                            id="extra_product_{{$product->id}}">
+
                                                     <label class="checkbox-div pay-checkbox"
                                                            for="extra_product_{{$product->id}}">
                                                         <div class="sidebar-product align-items-center">
@@ -128,7 +131,7 @@
                             <div class="quantity">
                                 <div class="cart-plus-minus">
                                     <input class="cart-plus-minus-box" value="1" type="text"
-                                           id="product-{{$flower->id}}">
+                                           id="product-{{$flower->id}}" name="qty"  form="buy_now_form">
                                     <div class="dec qtybutton">-</div>
                                     <div class="inc qtybutton">+</div>
                                 </div>
@@ -139,7 +142,17 @@
                                     {{trans('button.add_to_cart')}}
                                 </a>
                                 <a class="btn flosun-button secondary-btn  secondary-border rounded-0"
-                                   onclick="update_wish_list({{$flower['id']}}, 'add');  $(this).addClass('active-btn')">{{trans('button.wishlist')}}</a>
+                                   onclick="update_wish_list({{$flower['id']}}, 'add');  $(this).addClass('active-btn')">
+                                    {{trans('button.wishlist')}}
+                                </a>
+                                <button class="btn flosun-button primary-btn  secondary-border rounded-0"
+                                        type="submit" form="buy_now_form">
+                                    {{trans('button.buy_now')}}
+                                </button>
+                                <form action="{{route('buy_one_product')}}" method="post" id="buy_now_form">
+                                    @csrf
+                                    <input type="hidden" name="product_id" value="{{$flower->id}}">
+                                </form>
                             </div>
                         </div>
                     </div>

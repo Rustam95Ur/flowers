@@ -2,6 +2,7 @@
 
 return [
     'your_town' => 'Your town',
+    'social_network' => 'Social Network',
     'home' => 'Home',
     'flowers' => 'Flowers',
     'type_bouquet' => 'Bouquet type',

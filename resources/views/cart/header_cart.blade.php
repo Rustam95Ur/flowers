@@ -49,7 +49,7 @@
             <a class="btn product-cart button-icon flosun-button dark-btn"
                href="{{route('cart')}}">{{trans('button.view_cart')}}</a>
             <a class="btn flosun-button secondary-btn rounded-0"
-               href="{{route('checkout')}}">{{trans('button.checkout')}}</a>
+               href="{{route('buy_all_product')}}">{{trans('button.checkout')}}</a>
         </div>
     </div>
 

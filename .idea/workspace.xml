@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Refactor cart function">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Added locale for checkout and currency">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/extra_product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/extra_product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/button.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/button.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/header_cart.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,13 +236,6 @@
       <workItem from="1626970932767" duration="842000" />
       <workItem from="1627042605845" duration="6594000" />
       <workItem from="1627120821685" duration="12486000" />
-    </task>
-    <task id="LOCAL-00014" summary="Updated font-style">
-      <created>1620637963365</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1620637963365</updated>
     </task>
     <task id="LOCAL-00015" summary="Updated style">
       <created>1620639141868</created>
@@ -570,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627165869376</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Added locale for checkout and currency">
+      <created>1627208288851</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1627208288851</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +600,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="updated color" />
     <MESSAGE value="added banners" />
     <MESSAGE value="updated category banner size" />
     <MESSAGE value="updated text" />
@@ -615,6 +624,7 @@
     <MESSAGE value="Updated footer" />
     <MESSAGE value="Fixed extra product script" />
     <MESSAGE value="Fixed product update locale" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed product update locale" />
+    <MESSAGE value="Added locale for checkout and currency" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added locale for checkout and currency" />
   </component>
 </project>

@@ -209,7 +209,8 @@
                                     <li>
                                         <form action="{{route('shop')}}">
                                             <label for="search" class="d-none"></label>
-                                            <input name="title" id="search" placeholder="{{trans('shop.search')}}" type="text">
+                                            <input name="title" id="search" placeholder="{{trans('shop.search')}}"
+                                                   type="text">
                                             <button type="submit"><i class="fa fa-search"></i></button>
                                         </form>
                                     </li>
@@ -344,6 +345,10 @@
                                                     <li>
                                                         <a href="{{str_replace($locale, $key, request()->url())}}">{{$language}}</a>
                                                     </li>
+                                                @elseif(request()->route()->getName() == 'product_show')
+                                                    <li>
+                                                        <a href="{{url($key.'/'.stristr(request()->url(), 'product', false))}}">{{$language}}</a>
+                                                    </li>
                                                 @else
                                                     @if(request()->route()->getName() == 'home')
                                                         <li>
@@ -355,6 +360,37 @@
                                                         </li>
                                                     @endif
                                                 @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="currency">
+                            <span class="switcher-title">{{trans('header.currency')}}: </span>
+                            <div class="switcher-menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            @if($main_currency->left_icon)
+                                                {{$main_currency->left_icon}}
+                                            @else
+                                                {{$main_currency->right_icon}}
+                                            @endif
+                                            {{$main_currency->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                        </a>
+                                        <ul class="switcher-dropdown">
+                                            @foreach($currencies as $currency)
+                                                <li>
+                                                    <a href="{{route('select_currency', $currency->id)}}">
+                                                        @if($currency->left_icon)
+                                                            {{$currency->left_icon}}
+                                                        @else
+                                                            {{$currency->right_icon}}
+                                                        @endif
+                                                        {{$currency->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
+                                                    </a>
+                                                </li>
                                             @endforeach
                                         </ul>
                                     </li>

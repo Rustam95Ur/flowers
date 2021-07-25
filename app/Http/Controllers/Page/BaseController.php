@@ -86,49 +86,25 @@ class BaseController extends Controller
      */
     public function checkout()
     {
-        $carts_product = session()->get('cart');
-        $size_product = session()->get('size_cart');
-        if ($carts_product or $size_product) {
-            $products = [];
-            $total_sum = 0;
-            foreach ($carts_product as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->first();
-                $product_price = $product->updated_price;
-                $results = [
-                    'id' => $product->id,
-                    'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
-                    'price' => $product_price,
-                    'size_title' => '',
-                    'qty' => $item['qty']
-                ];
-                array_push($products, $results);
-                $total_sum += $product_price * $item['qty'];
-            }
-            if ($size_product) {
-                foreach ($size_product as $item) {
-                    $product = Product::where('id', '=', $item['product_id'])->first();
-                    $product_price = $item['sizes']['price'];
-                    $size_info = Size::find($item['sizes']['id']);
-                    $results = [
-                        'id' => $product->id,
-                        'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
-                        'price' => $product_price,
-                        'size_title' => '(' . $size_info->title . ')',
-                        'qty' => $item['qty']
-                    ];
-                    array_push($products, $results);
-                    $total_sum += $product_price * $item['qty'];
-                }
-            }
+        if($session_one_product = session()->get('one_product')) {
+            $products = $session_one_product['products'];
+            $total_sum = $session_one_product['total_sum'];
+            $type = 'one_product';
+        } else {
+            $session_cart_products = $this->get_session_cart_products();
+            $products = $session_cart_products['products'];
+            $total_sum = $session_cart_products['total_sum'];
+            $type = 'some_products';
+        }
+        if(count($products) > 0) {
             return view('cart.checkout', [
                 'checkout_products' => $products,
                 'total_sum' => $total_sum,
+                'product_pay_type' => $type
             ]);
-
         } else {
             return redirect()->back();
         }
-
     }
 
 
@@ -195,6 +171,50 @@ class BaseController extends Controller
     public function calculator()
     {
         return view('pages.calculator');
+    }
+
+    /**
+     * @return array
+     */
+    protected function get_session_cart_products(): array
+    {
+        $carts_product = session()->get('cart');
+        $size_product = session()->get('size_cart');
+
+        $products = [];
+        $total_sum = 0;
+        if($carts_product) {
+            foreach ($carts_product as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $product_price = $product->updated_price;
+                $results = [
+                    'id' => $product->id,
+                    'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
+                    'price' => $product_price,
+                    'size_title' => '',
+                    'qty' => $item['qty']
+                ];
+                array_push($products, $results);
+                $total_sum += $product_price * $item['qty'];
+            }
+        }
+        if ($size_product) {
+            foreach ($size_product as $item) {
+                $product = Product::where('id', '=', $item['product_id'])->first();
+                $product_price = $item['sizes']['price'];
+                $size_info = Size::find($item['sizes']['id']);
+                $results = [
+                    'id' => $product->id,
+                    'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
+                    'price' => $product_price,
+                    'size_title' => '(' . $size_info->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale') . ')',
+                    'qty' => $item['qty']
+                ];
+                array_push($products, $results);
+                $total_sum += $product_price * $item['qty'];
+            }
+        }
+        return ['products' => $products, 'total_sum' => $total_sum];
     }
 
 

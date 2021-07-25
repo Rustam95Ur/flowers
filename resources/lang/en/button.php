@@ -10,4 +10,5 @@ return [
     'compare' => 'Compare',
     'checkout' => 'Checkout',
     'send' => 'Send',
+    'buy_now' => 'Buy now',
 ];

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutForm;
 use App\Http\Controllers\Mail\BaseController as MailBaseController;
 use App\Models\City;
+use App\Models\Currency;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\Size;
@@ -20,35 +21,53 @@ class PaymentController extends Controller
      */
     public function index(StoreCheckoutForm $request): RedirectResponse
     {
+        $session_currency_code = session()->get('currency', env('MAIN_CURRENCY_CODE'));
+        $currency_info = Currency::where('code', $session_currency_code)->first();
         $total_price = 0;
-        $session_items = session()->get('cart');
-        $size_items = session()->get('size_cart');
         $products = '';
-        if ($session_items) {
-            foreach ($session_items as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->first();
+        $session_product = [];
+        if( $request['product_pay_type'] == 'one_product') {
+            $session_one_product = session()->get('one_product');
+            foreach ($session_one_product['products'] as $item) {
+                $product = Product::where('id', '=', $item['id'])->first();
                 if ($product) {
-                    $price = $product->updated_price;
+                    $price = $product->updated_price * $currency_info->value;
                     $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
                     $total_price += $price * $item['qty'];
                 }
-
             }
-        }
-        if ($size_items) {
-            foreach ($size_items as $item) {
-                $product = Product::where('id', '=', $item['product_id'])->first();
-                if ($product) {
-                    $size_title = ' ';
-                    if (isset($item['sizes'])) {
-                        $size_info = Size::find($item['sizes']['id']);
-                        $size_title = ' (' . $size_info->title . ') ';
+            array_push($session_product, $session_one_product);
+        } else {
+            $session_items = session()->get('cart');
+            $size_items = session()->get('size_cart');
+            if ($session_items) {
+                foreach ($session_items as $item) {
+                    $product = Product::where('id', '=', $item['product_id'])->first();
+                    if ($product) {
+                        $price = $product->updated_price * $currency_info->value;
+                        $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
+                        $total_price += $price * $item['qty'];
                     }
-                    $price = $product->updated_price;
-                    $products .= $product->title . $size_title . ' x ' . $item['qty'] . ' штук.';
-                    $total_price += $price * $item['qty'];
-                }
 
+                }
+                array_push($session_product, $session_items);
+            }
+            if ($size_items) {
+                foreach ($size_items as $item) {
+                    $product = Product::where('id', '=', $item['product_id'])->first();
+                    if ($product) {
+                        $size_title = ' ';
+                        if (isset($item['sizes'])) {
+                            $size_info = Size::find($item['sizes']['id']);
+                            $size_title = ' (' . $size_info->title . ') ';
+                        }
+                        $price = $product->updated_price;
+                        $products .= $product->title . $size_title . ' x ' . $item['qty'] . ' штук.';
+                        $total_price += $price * $item['qty'];
+                    }
+
+                }
+                array_push($session_product, $size_items);
             }
         }
         $city_title = 'Не выбрано';
@@ -59,13 +78,13 @@ class PaymentController extends Controller
             $city_title = $city->title;
         }
         $products .= 'Город: ' . $city_title . ' ';
-        array_push($session_items, $city_info);
+        array_push($session_product, $city_info);
         if (Voyager::setting('site.price_update')) {
-            $products .= 'Измененая цена на: ' . Voyager::setting('site.price_update') . '%';
-            array_push($session_items, ['price_update_val' => Voyager::setting('site.price_update')]);
+            $products .= 'Изменённая цена на: ' . Voyager::setting('site.price_update') . '%';
+            array_push($session_product, ['price_update_val' => Voyager::setting('site.price_update')]);
         }
-        if ($total_price < 100) {
-            return back()->with('error', trans('cart.checkout.min_price_error'));
+        if ($total_price < (100 * $currency_info->value)) {
+            return back()->with('error', trans('cart.checkout.min_price_error', ['min_price'=> 100 * $currency_info->value]));
         }
         $paymentSave = new Payment();
         $paymentSave->customer_name = $request['customer_name'];
@@ -81,9 +100,10 @@ class PaymentController extends Controller
         $paymentSave->add_photo = $request['photo'] == 'on' ? 1 : 0;
         $paymentSave->surprise = $request['surprise'] == 'on' ? 1 : 0;
         $paymentSave->total = $total_price;
-        $paymentSave->request = json_encode($session_items);
+        $paymentSave->request = json_encode($session_product);
         $paymentSave->products = $products;
         $paymentSave->comment = $request['comment'];
+        $paymentSave->currency = $currency_info->title;
         $payment_type = $request['payment_type'];
         if ($payment_type === 'online') {
 
@@ -120,6 +140,7 @@ class PaymentController extends Controller
             $paymentSave->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
             $paymentSave->save();
             session()->forget('cart');
+            session()->forget('one_product');
 
             MailBaseController::payment_send_mail($request, $total_price, $products);
             return redirect()->route('cart')->with('success', trans('cart.checkout.success-offline'));

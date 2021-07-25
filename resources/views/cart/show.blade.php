@@ -194,7 +194,7 @@
                                 </table>
                             </div>
                         </div>
-                        <a href="{{route('checkout')}}" class="btn flosun-button primary-btn rounded-0 black-btn w-100">
+                        <a href="{{route('buy_all_product')}}" class="btn flosun-button primary-btn rounded-0 black-btn w-100">
                             {{trans('page.cart.payment')}}
                         </a>
                     </div>

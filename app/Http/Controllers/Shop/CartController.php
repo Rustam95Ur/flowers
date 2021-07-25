@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Locale;
 use App\Models\Product;
-use App\Models\ProductSizePrice;
 use App\Models\Size;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -293,4 +293,61 @@ class CartController extends Controller
         return ['products' => $products, 'total_price' => $total_price, 'total_product' => $total_product];
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function buy_one_product(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $products = [];
+        $total_sum = 0;
+        $product = Product::where('id', '=', $request['product_id'])->firstOrFail();
+        $size_info = Size::find($request['size']);
+        if($size_info) {
+            $size_title = '(' . $size_info->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale') . ')';
+        } else {
+            $size_title = '';
+        }
+        $product_price = $product->size_price($product->id, $size_info->id, $product->updated_price);
+        $results = [
+            'id' => $product->id,
+            'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
+            'price' => $product_price,
+            'size_title' => $size_title,
+            'qty' => (int)$request['qty']
+        ];
+        array_push($products, $results);
+        $total_sum += $product_price * $request['qty'];
+        $extra_products = $request['extra_products'];
+        if ($extra_products) {
+            foreach ($extra_products as $item) {
+                if($item) {
+                    $product = Product::where('id', '=', $item)->first();
+                    $product_price = $product->updated_price;
+                    $results = [
+                        'id' => $product->id,
+                        'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
+                        'price' => $product_price,
+                        'size_title' => '',
+                        'qty' => 1
+                    ];
+                    array_push($products, $results);
+                    $total_sum += $product_price * 1;
+                }
+            }
+        }
+
+        session()->put('one_product', ['products' => $products, 'total_sum' => $total_sum]);
+
+        return redirect()->route('checkout');
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function buy_all_product(): \Illuminate\Http\RedirectResponse
+    {
+        session()->forget('one_product');
+        return redirect()->route('checkout');
+    }
 }

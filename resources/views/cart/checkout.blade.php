@@ -10,6 +10,7 @@
                 <div class="col-lg-6 col-12 col-custom">
                     <form action="{{route('payment')}}" method="post" id="payment_form">
                         @csrf
+                        <input type="hidden" value="{{$product_pay_type}}" name="product_pay_type">
                         <div class="checkbox-form">
                             <h3>{{trans('cart.checkout.customer_billing_details')}}</h3>
                             <div class="row">

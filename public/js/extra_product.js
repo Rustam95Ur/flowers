@@ -16,6 +16,7 @@ $('input[name="extra"]').on('change', function () {
             }
         });
     }
+    $('input[name="extra_products[]"]').val(id.replace('extra_product_', ''))
     extra_total_price()
 })
 
