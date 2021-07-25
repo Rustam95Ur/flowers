@@ -10,8 +10,12 @@
                          style="background-image: url({{Voyager::image($banner->image)}});">
                         <!-- Intro Content Start -->
                         <div class="intro11-content-2 {{$banner->css_class }}">
-                            <h1 class="different-title">{{$banner->title }}</h1>
-                            <h2 class="title text-uppercase">{{$banner->body}}</h2>
+                            <h1 class="different-title">
+                                {{$banner->getTranslatedAttribute('title', $locale, 'fallbackLocale') }}
+                            </h1>
+                            <h2 class="title text-uppercase">
+                                {{$banner->getTranslatedAttribute('body', $locale, 'fallbackLocale')}}
+                            </h2>
                             <a href="{{route('shop')}}" class="btn flosun-button secondary-btn theme-color rounded-0">
                                 {{trans('page.home.shops')}}
                             </a>

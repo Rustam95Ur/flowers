@@ -12,11 +12,9 @@ class ProductFilter extends QueryFilter
      */
     public function title($keyword = null)
     {
-        if ($keyword) {
-            return $this->builder->where(function ($query) use ($keyword) {
-                $query->where('title', 'like', '%' . $keyword . '%');
-            });
-        }
+        return $this->builder->where(function ($query) use ($keyword) {
+            $query->WhereTranslation('title', 'like', '%'.$keyword.'%');
+        });
     }
 
     /**
