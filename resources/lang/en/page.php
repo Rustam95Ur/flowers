@@ -37,7 +37,7 @@ return [
         'remove' => 'Remove',
         'payment' => 'Pay',
         'shipping' => 'Shipping',
-        'sub_total' => 'Total goods',
+        'sub_total' => 'Sub Total',
         'cart_total' => 'Cart totals',
     ],
     'calculator' => [

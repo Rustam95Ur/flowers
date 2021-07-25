@@ -96,7 +96,7 @@ class BaseController extends Controller
                 $product_price = $product->updated_price;
                 $results = [
                     'id' => $product->id,
-                    'title' => $product->title,
+                    'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
                     'price' => $product_price,
                     'size_title' => '',
                     'qty' => $item['qty']
@@ -111,7 +111,7 @@ class BaseController extends Controller
                     $size_info = Size::find($item['sizes']['id']);
                     $results = [
                         'id' => $product->id,
-                        'title' => $product->title,
+                        'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
                         'price' => $product_price,
                         'size_title' => '(' . $size_info->title . ')',
                         'qty' => $item['qty']

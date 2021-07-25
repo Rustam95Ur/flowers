@@ -446,7 +446,7 @@
                                             @else
                                                 {{$main_currency->right_icon}}
                                             @endif
-                                            {{$main_currency->title}}
+                                            {{$main_currency->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                         </a>
                                         <ul class="switcher-dropdown">
                                             @foreach($currencies as $currency)
@@ -457,7 +457,7 @@
                                                         @else
                                                             {{$currency->right_icon}}
                                                         @endif
-                                                        {{$currency->title}}
+                                                        {{$currency->getTranslatedAttribute('title', $locale, 'fallbackLocale')}}
                                                     </a>
                                                 </li>
                                             @endforeach

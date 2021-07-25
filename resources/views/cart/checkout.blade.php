@@ -137,7 +137,7 @@
                                     <div class="row">
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
-                                                <label for="payment">Оплата</label>
+                                                <label for="payment">{{trans('cart.checkout.payment_type')}}</label>
                                                 <select form="payment_form" name="payment_type" class="form-control" id="payment">
                                                     @foreach(trans('cart.checkout.payment') as $key => $value)
                                                         <option value="{{$key}}">{{$value}}</option>
@@ -147,16 +147,16 @@
                                         </div>
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
-                                                <label for="shipping">Доставка</label>
+                                                <label for="shipping">{{trans('cart.checkout.shipping_type')}}</label>
                                                 <select form="payment_form" name="shipping_type" class="form-control" id="shipping">
-                                                    <option>Бесконтактная доставка до получателя - бесплатно</option>
-                                                    <option>Доставка за город</option>
+                                                    <option>{{trans('cart.checkout.shipping.free')}}</option>
+                                                    <option>{{trans('cart.checkout.shipping.city')}}</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
-                                                <label for="comment">Доставка</label>
+                                                <label for="comment">{{trans('cart.checkout.comment')}}</label>
                                                 <textarea rows="3" form="payment_form" name="comment" class="form-control" id="comment"></textarea>
                                             </div>
                                         </div>

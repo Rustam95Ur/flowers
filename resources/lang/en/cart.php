@@ -17,6 +17,9 @@ return [
         'receiver_address' => 'Address',
         'date' => 'Date',
         'time' => 'Time',
+        'comment' => 'Comment',
+        'payment_type' => 'Payment Type',
+        'shipping_type' => 'Shipping Type',
         'photo' => 'Make a photo report with the recipient',
         'surprise' => 'Deliver a surprise without calling the recipient',
         'place_order' => 'Place an order',
@@ -24,6 +27,10 @@ return [
         'payment' => [
 //           'online' => 'Online payment',
             'offline' => 'Cash payment',
+        ],
+        'shipping' => [
+            'free' => 'Contactless delivery to the recipient - free',
+            'city' => 'Delivery outside the city',
         ],
         'success-offline' => 'Thank you for your purchase! Our managers will contact you shortly!',
         'error' => 'There were problems with fillings. Please check all fields or try again later',
