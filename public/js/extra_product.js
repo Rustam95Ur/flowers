@@ -1,9 +1,6 @@
 let product_price = $('input[name="product_price"]').val(),
     extra_products_price = [],
-    product_size_id = false,
-    currency_left_icon = $('input[name="currency_left_icon"]').val(),
-    currency_right_icon = $('input[name="currency_right_icon"]').val(),
-    currency_value = $('input[name="currency_value"]').val()
+    product_size_id = false;
 $('input[name="extra"]').on('change', function () {
     var price = $(this).val(),
         id = $(this).attr('id');
@@ -16,7 +13,12 @@ $('input[name="extra"]').on('change', function () {
             }
         });
     }
-    $('input[name="extra_products[]"]').val(id.replace('extra_product_', ''))
+    let hidden_inputs = ''
+    extra_products_price.forEach(function (item) {
+        let product_id = item.id.replace("extra_product_", '')
+        hidden_inputs += ' <input type="hidden" name="extra_products[]" value="' + product_id +'" form="buy_now_form">'
+    })
+    $('.extra_hidden_input').html(hidden_inputs)
     extra_total_price()
 })
 

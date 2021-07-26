@@ -308,7 +308,11 @@ class CartController extends Controller
         } else {
             $size_title = '';
         }
-        $product_price = $product->size_price($product->id, $size_info->id, $product->updated_price);
+        if($size_info) {
+            $product_price = $product->size_price($product->id, $size_info->id, $product->updated_price);
+        } else {
+            $product_price = $product->updated_price;
+        }
         $results = [
             'id' => $product->id,
             'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),

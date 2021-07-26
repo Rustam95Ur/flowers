@@ -78,8 +78,7 @@
                                     <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
                                     <div class="custom-control mt-3 ">
                                         <div class="row">
-                                            <input type="hidden" name="extra_products[]" value=""
-                                                   form="buy_now_form">
+                                            <div class="extra_hidden_input"></div>
                                             @foreach($flower->extra_products as $product)
                                                 <div class="col-md-4 mr-3 custom-checkbox-image">
                                                     <input type="checkbox" name="extra" value="{{$product->updated_price * $main_currency->value}}"
