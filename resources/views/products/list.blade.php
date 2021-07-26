@@ -66,6 +66,10 @@
                         $(this).addClass('text-success')" class="btn product-cart">
                             {{trans('button.add_to_cart')}}
                         </a>
+                        <a onclick="$('.product_hidden').val({{$product->id}}); $('#hidden_buy_one').submit()"
+                           class="btn product-cart buy-one">
+                            {{trans('button.buy_now')}}
+                        </a>
                     </div>
                     <div class="product-content-listview">
                         <div class="product-title">
@@ -102,6 +106,13 @@
                                     {{trans('button.add_to_cart')}}
                                 </span>
                             </a>
+                            <a onclick="$('.product_hidden').val({{$product->id}}); $('#hidden_buy_one').submit()"
+                               class="btn product-cart button-icon flosun-button dark-btn"
+                               data-toggle="tooltip" data-placement="top" title="{{trans('button.buy_now')}}">
+                                <span>
+                                    {{trans('button.buy_now')}}
+                                </span>
+                            </a>
                             <a class="list-icon"
                                onclick="update_wish_list({{$product->id}}, 'add'); $(this).addClass('text-pink')"
                                title="{{trans('button.wishlist')}}">
@@ -117,6 +128,10 @@
     @if(count($products) == 0)
         <h3 class="section-title-3 font-weight-bold mt-4 text-center">{{trans('shop.filter.no_result')}}</h3>
     @endif
+    <form action="{{route('buy_one_product')}}" method="post" id="hidden_buy_one">
+        @csrf
+        <input type="hidden" value="" name="product_id" class="product_hidden">
+    </form>
 </div>
 <!-- Shop Wrapper End -->
 <!-- Bottom Toolbar Start -->

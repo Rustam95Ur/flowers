@@ -305,23 +305,21 @@ class CartController extends Controller
         $size_info = Size::find($request['size']);
         if($size_info) {
             $size_title = '(' . $size_info->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale') . ')';
-        } else {
-            $size_title = '';
-        }
-        if($size_info) {
             $product_price = $product->size_price($product->id, $size_info->id, $product->updated_price);
         } else {
+            $size_title = '';
             $product_price = $product->updated_price;
         }
+        $qty = (int)$request['qty'] ? $request['qty'] : 1;
         $results = [
             'id' => $product->id,
             'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
             'price' => $product_price,
             'size_title' => $size_title,
-            'qty' => (int)$request['qty']
+            'qty' => $qty
         ];
         array_push($products, $results);
-        $total_sum += $product_price * $request['qty'];
+        $total_sum += $product_price * $qty;
         $extra_products = $request['extra_products'];
         if ($extra_products) {
             foreach ($extra_products as $item) {

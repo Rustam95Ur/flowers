@@ -6520,7 +6520,7 @@ mark {
 
 .product-area .single-product .product-content {
     background-color: #ffffff;
-    padding: 20px 20px;
+    padding: 2rem 2rem 3rem;
     text-align: center;
 }
 
@@ -6584,6 +6584,10 @@ mark {
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #000000;
+}
+.product-area .single-product .product-content .product-cart.buy-one {
+    transform: translateX(-50%);
+    margin-bottom: 1.5rem;
 }
 
 .product-area .single-product .add-action {

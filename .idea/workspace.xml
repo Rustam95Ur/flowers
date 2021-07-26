@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated style">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated buy now func">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/extra_product.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/extra_product.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/list.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -225,14 +227,7 @@
       <workItem from="1627042605845" duration="6594000" />
       <workItem from="1627120821685" duration="12486000" />
       <workItem from="1627247851059" duration="1806000" />
-      <workItem from="1627318809748" duration="3152000" />
-    </task>
-    <task id="LOCAL-00019" summary="Added calculator page">
-      <created>1620746007012</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1620746007012</updated>
+      <workItem from="1627318809748" duration="5084000" />
     </task>
     <task id="LOCAL-00020" summary="Updated calculator page">
       <created>1621012697693</created>
@@ -570,7 +565,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627321632248</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Updated buy now func">
+      <created>1627323422371</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1627323422371</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="avg rating" />
     <MESSAGE value="updated codes" />
     <MESSAGE value="updated mobile logo" />
     <MESSAGE value="test code" />
@@ -615,6 +616,7 @@
     <MESSAGE value="Updated buy one product" />
     <MESSAGE value="Added auth" />
     <MESSAGE value="Updated style" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated style" />
+    <MESSAGE value="Updated buy now func" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated buy now func" />
   </component>
 </project>

@@ -154,8 +154,12 @@
                                                         </span>
                                                         </div>
                                                         <a onclick="update_cart('{{$flower['id']}}', 1);
-                                                        open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
+                                                            open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
                                                            class="btn product-cart">{{trans('button.add_to_cart')}}</a>
+                                                        <a onclick="$('.product_hidden').val({{$flower['id']}}); $('#hidden_buy_one').submit()"
+                                                           class="btn product-cart buy-one">
+                                                            {{trans('button.buy_now')}}
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -263,8 +267,12 @@
                                                     </span>
                                                 </div>
                                                 <a onclick="update_cart('{{$flower['id']}}', 1);
-                                                open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
+                                                    open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
                                                    class="btn product-cart">{{trans('button.add_to_cart')}}</a>
+                                                <a onclick="$('.product_hidden').val({{$flower['id']}}); $('#hidden_buy_one').submit()"
+                                                   class="btn product-cart buy-one">
+                                                    {{trans('button.buy_now')}}
+                                                </a>
                                             </div>
                                         </div>
                                         <!--Single Product End-->
@@ -276,6 +284,10 @@
                         <div class="swiper-pagination default-pagination"></div>
                     </div>
                 </div>
+                <form action="{{route('buy_one_product')}}" method="post" id="hidden_buy_one">
+                    @csrf
+                    <input type="hidden" value="" name="product_id" class="product_hidden">
+                </form>
             </div>
         </div>
     </div>
