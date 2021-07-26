@@ -7659,7 +7659,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 
 @media (max-width: 479px) {
     .single-product .product-image img {
-        height: 15rem;
+        height: 13rem;
     }
 
     .single-product .product-image {
@@ -7668,6 +7668,14 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
     .col-md-6 {
         flex: 0 0 auto;
         width: 50%;
+    }
+
+    .product-slider .col-md-3 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+    .drop_up {
+        bottom: 1rem;
     }
 
 }

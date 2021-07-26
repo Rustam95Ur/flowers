@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated buy one product">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Added auth">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,11 +182,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\flowers\resources\lang\ru" />
       <recent name="C:\OpenServer\domains\flowers\app\Models" />
       <recent name="C:\OpenServer\domains\flowers\resources\lang\en" />
       <recent name="C:\OSPanel\domains\flowers\app\Models" />
       <recent name="C:\OSPanel\domains\flowers\resources\views\mail" />
-      <recent name="C:\OSPanel\domains\flowers\app\Mail" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OSPanel\domains\flowers\database\migrations" />
@@ -223,13 +223,7 @@
       <workItem from="1627042605845" duration="6594000" />
       <workItem from="1627120821685" duration="12486000" />
       <workItem from="1627247851059" duration="1806000" />
-    </task>
-    <task id="LOCAL-00016" summary="Updated product link">
-      <created>1620642519513</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1620642519513</updated>
+      <workItem from="1627318809748" duration="770000" />
     </task>
     <task id="LOCAL-00017" summary="Added quick view modal">
       <created>1620650126183</created>
@@ -567,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627232047925</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Added auth">
+      <created>1627251093454</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1627251093454</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +588,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="updated category banner size" />
     <MESSAGE value="updated text" />
     <MESSAGE value="avg rating" />
     <MESSAGE value="updated codes" />
@@ -612,6 +612,7 @@
     <MESSAGE value="Fixed product update locale" />
     <MESSAGE value="Added locale for checkout and currency" />
     <MESSAGE value="Updated buy one product" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated buy one product" />
+    <MESSAGE value="Added auth" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added auth" />
   </component>
 </project>
