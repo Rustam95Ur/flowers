@@ -7661,9 +7661,14 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
     .single-product .product-image img {
         height: 13rem;
     }
-
+    .featured-product .product-image img {
+        height: 18rem;
+    }
     .single-product .product-image {
         max-height: 15rem;
+    }
+    .featured-product .product-image  {
+        max-height: 20rem;
     }
     .col-md-6 {
         flex: 0 0 auto;
@@ -7675,7 +7680,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
         width: 50%;
     }
     .drop_up {
-        bottom: 1rem;
+        bottom: 1.5rem;
     }
 
 }

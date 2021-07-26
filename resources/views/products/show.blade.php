@@ -338,7 +338,7 @@
                             @foreach($featured_flowers as $flower)
                                 <div class="single-item swiper-slide">
                                     <!--Single Product Start-->
-                                    <div class="single-product position-relative mb-30">
+                                    <div class="single-product featured-product position-relative mb-30">
                                         <div class="product-image">
                                             <a class="d-block" href="{{route('product_show', $flower->slug)}}">
                                                 @foreach(json_decode($flower->images) as $image)
