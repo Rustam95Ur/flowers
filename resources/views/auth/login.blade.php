@@ -67,11 +67,11 @@
                                 </a>
                             </div>
                             <div class="col-md-12 mt-2 text-center">
-                            @if (Route::has('password.request'))
-                                <a class="" href="{{ route('password.request') }}">
-                                    {{trans('auth.forgot-password')}}
-                                </a>
-                            @endif
+{{--                            @if (Route::has('password.request'))--}}
+{{--                                <a class="" href="{{ route('password.request') }}">--}}
+{{--                                    {{trans('auth.forgot-password')}}--}}
+{{--                                </a>--}}
+{{--                            @endif--}}
                         </div>
                         </div>
                     </form>
