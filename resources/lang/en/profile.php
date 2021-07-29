@@ -15,5 +15,6 @@ return [
         'date' => 'Date',
         'status' => 'Status',
         'total' => 'Total',
-    ]
+    ],
+    'success_update' => 'Data updated successfully'
 ];

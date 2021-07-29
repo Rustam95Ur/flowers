@@ -44,14 +44,16 @@
                                         <div class="myaccount-content">
                                             <h3>{{trans('profile.account_detail')}}</h3>
                                             <div class="account-details-form">
-                                                <form action="#">
+                                                <form action="{{route('profile_update')}}" method="post">
+                                                    @csrf
                                                     <div class="row">
                                                         <div class="col-lg-6 col-custom">
                                                             <div class="single-input-item mb-3">
                                                                 <label for="first-name" class="required mb-1">
                                                                     {{trans('auth.form.first_name')}}
                                                                 </label>
-                                                                <input type="text" id="first-name"
+                                                                <input type="text" id="first-name" name="first_name"
+                                                                       value="{{request()->user()->first_name}}"
                                                                        placeholder=" {{trans('auth.form.first_name')}}"/>
                                                             </div>
                                                         </div>
@@ -60,7 +62,8 @@
                                                                 <label for="last-name" class="required mb-1">
                                                                     {{trans('auth.form.last_name')}}
                                                                 </label>
-                                                                <input type="text" id="last-name"
+                                                                <input type="text" id="last-name" name="last_name"
+                                                                       value="{{request()->user()->last_name}}"
                                                                        placeholder="{{trans('auth.form.last_name')}}"/>
                                                             </div>
                                                         </div>
@@ -68,7 +71,7 @@
                                                     <div class="single-input-item mb-3">
                                                         <label for="email"
                                                                class="required mb-1">{{trans('auth.form.email')}}</label>
-                                                        <input type="email" id="email"
+                                                        <input readonly type="email" id="email" value="{{request()->user()->email}}"
                                                                placeholder="{{trans('auth.form.email')}}"/>
                                                     </div>
                                                     <fieldset>
@@ -77,7 +80,7 @@
                                                             <label for="current-pwd" class="required mb-1">
                                                                 {{trans('auth.form.current_password')}}
                                                             </label>
-                                                            <input type="password" id="current-pwd"
+                                                            <input type="password" id="current-pwd" name="old_password"
                                                                    placeholder="{{trans('auth.form.current_password')}}"/>
                                                         </div>
                                                         <div class="row">
@@ -86,7 +89,7 @@
                                                                     <label for="new-pwd" class="required mb-1">
                                                                         {{trans('auth.form.new_password')}}
                                                                     </label>
-                                                                    <input type="password" id="new-pwd"
+                                                                    <input type="password" id="new-pwd" name="new_password"
                                                                            placeholder="{{trans('auth.form.new_password')}}"/>
                                                                 </div>
                                                             </div>

@@ -5,20 +5,10 @@ namespace App\Http\Controllers\Profile;
 
 
 use App\Http\Controllers\Controller;
-use App\Locale;
-use App\Models\Banner;
-use App\Models\Currency;
-use App\Models\Gallery;
 use App\Models\Payment;
-use App\Models\Product;
-use App\Models\Size;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\RedirectResponse;
-use TCG\Voyager\Models\Page;
-use App\Models\Comment;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 
 class IndexController extends Controller
@@ -38,5 +28,27 @@ class IndexController extends Controller
         return view('profile.index', [
             'orders' => $orders
         ]);
+    }
+
+    public function update(Request $request)
+    {
+        $client = Auth::user();
+
+        $client->first_name = $request['first_name'];
+        $client->last_name = $request['last_name'];
+//        $client->phone = $request['phone'];
+//        $client->birth_date = $request['birth_date'];
+
+        if ($request['new_password'] !== null && $request['old_password'] !== null) {
+            if (!Hash::check($request['old_password'],$client->password)) {
+                return redirect()->route('profile')->with('error', trans('validation.current_password'));
+            }
+            $newPass = Hash::make($request['new_password']);
+            $client->password = $newPass;
+        }
+
+        $client->save();
+
+        return redirect()->route('profile')->with('success',  trans('profile.success_update'));
     }
 }
