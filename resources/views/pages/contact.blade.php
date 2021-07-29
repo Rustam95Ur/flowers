@@ -55,28 +55,28 @@
                             <div class="row mt-3">
                                 <div class="col-md-6 col-custom">
                                     <div class="input-item mb-4">
-                                        <input class="border-0 rounded-0 w-100 input-area name gray-bg" type="text"
+                                        <input class=" rounded-0 w-100 input-area name gray-bg" type="text"
                                                name="name" id="con_name"
                                                placeholder="{{trans('contact.name')}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="input-item mb-4">
-                                        <input class="border-0 rounded-0 w-100 input-area email gray-bg"
+                                        <input class=" rounded-0 w-100 input-area email gray-bg"
                                                type="email"
                                                name="email" id="con_email" placeholder="Email">
                                     </div>
                                 </div>
                                 <div class="col-6 col-custom">
                                     <div class="input-item mb-4">
-                                        <input class="border-0 rounded-0 w-100 input-area gray-bg" type="text"
+                                        <input class=" rounded-0 w-100 input-area gray-bg" type="text"
                                                name="subject" id="con_content"
                                                placeholder="{{trans('contact.subject')}}">
                                     </div>
                                 </div>
                                 <div class="col-6 col-custom">
                                     <div class="input-item mb-4">
-                                        <input class="border-0 rounded-0 w-100 input-area gray-bg" type="text"
+                                        <input class=" rounded-0 w-100 input-area gray-bg" type="text"
                                                name="phone" id="con_content"
                                                placeholder="{{trans('contact.phone_number')}}">
                                     </div>
@@ -84,7 +84,7 @@
                                 <div class="col-12 col-custom">
                                     <div class="input-item mb-4">
                                         <textarea cols="30" rows="5"
-                                                  class="border-0 rounded-0 w-100 custom-textarea input-area gray-bg"
+                                                  class=" rounded-0 w-100 custom-textarea input-area gray-bg"
                                                   name="message" id="con_message"
                                                   placeholder="{{trans('contact.message')}}"></textarea>
                                     </div>

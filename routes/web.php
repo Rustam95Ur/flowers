@@ -19,6 +19,7 @@ use App\Http\Controllers\Mail\BaseController as MailBase;
 use App\Http\Controllers\Page\ProductController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\PaymentController;
+use App\Http\Controllers\Profile\IndexController;
 
 
 Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(function () {
@@ -59,6 +60,9 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
     Route::get('/select-city/{city_id}', [BaseController::class, 'select_city'])->name('select_city');
     Route::get('/select-currency/{currency_id}', [BaseController::class, 'select_currency'])->name('select_currency');
     Route::get('/select-city-close', [BaseController::class, 'select_city_close'])->name('select_city_close');
+
+
+    Route::get('/profile', [IndexController::class,'index'])->name('profile');
 
 });
 

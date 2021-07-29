@@ -11,4 +11,9 @@ return [
     'checkout' => 'Checkout',
     'send' => 'Send',
     'buy_now' => 'Buy now',
+    'login' => 'Login',
+    'register' => 'Register',
+    'save_changes' => 'Save Changes',
+    'view_order' => 'View',
+    'edit_address' => 'Edit address',
 ];

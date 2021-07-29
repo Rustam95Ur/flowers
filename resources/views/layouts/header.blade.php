@@ -195,6 +195,11 @@
                     <div class="header-right-area main-nav">
                         <ul class="nav">
                             <li class="minicart-wrap">
+                                <a href="{{route('login')}}" class="minicart-btn toolbar-btn">
+                                    <i class="fa fa-user"></i>
+                                </a>
+                            </li>
+                            <li class="minicart-wrap">
                                 <a href="{{route('wishlists')}}" class="minicart-btn toolbar-btn">
                                     <i class="fa fa-heart"></i>
                                     <span class="cart-item_count" id="wish_count">{{ $wish_count }}</span>

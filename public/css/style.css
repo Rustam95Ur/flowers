@@ -7703,3 +7703,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 #product_preloader .spinner {
     position: fixed;
 }
+
+.login-page .form-check {
+ padding-left:0;
+}
