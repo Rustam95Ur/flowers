@@ -29,6 +29,7 @@ return [
     'form' => [
         'first_name' => 'First name',
         'last_name' => 'Last name',
+        'phone' => 'Phone',
         'email' => 'Email',
         'password' => 'Password',
         'current_password' => 'Current password',

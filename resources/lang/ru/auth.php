@@ -16,6 +16,7 @@ return [
     'form' => [
         'first_name' => 'Имя',
         'last_name' => 'Фамилия',
+        'phone' => 'Номер телефона',
         'email' => 'Email',
         'password' => 'Пароль',
         'current_password' => 'Текущий пароль',

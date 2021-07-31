@@ -7707,3 +7707,6 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
 .login-page .form-check {
  padding-left:0;
 }
+input:read-only {
+    background-color: #e6e6e6;
+}
