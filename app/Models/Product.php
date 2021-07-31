@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filters\QueryFilter;
 use App\Models\Category;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Translatable;
 
@@ -27,49 +28,49 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function categories(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function categories(): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'product_category');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function colors(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function colors(): BelongsToMany
     {
         return $this->belongsToMany(Color::class, 'product_color');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function sizes(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function sizes(): BelongsToMany
     {
         return $this->belongsToMany(Size::class, 'product_size');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function types(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function types(): BelongsToMany
     {
         return $this->belongsToMany(Type::class, 'product_type');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function intendeds(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function intendeds(): BelongsToMany
     {
         return $this->belongsToMany(Intended::class, 'product_intended');
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return BelongsToMany
      */
-    public function extra_products(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function extra_products(): BelongsToMany
     {
         return $this->belongsToMany(self::class, 'product_extra', 'product_id', 'extra_product_id');
     }

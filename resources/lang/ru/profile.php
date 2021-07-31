@@ -7,6 +7,7 @@ return [
         'orders' => 'Заказы',
         'address' => 'Адрес',
         'logout' => 'Выход',
+        'city' => 'Город',
     ],
     'account_detail' => 'Детали учетной записи',
     'password_change' => 'Смена пароля',

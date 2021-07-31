@@ -18,7 +18,10 @@ return [
         'last_name' => 'Фамилия',
         'phone' => 'Номер телефона',
         'email' => 'Email',
+        'birth_date' => 'Дата рождения',
         'password' => 'Пароль',
+        'address' => 'Адрес',
+        'city' => 'Город',
         'current_password' => 'Текущий пароль',
         'new_password' => 'Новый пароль',
         'confirm_password' => 'Подтвердите пароль'

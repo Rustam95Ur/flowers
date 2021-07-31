@@ -7,6 +7,7 @@ return [
         'orders' => 'Orders',
         'address' => 'Address',
         'logout' => 'Logout',
+        'city' => 'City',
     ],
     'account_detail' => 'Account Details',
     'password_change' => 'Password Change',
