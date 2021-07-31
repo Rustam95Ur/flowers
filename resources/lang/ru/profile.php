@@ -3,7 +3,7 @@
 return [
     'page_title' => 'Профиль',
     'menu' => [
-        'account' => 'Профиле',
+        'account' => 'Профиль',
         'orders' => 'Заказы',
         'address' => 'Адрес',
         'logout' => 'Выход',
@@ -17,5 +17,6 @@ return [
         'status' => 'Статус',
         'total' => 'Сумма',
     ],
-    'success_update' => 'Данные успешно обновлены'
+    'success_update' => 'Данные успешно обновлены',
+    'your_order' => 'Ваш заказ',
 ];

@@ -63,6 +63,7 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
 
 
     Route::get('/profile', [IndexController::class,'index'])->name('profile');
+    Route::get('/profile/order/{order_id}', [IndexController::class,'get_order'])->name('get_order');
     Route::post('/profile/update', [IndexController::class,'update'])->name('profile_update');
     Route::post('/profile/update-address', [IndexController::class,'update_address'])->name('update_address');
 

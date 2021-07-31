@@ -16,4 +16,5 @@ return [
     'save_changes' => 'Save Changes',
     'view_order' => 'View',
     'edit_address' => 'Edit address',
+    'back' => 'Back To List',
 ];

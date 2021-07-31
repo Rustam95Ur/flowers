@@ -8,11 +8,11 @@
             <div class="row">
                 <div class="col-lg-12 col-custom">
                     <!-- My Account Page Start -->
-                    <div class="myaccount-page-wrapper">
+                    <div class="my-account-page-wrapper">
                         <!-- My Account Tab Menu Start -->
                         <div class="row">
                             <div class="col-lg-3 col-md-4 col-custom">
-                                <div class="myaccount-tab-menu nav" role="tablist">
+                                <div class="my-account-tab-menu nav" role="tablist">
                                     <a href="#account-info" class="active" data-toggle="tab">
                                         <i class="fa fa-user"></i>
                                         {{trans('profile.menu.account')}}
@@ -41,7 +41,7 @@
                                 <div class="tab-content" id="myaccountContent">
                                     <!-- Single Tab Content Start -->
                                     <div class="tab-pane fade show active" id="account-info" role="tabpanel">
-                                        <div class="myaccount-content">
+                                        <div class="my-account-content">
                                             <h3>{{trans('profile.account_detail')}}</h3>
                                             <div class="account-details-form">
                                                 <form action="{{route('profile_update')}}" method="post"
@@ -138,43 +138,26 @@
                                     <!-- Single Tab Content End -->
                                     <!-- Single Tab Content Start -->
                                     <div class="tab-pane fade" id="orders" role="tabpanel">
-                                        <div class="myaccount-content">
+                                        <div class="my-account-content">
                                             <h3> {{trans('profile.menu.orders')}}</h3>
-                                            <div class="myaccount-table table-responsive text-center">
-                                                <table class="table table-bordered">
-                                                    <thead class="thead-light">
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>{{trans('profile.order.date')}}</th>
-                                                        <th>{{trans('profile.order.status')}}</th>
-                                                        <th>{{trans('profile.order.total')}}</th>
-                                                        <th></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    @foreach($orders as $order)
-                                                        <tr>
-                                                            <td>{{$order->id}}</td>
-                                                            <td>{{$order->created_at}}</td>
-                                                            <td>{{$order->status}}</td>
-                                                            <td>{{$order->total}}</td>
-                                                            <td>
-                                                                <a href="#"
-                                                                   class="btn flosun-button secondary-btn theme-color rounded-0">
-                                                                    {{trans('button.view_order')}}
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                    </tbody>
-                                                </table>
+                                            <div class="my-account-table table-responsive text-center order-block-height">
+                                                <div id="product_preloader" style="display: none">
+                                                    <div class="preloader">
+                                                        <div class="spinner-block">
+                                                            <h1 class="spinner spinner-3 mb-0">.</h1>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="order-list">
+                                                    @include('profile.order_list')
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <!-- Single Tab Content End -->
                                     <!-- Single Tab Content Start -->
                                     <div class="tab-pane fade" id="address-edit" role="tabpanel">
-                                        <div class="myaccount-content">
+                                        <div class="my-account-content">
                                             <h3>{{trans('profile.menu.address')}}</h3>
                                             <div class="address-info-block">
                                                 <address>

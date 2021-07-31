@@ -2,7 +2,7 @@
 /*    16 - Pages - My-Account
 /*----------------------------------------*/
 /*-------- Start My Account Page Wrapper --------*/
-.myaccount-tab-menu {
+.my-account-tab-menu {
     flex-direction: column;
     a {
         border: 1px solid $border-color;
@@ -27,14 +27,14 @@
             width: 25px;
         }
     }
-    
+
 }
 @include breakpoint(max-sm_device){
 	#myaccountContent {
 		margin-top: 30px;
 	}
 }
-.myaccount-content {
+.my-account-content {
 	border: 1px solid $border-color-2;
     padding: 30px;
     @include breakpoint(max-xs_device){
@@ -98,7 +98,7 @@
         }
     }
 }
-.myaccount-table {
+.my-account-table {
 	white-space: nowrap;
     font-size: 14px;
     table, .table{

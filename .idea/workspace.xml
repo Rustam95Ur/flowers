@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Profile/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Profile/IndexController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/scss/3-pages/_my-account.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/3-pages/_my-account.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/button.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/button.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +186,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/lang/en" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/profile" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -182,11 +196,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\flowers\resources\views\profile" />
       <recent name="C:\OpenServer\domains\flowers\resources\lang\en" />
       <recent name="C:\OpenServer\domains\flowers\app\Http\Controllers\Profile" />
       <recent name="C:\OpenServer\domains\flowers\resources\lang\ru" />
       <recent name="C:\OpenServer\domains\flowers\app\Models" />
-      <recent name="C:\OSPanel\domains\flowers\app\Models" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OSPanel\domains\flowers\database\migrations" />
@@ -226,13 +240,6 @@
       <workItem from="1627318809748" duration="5994000" />
       <workItem from="1627401043458" duration="2411000" />
       <workItem from="1627562453103" duration="7411000" />
-    </task>
-    <task id="LOCAL-00025" summary="Fix product">
-      <created>1621191941085</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1621191941085</updated>
     </task>
     <task id="LOCAL-00026" summary="Added comment for products">
       <created>1621352231440</created>
@@ -570,7 +577,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627720659874</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Added scripts">
+      <created>1627721082751</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1627721082751</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +604,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="updated css" />
     <MESSAGE value="added price for cities" />
     <MESSAGE value="updated ccs" />
     <MESSAGE value="Added page title for page" />
@@ -615,6 +628,7 @@
     <MESSAGE value="Updated profile info update" />
     <MESSAGE value="Added phone register" />
     <MESSAGE value="Added address edit block" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added address edit block" />
+    <MESSAGE value="Added scripts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added scripts" />
   </component>
 </project>
