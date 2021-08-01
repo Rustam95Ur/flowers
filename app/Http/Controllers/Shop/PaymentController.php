@@ -26,51 +26,55 @@ class PaymentController extends Controller
         $currency_title = $currency->get_currency_title(session()->get('currency', env('MAIN_CURRENCY_CODE')));
         $total_price = 0;
         $products = '';
-        $session_product = [];
+        $products_info = [];
+        $city_and_price_info = [];
         if( $request['product_pay_type'] == 'one_product') {
             $session_one_product = session()->get('one_product');
-            foreach ($session_one_product['products'] as $item) {
-                $product = Product::where('id', '=', $item['id'])->first();
+            for ($i=0; $i < count($session_one_product); $i++) {
+                $product = Product::where('id', '=', $session_one_product[$i]['id'])->first();
                 if ($product) {
                     $price = $product->updated_price * $currency_value;
-                    $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
-                    $total_price += $price * $item['qty'];
+                    $products .= $product->title . ' x ' . $session_one_product[$i]['qty'] . ' штук. ';
+                    $total_price += $price * $session_one_product[$i]['qty'];
                 }
             }
-            array_push($session_product, $session_one_product);
+            array_push($products_info, $session_one_product);
         } else {
             $session_items = session()->get('cart');
             $size_items = session()->get('size_cart');
             if ($session_items) {
-                foreach ($session_items as $item) {
-                    $product = Product::where('id', '=', $item['product_id'])->first();
+                for ($i=0; $i < count($session_items); $i++) {
+                    $product = Product::where('id', '=', $session_items[$i]['product_id'])->first();
                     if ($product) {
                         $price = $product->updated_price * $currency_value;
-                        $products .= $product->title . ' x ' . $item['qty'] . ' штук. ';
-                        $total_price += $price * $item['qty'];
+                        $products .= $product->title . ' x ' . $session_items[$i]['qty'] . ' штук. ';
+                        $total_price += $price * $session_items[$i]['qty'];
+                        $session_items[$i]['price'] = $product->updated_price;
                     }
 
                 }
-                array_push($session_product, $session_items);
+
+                array_push($products_info, $session_items);
             }
             if ($size_items) {
-                foreach ($size_items as $item) {
-                    $product = Product::where('id', '=', $item['product_id'])->first();
+                for ($i=0; $i < count($size_items); $i++) {
+                    $product = Product::where('id', '=', $size_items[$i]['product_id'])->first();
                     if ($product) {
                         $size_title = ' ';
-                        if (isset($item['sizes'])) {
-                            $size_info = Size::find($item['sizes']['id']);
+                        if (isset($size_items[$i]['sizes'])) {
+                            $size_info = Size::find($size_items[$i]['sizes']['id']);
                             $size_title = ' (' . $size_info->title . ') ';
                         }
                         $price = $product->updated_price;
-                        $products .= $product->title . $size_title . ' x ' . $item['qty'] . ' штук.';
-                        $total_price += $price * $item['qty'];
+                        $products .= $product->title . $size_title . ' x ' . $size_items[$i]['qty'] . ' штук.';
+                        $total_price += $price * $size_items[$i]['qty'];
+                        $session_items[$i]['price'] = $product->updated_price;
                     }
-
                 }
-                array_push($session_product, $size_items);
+                array_push($products_info, $size_items);
             }
         }
+
         $city_title = 'Не выбрано';
         $city_info = ['city_id' => null, 'city_title' => $city_title];
         if (session('city')) {
@@ -79,14 +83,16 @@ class PaymentController extends Controller
             $city_title = $city->title;
         }
         $products .= 'Город: ' . $city_title . ' ';
-        array_push($session_product, $city_info);
+        $city_and_price_info += ['city_info' => $city_info];
         if (Voyager::setting('site.price_update')) {
             $products .= 'Изменённая цена на: ' . Voyager::setting('site.price_update') . '%';
-            array_push($session_product, ['price_update_val' => Voyager::setting('site.price_update')]);
+            $city_and_price_info += ['price_update_val' => Voyager::setting('site.price_update')];
         }
         if ($total_price < (100 * $currency_value)) {
             return back()->with('error', trans('cart.checkout.min_price_error', ['min_price'=> 100 * $currency_value]));
         }
+        // Добавить информацию о валюте
+        $save_request = ['products'=> $products_info[0], 'info'=> $city_and_price_info];
         $paymentSave = new Payment();
         $paymentSave->customer_name = $request['customer_name'];
         $paymentSave->customer_phone = $request['customer_phone'];
@@ -101,7 +107,7 @@ class PaymentController extends Controller
         $paymentSave->add_photo = $request['photo'] == 'on' ? 1 : 0;
         $paymentSave->surprise = $request['surprise'] == 'on' ? 1 : 0;
         $paymentSave->total = $total_price;
-        $paymentSave->request = json_encode($session_product);
+        $paymentSave->request = json_encode($save_request);
         $paymentSave->products = $products;
         $paymentSave->comment = $request['comment'];
         $paymentSave->currency = $currency_title;

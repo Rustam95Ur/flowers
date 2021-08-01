@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated profile info update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Profile/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Profile/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/scss/3-pages/_my-account.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/scss/3-pages/_my-account.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/button.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/calculator.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/calculator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/button.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/button.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ru/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pages/calculator.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/order_detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/order_detail.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

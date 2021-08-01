@@ -14,14 +14,15 @@
                     <tr class="cart_item">
                         <td class="cart-product-name">{{$product['title']}}<strong class="product-quantity">
                                 × {{$product['qty']}}</strong></td>
-                        <td class="cart-product-total text-center"><span class="amount">£165.00</span></td>
+                        <td class="cart-product-total text-center"><span class="amount">{{$product['price']}}</span>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
                 <tr class="order-total">
                     <th>{{trans('profile.order.total')}}</th>
-                    <td class="text-center"><strong><span class="amount">£215.00</span></strong></td>
+                    <td class="text-center"><strong><span class="amount">{{$order_total_sum}}</span></strong></td>
                 </tr>
                 </tfoot>
             </table>

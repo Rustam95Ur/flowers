@@ -16,7 +16,8 @@ return [
         'date' => 'Date',
         'status' => 'Status',
         'total' => 'Total',
+        'your' => 'Your order',
+        'product' => 'Product',
     ],
     'success_update' => 'Data updated successfully',
-    'your_order' => 'Your Order',
 ];

@@ -84,12 +84,12 @@
                         <div class="payment-method">
                             <div class="payment-accordion">
                                 <div class="order-button-payment">
-                                    <form method="post" action="{{route('calculator_send')}}">
+                                    <form method="post" action="{{route('calculator_send')}}" class="entrance__form">
                                         @csrf
                                         <input type="hidden" name="order" value="">
                                         <div>
                                             <label for="phone">{{trans('page.calculator.phone')}}<span class="required">*</span></label>
-                                            <input placeholder="" type="text" name="phone" id="phone" class="form-control" required>
+                                            <input placeholder=""  type="text" name="phone" id="phone" class="form-control txtLogin" required>
                                         </div>
                                         <button class="btn mt-3 flosun-button secondary-btn black-color rounded-0 w-100" type="submit">
                                             {{trans('page.calculator.place_order')}}
@@ -108,5 +108,7 @@
     <!-- Checkout Area End Here -->
     @push('scripts')
         <script src="{{asset('js/calculator.js')}}"></script>
+        <script src="{{ asset('js/phone-mask/global.js') }}"></script>
+        <script src="{{ asset('js/phone-mask/entrance.js') }}"></script>
     @endpush
 @endsection

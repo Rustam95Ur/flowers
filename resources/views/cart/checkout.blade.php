@@ -8,7 +8,7 @@
         <div class="container custom-container">
             <div class="row">
                 <div class="col-lg-6 col-12 col-custom">
-                    <form action="{{route('payment')}}" method="post" id="payment_form">
+                    <form action="{{route('payment')}}" method="post" id="payment_form" class="entrance__form">
                         @csrf
                         <input type="hidden" value="{{$product_pay_type}}" name="product_pay_type">
                         <div class="checkbox-form">
@@ -17,20 +17,21 @@
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_name">{{trans('cart.checkout.customer_name')}}</label>
-                                        <input placeholder="" type="text" name="customer_name" id="customer_name">
+                                        <input type="text" name="customer_name" id="customer_name">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_phone">{{trans('cart.checkout.customer_phone')}}<span
                                                 class="required">*</span></label>
-                                        <input placeholder="" required type="text" name="customer_phone" id="customer_phone">
+                                        <input class="txtLogin" required type="text" name="customer_phone"
+                                               id="customer_phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_email">Email {{trans('cart.checkout.no_required')}}</label>
-                                        <input placeholder="" id="customer_email" name="customer_email" type="email">
+                                        <input id="customer_email" name="customer_email" type="email">
                                     </div>
                                 </div>
                             </div>
@@ -39,36 +40,36 @@
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="receiver_name">{{trans('cart.checkout.receiver_name')}}</label>
-                                        <input placeholder="" type="text" name="receiver_name" id="receiver_name">
+                                        <input type="text" name="receiver_name" id="receiver_name">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="receiver_phone">{{trans('cart.checkout.receiver_phone')}}</label>
-                                        <input placeholder="" type="text" name="receiver_phone" id="receiver_phone">
+                                        <input type="text" class="txtLogin" name="receiver_phone" id="receiver_phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="address">{{trans('cart.checkout.receiver_address')}}</label>
-                                        <input placeholder="" type="text" name="address" id="address">
+                                        <input type="text" name="address" id="address">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="date">{{trans('cart.checkout.date')}}</label>
-                                        <input placeholder="" type="date" name="date" id="date">
+                                        <input type="date" name="date" id="date">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="time">{{trans('cart.checkout.time')}}</label>
-                                        <input placeholder="" type="time" name="time" id="time">
+                                        <input type="time" name="time" id="time">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list create-acc">
-                                        <input id="surprise" name="surprise"  type="checkbox">
+                                        <input id="surprise" name="surprise" type="checkbox">
                                         <label for="surprise">{{trans('cart.checkout.surprise')}}</label>
                                     </div>
                                 </div>
@@ -96,7 +97,8 @@
                                 <tbody>
                                 @foreach($checkout_products as $product)
                                     <tr class="cart_item">
-                                        <td class="cart-product-name">{{$product['title']}} {{$product['size_title']}}<strong
+                                        <td class="cart-product-name">{{$product['title']}} {{$product['size_title']}}
+                                            <strong
                                                 class="product-quantity">
                                                 × {{$product['qty']}}</strong></td>
                                         <td class="cart-product-total text-center"><span
@@ -139,7 +141,8 @@
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
                                                 <label for="payment">{{trans('cart.checkout.payment_type')}}</label>
-                                                <select form="payment_form" name="payment_type" class="form-control" id="payment">
+                                                <select form="payment_form" name="payment_type" class="form-control"
+                                                        id="payment">
                                                     @foreach(trans('cart.checkout.payment') as $key => $value)
                                                         <option value="{{$key}}">{{$value}}</option>
                                                     @endforeach
@@ -149,7 +152,8 @@
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
                                                 <label for="shipping">{{trans('cart.checkout.shipping_type')}}</label>
-                                                <select form="payment_form" name="shipping_type" class="form-control" id="shipping">
+                                                <select form="payment_form" name="shipping_type" class="form-control"
+                                                        id="shipping">
                                                     <option>{{trans('cart.checkout.shipping.free')}}</option>
                                                     <option>{{trans('cart.checkout.shipping.city')}}</option>
                                                 </select>
@@ -158,13 +162,15 @@
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
                                                 <label for="comment">{{trans('cart.checkout.comment')}}</label>
-                                                <textarea rows="3" form="payment_form" name="comment" class="form-control" id="comment"></textarea>
+                                                <textarea rows="3" form="payment_form" name="comment"
+                                                          class="form-control" id="comment"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="order-button-payment">
-                                    <button form="payment_form" type="submit" class="btn flosun-button secondary-btn black-color rounded-0 w-100">
+                                    <button form="payment_form" type="submit"
+                                            class="btn flosun-button secondary-btn black-color rounded-0 w-100">
                                         {{trans('cart.checkout.place_order')}}
                                     </button>
                                 </div>
@@ -176,4 +182,8 @@
         </div>
     </div>
     <!-- Checkout Area End Here -->
+    @push('scripts')
+        <script src="{{ asset('js/phone-mask/global.js') }}"></script>
+        <script src="{{ asset('js/phone-mask/entrance.js') }}"></script>
+    @endpush
 @endsection

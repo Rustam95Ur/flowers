@@ -53,19 +53,23 @@ class IndexController extends Controller
         $order = Payment::where('id', $order_id)->firstOrFail();
         $order_request = json_decode($order->request);
         $products = [];
-        foreach ($order_request as $product_request) {
+        $total_sum = 0;
+        foreach ($order_request->products as $product_request) {
             $product = Product::where('id', $product_request->product_id)->first();
             if ($product) {
                 $product_info = [
                     'title' => $product->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale'),
-                    'qty'=> $product_request->qty,
+                    'qty' => $product_request->qty,
+                    'price' => $product_request->price,
                 ];
+                $total_sum += $product_request->qty * $product_request->price;
                 array_push($products, $product_info);
             }
         }
         return view('profile.order_detail', [
             'order' => $order,
             'products' => $products,
+            'order_total_sum' => $total_sum,
         ]);
     }
 
@@ -79,7 +83,6 @@ class IndexController extends Controller
 
         $client->first_name = $request['first_name'];
         $client->last_name = $request['last_name'];
-//        $client->phone = $request['phone'];
         $client->birth_date = $request['birth_date'];
 
         if ($request['new_password'] !== null && $request['old_password'] !== null) {

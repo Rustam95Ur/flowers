@@ -1,7 +1,4 @@
-let currency_left_icon = $('input[name="currency_left_icon"]').val(),
-    currency_right_icon = $('input[name="currency_right_icon"]').val(),
-    currency_value = $('input[name="currency_value"]').val(),
-    green_title = $('input[name="green_title"]').val(),
+let green_title = $('input[name="green_title"]').val(),
     decor_title = $('input[name="decor_title"]').val(),
     default_decor_variable =  $('input[name="default_decor"]').val();
 
