@@ -13,7 +13,13 @@
         <tr>
             <td>{{$order->id}}</td>
             <td>{{$order->created_at}}</td>
-            <td>{{$order->status}}</td>
+            <td>
+                @foreach(trans('profile.payment_status') as $key => $status)
+                    @if($order->status == $key)
+                       {{$status}}
+                    @endif
+                @endforeach
+            </td>
             <td>{{$order->total}}</td>
             <td>
                 <a onclick="order_detail({{$order->id}})"

@@ -29,8 +29,8 @@ return [
             'offline' => 'Cash payment',
         ],
         'shipping' => [
-            'free' => 'Contactless delivery to the recipient - free',
-            'city' => 'Delivery outside the city',
+            0 => 'Contactless delivery to the recipient - free',
+            1 => 'Delivery outside the city',
         ],
         'success-offline' => 'Thank you for your purchase! Our managers will contact you shortly!',
         'error' => 'There were problems with fillings. Please check all fields or try again later',

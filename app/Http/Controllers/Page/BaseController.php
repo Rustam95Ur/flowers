@@ -16,6 +16,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Models\Page;
 use App\Models\Comment;
 
@@ -86,6 +87,12 @@ class BaseController extends Controller
      */
     public function checkout()
     {
+        $user = false;
+        if(Auth::guard('client')->check())
+        {
+          $user = Auth::guard('client')->user();
+        }
+
         if($session_one_product = session()->get('one_product')) {
             $products = $session_one_product['products'];
             $total_sum = $session_one_product['total_sum'];
@@ -100,7 +107,8 @@ class BaseController extends Controller
             return view('cart.checkout', [
                 'checkout_products' => $products,
                 'total_sum' => $total_sum,
-                'product_pay_type' => $type
+                'product_pay_type' => $type,
+                'user' => $user
             ]);
         } else {
             return redirect()->back();

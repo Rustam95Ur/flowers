@@ -17,7 +17,8 @@ $(document).on('click', '.pagination a', function (event) {
 
 
 function order_detail(order_id) {
-    let ajax_url = '/profile/order/' + order_id
+    let locale = $('input[name="locale"]').val()
+    let ajax_url = '/' + locale + '/profile/order/' + order_id
     get_orders(ajax_url)
 }
 

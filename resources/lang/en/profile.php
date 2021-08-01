@@ -19,5 +19,10 @@ return [
         'your' => 'Your order',
         'product' => 'Product',
     ],
+    'payment_status' => [
+        0 => 'In anticipation',
+        1 => 'Paid',
+        2 => 'Canceled',
+    ],
     'success_update' => 'Data updated successfully',
 ];

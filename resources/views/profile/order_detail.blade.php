@@ -1,7 +1,7 @@
 <div class="col-lg-12 col-12 col-custom">
     <div class="your-order">
         <h3>{{trans('profile.order.your')}}</h3>
-        <div class="your-order-table table-responsive">
+        <div class="your-order-table table-responsive mb-2">
             <table class="table">
                 <thead>
                 <tr>
@@ -27,6 +27,34 @@
                 </tfoot>
             </table>
         </div>
+        <h4 class="text-left mb-3"><b>{{trans('cart.checkout.payment_type')}}:</b> {{trans('cart.checkout.payment.' . $order->payment_type)}}</h4>
+        @foreach(trans('cart.checkout.shipping') as $key => $type)
+            @if($order->shipping_type == $key)
+                <h4 class="text-left mb-3"><b>{{trans('cart.checkout.shipping_type')}}:</b> {{$type}}</h4>
+            @endif
+        @endforeach
+        <h4 class="text-left mb-3"><b>{{trans('cart.checkout.receiver_name')}}:</b> {{$order->receiver_name}}</h4>
+        <h4 class="text-left mb-3"><b>{{trans('cart.checkout.receiver_phone')}}:</b> {{$order->receiver_phone}}</h4>
+        <h4 class="text-left mb-3"><b>{{trans('cart.checkout.receiver_address')}}:</b> {{$order->address}}</h4>
+        <h4 class="text-left mb-3"><b>{{trans('cart.checkout.date')}}:</b> {{$order->date}}</h4>
+        <h4 class="text-left mb-3"><b>{{trans('cart.checkout.time')}}:</b> {{$order->time}}</h4>
+        <h4 class="text-left mb-3">
+            <b>{{trans('cart.checkout.surprise')}}:</b>
+            {{$order->surprise ? trans('page.calculator.yes') : trans('page.calculator.no')}}
+        </h4>
+        <h4 class="text-left mb-3">
+            <b>{{trans('cart.checkout.photo')}}:</b>
+            {{$order->add_photo ? trans('page.calculator.yes') : trans('page.calculator.no')}}
+        </h4>
+
+
+        <h3 class="text-left mt-4"><b>{{trans('profile.order.status')}}</b>:
+            @foreach(trans('profile.payment_status') as $key => $status)
+                @if($order->status == $key)
+                <span class="text-info">{{$status}}</span>
+                @endif
+            @endforeach
+        </h3>
     </div>
 </div>
 <button class="btn flosun-button secondary-btn theme-color  rounded-0" onclick="back_to_list()">

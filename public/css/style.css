@@ -7710,7 +7710,7 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
  padding-left:0;
 }
 input:read-only {
-    background-color: #e6e6e6;
+    background-color: #e6e6e6 !important;
 }
 .order-block-height {
     min-height: 14rem;

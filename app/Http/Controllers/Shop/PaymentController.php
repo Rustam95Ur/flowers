@@ -137,14 +137,14 @@ class PaymentController extends Controller
 //            $query = http_build_query($payment_request);
 //            $link = 'https://api.paybox.money/payment.php?' . $query;
 //            $paymentSave->payment_request = $query;
-            $paymentSave->status = 'В ожиданий';
-            $paymentSave->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
+            $paymentSave->status = Payment::STATUS_WAIT;
+            $paymentSave->payment_type = $payment_type;
             $paymentSave->save();
 //            return redirect()->to($link);
 
         } elseif ($payment_type === 'offline') {
-            $paymentSave->status = 'В ожиданий';
-            $paymentSave->payment_type = trans('cart.checkout.payment.' . $payment_type, [], 'ru');
+            $paymentSave->status = Payment::STATUS_WAIT;
+            $paymentSave->payment_type = $payment_type;
             $paymentSave->save();
             session()->forget('cart');
             session()->forget('one_product');
@@ -158,6 +158,7 @@ class PaymentController extends Controller
 
     /**
      * @param $id
+     * @return RedirectResponse
      */
     public function success($id): RedirectResponse
     {
