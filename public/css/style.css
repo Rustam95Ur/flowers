@@ -7701,8 +7701,8 @@ nav li:hover > .dropdown-submenu-v2, nav li:hover > .dropdown-submenu {
         background-color: #4e7fad;
         color: #ffffff;
         position: fixed;
-        right: 50px;
-        bottom: 5rem;
+        right: 30px;
+        bottom: 6rem;
         width: 50px;
         line-height: 50px;
         font-size: 16px;
