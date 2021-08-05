@@ -25,7 +25,7 @@ return [
         'place_order' => 'Place an order',
         'min_price_error' => 'Minimum order amount: :min_price',
         'payment' => [
-//           'online' => 'Online payment',
+           'online' => 'Online payment',
             'offline' => 'Cash payment',
         ],
         'shipping' => [
@@ -33,6 +33,7 @@ return [
             1 => 'Delivery outside the city',
         ],
         'success-offline' => 'Thank you for your purchase! Our managers will contact you shortly!',
+        'success-online' => 'Thank you for your purchase! Our managers will contact you shortly!',
         'error' => 'There were problems with fillings. Please check all fields or try again later',
     ],
 ];

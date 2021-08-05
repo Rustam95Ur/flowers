@@ -47,6 +47,8 @@ Route::middleware(['web'])->prefix(config()->get('route_prefix'))->group(functio
 
     Route::get('/checkout', [BaseController::class, 'checkout'])->name('checkout');
     Route::post('/payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('/payment/success/{payment_id}', [PaymentController::class, 'success'])->name('payment-success');
+    Route::get('/payment/error/{payment_id}', [PaymentController::class, 'error'])->name('payment-error');
 
 
     Route::get('/shop', [ProductController::class, 'shop'])->name('shop');

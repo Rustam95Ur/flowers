@@ -30,15 +30,16 @@ class PaymentController extends Controller
         $city_and_price_info = [];
         if( $request['product_pay_type'] == 'one_product') {
             $session_one_product = session()->get('one_product');
-            for ($i=0; $i < count($session_one_product); $i++) {
-                $product = Product::where('id', '=', $session_one_product[$i]['id'])->first();
+            $product_session = $session_one_product['products'];
+            for ($i=0; $i < count($product_session); $i++) {
+                $product = Product::where('id', '=', $product_session[$i]['id'])->first();
                 if ($product) {
                     $price = $product->updated_price * $currency_value;
-                    $products .= $product->title . ' x ' . $session_one_product[$i]['qty'] . ' штук. ';
-                    $total_price += $price * $session_one_product[$i]['qty'];
+                    $products .= $product->title . ' x ' . $product_session[$i]['qty'] . ' штук. ';
+                    $total_price += $price * $product_session[$i]['qty'];
                 }
             }
-            array_push($products_info, $session_one_product);
+            array_push($products_info, $product_session);
         } else {
             $session_items = session()->get('cart');
             $size_items = session()->get('size_cart');
@@ -74,7 +75,6 @@ class PaymentController extends Controller
                 array_push($products_info, $size_items);
             }
         }
-
         $city_title = 'Не выбрано';
         $city_info = ['city_id' => null, 'city_title' => $city_title];
         if (session('city')) {
@@ -111,36 +111,38 @@ class PaymentController extends Controller
         $paymentSave->products = $products;
         $paymentSave->comment = $request['comment'];
         $paymentSave->currency = $currency_title;
+        $paymentSave->currency_value = $currency_value;
         $payment_type = $request['payment_type'];
         if ($payment_type === 'online') {
 
-//            $paymentSave->status = 'В ожиданий';
-//            $order_id = Payment::orderBy('id', 'DESC')->first();
-//            $order_id = (!isset($orderId->payment_id)) ? $order_id->id + 1 : 1;
-//            $salt = uniqid(mt_rand(), true);
-//            $payment_request = [
-//                'pg_merchant_id' => env('PAYBOX_MERCHANT_ID'),
-//                'pg_amount' => $total_price,
-//                'pg_salt' => $salt,
-//                'pg_testing_mode' => env('PAYBOX_TEST_MODE'),
-//                'pg_order_id' => $order_id,
-//                'pg_user_phone' => $request['customer_phone'],
-//                'pg_description' => 'Покупка с магазина',
-//                'pg_success_url' => route('payment-success', ['id' => $order_id]),
-//                'pg_failure_url' => route('payment-error', ['id' => $order_id])
-//            ];
-//            ksort($payment_request);
-//            array_unshift($payment_request, 'payment.php');
-//            array_push($payment_request, env('PAYBOX_SECRET_KEY'));
-//            $payment_request['pg_sig'] = md5(implode(';', $payment_request));
-//            unset($payment_request[0], $payment_request[1]);
-//            $query = http_build_query($payment_request);
-//            $link = 'https://api.paybox.money/payment.php?' . $query;
-//            $paymentSave->payment_request = $query;
+            $paymentSave->status = Payment::STATUS_WAIT;
+            $order_id = Payment::orderBy('id', 'DESC')->first();
+            $order_id = (!isset($orderId->payment_id)) ? $order_id->id + 1 : 1;
+            $salt = uniqid(mt_rand(), true);
+            $payment_request = [
+                'pg_merchant_id' => env('PAYBOX_MERCHANT_ID'),
+                'pg_amount' => $total_price,
+                'pg_salt' => $salt,
+                'pg_currency' => session()->get('currency', env('MAIN_CURRENCY_CODE')),
+                'pg_testing_mode' => env('PAYBOX_TEST_MODE'),
+                'pg_order_id' => $order_id,
+                'pg_user_phone' => $request['customer_phone'],
+                'pg_description' => 'Покупка с магазина',
+                'pg_success_url' => route('payment-success', ['payment_id' => $order_id]),
+                'pg_failure_url' => route('payment-error', ['payment_id' => $order_id])
+            ];
+            ksort($payment_request);
+            array_unshift($payment_request, 'payment.php');
+            array_push($payment_request, env('PAYBOX_SECRET_KEY'));
+            $payment_request['pg_sig'] = md5(implode(';', $payment_request));
+            unset($payment_request[0], $payment_request[1]);
+            $query = http_build_query($payment_request);
+            $link = 'https://api.paybox.money/payment.php?' . $query;
+            $paymentSave->payment_request = $query;
             $paymentSave->status = Payment::STATUS_WAIT;
             $paymentSave->payment_type = $payment_type;
             $paymentSave->save();
-//            return redirect()->to($link);
+            return redirect()->to($link);
 
         } elseif ($payment_type === 'offline') {
             $paymentSave->status = Payment::STATUS_WAIT;
@@ -157,26 +159,44 @@ class PaymentController extends Controller
     }
 
     /**
-     * @param $id
+     * @param $payment_id
      * @return RedirectResponse
      */
-    public function success($id): RedirectResponse
+    public function success($payment_id): RedirectResponse
     {
-        Payment::where('id', '=', $id)->update(['status' => 'Пользователь оплатил']);
-        $paymentInfo = Payment::where('id', '=', $id)->first();
+        $payment = Payment::where('id', $payment_id)->firstOrFail();
+        $payment->status = Payment::STATUS_PAID;
+        $payment->save();
         session()->forget('cart');
-//        $this->sendMail($paymentInfo->full_name, $paymentInfo->email, $paymentInfo->user_phone, $paymentInfo->total, $paymentInfo->products, $paymentInfo->shipping_type, $paymentInfo->payment_type, $address);
-        return redirect()->route('cart')->with('success', trans('checkout.success-offline'));
+        session()->forget('one_product');
+        $send_request = [
+          'customer_name'  => $payment->customer_name,
+          'customer_phone'  => $payment->customer_phone,
+          'customer_email'  => $payment->customer_email,
+          'receiver_name'  => $payment->receiver_name,
+          'receiver_phone'  => $payment->receiver_phone,
+          'shipping_type'  => $payment->shipping_type,
+          'payment_type'  => $payment->payment_type,
+          'address'  => $payment->address,
+          'date'  => $payment->date,
+          'time'  => $payment->time,
+          'photo'  => $payment->photo,
+          'surprise'  => $payment->surprise,
+          'currency'  => $payment->currency,
+          'currency_value'  => $payment->currency_value,
+        ];
+        MailBaseController::payment_send_mail($send_request, $payment->total, $payment->products);
+        return redirect()->route('cart')->with('success', trans('cart.checkout.success-online'));
     }
 
     /**
-     * @param $id
+     * @param $payment_id
      * @return RedirectResponse
      */
-    public function error($id): RedirectResponse
+    public function error($payment_id): RedirectResponse
     {
-        Payment::where('id', '=', $id)->update(['status' => 'Отмена платежа']);
-        return redirect()->route('cart')->with('success', trans('checkout.error'));
+        Payment::where('id', '=', $payment_id)->update(['status' => Payment::STATUS_CANCELED]);
+        return redirect()->route('cart')->with('success', trans('cart.checkout.error'));
     }
 
 }

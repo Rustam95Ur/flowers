@@ -17,14 +17,14 @@
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_name">{{trans('cart.checkout.customer_name')}}</label>
-                                        <input type="text" {{ 'readonly' ?? $user}} value="{{ $user->first_name ?? $user}}" name="customer_name" id="customer_name">
+                                        <input type="text" {{ 'readonly' ? $user : '' }} value="{{ $user->first_name ?? $user}}" name="customer_name" id="customer_name">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_phone">{{trans('cart.checkout.customer_phone')}}<span
                                                 class="required">*</span></label>
-                                        <input class="txtLogin" {{ 'readonly' ?? $user}} required type="text"
+                                        <input class="txtLogin" {{ 'readonly' ? $user : ''}} required type="text"
                                                value="{{ $user->phone ?? $user}}" name="customer_phone"
                                                id="customer_phone">
                                     </div>
@@ -32,7 +32,7 @@
                                 <div class="col-md-6 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_email">Email {{trans('cart.checkout.no_required')}}</label>
-                                        <input id="customer_email" {{ 'readonly' ?? $user}} name="customer_email"
+                                        <input id="customer_email" {{ 'readonly' ? $user : '' }} name="customer_email"
                                                value="{{ $user->email ?? $user}}" type="email">
                                     </div>
                                 </div>
@@ -156,8 +156,9 @@
                                                 <label for="shipping">{{trans('cart.checkout.shipping_type')}}</label>
                                                 <select form="payment_form" name="shipping_type" class="form-control"
                                                         id="shipping">
-                                                    <option value="0">{{trans('cart.checkout.shipping.free')}}</option>
-                                                    <option value="1">{{trans('cart.checkout.shipping.city')}}</option>
+                                                    @foreach(trans('cart.checkout.shipping') as $key => $value)
+                                                        <option value="{{$key}}">{{$value}}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>

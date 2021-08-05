@@ -49,14 +49,19 @@
                                         <p><b>Адрес:</b> {{ $mail->address }}</p>
                                         <p><b>Дата:</b> {{ $mail->date }}</p>
                                         <p><b>Время:</b> {{ $mail->time }}</p>
-                                        <p><b>Доставить сюрпризом, не созваниваясь с получателем:</b> {{ $mail->surprise }}</p>
-                                        <p><b>Сделать фотоотчет с получателем:</b> {{ $mail->add_photo }}</p>
+                                        <p><b>Доставить сюрпризом, не созваниваясь с получателем:</b> {{ $mail->surprise ? trans('page.calculator.yes', [], 'ru') : trans('page.calculator.no', [], 'ru') }}</p>
+                                        <p><b>Сделать фотоотчет с получателем:</b> {{$mail->add_photo ? trans('page.calculator.yes') : trans('page.calculator.no') }}</p>
 
                                         <h3 style="text-align: center; margin-top: 50px">Информация о товаре/ах</h3>
                                         <p><b>Название и количество:</b> {{ $mail->products }}</p>
                                         <p><b>Цена:</b> {{ $mail->total  }} ₸</p>
-                                        <p><b>Доставка:</b> {{ $mail->shipping_type }}</p>
-                                        <p><b>Оплата:</b> {{ $mail->payment_type }}</p>
+                                        <p><b>Валюта:</b> {{ $mail->currency  }} (Значение: {{ $mail->currency_value}})</p>
+                                        @foreach(trans('cart.checkout.shipping', [], 'ru') as $key => $type)
+                                            @if($mail->shipping_type == $key)
+                                                <p><b>Доставка:</b> {{$type}}</p>
+                                            @endif
+                                        @endforeach
+                                        <p><b>Оплата:</b> {{$mail->payment_type}}</p>
                                     </td>
                                 </tr>
                                 </tbody>
