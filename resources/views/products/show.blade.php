@@ -76,11 +76,11 @@
                             @if(count($flower->extra_products) > 0)
                                 <div class="product-material mb-4">
                                     <h4><b>{{trans('page.product.extra_product')}}:</b></h4>
-                                    <div class="custom-control mt-3 ">
+                                    <div class="custom-control extra-product-block mt-3 ">
                                         <div class="row">
                                             <div class="extra_hidden_input"></div>
                                             @foreach($flower->extra_products as $product)
-                                                <div class="col-md-4 mr-3 custom-checkbox-image">
+                                                <div class="col-md-4 custom-checkbox-image">
                                                     <input type="checkbox" name="extra" value="{{$product->updated_price * $main_currency->value}}"
                                                            id="extra_product_{{$product->id}}">
 
