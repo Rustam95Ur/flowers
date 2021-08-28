@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Locale;
-use App\Models\Product;
-use App\Models\Size;
+use App\Models\Products\Product;
+use App\Models\Products\Size;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -295,9 +296,9 @@ class CartController extends Controller
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function buy_one_product(Request $request): \Illuminate\Http\RedirectResponse
+    public function buy_one_product(Request $request): RedirectResponse
     {
         $products = [];
         $total_sum = 0;
@@ -345,9 +346,9 @@ class CartController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function buy_all_product(): \Illuminate\Http\RedirectResponse
+    public function buy_all_product(): RedirectResponse
     {
         session()->forget('one_product');
         return redirect()->route('checkout');

@@ -6,11 +6,11 @@ namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
 use App\Locale;
-use App\Models\Banner;
-use App\Models\Currency;
-use App\Models\Gallery;
-use App\Models\Product;
-use App\Models\Size;
+use App\Models\Pages\Banner;
+use App\Models\Products\Currency;
+use App\Models\Pages\Gallery;
+use App\Models\Products\Product;
+use App\Models\Products\Size;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +18,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use TCG\Voyager\Models\Page;
-use App\Models\Comment;
+use App\Models\Pages\Comment;
 
 
 class BaseController extends Controller

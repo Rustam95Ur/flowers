@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\Models\Client;
+use App\Models\Clients\Client;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -67,10 +66,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * @param array $data
-     * @return mixed
-     */
+
     protected function create(array $data)
     {
         return Client::create([
@@ -80,5 +76,6 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+
     }
 }

@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Shop;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutForm;
 use App\Http\Controllers\Mail\BaseController as MailBaseController;
-use App\Models\City;
-use App\Models\Currency;
-use App\Models\Payment;
-use App\Models\Product;
-use App\Models\Size;
+use App\Models\Clients\City;
+use App\Models\Products\Currency;
+use App\Models\Clients\Payment;
+use App\Models\Products\Product;
+use App\Models\Products\Size;
 use Illuminate\Http\RedirectResponse;
 use TCG\Voyager\Facades\Voyager;
 

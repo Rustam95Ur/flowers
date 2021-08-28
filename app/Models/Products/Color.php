@@ -1,14 +1,15 @@
 <?php
 
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Traits\Translatable;
 
-class Banner extends Model
+class Color extends Model
 {
     use Translatable;
 
-    protected $translatable = ['title', 'body'];
+    protected $translatable = ['title'];
+
 }

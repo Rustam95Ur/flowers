@@ -3,14 +3,15 @@
 
 namespace App\Http\Controllers\Page;
 
-use App\Locale;
-use App\Models\Comment;
+use App\Models\Pages\Comment;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Color;
-use App\Models\Product;
+use App\Models\Products\Color;
+use App\Models\Products\Product;
 use App\Filters\ProductFilter;
-use App\Models\Size;
+use App\Models\Products\Size;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -53,7 +54,12 @@ class ProductController extends Controller
         ]);
     }
 
-    public function size_price($product_id, $size_id): \Illuminate\Http\JsonResponse
+    /**
+     * @param $product_id
+     * @param $size_id
+     * @return JsonResponse
+     */
+    public function size_price($product_id, $size_id): JsonResponse
     {
         $product = Product::find($product_id);
         $product_price = $product->size_price($product->id, $size_id, $product->updated_price);
@@ -93,8 +99,11 @@ class ProductController extends Controller
         ]);
     }
 
-
-    public function add_comment(Request $request): \Illuminate\Http\RedirectResponse
+    /**
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function add_comment(Request $request): RedirectResponse
     {
         $save_comment = new Comment();
         $save_comment->full_name = $request['name'];

@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Models\Clients;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Notifications\Notifiable;

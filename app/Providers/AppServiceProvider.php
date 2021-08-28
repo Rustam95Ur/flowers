@@ -4,14 +4,12 @@ namespace App\Providers;
 
 use App\Http\Controllers\Shop\CartController;
 use App\Locale;
-use App\Models\City;
-use App\Models\Currency;
-use App\Models\Intended;
-use App\Models\Product;
-use App\Models\Size;
-use App\Models\Type;
+use App\Models\Clients\City;
+use App\Models\Products\Currency;
+use App\Models\Products\Intended;
+use App\Models\Products\Type;
 use Illuminate\Support\ServiceProvider;
-use App\Models\Category;
+use App\Models\Products\Category;
 use TCG\Voyager\Models\Page;
 
 class AppServiceProvider extends ServiceProvider

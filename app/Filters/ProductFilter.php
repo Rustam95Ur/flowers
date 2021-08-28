@@ -2,7 +2,7 @@
 
 namespace App\Filters;
 
-use App\Models\Currency;
+use App\Models\Products\Currency;
 
 class ProductFilter extends QueryFilter
 {
@@ -13,7 +13,7 @@ class ProductFilter extends QueryFilter
     public function title($keyword = null)
     {
         return $this->builder->where(function ($query) use ($keyword) {
-            $query->WhereTranslation('title', 'like', '%'.$keyword.'%');
+            $query->WhereTranslation('title', 'like', '%' . $keyword . '%');
         });
     }
 
@@ -123,8 +123,9 @@ class ProductFilter extends QueryFilter
                 return $this->builder->orderBy('price', 'ASC');
             case 4:
                 return $this->builder->orderBy('price', 'DESC');
+            default:
+                return $this->builder->orderBy('id', 'ASC');
         }
-
     }
 
 }

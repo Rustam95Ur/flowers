@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filters\QueryFilter;
-use App\Models\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\hasOne;
 use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Traits\Translatable;
 
@@ -85,9 +85,9 @@ class Product extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     * @return hasOne
      */
-    public function city_price(): \Illuminate\Database\Eloquent\Relations\hasOne
+    public function city_price(): hasOne
     {
         return $this->hasOne(ProductCityPrice::class, 'product_id')->where('city_id', '=', session('city', 0));
     }

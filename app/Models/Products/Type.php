@@ -1,9 +1,10 @@
 <?php
 
 
-namespace App\Models;
+namespace App\Models\Products;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use TCG\Voyager\Traits\Translatable;
 
 class Type extends Model
@@ -12,7 +13,7 @@ class Type extends Model
 
     protected $translatable = ['title'];
 
-    public function parentId(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function parentId(): BelongsTo
     {
         return $this->belongsTo(self::class);
     }
