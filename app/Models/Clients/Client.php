@@ -42,6 +42,6 @@ class Client extends Authenticatable
      */
     public function city(): BelongsTo
     {
-        return $this->belongsTo('App\Models\City', 'city_id', 'id');
+        return $this->belongsTo(City::class, 'city_id', 'id');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Clients\Client;
+use App\Providers\ClientRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -69,13 +70,15 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        return Client::create([
+        $client_info = Client::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'phone' => $data['phone'],
             'password' => Hash::make($data['password']),
         ]);
+        event(new ClientRegistered($client_info->id));
+        return $client_info;
 
     }
 }
