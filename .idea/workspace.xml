@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="added bonus register event">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="added bonus transaction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Clients/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Clients/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/ActivateRegisterBonus.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/ActivateRegisterBonus.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/rating_star.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/rating_star.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,13 +233,6 @@
       <workItem from="1627318809748" duration="5994000" />
       <workItem from="1627401043458" duration="2411000" />
       <workItem from="1627562453103" duration="7411000" />
-    </task>
-    <task id="LOCAL-00032" summary="calculator add func">
-      <created>1621449447598</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1621449447598</updated>
     </task>
     <task id="LOCAL-00033" summary="updated codes">
       <created>1621523799388</created>
@@ -581,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630155249350</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="added bonus transaction">
+      <created>1630223699090</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1630223699091</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +597,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added message for cart-message modal" />
     <MESSAGE value="Updated category locale" />
     <MESSAGE value="Updated calculator locale" />
     <MESSAGE value="Fix style" />
@@ -626,7 +621,8 @@
     <MESSAGE value="Updated style and product show page" />
     <MESSAGE value="Updated structure models" />
     <MESSAGE value="added bonus register event" />
-    <option name="LAST_COMMIT_MESSAGE" value="added bonus register event" />
+    <MESSAGE value="added bonus transaction" />
+    <option name="LAST_COMMIT_MESSAGE" value="added bonus transaction" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

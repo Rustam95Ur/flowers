@@ -3,8 +3,8 @@
 }
 
 #star-1:checked ~ section [for=star-1] svg path, #star-2:checked ~ section [for=star-1] svg path, #star-2:checked ~ section [for=star-2] svg path, #star-3:checked ~ section [for=star-1] svg path, #star-3:checked ~ section [for=star-2] svg path, #star-3:checked ~ section [for=star-3] svg path, #star-4:checked ~ section [for=star-1] svg path, #star-4:checked ~ section [for=star-2] svg path, #star-4:checked ~ section [for=star-3] svg path, #star-4:checked ~ section [for=star-4] svg path, #star-5:checked ~ section [for=star-1] svg path, #star-5:checked ~ section [for=star-2] svg path, #star-5:checked ~ section [for=star-3] svg path, #star-5:checked ~ section [for=star-4] svg path, #star-5:checked ~ section [for=star-5] svg path {
-    fill:  #4e7fad;
-    stroke:  #3272ac;
+    fill:  purple;
+    stroke:  purple;
 }
 
 .product-rating label {
