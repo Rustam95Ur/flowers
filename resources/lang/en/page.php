@@ -18,6 +18,8 @@ return [
         'shipping_policy' => 'Payment',
         'delivery' => 'Delivery',
         'price' => 'Price',
+        'sale' => 'Sale',
+        'guarantee' => 'Guarantee',
         'size' => 'Dimensions',
         'extra_product' => 'Add to your order',
         'add_comment' => 'Add review',

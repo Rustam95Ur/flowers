@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="added bonus transaction">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/rating_star.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/rating_star.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,13 +233,6 @@
       <workItem from="1627318809748" duration="5994000" />
       <workItem from="1627401043458" duration="2411000" />
       <workItem from="1627562453103" duration="7411000" />
-    </task>
-    <task id="LOCAL-00033" summary="updated codes">
-      <created>1621523799388</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1621523799388</updated>
     </task>
     <task id="LOCAL-00034" summary="updated color">
       <created>1621523874975</created>
@@ -577,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630223699091</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Updated style">
+      <created>1630227792533</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1630227792533</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +607,6 @@
     <MESSAGE value="Added locale for checkout and currency" />
     <MESSAGE value="Updated buy one product" />
     <MESSAGE value="Added auth" />
-    <MESSAGE value="Updated style" />
     <MESSAGE value="Updated buy now func" />
     <MESSAGE value="Added buy now for home and product list page" />
     <MESSAGE value="Updated register page and added profile page" />
@@ -622,7 +621,8 @@
     <MESSAGE value="Updated structure models" />
     <MESSAGE value="added bonus register event" />
     <MESSAGE value="added bonus transaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="added bonus transaction" />
+    <MESSAGE value="Updated style" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated style" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

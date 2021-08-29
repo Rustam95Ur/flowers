@@ -18,6 +18,8 @@ return [
         'shipping_policy' => 'Оплата',
         'delivery' => 'Доставка',
         'price' => 'Цена',
+        'guarantee' => 'Гарантия',
+        'sale' => 'Скидки',
         'size' => 'Размеры',
         'extra_product' => 'Добавьте к Вашему заказу',
         'add_comment' => 'Добавить отзыв',
