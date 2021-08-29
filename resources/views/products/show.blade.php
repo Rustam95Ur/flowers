@@ -156,6 +156,9 @@
                                 </form>
                             </div>
                         </div>
+                        <div class="desc-content mb-5">
+                        {!! Voyager::setting('site.product_sale_'.$locale) !!}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -167,19 +170,15 @@
                                role="tab" aria-selected="true">{{trans('page.product.guarantee')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase" id="sale-tab" data-toggle="tab" href="#connect-2"
-                               role="tab" aria-selected="true">{{trans('page.product.sale')}}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab" href="#connect-3"
+                            <a class="nav-link text-uppercase" id="profile-tab" data-toggle="tab" href="#connect-2"
                                role="tab" aria-selected="false">{{trans('page.product.reviews')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#connect-4"
+                            <a class="nav-link text-uppercase" id="contact-tab" data-toggle="tab" href="#connect-3"
                                role="tab" aria-selected="false">{{trans('page.product.shipping_policy')}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase" id="review-tab" data-toggle="tab" href="#connect-5"
+                            <a class="nav-link text-uppercase" id="review-tab" data-toggle="tab" href="#connect-4"
                                role="tab" aria-selected="false">{{trans('page.product.delivery')}}</a>
                         </li>
                     </ul>
@@ -190,13 +189,7 @@
                                 {!! Voyager::setting('site.guarantee_'.$locale) !!}
                             </div>
                         </div>
-                        <div class="tab-pane fade show" id="connect-2" role="tabpanel"
-                             aria-labelledby="sale-tab">
-                            <div class="desc-content">
-                                {!! Voyager::setting('site.sale_'.$locale) !!}
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="connect-3" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="tab-pane fade" id="connect-2" role="tabpanel" aria-labelledby="profile-tab">
                             <!-- Start Single Content -->
                             <div class="product_tab_content  border p-3">
                                 <div class="review_address_inner">
@@ -313,12 +306,12 @@
                             </div>
                             <!-- End Single Content -->
                         </div>
-                        <div class="tab-pane fade" id="connect-4" role="tabpanel" aria-labelledby="contact-tab">
+                        <div class="tab-pane fade" id="connect-3" role="tabpanel" aria-labelledby="contact-tab">
                             <div class="shipping-policy">
                                 {!! Voyager::setting('site.shipping_policy_'.$locale) !!}
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="connect-5" role="tabpanel" aria-labelledby="review-tab">
+                        <div class="tab-pane fade" id="connect-4" role="tabpanel" aria-labelledby="review-tab">
                             <div class="size-tab table-responsive-lg">
                                 <div class="shipping-policy">
                                     {!! Voyager::setting('site.delivery_'.$locale) !!}
