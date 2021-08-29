@@ -35,15 +35,19 @@ class BaseController extends Controller
         $sale_flowers_array = [];
         foreach ($flowers as $flower) {
             $product_price = $flower->updated_price;
-            $sale_value = null;
+            $is_sale = false;
+            $sale_value = false;
             if ($flower->sale_value) {
+                $is_sale = true;
                 $sale_value = $flower->sale_value->sale;
             }
             $flower_title = $flower->getTranslatedAttribute('title', Locale::lang(), 'fallbackLocale');
             $product = $flower->toarray();
             $product['updated_price'] = $product_price;
             $product['title'] = $flower_title;
-            $product['sale'] = $sale_value;
+            $product['is_sale'] = $is_sale;
+            $product['sale_value'] = $sale_value;
+            $product['sale_price'] = $flower->sale_price;
             array_push($temp_featured_flowers, $product);
             array_push($sale_flowers_array, $product);
         }

@@ -119,6 +119,20 @@ class Product extends Model
     }
 
     /**
+     * @return float|int|mixed
+     */
+    public function getSalePriceAttribute()
+    {
+        $update_price = $this->getUpdatedPriceAttribute();
+        $new_percent_price = 0;
+        if($this->sale_value) {
+            $percent = $this->sale_value->sale;
+            $new_percent_price = $update_price / 100 * $percent;
+        }
+        return $update_price + $new_percent_price;
+    }
+
+    /**
      * @param $product_id
      * @param $size_id
      * @param $product_price

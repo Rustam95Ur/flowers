@@ -63,7 +63,7 @@
                                          @if($main_currency->left_icon)
                                                 {{$main_currency->left_icon}}
                                             @endif
-                                            {{ $flower->updated_price * $main_currency->value * $flower->sale_value->sale}}
+                                            {{ $flower->sale_price * $main_currency->value}}
                                             @if($main_currency->right_icon)
                                                 {{$main_currency->right_icon}}
                                             @endif
@@ -420,7 +420,7 @@
                                                          @if($main_currency->left_icon)
                                                                 {{$main_currency->left_icon}}
                                                             @endif
-                                                            {{$flower->updated_price * $flower->sale_value->sale * $main_currency->value}}
+                                                            {{$flower->sale_price * $main_currency->value}}
                                                             @if($main_currency->right_icon)
                                                                 {{$main_currency->right_icon}}
                                                             @endif

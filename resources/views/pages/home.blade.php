@@ -103,8 +103,8 @@
                                                                 @endif
                                                             @endforeach
                                                         </a>
-                                                        @if($flower['sale'])
-                                                            <span class="onsale">{{$flower['sale']}}%</span>
+                                                        @if($flower['is_sale'])
+                                                            <span class="onsale">{{$flower['sale_value']}}%</span>
                                                         @endif
                                                         <div class="add-action d-flex flex-column position-absolute">
                                                             <a onclick="update_wish_list({{$flower['id']}}, 'add');"
@@ -152,13 +152,13 @@
                                                                     {{$main_currency->right_icon}}
                                                                 @endif
                                                             </span>
-                                                            @if($flower['sale'])
+                                                            @if($flower['is_sale'])
                                                                 <span class="old-price">
                                                                     <del>
                                                                      @if($main_currency->left_icon)
                                                                         {{$main_currency->left_icon}}
                                                                     @endif
-                                                                        {{$flower['updated_price'] * $flower['sale'] * $main_currency->value}}
+                                                                        {{$flower['sale_price'] * $main_currency->value}}
                                                                      @if($main_currency->right_icon)
                                                                              {{$main_currency->right_icon}}
                                                                      @endif
@@ -217,7 +217,7 @@
                     <div class="item-carousel-2 swiper-container anime-element-multi product-area">
                         <div class="swiper-wrapper">
                             @foreach($sale_flowers as $flower)
-                                @if($flower['sale'])
+                                @if($flower['is_sale'])
                                     <div class="single-item swiper-slide">
                                         <!--Single Product Start-->
                                         <div class="single-product position-relative mb-30">
@@ -232,7 +232,7 @@
                                                     @endforeach
                                                 </a>
 
-                                                <span class="onsale">{{$flower['sale']}}%</span>
+                                                <span class="onsale">{{$flower['sale_value']}}%</span>
                                                 <div class="add-action d-flex flex-column position-absolute">
                                                     <a onclick="update_wish_list({{$flower['id']}}, 'add');"
                                                        title="{{trans('page.home.add_to_wish')}}">
@@ -279,13 +279,13 @@
                                                             {{$main_currency->right_icon}}
                                                         @endif
                                                     </span>
-                                                    @if($flower['sale'])
+                                                    @if($flower['is_sale'])
                                                         <span class="old-price">
                                                             <del>
                                                              @if($main_currency->left_icon)
                                                                     {{$main_currency->left_icon}}
                                                                 @endif
-                                                                {{$flower['updated_price'] * $flower['sale'] * $main_currency->value}}
+                                                                {{$flower['sale_price'] * $main_currency->value}}
                                                                 @if($main_currency->right_icon)
                                                                     {{$main_currency->right_icon}}
                                                                 @endif

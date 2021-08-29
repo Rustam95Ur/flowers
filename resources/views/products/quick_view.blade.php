@@ -31,7 +31,7 @@
                          @if($main_currency->left_icon)
                                 {{$main_currency->left_icon}}
                             @endif
-                            {{$quick_product->updated_price * $quick_product->sale_value->sale * $main_currency->value}}
+                            {{ $quick_product->sale_price * $main_currency->value}}
                             @if($main_currency->right_icon)
                                 {{$main_currency->right_icon}}
                             @endif
@@ -76,7 +76,7 @@
                 <div class="add-to_btn">
                     <a class="btn product-cart button-icon flosun-button dark-btn"
                        onclick="$(this).addClass('bg-success'); update_cart({{$quick_product->id}},
-                           open_modal('{{trans('cart.success.add-cart')}}'); $('.cart-plus-minus-box').val());">
+                           open_modal('{{trans('cart.success.add-cart')}}'); $('.cart-plus-minus-box').val();">
                         {{trans('button.add_to_cart')}}
                     </a>
                     <a  onclick="update_wish_list({{$quick_product->id}}, 'add'); $(this).addClass('active-btn')"
