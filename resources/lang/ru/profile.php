@@ -8,6 +8,7 @@ return [
         'address' => 'Адрес',
         'logout' => 'Выход',
         'city' => 'Город',
+        'bonus' => 'У вас :count бонусов'
     ],
     'account_detail' => 'Детали учетной записи',
     'password_change' => 'Смена пароля',

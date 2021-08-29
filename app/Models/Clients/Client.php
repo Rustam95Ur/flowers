@@ -1,15 +1,20 @@
 <?php
+
 namespace App\Models\Clients;
 
+use App\Models\Products\ProductCityPrice;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 /**
  *
  */
 class Client extends Authenticatable
 {
     use Notifiable;
+
     protected $guard = 'clients';
 
     /**
@@ -44,4 +49,11 @@ class Client extends Authenticatable
     {
         return $this->belongsTo(City::class, 'city_id', 'id');
     }
+
+    public function current_bonus(): HasOne
+    {
+        return $this->hasOne(ClientBonus::class, 'client_id');
+
+    }
+
 }

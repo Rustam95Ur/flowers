@@ -54,6 +54,7 @@
                                         <input type="text" minlength="17" name="phone"
                                                onfocus="this.value = this.value;"
                                                required id="phone"
+                                               value="{{ old('phone') }}"
                                                class=" rounded-0 w-100 input-area gray-bg @error('phone') is-invalid @enderror txtLogin"
                                         >
                                     </div>

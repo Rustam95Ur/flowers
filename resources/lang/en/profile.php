@@ -8,6 +8,7 @@ return [
         'address' => 'Address',
         'logout' => 'Logout',
         'city' => 'City',
+        'bonus' => 'You have :count bonuses'
     ],
     'account_detail' => 'Account Details',
     'password_change' => 'Password Change',

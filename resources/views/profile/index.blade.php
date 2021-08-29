@@ -13,6 +13,10 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-4 col-custom">
                                 <div class="my-account-tab-menu nav" role="tablist">
+                                    <a href="#bonus-info" data-toggle="tab">
+                                        <i class="fa fa-money"></i>
+                                        {{trans('profile.menu.bonus', ['count' => request()->user()->current_bonus->count])}}
+                                    </a>
                                     <a href="#account-info" class="active" data-toggle="tab">
                                         <i class="fa fa-user"></i>
                                         {{trans('profile.menu.account')}}
