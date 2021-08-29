@@ -25,14 +25,34 @@
                         {{$main_currency->right_icon}}
                     @endif
                 </span>
+                @if($quick_product->sale_value)
+                    <span class="old-price">
+                        <del>
+                         @if($main_currency->left_icon)
+                                {{$main_currency->left_icon}}
+                            @endif
+                            {{$quick_product->updated_price * $quick_product->sale_value->sale * $main_currency->value}}
+                            @if($main_currency->right_icon)
+                                {{$main_currency->right_icon}}
+                            @endif
+                        </del>
+                    </span>
+                @endif
             </div>
-            <div class="product-rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
+            @php $key = array_search($quick_product->id, array_column($product_ratings, 'product_id')) @endphp
+            @if($key !== false)
+                <div class="product-rating">
+                    <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 1 ? '' : '-o'}}"></i>
+                    <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 2 ? '' : '-o'}}"></i>
+                    <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 3 ? '' : '-o'}}"></i>
+                    <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] >= 4 ? '' : '-o'}}"></i>
+                    <i class="fa fa-star{{ (int) $product_ratings[$key]['rating'] == 5 ? '' : '-o'}}"></i>
+                </div>
+            @else
+                <div class="product-rating mb-4">
+
+                </div>
+            @endif
             <p class="desc-content">{!! $quick_product->getTranslatedAttribute('description', $locale, 'fallbackLocale') !!}</p>
             <div class="quantity-with-btn">
                 <div class="quantity">

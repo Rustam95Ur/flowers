@@ -103,8 +103,8 @@
                                                                 @endif
                                                             @endforeach
                                                         </a>
-                                                        @if($flower['is_sale'])
-                                                            <span class="onsale">Sale!</span>
+                                                        @if($flower['sale'])
+                                                            <span class="onsale">{{$flower['sale']}}%</span>
                                                         @endif
                                                         <div class="add-action d-flex flex-column position-absolute">
                                                             <a onclick="update_wish_list({{$flower['id']}}, 'add');"
@@ -143,15 +143,28 @@
                                                             </div>
                                                         @endif
                                                         <div class="price-box">
-                                                        <span class="regular-price ">
-                                                            @if($main_currency->left_icon)
-                                                                {{$main_currency->left_icon}}
+                                                            <span class="regular-price ">
+                                                                @if($main_currency->left_icon)
+                                                                    {{$main_currency->left_icon}}
+                                                                @endif
+                                                                {{ $flower['updated_price'] * $main_currency->value}}
+                                                                @if($main_currency->right_icon)
+                                                                    {{$main_currency->right_icon}}
+                                                                @endif
+                                                            </span>
+                                                            @if($flower['sale'])
+                                                                <span class="old-price">
+                                                                    <del>
+                                                                     @if($main_currency->left_icon)
+                                                                        {{$main_currency->left_icon}}
+                                                                    @endif
+                                                                        {{$flower['updated_price'] * $flower['sale'] * $main_currency->value}}
+                                                                     @if($main_currency->right_icon)
+                                                                             {{$main_currency->right_icon}}
+                                                                     @endif
+                                                                    </del>
+                                                                </span>
                                                             @endif
-                                                            {{ $flower['updated_price'] * $main_currency->value}}
-                                                            @if($main_currency->right_icon)
-                                                                {{$main_currency->right_icon}}
-                                                            @endif
-                                                        </span>
                                                         </div>
                                                         <a onclick="update_cart('{{$flower['id']}}', 1);
                                                             open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
@@ -204,7 +217,7 @@
                     <div class="item-carousel-2 swiper-container anime-element-multi product-area">
                         <div class="swiper-wrapper">
                             @foreach($sale_flowers as $flower)
-                                @if($flower['is_sale'])
+                                @if($flower['sale'])
                                     <div class="single-item swiper-slide">
                                         <!--Single Product Start-->
                                         <div class="single-product position-relative mb-30">
@@ -219,7 +232,7 @@
                                                     @endforeach
                                                 </a>
 
-                                                <span class="onsale">Sale!</span>
+                                                <span class="onsale">{{$flower['sale']}}%</span>
                                                 <div class="add-action d-flex flex-column position-absolute">
                                                     <a onclick="update_wish_list({{$flower['id']}}, 'add');"
                                                        title="{{trans('page.home.add_to_wish')}}">
@@ -236,8 +249,10 @@
                                             </div>
                                             <div class="product-content">
                                                 <div class="product-title">
-                                                    <h4 class="title-2"><a
-                                                            href="{{route('product_show', $flower['slug'])}}">{{$flower['title']}}</a>
+                                                    <h4 class="title-2">
+                                                        <a href="{{route('product_show', $flower['slug'])}}">
+                                                            {{$flower['title']}}
+                                                        </a>
                                                     </h4>
                                                 </div>
                                                 @php $key = array_search($flower['id'], array_column($product_ratings, 'product_id')) @endphp
@@ -254,7 +269,6 @@
 
                                                     </div>
                                                 @endif
-
                                                 <div class="price-box">
                                                     <span class="regular-price ">
                                                         @if($main_currency->left_icon)
@@ -265,6 +279,19 @@
                                                             {{$main_currency->right_icon}}
                                                         @endif
                                                     </span>
+                                                    @if($flower['sale'])
+                                                        <span class="old-price">
+                                                            <del>
+                                                             @if($main_currency->left_icon)
+                                                                    {{$main_currency->left_icon}}
+                                                                @endif
+                                                                {{$flower['updated_price'] * $flower['sale'] * $main_currency->value}}
+                                                                @if($main_currency->right_icon)
+                                                                    {{$main_currency->right_icon}}
+                                                                @endif
+                                                            </del>
+                                                        </span>
+                                                    @endif
                                                 </div>
                                                 <a onclick="update_cart('{{$flower['id']}}', 1);
                                                     open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"

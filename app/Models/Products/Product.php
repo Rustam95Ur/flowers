@@ -93,6 +93,14 @@ class Product extends Model
     }
 
     /**
+     * @return hasOne
+     */
+    public function sale_value(): hasOne
+    {
+        return $this->hasOne(ProductSalePrice::class, 'product_id');
+    }
+
+    /**
      * @return float|int|mixed
      */
     public function getUpdatedPriceAttribute()
@@ -110,6 +118,12 @@ class Product extends Model
         return $product_price + $number_percent;
     }
 
+    /**
+     * @param $product_id
+     * @param $size_id
+     * @param $product_price
+     * @return float|int|mixed
+     */
     public static function size_price($product_id, $size_id, $product_price)
     {
         $product_size_price = ProductSizePrice::where('product_id', $product_id)->where('size_id', $size_id)->first();
@@ -123,4 +137,5 @@ class Product extends Model
         }
         return $product_price;
     }
+
 }

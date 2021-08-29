@@ -49,8 +49,14 @@ class ProductController extends Controller
     public function quick_view($id)
     {
         $product = Product::where('id', $id)->firstOrFail();
+        $product_ratings = Comment::selectRaw('ROUND(AVG(rating)) rating, product_id')
+            ->where('product_id', '=', $product->id)
+            ->where('is_active', 1)
+            ->groupBy('product_id')
+            ->get();
         return view('products.quick_view', [
             'quick_product' => $product,
+            'product_ratings' => $product_ratings->toArray(),
         ]);
     }
 

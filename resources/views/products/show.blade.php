@@ -57,6 +57,19 @@
                                         {{$main_currency->right_icon}}
                                     @endif
                                 </span>
+                                @if($flower->sale_value)
+                                    <span class="old-price">
+                                        <del>
+                                         @if($main_currency->left_icon)
+                                                {{$main_currency->left_icon}}
+                                            @endif
+                                            {{ $flower->updated_price * $main_currency->value * $flower->sale_value->sale}}
+                                            @if($main_currency->right_icon)
+                                                {{$main_currency->right_icon}}
+                                            @endif
+                                        </del>
+                                    </span>
+                                @endif
                             </h4>
                             <input name="product_price" type="hidden"
                                    value="{{$flower->updated_price * $main_currency->value}}">
@@ -354,7 +367,9 @@
                                                     @endif
                                                 @endforeach
                                             </a>
-                                            <span class="onsale">Sale!</span>
+                                            @if($flower->sale_value)
+                                                <span class="onsale">{{$flower->sale_value->sale}}%</span>
+                                            @endif
                                             <div class="add-action d-flex flex-column position-absolute">
                                                 <a onclick="update_wish_list({{$flower->id}}, 'add');"
                                                    title="{{trans('page.home.add_to_wish')}}">
@@ -399,6 +414,19 @@
                                                         {{$main_currency->right_icon}}
                                                     @endif
                                                 </span>
+                                                @if($flower->sale_value)
+                                                    <span class="old-price">
+                                                        <del>
+                                                         @if($main_currency->left_icon)
+                                                                {{$main_currency->left_icon}}
+                                                            @endif
+                                                            {{$flower->updated_price * $flower->sale_value->sale * $main_currency->value}}
+                                                            @if($main_currency->right_icon)
+                                                                {{$main_currency->right_icon}}
+                                                            @endif
+                                                        </del>
+                                                    </span>
+                                                @endif
                                             </div>
                                             <a onclick="update_cart('{{$flower['id']}}', 1);
                                             open_modal('{{trans('cart.success.add-cart')}}'); $(this).addClass('text-success')"
