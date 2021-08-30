@@ -15,7 +15,7 @@
                                 <div class="my-account-tab-menu nav" role="tablist">
                                     <a href="#bonus-info" data-toggle="tab">
                                         <i class="fa fa-money"></i>
-                                        {{trans('profile.menu.bonus', ['count' => request()->user()->current_bonus->count])}}
+                                        {!! trans('profile.menu.bonus', ['count' => request()->user()->current_bonus ? request()->user()->current_bonus->count : 0]) !!}
                                     </a>
                                     <a href="#account-info" class="active" data-toggle="tab">
                                         <i class="fa fa-user"></i>

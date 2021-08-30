@@ -116,8 +116,12 @@ class PaymentController extends Controller
         if ($payment_type === 'online') {
 
             $paymentSave->status = Payment::STATUS_WAIT;
-            $order_id = Payment::orderBy('id', 'DESC')->first();
-            $order_id = (!isset($orderId->payment_id)) ? $order_id->id + 1 : 1;
+            $order = Payment::orderBy('id', 'DESC')->first();
+            if($order) {
+                $order_id = $order->id + 1;
+            } else {
+                $order_id = 1;
+            }
             $salt = uniqid(mt_rand(), true);
             $payment_request = [
                 'pg_merchant_id' => env('PAYBOX_MERCHANT_ID'),
@@ -164,9 +168,15 @@ class PaymentController extends Controller
      */
     public function success($payment_id): RedirectResponse
     {
+
         $payment = Payment::where('id', $payment_id)->firstOrFail();
         $payment->status = Payment::STATUS_PAID;
         $payment->save();
+        if(request()->user('client')) {
+            $client_id = request()->user('client')->id;
+            $bonus_activate = new BonusController();
+            $bonus_activate->add_payment_bonus($client_id, $payment);
+        }
         session()->forget('cart');
         session()->forget('one_product');
         $send_request = [
