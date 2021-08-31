@@ -17,7 +17,9 @@
                                 <div class="col-md-12 col-custom">
                                     <div class="checkout-form-list">
                                         <label for="customer_name">{{trans('cart.checkout.customer_name')}}</label>
-                                        <input type="text" {{ 'readonly' ? $user : '' }} value="{{ $user->first_name ?? $user}}" name="customer_name" id="customer_name">
+                                        <input type="text"
+                                               {{ 'readonly' ? $user : '' }} value="{{ $user->first_name ?? $user}}"
+                                               name="customer_name" id="customer_name">
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-custom">
@@ -140,6 +142,26 @@
                             <div class="payment-accordion">
                                 <div class="checkbox-form">
                                     <div class="row">
+                                        @if(request()->user('client') and request()->user('client')->current_bonus and request()->user('client')->current_bonus->count > 0 )
+                                            <div class="col-md-12 col-custom mb-3">
+                                                <input id="use_bonus" form="payment_form" name="use_bonus" type="checkbox">
+                                                <label for="use_bonus">
+                                                    {{trans('cart.checkout.use_bonus')}} <b>{{request()->user('client')->current_bonus->count}}</b>
+                                                </label>
+                                                <h4 id="updated_price" class="text-info mt-3" style="display: none">
+                                                    {{trans('cart.checkout.updated_price')}}:
+                                                    <b>
+                                                        @if($main_currency->left_icon)
+                                                            {{$main_currency->left_icon}}
+                                                        @endif
+                                                        {{ $total_sum * $main_currency->value - request()->user('client')->current_bonus->count }}
+                                                        @if($main_currency->right_icon)
+                                                            {{$main_currency->right_icon}}
+                                                        @endif
+                                                    </b>
+                                                </h4>
+                                            </div>
+                                        @endif
                                         <div class="col-md-12 col-custom">
                                             <div class="checkout-form-list">
                                                 <label for="payment">{{trans('cart.checkout.payment_type')}}</label>
@@ -169,6 +191,7 @@
                                                           class="form-control" id="comment"></textarea>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="order-button-payment">
@@ -188,5 +211,6 @@
     @push('scripts')
         <script src="{{ asset('js/phone-mask/global.js') }}"></script>
         <script src="{{ asset('js/phone-mask/entrance.js') }}"></script>
+        <script src="{{ asset('js/checkout.js') }}"></script>
     @endpush
 @endsection

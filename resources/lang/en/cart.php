@@ -15,6 +15,8 @@ return [
         'receiver_name' => 'Receiver name',
         'receiver_phone' => 'Receiver phone',
         'receiver_address' => 'Address',
+        'updated_price' => 'Updated price',
+        'use_bonus' => 'Use bonuses ?',
         'date' => 'Date',
         'time' => 'Time',
         'comment' => 'Comment',

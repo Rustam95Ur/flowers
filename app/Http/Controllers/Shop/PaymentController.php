@@ -22,6 +22,11 @@ class PaymentController extends Controller
     public function index(StoreCheckoutForm $request): RedirectResponse
     {
         $currency = new Currency();
+        $bonus_activate = new BonusController();
+        $client_id = false;
+        if (request()->user('client')) {
+            $client_id = request()->user('client')->id;
+        }
         $currency_value = $currency->get_currency_value(session()->get('currency', env('MAIN_CURRENCY_CODE')));
         $currency_title = $currency->get_currency_title(session()->get('currency', env('MAIN_CURRENCY_CODE')));
         $total_price = 0;
@@ -75,12 +80,17 @@ class PaymentController extends Controller
                 array_push($products_info, $size_items);
             }
         }
+
         $city_title = 'Не выбрано';
         $city_info = ['city_id' => null, 'city_title' => $city_title];
         if (session('city')) {
             $city = City::find(session('city'));
             $city_info = ['city_id' => $city->id, 'city_title' => $city->title];
             $city_title = $city->title;
+        }
+        $used_bonus = null;
+        if ($request['use_bonus'] and $client_id) {
+            $used_bonus = request()->user('client')->current_bonus->count;
         }
         $products .= 'Город: ' . $city_title . ' ';
         $city_and_price_info += ['city_info' => $city_info];
@@ -112,7 +122,9 @@ class PaymentController extends Controller
         $paymentSave->comment = $request['comment'];
         $paymentSave->currency = $currency_title;
         $paymentSave->currency_value = $currency_value;
+        $paymentSave->used_bonus = $used_bonus;
         $payment_type = $request['payment_type'];
+
         if ($payment_type === 'online') {
 
             $paymentSave->status = Payment::STATUS_WAIT;
@@ -146,12 +158,18 @@ class PaymentController extends Controller
             $paymentSave->status = Payment::STATUS_WAIT;
             $paymentSave->payment_type = $payment_type;
             $paymentSave->save();
+            if ($client_id and $request['use_bonus']) {
+                $bonus_activate->temporary_use_bonus($client_id, $paymentSave->id, );
+            }
             return redirect()->to($link);
 
         } elseif ($payment_type === 'offline') {
             $paymentSave->status = Payment::STATUS_WAIT;
             $paymentSave->payment_type = $payment_type;
             $paymentSave->save();
+            if ($client_id and $request['use_bonus']) {
+                $bonus_activate->temporary_use_bonus($client_id, $paymentSave->id);
+            }
             session()->forget('cart');
             session()->forget('one_product');
 
@@ -168,13 +186,15 @@ class PaymentController extends Controller
      */
     public function success($payment_id): RedirectResponse
     {
-
+        $bonus_activate = new BonusController();
         $payment = Payment::where('id', $payment_id)->firstOrFail();
         $payment->status = Payment::STATUS_PAID;
         $payment->save();
+        if($payment->used_bonus) {
+            $bonus_activate->used_payment_bonus($payment->id);
+        }
         if(request()->user('client')) {
             $client_id = request()->user('client')->id;
-            $bonus_activate = new BonusController();
             $bonus_activate->add_payment_bonus($client_id, $payment);
         }
         session()->forget('cart');
@@ -205,7 +225,13 @@ class PaymentController extends Controller
      */
     public function error($payment_id): RedirectResponse
     {
-        Payment::where('id', '=', $payment_id)->update(['status' => Payment::STATUS_CANCELED]);
+        $payment = Payment::where('id', '=', $payment_id)->first();
+        $payment->status =  Payment::STATUS_CANCELED;
+        $payment->save();
+        if($payment->used_bonus) {
+            $bonus_deactivate = new BonusController();
+            $bonus_deactivate->deactivate_used_bonus($payment->id);
+        }
         return redirect()->route('cart')->with('success', trans('cart.checkout.error'));
     }
 
