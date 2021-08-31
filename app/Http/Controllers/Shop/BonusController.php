@@ -18,7 +18,8 @@ class BonusController extends Controller
     {
         $get_current_bonus = ClientBonus::where('client_id', '=', $client_id)->first();
         $cashback_percent = Voyager::setting('site.cashback_percent');
-        if ($cashback_percent) {
+        $get_transaction = ClientBonusTransaction::where('payment_id', '=', $payment_info->id)->first();
+        if ($cashback_percent and !$get_transaction) {
             $cashback_value = (int)$payment_info->total / 100 * (int)$cashback_percent;
             if ($get_current_bonus) {
                 $get_current_bonus->count += $cashback_value;
@@ -30,11 +31,11 @@ class BonusController extends Controller
                 $get_current_bonus->save();
             }
             $transaction_request = [
-                'payment_id' => $payment_info->id,
                 'payment_total' => $payment_info->total,
             ];
             $save_transaction = new ClientBonusTransaction();
             $save_transaction->bonus_id = $get_current_bonus->id;
+            $save_transaction->payment_id = $payment_info->id;
             $save_transaction->type = ClientBonusTransaction::PAYMENT_TYPE;
             $save_transaction->request = json_encode($transaction_request);
             $save_transaction->count = (int)$cashback_value;

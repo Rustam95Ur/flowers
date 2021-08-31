@@ -19,6 +19,7 @@ class CreateClientBonusTransactionsTable extends Migration
             $table->integer('type');
             $table->integer('count');
             $table->text('request')->nullable();
+            $table->text('payment_id')->nullable();
             $table->timestamps();
         });
     }
