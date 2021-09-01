@@ -21,7 +21,7 @@ class BonusController extends Controller
         $get_transaction = ClientBonusTransaction::where('payment_id', '=', $payment_info->id)
             ->where('type', '=', ClientBonusTransaction::ADD_TYPE)->first();
         if ($cashback_percent and !$get_transaction) {
-            $cashback_value = (int)$payment_info->total / 100 * (int)$cashback_percent;
+            $cashback_value = ((int)$payment_info->total + (int)$payment_info->used_bonus) / 100 * (int)$cashback_percent;
             if ($get_current_bonus) {
                 $get_current_bonus->count += $cashback_value;
                 $get_current_bonus->save();
@@ -40,6 +40,7 @@ class BonusController extends Controller
             $save_transaction->type = ClientBonusTransaction::ADD_TYPE;
             $save_transaction->request = json_encode($transaction_request);
             $save_transaction->count = (int)$cashback_value;
+            $save_transaction->is_success = true;
             $save_transaction->save();
         }
     }

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Check transaction">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="added used bonus logic">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Clients/ClientBonusTransaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Clients/ClientBonusTransaction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +176,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Models/Clients" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../russian-wine-master" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -236,14 +232,10 @@
       <workItem from="1627318809748" duration="5994000" />
       <workItem from="1627401043458" duration="2411000" />
       <workItem from="1627562453103" duration="7411000" />
-      <workItem from="1630417082342" duration="12948000" />
-    </task>
-    <task id="LOCAL-00040" summary="updated mobile logo">
-      <created>1621680290945</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1621680290945</updated>
+      <workItem from="1630417082342" duration="13364000" />
+      <workItem from="1630503794183" duration="397000" />
+      <workItem from="1630505230169" duration="1031000" />
+      <workItem from="1630507011301" duration="6045000" />
     </task>
     <task id="LOCAL-00041" summary="test code">
       <created>1621781349843</created>
@@ -581,7 +573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630424780428</updated>
     </task>
-    <option name="localTasksCounter" value="89" />
+    <task id="LOCAL-00089" summary="added used bonus logic">
+      <created>1630441385933</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1630441385933</updated>
+    </task>
+    <option name="localTasksCounter" value="90" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +600,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Fixed extra product script" />
     <MESSAGE value="Fixed product update locale" />
     <MESSAGE value="Added locale for checkout and currency" />
     <MESSAGE value="Updated buy one product" />
@@ -626,6 +624,7 @@
     <MESSAGE value="updated sale price logic" />
     <MESSAGE value="added bonus after success payment" />
     <MESSAGE value="Check transaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Check transaction" />
+    <MESSAGE value="added used bonus logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="added used bonus logic" />
   </component>
 </project>

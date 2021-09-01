@@ -91,11 +91,14 @@ class PaymentController extends Controller
         $used_bonus = null;
         if ($request['use_bonus'] and $client_id) {
             $used_bonus = request()->user('client')->current_bonus->count;
+            $total_price = $total_price - $used_bonus;
+            $products.= 'Использовано бонусов: '.$used_bonus;
+
         }
         $products .= 'Город: ' . $city_title . ' ';
         $city_and_price_info += ['city_info' => $city_info];
         if (Voyager::setting('site.price_update')) {
-            $products .= 'Изменённая цена на: ' . Voyager::setting('site.price_update') . '%';
+            $products .= ' Изменённая цена на: ' . Voyager::setting('site.price_update') . '%';
             $city_and_price_info += ['price_update_val' => Voyager::setting('site.price_update')];
         }
         if ($total_price < (100 * $currency_value)) {
