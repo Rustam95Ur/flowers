@@ -41,6 +41,7 @@ return [
         'shipping' => 'Shipping',
         'sub_total' => 'Sub Total',
         'cart_total' => 'Cart totals',
+        'sale' => 'Sale',
     ],
     'calculator' => [
         'title' => 'Flower Calculator',

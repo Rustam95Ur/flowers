@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCheckoutForm;
 use App\Http\Controllers\Mail\BaseController as MailBaseController;
 use App\Models\Clients\City;
+use App\Models\Clients\SalePercent;
 use App\Models\Products\Currency;
 use App\Models\Clients\Payment;
 use App\Models\Products\Product;
@@ -80,7 +81,7 @@ class PaymentController extends Controller
                 array_push($products_info, $size_items);
             }
         }
-
+        $original_price = $total_price;
         $city_title = 'Не выбрано';
         $city_info = ['city_id' => null, 'city_title' => $city_title];
         if (session('city')) {
@@ -100,6 +101,12 @@ class PaymentController extends Controller
         if (Voyager::setting('site.price_update')) {
             $products .= ' Изменённая цена на: ' . Voyager::setting('site.price_update') . '%';
             $city_and_price_info += ['price_update_val' => Voyager::setting('site.price_update')];
+        }
+        $sale = new PaymentController();
+        $sale_price_update = $sale->getSaleForPrice($total_price);
+        if($sale_price_update['sale']) {
+            $products.= ' Скидка на товары: '.$sale_price_update['sale']. ' %';
+            $city_and_price_info += ['used_sale' => $sale_price_update['sale']];
         }
         if ($total_price < (100 * $currency_value)) {
             return back()->with('error', trans('cart.checkout.min_price_error', ['min_price'=> 100 * $currency_value]));
@@ -126,6 +133,7 @@ class PaymentController extends Controller
         $paymentSave->currency = $currency_title;
         $paymentSave->currency_value = $currency_value;
         $paymentSave->used_bonus = $used_bonus;
+        $paymentSave->original_price = $original_price;
         $payment_type = $request['payment_type'];
 
         if ($payment_type === 'online') {
@@ -236,6 +244,29 @@ class PaymentController extends Controller
             $bonus_deactivate->deactivate_used_bonus($payment->id);
         }
         return redirect()->route('cart')->with('success', trans('cart.checkout.error'));
+    }
+
+    /**
+     * @param int $price
+     * @return array|int[]
+     */
+    public function getSaleForPrice(int $price): array
+    {
+        $sales = SalePercent::all();
+        $sales_prices = [$price];
+        foreach ($sales as $sale) {
+            $sales_prices[] = $sale->price;
+        }
+        sort($sales_prices);
+        $key = array_search($price, $sales_prices);
+        if($key == 0) {
+            return ['price' => $price, 'sale' => 0];
+        } else {
+            $price_value = $sales_prices[$key - 1];
+            $sale = SalePercent::where('price', '=', $price_value)->first();
+            $price_percent_value = $price * (int)$sale->value / 100;
+            return ['price' => $price - $price_percent_value, 'sale' => (int)$sale->value];
+        }
     }
 
 }

@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="added used bonus logic">
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated bonus for offline">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ru/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/page.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -235,14 +239,10 @@
       <workItem from="1630417082342" duration="13364000" />
       <workItem from="1630503794183" duration="397000" />
       <workItem from="1630505230169" duration="1031000" />
-      <workItem from="1630507011301" duration="6045000" />
-    </task>
-    <task id="LOCAL-00041" summary="test code">
-      <created>1621781349843</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1621781349843</updated>
+      <workItem from="1630507011301" duration="6722000" />
+      <workItem from="1630587961405" duration="15000" />
+      <workItem from="1630694575824" duration="8374000" />
+      <workItem from="1631198486479" duration="2225000" />
     </task>
     <task id="LOCAL-00042" summary="updated home page">
       <created>1621781971197</created>
@@ -580,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630441385933</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="Updated bonus for offline">
+      <created>1630513759230</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1630513759230</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -600,7 +607,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Fixed product update locale" />
     <MESSAGE value="Added locale for checkout and currency" />
     <MESSAGE value="Updated buy one product" />
     <MESSAGE value="Added auth" />
@@ -625,6 +631,7 @@
     <MESSAGE value="added bonus after success payment" />
     <MESSAGE value="Check transaction" />
     <MESSAGE value="added used bonus logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="added used bonus logic" />
+    <MESSAGE value="Updated bonus for offline" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated bonus for offline" />
   </component>
 </project>

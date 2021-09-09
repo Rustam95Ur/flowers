@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Shop\PaymentController;
 use App\Locale;
 use App\Models\Pages\Banner;
 use App\Models\Products\Currency;
@@ -112,10 +113,13 @@ class BaseController extends Controller
             $total_sum = $session_cart_products['total_sum'];
             $type = 'some_products';
         }
+        $sale = new PaymentController();
+        $update_total_sum = $sale->getSaleForPrice($total_sum);
         if(count($products) > 0) {
             return view('cart.checkout', [
                 'checkout_products' => $products,
-                'total_sum' => $total_sum,
+                'total_sum' => $update_total_sum['price'],
+                'sale' => $update_total_sum['sale'],
                 'product_pay_type' => $type,
                 'user' => $user
             ]);

@@ -135,6 +135,17 @@
                                         </strong>
                                     </td>
                                 </tr>
+                                @if($sale)
+                                    <tr class="order-total">
+                                        <th>{{trans('page.cart.sale')}}</th>
+                                        <td class="text-center"><strong>
+                                            <span class="amount">
+                                                {{$sale}} %
+                                            </span>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                @endif
                                 </tfoot>
                             </table>
                         </div>
