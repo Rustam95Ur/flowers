@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @stack('css')
     <script src="//code-ya.jivosite.com/widget/{{env('JIVO_TOKEN')}}" async></script>
+    {!! ReCaptcha::htmlScriptTagJsApi() !!}
 </head>
 
 <body>

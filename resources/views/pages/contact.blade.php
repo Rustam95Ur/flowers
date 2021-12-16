@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12 col-custom">
-                                    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+                                    {!! htmlFormSnippet() !!}
                                 </div>
                                 <div class="col-12 col-custom mt-40">
                                     <button type="submit" class="btn flosun-button secondary-btn theme-color rounded-0">

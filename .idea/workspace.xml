@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated bonus for offline">
-      <change beforePath="$PROJECT_DIR$/.idea/flowers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flowers.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Added recapcha">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreMailForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreMailForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,14 +240,7 @@
       <workItem from="1631198486479" duration="2225000" />
       <workItem from="1639552101864" duration="603000" />
       <workItem from="1639660864231" duration="211000" />
-      <workItem from="1639661092488" duration="299000" />
-    </task>
-    <task id="LOCAL-00042" summary="updated home page">
-      <created>1621781971197</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1621781971197</updated>
+      <workItem from="1639661092488" duration="1533000" />
     </task>
     <task id="LOCAL-00043" summary="updated css, added breadcrumb text custom page">
       <created>1621880089377</created>
@@ -590,7 +578,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630513759230</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="Added recapcha">
+      <created>1639662006270</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1639662006271</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -610,7 +605,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added locale for checkout and currency" />
     <MESSAGE value="Updated buy one product" />
     <MESSAGE value="Added auth" />
     <MESSAGE value="Updated buy now func" />
@@ -635,6 +629,7 @@
     <MESSAGE value="Check transaction" />
     <MESSAGE value="added used bonus logic" />
     <MESSAGE value="Updated bonus for offline" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated bonus for offline" />
+    <MESSAGE value="Added recapcha" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added recapcha" />
   </component>
 </project>
