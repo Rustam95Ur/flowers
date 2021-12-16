@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da29181-e0e0-4fee-ad11-78c68f1cf66f" name="Default Changelist" comment="Updated bonus for offline">
+      <change beforePath="$PROJECT_DIR$/.idea/flowers.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flowers.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Page/BaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/BonusController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Shop/PaymentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ru/page.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ru/page.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cart/checkout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/StoreMailForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/StoreMailForm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,6 +165,7 @@
       <path value="$PROJECT_DIR$/vendor/tcg/voyager" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
       <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/biscolab/laravel-recaptcha" />
     </include_path>
   </component>
   <component name="ProjectId" id="1riJMTvysDSWhZHipGcm8W11Sr4" />
@@ -180,7 +180,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../russian-wine-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -190,11 +190,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\OpenServer\domains\flowers" />
       <recent name="C:\OpenServer\domains\flowers\app\Models\Clients" />
       <recent name="C:\OpenServer\domains\flowers\app\Models\Products" />
       <recent name="C:\OpenServer\domains\flowers\app\Models" />
       <recent name="C:\OpenServer\domains\flowers\app\Http\Controllers\Shop" />
-      <recent name="C:\OSPanel\domains\flowers\resources\views\profile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\OpenServer\domains\flowers\app\Models" />
@@ -243,6 +243,9 @@
       <workItem from="1630587961405" duration="15000" />
       <workItem from="1630694575824" duration="8374000" />
       <workItem from="1631198486479" duration="2225000" />
+      <workItem from="1639552101864" duration="603000" />
+      <workItem from="1639660864231" duration="211000" />
+      <workItem from="1639661092488" duration="299000" />
     </task>
     <task id="LOCAL-00042" summary="updated home page">
       <created>1621781971197</created>

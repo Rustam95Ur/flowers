@@ -89,6 +89,9 @@
                                                   placeholder="{{trans('contact.message')}}"></textarea>
                                     </div>
                                 </div>
+                                <div class="col-12 col-custom">
+                                    {!! ReCaptcha::htmlScriptTagJsApi() !!}
+                                </div>
                                 <div class="col-12 col-custom mt-40">
                                     <button type="submit" class="btn flosun-button secondary-btn theme-color rounded-0">
                                         {{trans('button.send_message')}}
